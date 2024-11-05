@@ -1,0 +1,32 @@
+:root{
+    --rojo: red;
+    --rojo_hover:  #ff6666;
+    --verde: green;
+    --verde_hover: #66cc66;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5rem 15rem;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-marcado {
+    background-color: var(--rojo);
+}
+
+.btn-marcado:hover {
+    background-color: var(--rojo_hover);
+}
+
+.btn-portal {
+    background-color: var(--verde);
+}
+
+.btn-portal:hover {
+    background-color: var(--verde_hover); 
+}

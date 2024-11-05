@@ -1,0 +1,347 @@
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --little_blue:  #cafffa ;
+    --little_gray:  #efefef ;
+    --blue:  #2f98fa ;
+    --blue_little: #ebf9ff  ;
+    --dark_blue:  #003afe    ;
+    --very_green:  #4dfe00;
+    --green:  #1ce42b;
+    --purple:  #b814ff ;
+}
+
+html {
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 1rem;
+}
+
+h2 {  
+  text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+body {
+    background-color: var(--little_blue);
+    display: grid;
+    min-height: 100vh;
+    position: relative;
+    grid-template-rows: auto 1fr auto;
+    margin: 0;
+}
+
+
+/* CCS for the footer*/
+
+footer {
+    background-color: var(--blue);
+    height: 2rem;
+    width: 100%;
+}
+
+footer p{
+    padding-left: 1rem;
+    padding-top: .3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+
+
+
+
+
+
+/* CSS for the login*/
+.form_login {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 25rem;
+    background-color: var(--blue_little);
+}
+
+.form_login button{
+    background-color: var(--green);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--green);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 6rem;
+    height: 2rem;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.form_login button:hover{
+    background-color: var(--very_green);
+    border-color: var(--very_green);
+}
+
+.form1 {
+    margin-top: 10rem;
+}
+
+/* CSS for the inpus and the placeholders for the login*/
+.form_login input:focus {
+    border-bottom: 2px solid var(--blue);
+}
+
+.form_login input {
+    border: none;
+    border-bottom: 2px solid var(--black);
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 20rem;
+    height: 2rem;
+    outline: none;
+    transition: border-color 0.3 ease;
+    background-color: var(--blue_little);
+}
+
+::placeholder {
+    color: black;
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    opacity: .70;
+}
+
+
+/* CSS FOR THE HEADER */
+
+.header {
+    background-color: #2f98fa;
+    width: flex;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header nav {
+	float:right;
+}
+
+.header nav a {
+	display:inline-block;
+	color: var(--black);
+	text-decoration:none;
+	padding:10px 20px;
+	line-height:normal;
+	font-size:20px;
+	font-weight:bold;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+.header nav a:hover {
+	background: var(--dark_blue);
+	border-radius:50px;
+}
+
+.options {
+	margin:auto; 
+	overflow:hidden; 
+}
+
+/*home divs for the information */
+
+.home_first_div {
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    width: 25rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-top: 0.8rem;
+    height: 15rem;
+
+}
+
+.container_home {
+    display: flex;
+    justify-content: center;
+}
+
+.home_first_div button{
+    background-color: var(--green);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--green);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    color: var(--black);
+    width: 10rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.home_first_div button:hover{
+    background-color: var(--very_green);
+    border-color: var(--very_green);
+}
+
+.home_first_div p{
+    margin-left: 1rem;
+}
+
+
+
+.home_button {
+    text-align: center;
+}
+
+
+/* CSS for the form for the page */
+
+.formPage {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 25rem;
+    background-color: var(--blue_little);
+    height: auto;
+}
+
+.formPage button{
+    background-color: var(--dark_blue);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--dark_blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 15rem;
+    height: 2rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.formPage button:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.formPage input {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.formPage label {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.formPage fieldset{
+    height: auto;
+}
+
+.firstInput{
+    margin-top: 1rem;
+}
+
+/* CSS for the information */
+.info {
+    background-color: var(--white);
+    width: 20rem;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 23rem;
+}
+
+.info h2 {
+    padding-top: 1rem;
+}
+
+.info p{
+    margin-left: 1rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info button{
+    background-color: var(--dark_blue);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--dark_blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 8rem;
+    height: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+}
+
+.info button:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.info a{
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.position {
+    text-align: center;
+}
+
+
+/* CSS for the tables */
+.tableAdmin {
+    border-collapse: collapse;
+    text-align: center;
+    margin: auto;
+    font-size: 0.7rem;
+}
+
+.tableAdmin th{
+    background-color: var(--purple);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0.7rem;
+    border-color: var(--black);
+}
+
+.tableAdmin td{
+    background-color: var(--white);
+    padding: 0.7rem;
+    border-color: var(--black);
+}
+
+.tableAdmin td:hover {
+    background-color: var(--blue);
+}
+
+
