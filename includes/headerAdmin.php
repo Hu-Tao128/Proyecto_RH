@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
+    <?php
+
+        session_start(); 
+        $IDUsuario = $_SESSION['usuario'];
+    ?>
     <title>RH</title>
 </head>
 <body>
@@ -22,7 +27,8 @@
                 <a href="benefies.php">Benefies</a>
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>
-                <a href="employees.php">Employee</a>
+                <a href="employees.php">Employee</a>    
+                <a href="../principal.php">Close Session</a>
             </nav>
         </div>
     </section>

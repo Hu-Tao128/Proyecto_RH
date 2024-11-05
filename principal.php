@@ -4,11 +4,11 @@
 <br>
 <body>
     <div>
-        <a href="marcados.php" class="btn btn-marcado">Marcar entrada</a>
+        <a href="marcados.php" class="btn btn-marcado">Mark attendance</a>
     </div>
 
     <div>
-        <a href="Session/login.php" class="btn btn-portal">Entrar a Portal de empleado</a>
+        <a href="Session/login.php" class="btn btn-portal">Enter Employ Portal</a>
     </div>
 
 </body>

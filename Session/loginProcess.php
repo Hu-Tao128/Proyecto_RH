@@ -1,5 +1,7 @@
 <?php
 require_once("../includes/header.php");
+require_once '../includes/config/MySQL_ConexionDB.php';
+require_once '../funciones.php';
 //session_start();
 
 $db_host = "localhost";
@@ -32,11 +34,23 @@ if (isset($_POST['btnLogin'])) {
         
         if ($DBContrasena === $Contrasena) {
             $_SESSION['usuario'] = $row['numero'];
+           
+            $info = getUserInfo($Usuario);
+            foreach ($info as $infos) {
+                $supervisor = $infos['supervisor'];
+            }
+
             ?>
 				<div class="loader">
 					<div class="load"></div>
 				</div>
-				<meta http-equiv="refresh" content="0;url=../home.php">
+                <?php 
+                if ($supervisor != "" && $supervisor != null) { ?>
+				    <meta http-equiv="refresh" content="0;url=../home.php"> <br> 
+                <?php }else{ ?>
+                    <meta http-equiv="refresh" content="0;url=../admin/homeAdmin.php"><br>
+            <?php    } ?>
+
             <?php
         } else {
             // Mensaje de error si la contraseña no coincide

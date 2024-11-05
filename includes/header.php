@@ -22,6 +22,7 @@
                 <a href="requestVacation.php">Request vacation</a>
                 <a href="reportIncident.php">Report an incident</a>
                 <a href="information.php">Personal information</a>
+                <a href="principal.php">Close Sesion</a>
             </nav>
         </div>
     </section>
