@@ -1,6 +1,12 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "functionsAdmin.php"; 
+require_once "../funciones.php"; 
+
+$employ = getInfoEmploy($IDUsuario);
+?>
 <section>
-    <h2>Table for the vacations</h2>
+    <h2>Table for the Employees</h2>
     <div>
         <table border="1" class="tableAdmin">
             <tr>
@@ -15,25 +21,27 @@
                 <th>Password</th>
                 <th>Contract Date</th>
                 <th>Workstation</th>
-                <th>Supervisor</th>
                 <th colspan="2">Options</th>
             </tr>
+            <?php foreach($employ as $renglon) {?>
             <tr>
-                <td>0</td>
-                <td>0000</td>
-                <td>0000</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
+                <tr>
+                <td><?= $renglon['numero']?></td>
+                <td><?= $renglon['nombre']?></td>
+                <td><?= $renglon['apelPaterno']?></td>
+                <td><?= $renglon['apelMaterno']?></td>
+                <td><?= $renglon['email']?></td>
+                <td><?= ($renglon['sexo'] ?? '') === 'F' ? 'Female' : 'Male';?></td>
+                <td><?= $renglon['edad']?></td>
+                <td><?= $renglon['celular']?></td>
+                <td><?= $renglon['contrasena']?></td>
+                <td><?= $renglon['fechaContrato']?></td>
+                <?php $workspace = workspace($renglon['numero']); ?>
+                <td><?php echo $workspace; ?></td>
                 <td><a href="">Modify</a></td>
                 <td><a href="">Delete</a></td>
             </tr>
+        <?php } ?>
         </table>
     </div>
     <div>

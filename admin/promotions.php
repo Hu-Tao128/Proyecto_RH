@@ -1,4 +1,9 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "functionsAdmin.php"; 
+
+$promotion = showPromotions();
+?>
 <section>
 
     <h2>Table for the promotions</h2>
@@ -11,13 +16,15 @@
                 <th>Status</th>
                 <th>Publication Date</th>
             </tr>
+            <?php foreach($promotion as $renglon){ ?>
             <tr>
-                <td>0</td>
-                <td>0000</td>
-                <td>0000</td>
-                <td>----</td>
-                <td>----</td>
-            </tr>
+                <td><?=$renglon['codigo']?></td>
+                <td><?=$renglon['nombre']?></td>
+                <td><?=$renglon['descripcion']?></td>
+                <td><?=$renglon['estado']?></td>
+                <td><?=$renglon['fechaPub']?></td>
+            </tr> <?php
+            } ?>
         </table>
     </div>
     <div>

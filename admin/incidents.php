@@ -1,5 +1,10 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "functionsAdmin.php"; 
+require_once "../funciones.php"; 
 
+$incident = showIncidents();
+?>
 <section>
     <h2>Table for the incidents</h2>
     <div>
@@ -12,15 +17,19 @@
                 <th>Employee</th>
                 <th colspan="2">Options</th>
             </tr>
-            <tr>
-                <td>0</td>
-                <td>0000</td>
-                <td>0000</td>
-                <td>----</td>
-                <td>----</td>
+            <?php foreach($incident as $renglon) { ?></php>
+          <tr>
+                <td><?=$renglon['numero']?></td>
+                <td><?=$renglon['tipo_Incident']?></td>
+                <td><?=$renglon['fechaIncident']?></td>
+                <td><?=$renglon['descripcion']?></td>
+                <?php $name = firstname($renglon['empleado']);?>
+                <?php $lastname = lastname($renglon['empleado']);?>
+                <td><?=$name." ".$lastname?></td>
                 <td><a href="">Modify</a></td>
                 <td><a href="">Delete</a></td>
-            </tr>
+            </tr><?php
+            } ?>
         </table>
     </div>
 </section>

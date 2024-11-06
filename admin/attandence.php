@@ -1,4 +1,10 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "../funciones.php"; 
+require_once "functionsAdmin.php"; 
+
+$attandance = showApplication();
+?>
 <section>
     <h2>Table for the attandence</h2>
     <div>
@@ -12,6 +18,7 @@
                 <th>Employee</th>
                 <th colspan="2">Options</th>
             </tr>
+            <?php foreach ($attandance as $renglon) { ?>
             <tr>
                 <td>0</td>
                 <td>0000</td>
@@ -21,7 +28,8 @@
                 <td>0</td>
                 <td><a href="">Modify</a></td>
                 <td><a href="">Delete</a></td>
-            </tr>
+            </tr><?php
+            } ?>
         </table>
     </div>
 </section>

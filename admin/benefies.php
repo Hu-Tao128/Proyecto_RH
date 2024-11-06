@@ -1,4 +1,10 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "functionsAdmin.php"; 
+require_once "../funciones.php"; 
+
+$benefits = showBenefits();
+?>
 <section>
     <h2>Table for the benefies</h2>
     <div>
@@ -10,14 +16,16 @@
                 <th>Description</th>
                 <th colspan="2">Options</th>
             </tr>
+            <?php foreach($benefits as $renglon) { ?>
             <tr>
-                <td>000</td>
-                <td>----</td>
-                <td>----</td>
-                <td>----</td>
+                <td><?=$renglon['codigo']?></td>
+                <td><?=$renglon['nombre']?></td>
+                <td><?=$renglon['tipo']?></td>
+                <td><?=$renglon['descripcion']?></td>
                 <td><a href="">Modify</a></td>
                 <td><a href="">Delete</a></td>
-            </tr>
+            </tr><?php
+            } ?>
         </table>
     </div>
     <div>

@@ -1,4 +1,10 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "../funciones.php"; 
+require_once "functionsAdmin.php"; 
+
+$Application = showApplication();
+?>
 <section>
     <h2>Table for the aplications</h2>
     <div>
@@ -10,14 +16,18 @@
                 <th>Employee</th>
                 <th colspan="2">Options</th>
             </tr>
+            <?php foreach ($Application as $renglon){ ?>
             <tr>
-                <td>0</td>
-                <td>0000</td>
-                <td>0000</td>
-                <td>----</td>
+                <td><?=$renglon['numero']?></td>
+                <td><?=$renglon['fechaPub']?></td>
+                <td><?=$renglon['estado']?></td>
+                <?php $name = firstname($renglon['empleado']);?>
+                <?php $lastname = lastname($renglon['empleado']);?>
+                <td><?=$name." ".$lastname?></td>
                 <td><a href="">Modify</a></td>
                 <td><a href="">Delete</a></td>
-            </tr>
+            </tr><?php
+            }   ?>
         </table>
     </div>
 </section>
