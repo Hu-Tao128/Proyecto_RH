@@ -1,32 +1,94 @@
-:root{
-    --rojo: red;
-    --rojo_hover:  #ff6666;
-    --verde: green;
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+    --rojo: #ff4c4c;
+    --rojo_hover: #ff6666;
+    --verde: #4caf50;
     --verde_hover: #66cc66;
+    --sombra: rgba(0, 0, 0, 0.2);
+    --fuente: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: var(--fuente);
+    background: #f3f4f6;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .btn {
-    display: inline-block;
-    padding: 5rem 15rem;
-    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 8px 15px var(--sombra);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
+.btn i {
+    font-size: 1.5rem; /* Tamaño del icono */
+    transition: transform 0.3s ease; /* Animación para el icono */
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.75s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.btn:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover i {
+    transform: translateX(5px); /*/Desplazamiento del icono/*/
+}
+
+/*/Gradiente (desvanecido por si no entienden xd)/*/
+
 .btn-marcado {
-    background-color: var(--rojo);
+    background: linear-gradient(135deg, var(--rojo), var(--rojo_hover));
 }
 
 .btn-marcado:hover {
-    background-color: var(--rojo_hover);
+    background: linear-gradient(135deg, var(--rojo_hover), var(--rojo));
 }
 
 .btn-portal {
-    background-color: var(--verde);
+    background: linear-gradient(135deg, var(--verde), var(--verde_hover));
 }
 
 .btn-portal:hover {
-    background-color: var(--verde_hover); 
+    background: linear-gradient(135deg, var(--verde_hover), var(--verde));
 }
