@@ -66,8 +66,17 @@ $employ = getInfoEmploy($IDUsuario);
                     <input type="text" id="email" name="email" placeholder="Email">
                 </div>
                 <div>
-                    <label for="gender"></label>
-                    <input type="text" id="gender" name="gender" placeholder="Gender">
+                    <label>Gender:</label>
+                    <div style="display: flex; flex-direction: column; align-items: start; gap: 10px;">
+                        <div style="display: flex; align-items: center;">
+                            <input type="radio" id="male" name="gender" value="M" class="radio-large" style="width:100px;">
+                            <label for="male" style="margin-left: 5px;">Male</label>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <input type="radio" id="female" name="gender" value="F" class="radio-large" style="width: 100px;">
+                            <label for="female" style="margin-left: 5px;">Female</label>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <label for="phone"></label>
@@ -80,14 +89,20 @@ $employ = getInfoEmploy($IDUsuario);
                 <div>
                     <label for="contractDate"></label>
                     <input type="date" id="contractDate" name="contractDate">
-                </div>
+                </div><br>
                 <div>
-                    <label for="workstation"></label>
-                    <input type="text" id="workstation" name="workstation" placeholder="The Workstation">
-                </div>
-                <div>
-                    <label for="supervisor"></label>
-                    <input type="number" id="supervisor" name="supervisor" placeholder="Number of the supervisor">
+                    <label for="seltWorkspace">Select a workspace:</label>
+                    <select name="seltWorkspace" id="seltWorkspace">
+                        <option value="">-- workspaces --</option>
+                        <?php 
+                            $workspace = listWorkstation();
+                            //manda a llamar la funcion que trae los puestos
+                            foreach ($workspace as $renglon) { ?>
+                            <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
+                            <!--Donde value es el id o numero del puesto y nombre el nombre que posee
+                            Por eso cuando elegimos uno posee como valor el id para agregarlo a la bd-->
+                        <?php } ?>
+                    </select>
                 </div>
                 <div>
                     <button type="submit">Add a employee</button>

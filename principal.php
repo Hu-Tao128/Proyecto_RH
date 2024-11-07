@@ -3,6 +3,9 @@
 ?>
 <body>
     <div class="btn-container">
+    <h2>Human resources</h2>
+    <h3>Welcome to the main menu</h3>
+    <p>Select one of the following options</p>
         <a href="marcados.php" class="btn btn-marcado" aria-label="Mark Attendance">
             <i class="fas fa-check-circle"></i> Mark Attendance
         </a>

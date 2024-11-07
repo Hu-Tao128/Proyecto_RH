@@ -1,8 +1,7 @@
 <?php
-require_once("../includes/header.php");
 require_once '../includes/config/MySQL_ConexionDB.php';
 require_once '../funciones.php';
-//session_start();
+session_start();
 
 $db_host = "localhost";
 $db_name = "rrhh";
@@ -29,7 +28,6 @@ if (isset($_POST['btnLogin'])) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $count = $stmt->rowCount();
         
-        // Verificar la contraseña obtenida de la base de datos
         $DBContrasena = ($count == 0) ? "" : $row['contrasena'];
         
         if ($DBContrasena === $Contrasena) {
@@ -40,20 +38,14 @@ if (isset($_POST['btnLogin'])) {
                 $supervisor = $infos['supervisor'];
             }
 
-            ?>
-				<div class="loader">
-					<div class="load"></div>
-				</div>
-                <?php 
-                if ($supervisor != "" && $supervisor != null) { ?>
-				    <meta http-equiv="refresh" content="0;url=../home.php"> <br> 
-                <?php }else{ ?>
-                    <meta http-equiv="refresh" content="0;url=../admin/homeAdmin.php"><br>
-            <?php    } ?>
-
-            <?php
+            if (empty($supervisor)) {
+                header("Location: ../admin/homeAdmin.php");
+            } else {
+                header("Location: ../home.php");
+                exit();
+            }
         } else {
-            // Mensaje de error si la contraseña no coincide
+            
             echo '<br/><center><p>Upss... usuario o contraseña incorrecto</p>';
             echo '<input type="button" value="Volver a intentar" onclick="self.location=\'login.php\'" /></center>';
         }

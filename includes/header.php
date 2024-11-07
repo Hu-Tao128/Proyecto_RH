@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: ../principal.php");
+        exit();
+    }
+    $IDUsuario = $_SESSION['usuario'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <?php
-
-        session_start(); 
-        $IDUsuario = $_SESSION['usuario'];
-    ?>
     <title>RH</title>
 </head>
 <body>
@@ -22,7 +25,7 @@
                 <a href="requestVacation.php">Request vacation</a>
                 <a href="reportIncident.php">Report an incident</a>
                 <a href="information.php">Personal information</a>
-                <a href="principal.php">Close Sesion</a>
+                <a href="../Session/logout.php">Close Session</a>
             </nav>
         </div>
     </section>

@@ -121,6 +121,24 @@ function showApplication(){
     return $applications;
 }
 
+function listWorkstation(){
+    global $db_con;
+    $workspace = [];
+
+    try {
+        $query = "SELECT * FROM puesto";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+    
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $workspace[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+    return $workspace;
+}    
+
 function showAttandance(){
     global $db_con;
     $attandance = [];
@@ -139,5 +157,4 @@ function showAttandance(){
 
     return $attandance;
 }
-
 ?>

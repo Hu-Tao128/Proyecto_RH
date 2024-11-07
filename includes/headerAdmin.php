@@ -28,7 +28,7 @@
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>
                 <a href="employees.php">Employee</a>    
-                <a href="../principal.php">Close Session</a>
+                <a href="../Session/logout.php">Close Session</a>
             </nav>
         </div>
     </section>
