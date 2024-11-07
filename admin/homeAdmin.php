@@ -22,7 +22,7 @@ $salary = salary($IDUsuario);
             Workstation: <?php echo $workspace; ?> <br>
             Contract date: <?php echo $contract; ?> <br>
         </p>
-    </div>
+    </div><!--
     <div class="home_first_div">
         <h3>Attendance</h3>
         <p>
@@ -32,7 +32,7 @@ $salary = salary($IDUsuario);
             <button>Mark attendance</button>
         </div>
         
-    </div>
+    </div>-->
     <div class="home_first_div">
         <h3>Other Information</h3>
         <p>
@@ -49,3 +49,5 @@ $salary = salary($IDUsuario);
         </p>
     </div>
 </section>
+
+<?php include "../includes/footer.php";?>
