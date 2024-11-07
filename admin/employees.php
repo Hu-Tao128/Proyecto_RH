@@ -47,15 +47,15 @@ $employ = getInfoEmploy($IDUsuario);
     <div>
         <br>
         <h2>Add a employee</h2>
-        <form action="" class="formPage">
+        <form action="addEmploy.php" class="formPage" method="POST">
             <fieldset>
                 <div class="firstInput">
                     <label for="name"></label>
-                    <input type="text" id="name" name="name" placeholder="Write the name of the employee">
+                    <input type="text" id="name" name="name" placeholder="Write the name of the employee" required>
                 </div>
                 <div>
                     <label for="lastName"></label>
-                    <input type="text" id="lastName" name="lastName" placeholder="First Lastname">
+                    <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
                 </div>
                 <div>
                     <label for="secondLastName"></label>
@@ -63,36 +63,36 @@ $employ = getInfoEmploy($IDUsuario);
                 </div>
                 <div>
                     <label for="email"></label>
-                    <input type="text" id="email" name="email" placeholder="Email">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
                 <div>
                     <label>Gender:</label>
                     <div style="display: flex; flex-direction: column; align-items: start; gap: 10px;">
                         <div style="display: flex; align-items: center;">
-                            <input type="radio" id="male" name="gender" value="M" class="radio-large" style="width:100px;">
+                            <input type="radio" id="male" name="gender" value="M" class="radio-large" style="width:100px;" required>
                             <label for="male" style="margin-left: 5px;">Male</label>
                         </div>
                         <div style="display: flex; align-items: center;">
-                            <input type="radio" id="female" name="gender" value="F" class="radio-large" style="width: 100px;">
+                            <input type="radio" id="female" name="gender" value="F" class="radio-large" style="width: 100px;" required>
                             <label for="female" style="margin-left: 5px;">Female</label>
                         </div>
                     </div>
                 </div>
                 <div>
                     <label for="phone"></label>
-                    <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55">
+                    <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
                 </div>
                 <div>
                     <label for="password"></label>
-                    <input type="text" id="password" name="password" placeholder="Password">
-                </div>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div><br>
                 <div>
-                    <label for="contractDate"></label>
-                    <input type="date" id="contractDate" name="contractDate">
+                    <label for="birthDate"> Fecha de Nacimiento:</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
                 </div><br>
                 <div>
                     <label for="seltWorkspace">Select a workspace:</label>
-                    <select name="seltWorkspace" id="seltWorkspace">
+                    <select name="seltWorkspace" id="seltWorkspace" required>
                         <option value="">-- workspaces --</option>
                         <?php 
                             $workspace = listWorkstation();
@@ -105,7 +105,7 @@ $employ = getInfoEmploy($IDUsuario);
                     </select>
                 </div>
                 <div>
-                    <button type="submit">Add a employee</button>
+                    <button type="submit" name="btnAddEmploy">Add a employee</button>
                 </div>
             </fieldset>
         </form>
