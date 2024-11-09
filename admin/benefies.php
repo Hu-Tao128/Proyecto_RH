@@ -22,8 +22,8 @@ $benefits = showBenefits();
                 <td><?=$renglon['nombre']?></td>
                 <td><?=$renglon['tipo']?></td>
                 <td><?=$renglon['descripcion']?></td>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
