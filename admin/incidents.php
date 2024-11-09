@@ -26,8 +26,8 @@ $incident = showIncidents();
                 <?php $name = firstname($renglon['empleado']);?>
                 <?php $lastname = lastname($renglon['empleado']);?>
                 <td><?=$name." ".$lastname?></td>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
