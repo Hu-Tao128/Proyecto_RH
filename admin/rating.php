@@ -17,8 +17,8 @@
                 <td>0000</td>
                 <td>----</td>
                 <td>----</td>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr>
         </table>
     </div>
