@@ -159,6 +159,25 @@ function getUserInfo($usuario) {
     return $infoUser;
 }
 
+function vacactions($usuario){
+	global $db_con;
+	$vacactions = [];
+
+	try{
+		$query = "SELECT * FROM vacaciones WHERE empleado = :usuario";
+		$stm = $db_con->prepare($query);
+		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->execute();
+
+		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$vacactions[] = $row;
+		}
+	} catch (PDOException $e) {
+		exit("Error en la consulta: " . $e->getMessage());
+	}
+
+	return $vacactions;
+}
 /*
 function verPagos($usuario) {
 	

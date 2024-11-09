@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/config/MySQL_ConexionDB.php';
-require_once '../funciones.php';
+require_once '../functions.php';
 session_start();
 
 $db_host = "localhost";

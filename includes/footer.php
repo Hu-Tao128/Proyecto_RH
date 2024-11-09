@@ -2,7 +2,7 @@
     <footer>
         <div>
             <p>
-                All rights reserved by: Aya
+                All rights reserved by: Integramigos
             </p>
         </div>
     </footer>

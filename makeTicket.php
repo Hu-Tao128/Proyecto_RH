@@ -2,22 +2,17 @@
 <section>
     <h2>Make a ticket</h2>
     <div>
-        <form action="" class="formPage">
+        <form action="addTicket.php" class="formPage" method="post">
             <fieldset>
-                <div class="firstInput">
-                    <label for="name"></label> <!-- This information should be entered automatically -->
-                    <input type="text" id="name" name="name" placeholder="Name">
+            <div class="firstInput">
+                    
                 </div>
+                <br>
                 <div>
-                    <label for="date"></label> <!-- This information should be entered automatically -->
-                    <input type="date" id="date" name="date">
-                </div>
-                <div>
-                    <label for="description"></label>
-                    <input type="text" id="description" name="description" placeholder="Write the information about the ticket">
-                </div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" required></textarea>
                 <div>  
-                    <button type="submit">Make a ticket</button>
+                    <button type="submit" name="btnaddTicket">Make a ticket</button>
                 </div>
             </fieldset>
         </form>

@@ -1,7 +1,7 @@
 <?php include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
-require_once "../funciones.php"; 
+require_once "../functions.php"; 
 
 $benefits = showBenefits();
 ?>
@@ -30,26 +30,26 @@ $benefits = showBenefits();
     </div>
     <div>
         <h2>Make a benefie</h2>
-        <form action="" class="formPage">
+        <form action="addBenefits.php" class="formPage" method="POST">
             <fieldset>
                 <div class="firstInput">
                     <label for="code"></label>
-                    <input type="text" id="code" name="code" placeholder="Write the code of the benefie">
+                    <input type="text" id="code" name="code" placeholder="Write the code of the benefie" required maxlength="4">
                 </div>
                 <div>
                     <label for="name"></label>
-                    <input type="text" id="name" name="name" placeholder="Name of the benefie">
+                    <input type="text" id="name" name="name" placeholder="Name of the benefie" required> 
                 </div>
                 <div>
                     <label for="type"></label>
-                    <input type="text" id="type" name="type" placeholder="Type of the benefie">
+                    <input type="text" id="type" name="type" placeholder="Type of the benefie" required>
                 </div>
                 <div>
                     <label for="description"></label>
-                    <input type="text" id="description" name="description" placeholder="Description of the benefie">
+                    <input type="text" id="description" name="description" placeholder="Description of the benefie" required>
                 </div>
                 <div>
-                    <button type="submit">Make a benefie</button>
+                    <button type="submit" name="btnBenfits">Make a benefie</button>
                 </div>
             </fieldset>
         </form>

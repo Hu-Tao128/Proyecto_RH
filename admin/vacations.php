@@ -1,17 +1,16 @@
 <?php include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
+require_once "../functions.php"; 
 ?>
 
 <?php 
 $vacations = getInfovacations($IDUsuario); 
-// Para depurar: imprimir el contenido de $vacations
-// echo "<pre>"; print_r($vacations); echo "</pre>";
 ?>
 
 <section>
     <h2>Table for the vacations</h2>
-    <h3>Here you found the vacations request about your Employees or staff under u</h3>
+    <h3>Here you found the vacations request about your Employees</h3>
     <div>
         <table border="1" class="tableAdmin">
             <tr>
@@ -28,7 +27,11 @@ $vacations = getInfovacations($IDUsuario);
                     <td><?= $renglon['fechaInicio'] ?? 'N/A' ?></td>
                     <td><?= $renglon['fechaFin'] ?? 'N/A' ?></td>
                     <td><?= $renglon['estado'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['empleado'] ?? 'N/A' ?></td>
+                    <?php
+                        $name = firstname($renglon['empleado']); 
+                        $lastname = lastname($renglon['empleado']);
+                    ?>
+                    <td><?= $name." ".$lastname ?? 'N/A' ?></td>
                     <td><a href="modifyVacation.php?id=<?= $renglon['numero'] ?>">Modify</a></td>
                     <td><a href="deleteVacation.php?id=<?= $renglon['numero'] ?>">Delete</a></td>
                 </tr>

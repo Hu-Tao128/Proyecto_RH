@@ -1,7 +1,7 @@
 <?php include "includes/header.php";
 
 require_once 'includes/config/MySQL_ConexionDB.php';
-require_once 'funciones.php';
+require_once 'functions.php';
 
 $info = getUserInfo($IDUsuario);
             foreach ($info as $infos) {
@@ -16,6 +16,17 @@ $nameS = firstname($supervisor);
 $SupLastNames = lastname($supervisor);
 $salary = salary($IDUsuario);
 ?>
+<section class="homeInfo">
+    <div class="moreInfo">
+        <h2>Welcome to the human resources system</h2>
+        <p>
+        Welcome to the company's human resources page, here you can see your personal information and perform certain actions such as requesting your vacation, making a complaint, among others.
+        </p>
+    </div>
+    
+    
+    
+</section>
 
 <section class="container_home">
     <div class="home_first_div">
@@ -30,16 +41,6 @@ $salary = salary($IDUsuario);
                     Supervisor: <?php echo $nameS." ".$SupLastNames; ?> <br> 
             <?php } ?>
         </p>
-    </div>
-    <div class="home_first_div">
-        <h3>Attendance</h3>
-        <p>
-            Mark today's attendance
-        </p>
-        <div class="home_button">
-            <button>Mark attendance</button>
-        </div>
-        
     </div>
     <div class="home_first_div">
         <h3>Other Information</h3>

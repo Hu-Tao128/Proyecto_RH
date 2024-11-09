@@ -1,25 +1,28 @@
 <?php include "includes/header.php" ?>
 <section>
     <h2>Report a incident</h2>
-    <form action="" class="formPage">
+    <form action="addReport.php" class="formPage" method="post">
         <fieldset>
-            <div class="firstInput">
-                <label for="name"></label> <!-- This information should be entered automatically -->
-                <input type="text" id="name" name="name" placeholder="Name">
+        <div class="firstInput">
+                
             </div>
+            <br>
             <div>
-                <input type="text" id="type" name="type" placeholder="Type of the incident">
+                <label for="type">Type of the incident</label><br>
+                <input type="text" id="type" name="type" placeholder="Write the type of the incident" required>
             </div>
+            <br>
             <div>
-                <br>
                 <label for="dateIncident">Date of the incident</label>
-                <input type="date" id="dateIncident" name="dateIncident">
+                <input type="date" id="dateIncident" name="dateIncident" required>
+            </div>
+            <br>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" required></textarea>
             </div>
             <div>
-                <input type="text" id="description" name="description" placeholder="Description of the incident">
-            </div>
-            <div>
-                <button type="submit">Report a incident</button>
+                <button type="submit" name="btnReport">Report a incident</button>
             </div>
         </fieldset>
     </form>

@@ -1,7 +1,7 @@
 <?php include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
-require_once "../funciones.php"; 
+require_once "../functions.php"; 
 
 $employ = getInfoEmploy($IDUsuario);
 ?>
@@ -12,8 +12,7 @@ $employ = getInfoEmploy($IDUsuario);
             <tr>
                 <th>Number</th>
                 <th>Name</th>
-                <th>Last Name</th>
-                <th>Second Last Name</th>
+                <th>Last Names</th>
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Age</th>
@@ -28,8 +27,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <tr>
                 <td><?= $renglon['numero']?></td>
                 <td><?= $renglon['nombre']?></td>
-                <td><?= $renglon['apelPaterno']?></td>
-                <td><?= $renglon['apelMaterno']?></td>
+                <td><?= $renglon['apelPaterno']." ".$renglon['apelMaterno']?></td>
                 <td><?= $renglon['email']?></td>
                 <td><?= ($renglon['sexo'] ?? '') === 'F' ? 'Female' : 'Male';?></td>
                 <td><?= $renglon['edad']?></td>

@@ -6,18 +6,30 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <?php
+    include_once("../functions.php");
 
-        session_start(); 
+        session_start();
+        if (!isset($_SESSION['usuario'])) {
+            header("Location: ../principal.php");
+            exit();
+        }
         $IDUsuario = $_SESSION['usuario'];
+
+        if(!empty(getIDSupervisor($IDUsuario))){
+            header("Location: ../home.php");
+            exit();
+        }
+        
     ?>
     <title>RH</title>
 </head>
 <body>
     <section class="header">
+    <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
+    </a>
         <div class="options">
             <nav>
-                <a href="homeAdmin.php">Home</a>
                 <a href="incidents.php">Incidents</a>
                 <a href="rating.php">Rating</a>
                 <a href="tickets.php">Tickets</a>
@@ -28,7 +40,7 @@
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>
                 <a href="employees.php">Employee</a>    
-                <a href="../Session/logout.php">Close Session</a>
+                <a href="../Session/logout.php">Log out</a>
             </nav>
         </div>
     </section>

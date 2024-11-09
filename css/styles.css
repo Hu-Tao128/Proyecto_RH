@@ -3,12 +3,13 @@
     --black: #000000;
     --little_blue:     #dee6ff     ;
     --little_gray:  #efefef ;
-    --blue:   #7c86ff  ;
+    --blue:   #6c78ff  ;
     --blue_little: #ebf9ff  ;
     --dark_blue:  #003afe    ;
     --very_green:  #4dfe00;
     --green:  #1ce42b;
-    --purple:  #b814ff ;
+    /*--purple:  #b814ff ;*/
+    --purple: #003afe;
 }
 
 html {
@@ -56,6 +57,21 @@ footer {
     width: flex;
     padding: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+footer p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+/*footer {
+    background-color: var(--blue);
+    width: flex;
+    padding: 1rem;
+    display: flex;
 }
 
 footer p{
@@ -63,12 +79,7 @@ footer p{
     padding-top: .3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
-}
-
-
-
-
-
+}*/
 
 
 /* CSS for the login*/
@@ -336,29 +347,94 @@ footer p{
 
 
 /* CSS for the tables */
+/* CSS for the tables */
 .tableAdmin {
     border-collapse: collapse;
     text-align: center;
     margin: auto;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    width: 95%;
+    font-family: Arial, sans-serif; /* Cambio de fuente a Arial */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra prominente */
+    border-radius: 12px; /* Bordes más redondeados */
+    overflow: hidden; /* Para ocultar cualquier borde que sobresalga de los bordes redondeados */
 }
 
-.tableAdmin th{
-    background-color: var(--purple);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 0.7rem;
-    border-color: var(--black);
+/* Header */
+.tableAdmin th {
+    background-color: var(--purple); /* Color sólido en el encabezado */
+    color: white;
+    font-family: Arial, sans-serif; /* Asegura que el encabezado use Arial */
+    padding: 1rem;
+    border: none;
+    text-transform: uppercase; /* Para dar un estilo más elegante */
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil en el encabezado */
 }
 
-.tableAdmin td{
-    background-color: var(--white);
-    padding: 0.7rem;
-    border-color: var(--black);
+/* Table data cells */
+.tableAdmin td {
+    background-color: #ffffff;
+    padding: 1rem;
+    border: 1px solid #e0e0e0; /* Bordes más suaves */
+    color: var(--dark-gray); /* Texto más oscuro */
+    font-family: Arial, sans-serif; /* Asegura que las celdas usen Arial */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transición solo para cambios de color */
 }
 
+/* Hover effect for table data */
 .tableAdmin td:hover {
-    background-color: var(--blue);
+    background-color: var(--blue); /* Cambio de color de fondo */
+    color: white; /* Cambio de color de texto */
+    border-color: var(--blue); /* Cambio de color de borde */
 }
+
+/* Alternate row colors for better readability */
+.tableAdmin tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo ligeramente gris para filas pares */
+}
+
+.tableAdmin tr:nth-child(odd) {
+    background-color: #fff; /* Fondo blanco para filas impares */
+}
+
+/* Hover effect for the entire row */
+.tableAdmin tr:hover {
+    background-color: #f1f1f1; /* Cambio de color en la fila */
+}
+
+/* Optional: Add icons inside cells */
+.tableAdmin td.icon-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tableAdmin td.icon-cell img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for icon cells */
+.tableAdmin td.icon-cell:hover img {
+    transform: rotate(180deg); /* Rotación de iconos al pasar el ratón */
+}
+
+/* Responsive Design: Make the table look good on smaller screens */
+@media (max-width: 768px) {
+    .tableAdmin {
+        font-size: 0.8rem;
+        width: 100%;
+    }
+
+    .tableAdmin th,
+    .tableAdmin td {
+        padding: 0.8rem;
+    }
+}
+
 
 
 
@@ -405,4 +481,4 @@ footer p{
 .radio-large {
     width: 100px;
     height: 1px;
-}
+}  

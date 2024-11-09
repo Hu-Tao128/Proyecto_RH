@@ -2,7 +2,7 @@
 include "includes/header.php";
 
 require_once 'includes/config/MySQL_ConexionDB.php';
-require_once 'funciones.php';
+require_once 'functions.php';
 ?>
 <section class="position">
     <div class="info">
@@ -34,19 +34,19 @@ require_once 'funciones.php';
             //obtenemos los apellidos y nombre del supervisor desde su id_supervisor de nuestro usuario
         ?>
 
-        <p>
-            Number: <?php echo $number; ?> <br>
+<p>
+            Number: <?php echo $number; ?> <br><br>
             <!--usamos el echo para imprimir la variable-->
-            Firstname: <?php echo $name; ?> <br>
-            Lastname: <?php echo $lastname; ?> <br>
-            Email: <?php echo $email; ?> <br>
-            Gender: <?php echo ($gender == 'F') ? 'Female' : 'Male'; ?> <br>
+            Firstname: <?php echo $name; ?> <br><br>
+            Lastname: <?php echo $lastname; ?> <br><br>
+            Email: <?php echo $email; ?> <br><br>
+            Gender: <?php echo ($gender == 'F') ? 'Female' : 'Male'; ?> <br><br>
             <!--usamos ? para reducir el if a una sola linea, donde si es verdad ? Sera lo que reemplazaremos si es verdad y : sino, todo esto en parentesis-->
-            Age: <?php echo $age; ?> <br>
-            Phone number: <?php echo $phone; ?> <br>
-            Password: <?php echo $password; ?> <br>
-            Contract date: <?php echo $contract; ?> <br>
-            Workstation: <?php echo $workspace; ?> <br>
+            Age: <?php echo $age; ?> <br><br>
+            Phone number: <?php echo $phone; ?> <br><br>
+            Password: <?php echo $password; ?> <br><br>
+            Contract date: <?php echo $contract; ?> <br><br>
+            Workstation: <?php echo $workspace; ?> <br><br>
             <?php 
             //Aqui si id_supervisor es nulo o simplemente esta vacio significa que el user es supervisor, 
             //si tiene un valor el usuario tiene un supervisor a cargo de el

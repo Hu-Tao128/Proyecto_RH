@@ -1,7 +1,7 @@
 <?php include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
-require_once "../funciones.php"; 
+require_once "../functions.php"; 
 
 $incident = showIncidents();
 ?>
