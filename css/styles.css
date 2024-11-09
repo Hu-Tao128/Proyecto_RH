@@ -347,14 +347,13 @@ footer p{
 
 
 /* CSS for the tables */
-/* CSS for the tables */
 .tableAdmin {
     border-collapse: collapse;
     text-align: center;
     margin: auto;
     font-size: 0.9rem;
     width: 95%;
-    font-family: Arial, sans-serif; /* Cambio de fuente a Arial */
+    font-family: Arial, sans-serif; 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra prominente */
     border-radius: 12px; /* Bordes más redondeados */
     overflow: hidden; /* Para ocultar cualquier borde que sobresalga de los bordes redondeados */
@@ -367,7 +366,7 @@ footer p{
     font-family: Arial, sans-serif; /* Asegura que el encabezado use Arial */
     padding: 1rem;
     border: none;
-    text-transform: uppercase; /* Para dar un estilo más elegante */
+    text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil en el encabezado */
 }
@@ -378,7 +377,7 @@ footer p{
     padding: 1rem;
     border: 1px solid #e0e0e0; /* Bordes más suaves */
     color: var(--dark-gray); /* Texto más oscuro */
-    font-family: Arial, sans-serif; /* Asegura que las celdas usen Arial */
+    font-family: Arial, sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transición solo para cambios de color */
 }
 
