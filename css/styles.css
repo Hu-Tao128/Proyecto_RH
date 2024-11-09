@@ -383,11 +383,11 @@ footer p{
 }
 
 /* Hover effect for table data */
-.tableAdmin td:hover {
+/*.tableAdmin td:hover {
     background-color: var(--blue); /* Cambio de color de fondo */
-    color: white; /* Cambio de color de texto */
-    border-color: var(--blue); /* Cambio de color de borde */
-}
+    /*color: white; /* Cambio de color de texto */
+  /*  border-color: var(--blue); /* Cambio de color de borde */
+/*}*/
 
 /* Alternate row colors for better readability */
 .tableAdmin tr:nth-child(even) {
@@ -399,8 +399,13 @@ footer p{
 }
 
 /* Hover effect for the entire row */
-.tableAdmin tr:hover {
+/*.tableAdmin tr:hover {
     background-color: #f1f1f1; /* Cambio de color en la fila */
+/*}*/
+
+/*Pasar cursor y cambia de color a las filas/tablas*/
+.tableAdmin tr:hover td {
+    background-color: var(--little_gray);
 }
 
 /* Optional: Add icons inside cells */
