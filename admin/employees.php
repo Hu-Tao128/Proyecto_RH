@@ -36,8 +36,8 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['fechaContrato']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr>
         <?php } ?>
         </table>
