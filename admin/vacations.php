@@ -32,8 +32,8 @@ $vacations = getInfovacations($IDUsuario);
                         $lastname = lastname($renglon['empleado']);
                     ?>
                     <td><?= $name." ".$lastname ?? 'N/A' ?></td>
-                    <td><a href="modifyVacation.php?id=<?= $renglon['numero'] ?>">Modify</a></td>
-                    <td><a href="deleteVacation.php?id=<?= $renglon['numero'] ?>">Delete</a></td>
+                    <td><a href="modifyVacation.php?id=<?= $renglon['numero'] ?>" class="action-modify">Modify</a></td>
+                    <td><a href="deleteVacation.php?id=<?= $renglon['numero'] ?>" class="action-delete">Delete</a></td>
                 </tr>
             <?php } ?>
         </table>
