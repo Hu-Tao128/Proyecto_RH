@@ -26,8 +26,8 @@ $attandance = showApplication();
                 <td>----</td>
                 <td>----</td>
                 <td>0</td>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
