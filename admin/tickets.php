@@ -33,8 +33,8 @@ $tickets = showTickets();
                     ?>
                     <td><?php echo $firstname." ".$lastname; ?></td><?php
                 ?>
-                <td><a href="">Modify</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr><?php
         }?>
         </table>
