@@ -24,7 +24,7 @@ create table puesto(
     departamento varchar(5) not null,
     index idx_puesto(nombre),
 
-    foreign key(departamento) references departamento(nombre)
+    foreign key(departamento) references departamento(codigo)
 );
 
 create table empleado(
@@ -47,6 +47,16 @@ create table empleado(
 );
 
 alter table empleado add foreign key(supervisor) references empleado(numero);
+
+create table attendance(
+    number int primary key auto_increment,
+    startDate datetime not null,
+    endDate datetime,
+    employ int not null,
+    index idx_date(startDate),
+
+    Foreign Key (employ) REFERENCES empleado(numero)
+);
 
 create table beneficios(
     codigo varchar(5) primary key,
@@ -119,7 +129,7 @@ create table postulacion(
     fechaPub date not null,
     estado varchar(10) not null,
     empleado int not null,
-    promocion codigo varchar(5) not null,
+    promocion varchar(5) not null,
     index idx_postulacion(fechaPub),
 
     foreign key(promocion) references promocion(codigo)

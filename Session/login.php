@@ -25,6 +25,10 @@
                 </div>
             </fieldset>
         </form>
+        <br>
+        <div>
+            <a href="../principal.php"><button class="mainButton">Main menu</button></a>
+        </div>
     </section>
 
     <script>
