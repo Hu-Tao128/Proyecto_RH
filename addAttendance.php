@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Tijuana');
 require_once "includes/config/MySQL_ConexionDB.php";
 require_once "functions.php";
 
