@@ -17,10 +17,11 @@
 </head>
 <body>
     <section class="header">
+    <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
+    </a>
         <div class="options">
             <nav>
-                <a href="home.php">Home</a>
                 <a href="makeTicket.php">Make a ticket</a>
                 <a href="requestVacation.php">Request vacation</a>
                 <a href="reportIncident.php">Report an incident</a>
