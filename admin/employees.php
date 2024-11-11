@@ -48,21 +48,25 @@ $employ = getInfoEmploy($IDUsuario);
         <form action="addEmploy.php" class="formPage" method="POST">
             <fieldset>
                 <div class="firstInput">
-                    <label for="name"></label>
+                    <label for="name">FirstName</label>
                     <input type="text" id="name" name="name" placeholder="Write the name of the employee" required>
                 </div>
+                <br>
                 <div>
-                    <label for="lastName"></label>
+                    <label for="lastName">LastName</label>
                     <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
                 </div>
+                <br>
                 <div>
-                    <label for="secondLastName"></label>
+                    <label for="secondLastName">Second Lastname</label>
                     <input type="text" id="secondLastName" name="secondLastName" placeholder="Second Lastname">
                 </div>
+                <br>
                 <div>
-                    <label for="email"></label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
+                <br>
                 <div>
                     <label>Gender:</label>
                     <div style="display: flex; flex-direction: column; align-items: start; gap: 10px;">
@@ -76,16 +80,18 @@ $employ = getInfoEmploy($IDUsuario);
                         </div>
                     </div>
                 </div>
+                <br>
                 <div>
-                    <label for="phone"></label>
+                    <label for="phone">Phone number</label>
                     <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
                 </div>
+                <br>
                 <div>
-                    <label for="password"></label>
+                    <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                 </div><br>
                 <div>
-                    <label for="birthDate"> Fecha de Nacimiento:</label>
+                    <label for="birthDate">Birthday</label>
                     <input type="date" id="birthDate" name="birthDate" required>
                 </div><br>
                 <div>
@@ -102,6 +108,7 @@ $employ = getInfoEmploy($IDUsuario);
                         <?php } ?>
                     </select>
                 </div>
+                <br>
                 <div>
                     <button type="submit" name="btnAddEmploy">Add a employee</button>
                 </div>

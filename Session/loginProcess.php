@@ -1,4 +1,5 @@
 <?php
+include "../includes/headerProcess.php";
 require_once '../includes/config/MySQL_ConexionDB.php';
 require_once '../functions.php';
 session_start();
@@ -45,9 +46,8 @@ if (isset($_POST['btnLogin'])) {
                 exit();
             }
         } else {
-            
-            echo '<br/><center><p>Upss... usuario o contraseña incorrecto</p>';
-            echo '<input type="button" value="Volver a intentar" onclick="self.location=\'login.php\'" /></center>';
+            echo '<br/><center><p>Upss... user or password is incorrect</p>';
+            echo '<input type="button" class="loginButton" value="Try again" onclick="self.location=\'login.php\'" /></center>';
         }
     } catch (PDOException $e) {
         echo "Error en la consulta: " . $e->getMessage();

@@ -1,12 +1,18 @@
+<?php  include "includes/headerProcess.php" ?>
 <body>
-    <h2>Bienvenido al marcado de entrada o salida</h2>
+    <h2>Welcome the Mark Attendance or Exit</h2>
 
     <section>
-        <form action="addAttendance.php" method="POST">
+        <form action="addAttendance.php" class="formPage" method="POST">
+            <fieldset>
+            <div class="firstInput">
+                </div>
             <div>
-                <input type="text" name="code" placeholder="Número de Empleado" required>
-                <button type="submit" name="btnAddAttendance">Marcar</button>
+                <label for="code">Enter your Employ Code</label>
+                <input type="text" name="code" placeholder="Employ Code" required>
+                <button type="submit" name="btnAddAttendance">Mark</button>
             </div>
+            </fieldset>
         </form>
     </section>
 </body>

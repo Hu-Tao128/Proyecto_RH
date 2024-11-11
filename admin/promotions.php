@@ -31,26 +31,31 @@ $promotion = showPromotions();
     <h2>Make a promotion</h2>
         <form action="" class="formPage">
             <fieldset>
-                <div class="firstInput">
-                    <label for="code"></label>
+            <div class="firstInput">
+                    <label for="code">Code</label>
                     <input type="text" id="code" name="code" placeholder="Write the code of the promotion">
                 </div>
+                <br>
                 <div>
-                    <label for="name"></label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Name of the promotion">
                 </div>
+                <br>
                 <div>
-                    <label for="description"></label>
+                    <label for="description">Description</label>
                     <input type="text" id="description" name="description" placeholder="Description of the promotion">
                 </div>
+                <br>
                 <div>
-                    <label for="status"></label>
+                    <label for="status">Status</label>
                     <input type="text" id="status" name="status" placeholder="Status of the promotion">
                 </div>
+                <br>
                 <div>
-                    <label for="publicationDate"></label>
+                    <label for="publicationDate">Publication Date</label>
                     <input type="date" id="publicationDate" name="publicationDate">
                 </div>
+                <br>
                 <div>
                     <button type="submit">Make a promotion</button>
                 </div>
@@ -58,7 +63,4 @@ $promotion = showPromotions();
         </form>
     </div>
 </section>
-
-    
-
 <?php include "../includes/footer.php" ?>

@@ -52,5 +52,4 @@ $vacations = vacactions($IDUsuario);
     }
     ?>
 </section>
-
 <?php include "includes/footer.php" ?>

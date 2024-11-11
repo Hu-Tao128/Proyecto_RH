@@ -5,7 +5,6 @@
         <form action="addTicket.php" class="formPage" method="post">
             <fieldset>
             <div class="firstInput">
-                    
                 </div>
                 <br>
                 <div>

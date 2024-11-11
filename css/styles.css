@@ -124,6 +124,28 @@ footer p {
     opacity: .70;
 }
 
+/* CSS FOR LOGIN ERROR*/
+
+.loginButton{
+    background-color: var(--dark_blue);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--dark_blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 12rem;
+    height: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+}
+
+.loginButton:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
 /* CSS FOR THE HEADER */
 
 .header {
@@ -193,7 +215,7 @@ footer p {
     margin-left: 0.2rem;
     margin-right: 0.2rem;
     margin-top: 0.8rem;
-    height: 15rem;
+    height: 25rem;
     margin-bottom: 3rem;
 }
 
@@ -433,10 +455,6 @@ footer p {
         padding: 0.8rem;
     }
 }
-
-
-
-
 
 /*CSS for the image and other things in the home.php*/
 
