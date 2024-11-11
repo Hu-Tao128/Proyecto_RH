@@ -37,76 +37,66 @@ $employ = getInfoEmploy($IDUsuario);
     <div>
         <br>
         <h2>Add a employee</h2>
-        <form action="addEmploy.php" class="formPage" method="POST">
-            <fieldset>
-                <div class="firstInput">
-                    <label for="name">FirstName</label>
-                    <input type="text" id="name" name="name" placeholder="Write the name of the employee" required>
+        <form action="addEmploy.php" class="form-empleadoX" method="POST">
+        <fieldset>
+            <div class="divformX">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Write the name of the employee" required>
+            </div>
+            <div class="divformX">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
+            </div>
+            <div class="divformX">
+                <label for="secondLastName">Second Lastname</label>
+                <input type="text" id="secondLastName" name="secondLastName" placeholder="Second Lastname">
+            </div>
+            <div class="divformX">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="containerformX bottonformX">
+                <label>Gender:</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="M" required>
+                    <label for="male">Male</label>
                 </div>
-                <br>
                 <div>
-                    <label for="lastName">LastName</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
+                    <input type="radio" id="female" name="gender" value="F" required>
+                    <label for="female">Female</label>
                 </div>
-                <br>
-                <div>
-                    <label for="secondLastName">Second Lastname</label>
-                    <input type="text" id="secondLastName" name="secondLastName" placeholder="Second Lastname">
-                </div>
-                <br>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <br>
-                <div>
-                    <label>Gender:</label>
-                    <div style="display: flex; flex-direction: column; align-items: start; gap: 10px;">
-                        <div style="display: flex; align-items: center;">
-                            <input type="radio" id="male" name="gender" value="M" class="radio-large" style="width:100px;" required>
-                            <label for="male" style="margin-left: 5px;">Male</label>
-                        </div>
-                        <div style="display: flex; align-items: center;">
-                            <input type="radio" id="female" name="gender" value="F" class="radio-large" style="width: 100px;" required>
-                            <label for="female" style="margin-left: 5px;">Female</label>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div>
-                    <label for="phone">Phone number</label>
-                    <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
-                </div>
-                <br>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div><br>
-                <div>
-                    <label for="birthDate">Birthday</label>
-                    <input type="date" id="birthDate" name="birthDate" required>
-                </div><br>
-                <div>
-                    <label for="seltWorkspace">Select a workspace:</label>
-                    <select name="seltWorkspace" id="seltWorkspace" required>
-                        <option value="">workspaces</option>
-                        <?php 
-                            $workspace = listWorkstation();
-                            //manda a llamar la funcion que trae los puestos
-                            foreach ($workspace as $renglon) { ?>
-                            <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
-                            <!--Donde value es el id o numero del puesto y nombre el nombre que posee
-                            Por eso cuando elegimos uno posee como valor el id para agregarlo a la bd-->
-                        <?php } ?>
-                    </select>
-                </div>
-                <br>
-                <div>
-                    <button type="submit" name="btnAddEmploy">Add a employee</button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+            </div>
+            <div class="divformX">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
+            </div>
+            <div class="divformX">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="divformX">
+                <label for="birthDate">Fecha de Nacimiento:</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+            </div>
+            <div class="divformX">
+                <label for="seltWorkspace">Select a workspace:</label>
+                <select name="seltWorkspace" id="seltWorkspace" required>
+                    <option value="">-- workspaces --</option>
+                    <?php 
+                        $workspace = listWorkstation();
+                        foreach ($workspace as $renglon) { ?>
+                        <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="bottonformX">
+                <button type="submit" name="btnAddEmploy" class="Botton-envioX">Add a employee</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
 </section>
 
 <?php include "../includes/footer.php" ?>
