@@ -11,8 +11,15 @@
                 <label for="code">Enter your Employ Code</label>
                 <input type="text" name="code" placeholder="Employ Code" required>
                 <button type="submit" name="btnAddAttendance">Mark</button>
+                
             </div>
             </fieldset>
+            
         </form>
+
+        <center>
+        <a href="principal.php"><button class="loginButton20">Main menu</button></a>
+        </center>        
+        
     </section>
 </body>

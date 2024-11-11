@@ -10,6 +10,8 @@
     --green:  #1ce42b;
     /*--purple:  #b814ff ;*/
     --purple: #003afe;
+    --rojo: #ff4c4c;
+    --rojo_hover: #ff6666;
 }
 
 html {
@@ -144,6 +146,30 @@ footer p {
 .loginButton:hover{
     background-color: var(--blue);
     border-color: var(--blue);
+}
+
+
+
+.loginButton20{
+    background-color: var(--rojo);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--dark_blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 12rem;
+    height: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+    border-color: var(--rojo);
+    
+}
+
+.loginButton20:hover{
+    background-color: var(--rojo_hover);
+    border-color: var(--rojo_hover);
 }
 
 /* CSS FOR THE HEADER */
