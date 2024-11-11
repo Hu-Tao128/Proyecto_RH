@@ -50,10 +50,8 @@ function getInfoEmploy($supervisor) {
         $stmt = $db_con->prepare($query);
         $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
         
-        // Ejecutar la consulta
         $stmt->execute();
 
-        // Obtener todas las filas de resultados
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $users[] = $row;
         }
@@ -62,6 +60,27 @@ function getInfoEmploy($supervisor) {
     }
 
     return $users;
+}
+
+function getAttendance($supervisor) {
+    global $db_con;
+    $attendance = [];
+
+    try {
+        $query = "SELECT * FROM attendance as a INNER JOIN empleado as e on a.employ = e.numero WHERE e.supervisor = :supervisor";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $attendance[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $attendance;
 }
 
 function showIncidents(){
