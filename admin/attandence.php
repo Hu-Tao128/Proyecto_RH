@@ -10,7 +10,6 @@ $attandance = getAttendance($IDUsuario);
     <div>
         <table border="1" class="tableAdmin">
             <tr>
-                <th>Number</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Employee</th>
@@ -18,7 +17,6 @@ $attandance = getAttendance($IDUsuario);
             </tr>
             <?php foreach ($attandance as $renglon) { ?>
             <tr>
-                <td>0</td>
                 <td><?= $renglon['startDate']?></td>
                 <?php
                     if ($renglon['endDate'] == '' || $renglon['endDate'] == null) {?>
