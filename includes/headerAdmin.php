@@ -36,6 +36,12 @@
                 <a href="informationAdmin.php">Personal information</a>
                 <a href="vacations.php">Vacations</a>
                 <a href="attandence.php">Attandence</a>
+
+                
+            </nav>
+        </div>
+        <div class="options">
+            <nav>
                 <a href="benefies.php">Benefies</a>
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>
