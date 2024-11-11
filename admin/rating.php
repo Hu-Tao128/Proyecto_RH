@@ -24,28 +24,33 @@
     </div>
     <div>
     <h2>Make a score</h2>
-        <form action="" class="formPage">
+    <form action="" class="formPage">
             <fieldset>
-                <div class="firstInput">
-                    <label for="code"></label>
+            <div class="firstInput">
+                    <label for="code">Code</label>
                     <input type="text" id="code" name="code" placeholder="Write the code of the rating">
                 </div>
+                <br>
                 <div>
-                    <label for="score"></label>
+                    <label for="score">Score</label>
                     <input type="number" id="score" name="score" placeholder="Score of the employee">
                 </div>
+                <br>
                 <div>
-                    <label for="evaluationDate"></label>
+                    <label for="evaluationDate">Evaluation Date</label>
                     <input type="date" id="evaluationDate" name="evaluationDate" >
                 </div>
+                <br>
                 <div>
-                    <label for="comments"></label>
-                    <input type="text" id="comments" name="comments" placeholder="Employee performance feedback">
+                    <label for="comments">Comentarys</label>
+                    <textarea name="comments" id="comments"></textarea>
                 </div>
+                <br>
                 <div>
-                    <label for="employee"></label>
+                    <label for="employee">Employee</label>
                     <input type="number" id="employee" name="employee" placeholder="Number of the employee">
                 </div>
+                <br>
                 <div>
                     <button type="submit">Make a score</button>
                 </div>
