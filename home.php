@@ -15,6 +15,8 @@ $workspace = workspace($IDUsuario);
 $nameS = firstname($supervisor);
 $SupLastNames = lastname($supervisor);
 $salary = salary($IDUsuario);
+
+//mi priner commit
 ?>
 <section class="homeInfo">
     <div class="moreInfo">
