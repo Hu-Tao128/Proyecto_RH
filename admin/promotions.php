@@ -33,7 +33,7 @@ $promotion = showPromotions();
             <fieldset>
             <div class="firstInput">
                     <label for="code">Code</label>
-                    <input type="text" id="code" name="code" placeholder="Write the code of the promotion">
+                    <input type="text" id="code" name="code" placeholder="Write the code of the promotion" maxlength="4">
                 </div>
                 <br>
                 <div>

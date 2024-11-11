@@ -169,15 +169,15 @@ function vacactions($usuario){
 		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
 		$stm->execute();
 
-		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$vacactions[] = $row;
-		}
+		$vacactions = $stm->fetchAll(PDO::FETCH_ASSOC);
+		
 	} catch (PDOException $e) {
 		exit("Error en la consulta: " . $e->getMessage());
 	}
 
 	return $vacactions;
 }
+
 /*
 function verPagos($usuario) {
 	
