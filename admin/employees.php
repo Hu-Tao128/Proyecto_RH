@@ -28,8 +28,8 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['celular']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="" class="action-modify">Show more</a></td>
+                <td><a href="" class="action-delete" data-open="modal">Delete</a></td>
             </tr>
         <?php } ?>
         </table>
@@ -89,7 +89,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <div>
                     <label for="seltWorkspace">Select a workspace:</label>
                     <select name="seltWorkspace" id="seltWorkspace" required>
-                        <option value="">-- workspaces --</option>
+                        <option value="">workspaces</option>
                         <?php 
                             $workspace = listWorkstation();
                             //manda a llamar la funcion que trae los puestos
