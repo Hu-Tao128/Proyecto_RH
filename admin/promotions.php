@@ -29,7 +29,7 @@ $promotion = showPromotions();
     </div>
     <div>
     <h2>Make a promotion</h2>
-        <form action="" class="formPage">
+        <form action="addPromotion.php" class="formPage" method="POST">
             <fieldset>
             <div class="firstInput">
                     <label for="code">Code</label>
@@ -47,17 +47,7 @@ $promotion = showPromotions();
                 </div>
                 <br>
                 <div>
-                    <label for="status">Status</label>
-                    <input type="text" id="status" name="status" placeholder="Status of the promotion">
-                </div>
-                <br>
-                <div>
-                    <label for="publicationDate">Publication Date</label>
-                    <input type="date" id="publicationDate" name="publicationDate">
-                </div>
-                <br>
-                <div>
-                    <button type="submit">Make a promotion</button>
+                    <button type="submit" name="btnAddPromotion">Make a promotion</button>
                 </div>
             </fieldset>
         </form>
