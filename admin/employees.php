@@ -85,7 +85,7 @@ $employ = getInfoEmploy($IDUsuario);
                     <?php 
                         $workspace = listWorkstation();
                         foreach ($workspace as $renglon) { ?>
-                        <option value="<?= $renglon['codigo'] ?>"><?= $renglon['nombre'] ?></option>
+                        <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
                     <?php } ?>
                 </select>
             </div>
