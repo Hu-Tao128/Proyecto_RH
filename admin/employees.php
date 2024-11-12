@@ -14,11 +14,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <th>Name</th>
                 <th>Last Names</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>Age</th>
                 <th>CellPhone number</th>
-                <th>Password</th>
-                <th>Contract Date</th>
                 <th>Workstation</th>
                 <th colspan="2">Options</th>
             </tr>
@@ -29,15 +25,11 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['nombre']?></td>
                 <td><?= $renglon['apelPaterno']." ".$renglon['apelMaterno']?></td>
                 <td><?= $renglon['email']?></td>
-                <td><?= ($renglon['sexo'] ?? '') === 'F' ? 'Female' : 'Male';?></td>
-                <td><?= $renglon['edad']?></td>
                 <td><?= $renglon['celular']?></td>
-                <td><?= $renglon['contrasena']?></td>
-                <td><?= $renglon['fechaContrato']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="" class="action-modify">Show more</a></td>
+                <td><a href="" class="action-delete" data-open="modal">Delete</a></td>
             </tr>
         <?php } ?>
         </table>
@@ -91,10 +83,13 @@ $employ = getInfoEmploy($IDUsuario);
                 <select name="seltWorkspace" id="seltWorkspace" required>
                     <option value="">-- workspaces --</option>
                     <?php 
-                        $workspace = listWorkstation();
-                        foreach ($workspace as $renglon) { ?>
-                        <option value="<?= $renglon['codigo'] ?>"><?= $renglon['nombre'] ?></option>
-                    <?php } ?>
+                            $workspace = listWorkstation();
+                            //manda a llamar la funcion que trae los puestos
+                            foreach ($workspace as $renglon) { ?>
+                            <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
+                            <!--Donde value es el id o numero del puesto y nombre el nombre que posee
+                            Por eso cuando elegimos uno posee como valor el id para agregarlo a la bd-->
+                        <?php } ?>
                 </select>
             </div>
             <div class="bottonformX">
@@ -103,8 +98,6 @@ $employ = getInfoEmploy($IDUsuario);
         </fieldset>
     </form>
 </div>
-
-
 </section>
 
 <?php include "../includes/footer.php" ?>
