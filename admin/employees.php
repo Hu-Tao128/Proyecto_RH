@@ -28,7 +28,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['celular']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-modify">Show</a></td>
                 <td><a href="" class="action-delete">Delete</a></td>
             </tr>
         <?php } ?>
