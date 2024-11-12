@@ -95,8 +95,6 @@ $employ = getInfoEmploy($IDUsuario);
         </fieldset>
     </form>
 </div>
-
-
 </section>
 
 <?php include "../includes/footer.php" ?>
