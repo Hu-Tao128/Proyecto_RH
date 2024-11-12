@@ -14,11 +14,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <th>Name</th>
                 <th>Last Names</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>Age</th>
                 <th>CellPhone number</th>
-                <th>Password</th>
-                <th>Contract Date</th>
                 <th>Workstation</th>
                 <th colspan="2">Options</th>
             </tr>
@@ -29,11 +25,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['nombre']?></td>
                 <td><?= $renglon['apelPaterno']." ".$renglon['apelMaterno']?></td>
                 <td><?= $renglon['email']?></td>
-                <td><?= ($renglon['sexo'] ?? '') === 'F' ? 'Female' : 'Male';?></td>
-                <td><?= $renglon['edad']?></td>
                 <td><?= $renglon['celular']?></td>
-                <td><?= $renglon['contrasena']?></td>
-                <td><?= $renglon['fechaContrato']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
