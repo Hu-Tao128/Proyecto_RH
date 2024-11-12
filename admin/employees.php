@@ -14,7 +14,11 @@ $employ = getInfoEmploy($IDUsuario);
                 <th>Name</th>
                 <th>Last Names</th>
                 <th>Email</th>
+                <th>Gender</th>
+                <th>Age</th>
                 <th>CellPhone number</th>
+                <th>Password</th>
+                <th>Contract Date</th>
                 <th>Workstation</th>
                 <th colspan="2">Options</th>
             </tr>
@@ -25,19 +29,23 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= $renglon['nombre']?></td>
                 <td><?= $renglon['apelPaterno']." ".$renglon['apelMaterno']?></td>
                 <td><?= $renglon['email']?></td>
+                <td><?= ($renglon['sexo'] ?? '') === 'F' ? 'Female' : 'Male';?></td>
+                <td><?= $renglon['edad']?></td>
                 <td><?= $renglon['celular']?></td>
+                <td><?= $renglon['contrasena']?></td>
+                <td><?= $renglon['fechaContrato']?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?php echo $workspace; ?></td>
-                <td><a href="" class="action-modify">Show more</a></td>
-                <td><a href="" class="action-delete" data-open="modal">Delete</a></td>
+                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="" class="action-delete">Delete</a></td>
             </tr>
         <?php } ?>
         </table>
     </div>
-    <div>
-        <br>
-        <h2>Add a employee</h2>
-        <form action="addEmploy.php" class="form-empleadoX" method="POST">
+    <div class="ContainerXD">
+    <br>
+    <h2 class="h2formX">Add a employee</h2>
+    <form action="addEmploy.php" class="form-empleadoX" method="POST">
         <fieldset>
             <div class="divformX">
                 <label for="name">Name</label>
@@ -85,7 +93,7 @@ $employ = getInfoEmploy($IDUsuario);
                     <?php 
                         $workspace = listWorkstation();
                         foreach ($workspace as $renglon) { ?>
-                        <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
+                        <option value="<?= $renglon['codigo'] ?>"><?= $renglon['nombre'] ?></option>
                     <?php } ?>
                 </select>
             </div>
