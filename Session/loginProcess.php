@@ -40,7 +40,11 @@ if (isset($_POST['btnLogin'])) {
             }
 
             if (empty($supervisor)) {
-                header("Location: ../admin/homeAdmin.php");
+                if(workspace($Usuario) == 'Analista') {
+                    header("location: ../Human_Resources/homeRH.php");
+                }else{
+                    header("Location: ../admin/homeAdmin.php");
+                }
             } else {
                 header("Location: ../home.php");
                 exit();

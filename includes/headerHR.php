@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/modal.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <?php
     include_once("../functions.php");
@@ -16,7 +15,7 @@
         }
         $IDUsuario = $_SESSION['usuario'];
 
-        if(!empty(getIDSupervisor($IDUsuario))){
+        if(!empty(getIDSupervisor($IDUsuario)) && workspace($IDUsuario) != "Analista"){
             header("Location: ../home.php");
             exit();
         }
@@ -26,27 +25,20 @@
 </head>
 <body>
     <section class="header">
-    <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
+    <a href="../Human_Resources/homeRH.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
-    </a>
+    </a><br>
         <div class="options">
             <nav>
-                <a href="incidents.php">Incidents</a>
-                <a href="rating.php">Rating</a>
-                <a href="tickets.php">Tickets</a>
-                <a href="informationAdmin.php">Personal information</a>
-                <a href="vacations.php">Vacations</a>
-                <a href="attandence.php">Attandence</a>
-
-                
+                <a href="">Departamens</a>
+                <a href="">Supervisors</a>
+                <a href="">Complains</a>
             </nav>
         </div>
         <div class="options">
             <nav>
-                <a href="benefies.php">Benefies</a>
-                <a href="aplications.php">Aplications</a>
-                <a href="promotions.php">Promotions</a>
-                <a href="employees.php">Employee</a>    
+                <a href="">Aplications</a>
+                <a href="">Promotions</a>
                 <a href="../Session/logout.php">Log out</a>
             </nav>
         </div>

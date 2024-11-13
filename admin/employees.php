@@ -1,4 +1,5 @@
-<?php include "../includes/headerAdmin.php";
+<?php
+include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
 require_once "../functions.php"; 
@@ -18,25 +19,76 @@ $employ = getInfoEmploy($IDUsuario);
                 <th>Workstation</th>
                 <th colspan="2">Options</th>
             </tr>
-            <?php foreach($employ as $renglon) {?>
+            <?php foreach ($employ as $renglon) { ?>
             <tr>
-                <tr>
-                <td><?= $renglon['numero']?></td>
-                <td><?= $renglon['nombre']?></td>
-                <td><?= $renglon['apelPaterno']." ".$renglon['apelMaterno']?></td>
-                <td><?= $renglon['email']?></td>
-                <td><?= $renglon['celular']?></td>
+                <td><?= htmlspecialchars($renglon['numero']) ?></td>
+                <td><?= htmlspecialchars($renglon['nombre']) ?></td>
+                <td><?= htmlspecialchars($renglon['apelPaterno'] . " " . $renglon['apelMaterno']) ?></td>
+                <td><?= htmlspecialchars($renglon['email']) ?></td>
+                <td><?= htmlspecialchars($renglon['celular']) ?></td>
                 <?php $workspace = workspace($renglon['numero']); ?>
-                <td><?php echo $workspace; ?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><?= htmlspecialchars($workspace) ?></td>
+                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['numero']; ?>">Show</a></td>
+                <td><a href="#" class="action-delete">Delete</a></td>
             </tr>
-        <?php } ?>
+            <?php } ?>
         </table>
     </div>
-    <div class="ContainerXD">
+
+    <?php foreach ($employ as $renglon) { ?>
+        <div class="modal" id="modal<?= $renglon['numero']; ?>">
+            <div class="modal-dialog">
+                <header class="modal-header">
+                    <p>Employee Information</p>
+                    <button class="close-modal" data-close="modal<?= $renglon['numero']; ?>">X</button>
+                </header>
+                <section class="modal-content">
+                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['nombre']) ?></p>
+                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['apelPaterno']) ?></p>
+                    <p><strong>Second Last Name:</strong> <?= htmlspecialchars($renglon['apelMaterno']) ?></p>
+                    <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
+                    <p><strong>Age:</strong> <?= htmlspecialchars($renglon['edad']) ?></p>
+                    <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['celular']) ?></p>
+                    <p><strong>Password:</strong> <?= htmlspecialchars($renglon['contrasena']) ?></p>
+                    <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['fechaContrato']) ?></p>
+                    <?php $workspace = workspace($renglon['numero']); ?>
+                    <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
+                </section>
+            </div>
+        </div>
+    <?php } ?>
+</section>
+
+<script>
+    document.querySelectorAll("[data-open]").forEach(el => {
+        el.addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById(this.getAttribute("data-open")).classList.add("is-visible");
+        });
+    });
+
+    document.querySelectorAll("[data-close]").forEach(el => {
+        el.addEventListener("click", function() {
+            document.getElementById(this.getAttribute("data-close")).classList.remove("is-visible");
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal") && e.target.classList.contains("is-visible")) {
+            e.target.classList.remove("is-visible");
+        }
+    });
+
+    document.addEventListener("keyup", (e) => {
+        if (e.key === "Escape") {
+            document.querySelectorAll(".modal.is-visible").forEach(modal => modal.classList.remove("is-visible"));
+        }
+    });
+</script>
+
+<div class="ContainerXD">
     <br>
-    <h2 class="h2formX">Add a employee</h2>
+    <h2 class="h2formX">Add an Employee</h2>
     <form action="addEmploy.php" class="form-empleadoX" method="POST">
         <fieldset>
             <div class="divformX">
@@ -48,7 +100,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
             </div>
             <div class="divformX">
-                <label for="secondLastName">Second Lastname</label>
+                <label for="secondLastName">Second Last Name</label>
                 <input type="text" id="secondLastName" name="secondLastName" placeholder="Second Lastname">
             </div>
             <div class="divformX">
@@ -75,26 +127,25 @@ $employ = getInfoEmploy($IDUsuario);
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
             <div class="divformX">
-                <label for="birthDate">Fecha de Nacimiento:</label>
+                <label for="birthDate">Birth Date</label>
                 <input type="date" id="birthDate" name="birthDate" required>
             </div>
             <div class="divformX">
                 <label for="seltWorkspace">Select a workspace:</label>
                 <select name="seltWorkspace" id="seltWorkspace" required>
-                    <option value="">-- workspaces --</option>
+                    <option value="">-- Workspaces --</option>
                     <?php 
                         $workspace = listWorkstation();
                         foreach ($workspace as $renglon) { ?>
-                        <option value="<?= $renglon['numero'] ?>"><?= $renglon['nombre'] ?></option>
+                        <option value="<?= htmlspecialchars($renglon['numero']) ?>"><?= htmlspecialchars($renglon['nombre']) ?></option>
                     <?php } ?>
                 </select>
             </div>
             <div class="bottonformX">
-                <button type="submit" name="btnAddEmploy" class="Botton-envioX">Add a employee</button>
+                <button type="submit" name="btnAddEmploy" class="Botton-envioX">Add Employee</button>
             </div>
         </fieldset>
     </form>
 </div>
-</section>
 
-<?php include "../includes/footer.php" ?>
+<?php include "../includes/footer.php"; ?>
