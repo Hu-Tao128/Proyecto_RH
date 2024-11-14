@@ -1,9 +1,10 @@
-<?php  include "includes/headerProcess.php" ?>
+<?php  include "includes/headerLogin.php" ?>
 <body>
+    
+    <br>
+    <section class="form1">
     <h2>Welcome the Mark Attendance or Exit</h2>
-
-    <section>
-        <form action="addAttendance.php" class="formPage" method="POST">
+        <form action="addAttendance.php" class="form_login" method="POST">
             <fieldset>
             <div class="firstInput">
                 </div>
@@ -16,9 +17,9 @@
             </fieldset>
             
         </form>
-
+        <br>
         <center>
-        <a href="principal.php"><button class="loginButton20">Main menu</button></a>
+        <a href="principal.php"><button class="mainButton">Main menu</button></a>
         </center>        
         
     </section>

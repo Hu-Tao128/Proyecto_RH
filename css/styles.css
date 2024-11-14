@@ -282,75 +282,68 @@ footer p {
 
 /* CSS for the form for the page */
 
-/* CSS para el formulario de la página. Estilos para el formulario específico con la clase .formPage */
+/* CSS para el formulario de la página. Estilos para el formulario específico con la clase .formPage 
+Aqui no le muevan porque mueve a todos los estilos de los formularios de la pagina*/
 .formPage {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;    
-    padding: 2rem;     
-    background-color: white;
-    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; 
-    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 25rem;
+    background-color: var(--blue_little);
+    height: auto;
 }
 
-.formPage fieldset {
-    border: none;
-    padding: 0;
+.formPage button{
+    background-color: var(--dark_blue);
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-color: var(--dark_blue);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    width: 15rem;
+    height: 2rem;
+    color: var(--white);
+    cursor: pointer;
 }
 
-.formPage div {
-    margin-bottom: 2rem; 
+.formPage button:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
 }
 
-
+.formPage input {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 20rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
 .formPage label {
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 0.5rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
-.formPage input, 
-.formPage select, 
-.formPage button {
+.formPage textarea {
     width: 100%;
-    max-width: 300px; 
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: #f2f2f2;
-    outline: none;
-    border-radius: 4px;
-    display: block;
-    margin: 0 auto;
-}
-
-.formPage input::placeholder {
-    opacity: 0.5;
-}
-
-.formPage .radio-large {
-    width: 20px;
-    height: 20px;
-}
-
-.formPage button {
-    height: 45px;
-    font-weight: bold;
+    max-width: 20rem;
+    min-height:10rem;
+    padding: 15px;
     font-size: 16px;
-    color: #f2f2f2;
-    background-color: royalblue;
-    border: none;
-    margin-top: 4rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical; 
+    box-sizing: border-box;
+    margin-bottom: 1rem;
 }
 
-.formPage button:hover {
-    background-color: rgb(45, 71, 150); 
+.formPage fieldset{
+    height: auto;
 }
+
 
 /* CSS for the information */
 .info {
@@ -414,6 +407,7 @@ footer p {
     margin: auto;
     font-size: 0.9rem;
     width: 95%;
+    border: none;
     font-family: Arial, sans-serif; /* Cambio de fuente a Arial */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra prominente */
     border-radius: 12px; /* Bordes más redondeados */
