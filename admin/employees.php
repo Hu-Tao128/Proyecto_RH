@@ -29,7 +29,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <?php $workspace = workspace($renglon['numero']); ?>
                 <td><?= htmlspecialchars($workspace) ?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['numero']; ?>">Show</a></td>
-                <td><a href="#" class="action-delete">Delete</a></td>
+                <td><a href="#" class="action-delete">Modify</a></td>
             </tr>
             <?php } ?>
         </table>
@@ -44,8 +44,7 @@ $employ = getInfoEmploy($IDUsuario);
                 </header>
                 <section class="modal-content">
                     <p><strong>Name:</strong> <?= htmlspecialchars($renglon['nombre']) ?></p>
-                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['apelPaterno']) ?></p>
-                    <p><strong>Second Last Name:</strong> <?= htmlspecialchars($renglon['apelMaterno']) ?></p>
+                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['apelPaterno']." ".$renglon['apelMaterno']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['edad']) ?></p>
                     <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['celular']) ?></p>
