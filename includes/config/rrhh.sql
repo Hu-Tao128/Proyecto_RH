@@ -18,7 +18,7 @@ create table promocion(
 );
 
 create table puesto(
-    codigo varchar(5) primary key,
+    numero int primary key auto_increment,
     nombre varchar(30) not null,
     salario float not null,
     departamento varchar(5) not null,
@@ -38,11 +38,11 @@ create table empleado(
     celular varchar(15) not null,
     contrasena varchar(20) not null,
     fechaContrato date not null,
-    puesto varchar(5) not null,
+    puesto int not null,
     supervisor int,
     index inx_empleado(apelPaterno),
     
-    foreign key(puesto) references puesto(codigo)
+    foreign key(puesto) references puesto(numero)
 
 );
 
@@ -229,12 +229,12 @@ INSERT INTO incidente (tipo_Incident, fechaIncident, descripcion, empleado) VALU
 ('Desperfecto Vehicular', '2023-11-05', 'Problema con vehículo de empresa', 5);
 
 -- Inserción en la tabla postulacion
-INSERT INTO postulacion (fechaPub, estado, empleado) VALUES
-('2024-01-01', 'Pendiente', 1),
-('2023-12-15', 'Aprobada', 3),
-('2023-10-10', 'Rechazada', 4),
-('2023-11-01', 'Pendiente', 2),
-('2024-02-20', 'Aprobada', 5);
+INSERT INTO postulacion (fechaPub, estado, empleado, promocion) VALUES
+('2024-01-01', 'Pendiente', 1, 'P001'),
+('2023-12-15', 'Aprobada', 3, 'P002'),
+('2023-10-10', 'Rechazada', 4, 'P003'),
+('2023-11-01', 'Pendiente', 2, 'P004'),
+('2024-02-20', 'Aprobada', 5, 'P005');
 
 -- Inserción en la tabla pagos
 INSERT INTO pagos (pagoHora, pagoTot, bonos, empleado) VALUES
