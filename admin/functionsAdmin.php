@@ -18,6 +18,26 @@ function showTickets() {
 
     return $tickets;
 }
+
+function getInfoPromotion($id) {
+    global $db_con;
+
+    try {
+        $query = "SELECT nombre FROM promocion WHERE codigo = :id";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $row['nombre'];
+}
+
 function getInfovacations($supervisor) {
     global $db_con;
     $users = [];
