@@ -43,6 +43,7 @@
         </div>
         <div class="options">
             <nav>
+                <a href="absence.php">Absences</a>
                 <a href="benefies.php">Benefies</a>
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>

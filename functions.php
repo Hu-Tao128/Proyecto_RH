@@ -178,6 +178,23 @@ function vacactions($usuario){
 	return $vacactions;
 }
 
+function Absences($Usuario){
+	global $db_con;
+	$Absences = [];
+
+	try{
+		$query = "SELECT * FROM ausencia WHERE empleado = :user";
+		$stm = $db_con->prepare($query);
+		$stm->bindParam("user", $Usuario, PDO::PARAM_INT);
+		$stm->execute();
+
+		$Absences = $stm->fetchAll(PDO::FETCH_ASSOC);
+	}catch (PDOException $e){
+		exit("Error: ".$e->getMessage());
+	}
+
+	return $Absences;
+}
 /*
 function verPagos($usuario) {
 	

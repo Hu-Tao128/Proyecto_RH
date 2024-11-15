@@ -61,6 +61,32 @@ function getInfovacations($supervisor) {
     return $users;
 }
 
+function getInfoAbsences($supervisor) {
+    global $db_con;
+    $users = [];
+
+    try {
+        $query = "SELECT a.numero AS Absence, a.fechaInicio, a.fechaFin, a.estado, a.tipo, a.descripcion, e.numero, a.empleado
+                  FROM ausencia AS a
+                  INNER JOIN empleado AS e ON a.empleado = e.numero
+                  WHERE e.supervisor = :supervisor";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $users[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $users;
+}
+
+
+
 function getInfoEmploy($supervisor) {
     global $db_con;
     $users = [];
