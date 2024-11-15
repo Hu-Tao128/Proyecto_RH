@@ -66,7 +66,7 @@ $employ = getInfoEmploy($IDUsuario);
           <div class="input-box">
             <label for="seltWorkspace">Select a workspace:</label>
             <select name="seltWorkspace" id="seltWorkspace" required>
-              <option value="">Workspaces</option>
+            <option value="" class="workspace-option">Workspaces</option>
               <?php 
                   $workspace = listWorkstation();
                   foreach ($workspace as $renglon) { ?>

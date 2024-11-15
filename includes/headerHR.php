@@ -25,22 +25,44 @@
     <title>RH</title>
 </head>
 <body>
-    <section class="header">
+<section class="header">
     <a href="../Human_Resources/homeRH.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
     </a><br>
-        <div class="options">
-            <nav>
-                <a href="">Departamens</a>
-                <a href="../Human_Resources/employee.php">Supervisors</a>
-                <a href="">Complains</a>
-            </nav>
-        </div>
-        <div class="options">
-            <nav>
-                <a href="">Aplications</a>
-                <a href="">Promotions</a>
-                <a href="../Session/logout.php">Log out</a>
-            </nav>
-        </div>
-    </section>
+    <div class="options">
+        <nav>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Departamens</a>
+                <div class="dropdown-content">
+                    <a href="#">Department 1</a>
+                    <a href="#">Department 2</a>
+                    <a href="#">Department 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/employee.php" class="dropbtn">Supervisors</a>
+                <div class="dropdown-content">
+                    <a href="#">Supervisor 1</a>
+                    <a href="#">Supervisor 2</a>
+                    <a href="#">Supervisor 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Complains</a>
+                <div class="dropdown-content">
+                    <a href="#">Complain 1</a>
+                    <a href="#">Complain 2</a>
+                    <a href="#">Complain 3</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="options">
+        <nav>
+            <a href="#">Aplications</a>
+            <a href="#">Promotions</a>
+            <a href="../Session/logout.php">Log out</a>
+        </nav>
+    </div>
+</section>
+
