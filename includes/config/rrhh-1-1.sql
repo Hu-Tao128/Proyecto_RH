@@ -45,7 +45,7 @@ create table employee(
     foreign key(positionCode) references position(code)
 );
 
-alter table employee add foreign key(supervisorId) references employee(id);
+alter table employee add foreign key(supervisorId) references employee(code);
 
 create table attendance(
     number int primary key auto_increment,
@@ -126,7 +126,7 @@ create table application(
     id int primary key auto_increment,
     publicationDate date not null,
     status varchar(10) not null,
-    employee int not null,
+    employee varchar(5) not null,
     promotion varchar(5) not null,
     index idx_application(publicationDate),
 
@@ -139,7 +139,7 @@ create table payments(
     hourlyPayment float(5,2) not null,
     totalPayment float(10,2) not null,
     bonuses float(10,2),
-    employee int not null,
+    employee varchar(5) not null,
     index idx_payments(id),
 
     foreign key(employee) references employee(code)
@@ -155,9 +155,7 @@ INSERT INTO department (code, name) VALUES
 ('D004', 'Finance'),
 ('D005', 'Sales'),
 ('D006', 'Operations'),
-('D007', 'Customer Service')
-
-
+('D007', 'Customer Service');
 
 -- Inserción en la tabla promocion
 INSERT INTO promotion (code, name, description, status, publicationDate) VALUES
@@ -170,10 +168,7 @@ INSERT INTO promotion (code, name, description, status, publicationDate) VALUES
 ('P007', 'Innovation Promotion', 'Recognition for innovation', 'Active', '2023-05-01'),
 ('P008', 'Retention Bonus', 'Bonus for staying with the company', 'Active', '2023-07-01'),
 ('P009', 'Leadership Promotion', 'Increase for leadership role', 'Active', '2023-08-01'),
-('P010', 'Training Promotion', 'Bonus for completed training', 'Active', '2023-09-01')
-
-
-
+('P010', 'Training Promotion', 'Bonus for completed training', 'Active', '2023-09-01');
 
 -- Inserción en la tabla puesto
 INSERT INTO position (code, name, salary, departmentCode) VALUES
@@ -183,9 +178,7 @@ INSERT INTO position (code, name, salary, departmentCode) VALUES
 ('P004', 'Financial Analyst', 70000, 'D004'),
 ('P005', 'Sales Executive', 55000, 'D005'),
 ('P006', 'Operations Coordinator', 65000, 'D006'),
-('P007', 'Customer Service Agent', 30000, 'D007')
-
-
+('P007', 'Customer Service Agent', 30000, 'D007');
 
 -- Inserción en la tabla empleado
 INSERT INTO employee (firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) VALUES
@@ -220,8 +213,6 @@ INSERT INTO employee (firstName, lastName, middleName, email, gender, age, mobil
 ('Sergio', 'González', 'Alberto', 'sergio.gonzalez@example.com', 'M', 40, '5559012347', 'pass90123', '2022-05-30', 'P029', 1),
 ('Lucía', 'Serrano', 'Carmen', 'lucia.serrano@example.com', 'F', 29, '5550123458', 'pass01234', '2022-06-15', 'P030', 2);
 
-
-
 -- Inserción en la tabla beneficios
 INSERT INTO benefits (code, name, type, description) VALUES
 ('B001', 'Health Insurance', 'Insurance', 'Comprehensive health insurance coverage'),
@@ -236,7 +227,7 @@ INSERT INTO benefits (code, name, type, description) VALUES
 ('B010', 'Employee Discounts', 'Discount', 'Discounts on company products and services');
 
 -- Inserción en la tabla desempenio
-INSERT INTO performance (code, score, evaluationDate, comments, employeeId) VALUES
+INSERT INTO performance (code, score, evaluationDate, comments, employee) VALUES
 ('PERF001', 85.5, '2023-01-20', 'Excellent performance throughout the year', 1),
 ('PERF002', 78.0, '2023-02-15', 'Good performance but needs improvement in teamwork', 2),
 ('PERF003', 90.0, '2023-03-10', 'Outstanding contributions to projects', 3),
@@ -247,7 +238,7 @@ INSERT INTO performance (code, score, evaluationDate, comments, employeeId) VALU
 ('PERF008', 75.0, '2023-08-30', 'Meets expectations but lacks initiative', 8);
 
 -- Inserción en la tabla vacaciones
-INSERT INTO vacations (startDate, endDate, status, employeeId) VALUES
+INSERT INTO vacations (startDate, endDate, status, employee) VALUES
 ('2024-07-01', '2024-07-10', 'Approved', 1),
 ('2024-12-20', '2025-01-05', 'Pending', 2),
 ('2023-08-15', '2023-08-25', 'Approved', 3),
@@ -260,7 +251,7 @@ INSERT INTO vacations (startDate, endDate, status, employeeId) VALUES
 ('2024-11-01', '2024-11-10', 'Approved', 10);
 
 -- Inserción en la tabla quejas
-INSERT INTO complaints (date, description, status, employeeId) VALUES
+INSERT INTO complaints (date, description, status, employee) VALUES
 ('2023-06-15', 'Issue with a colleague', 'Resolved', 1),
 ('2023-09-01', 'Complaint about defective equipment', 'Pending', 2),
 ('2023-08-05', 'Conflict with supervisor', 'Resolved', 3),
@@ -270,10 +261,8 @@ INSERT INTO complaints (date, description, status, employeeId) VALUES
 ('2023-08-25', 'Concerns about workplace safety', 'Pending', 7),
 ('2023-09-30', 'Feedback on team collaboration', 'Resolved', 8);
 
-
-
 -- Inserción en la tabla ausencia
-INSERT INTO absence (startDate, endDate, status, type, description, employeeId) VALUES
+INSERT INTO absence (startDate, endDate, status, type, description, employee) VALUES
 ('2023-01-15', '2023-01-20', 'Approved', 'Sick', 'Flu symptoms', 1),
 ('2023-02-10', '2023-02-12', 'Approved', 'Personal', 'Family emergency', 2),
 ('2023-03-05', '2023-03-06', 'Pending', 'Vacation', 'Planned family trip', 3),
@@ -284,7 +273,7 @@ INSERT INTO absence (startDate, endDate, status, type, description, employeeId) 
 ('2023-08-01', '2023-08-03', 'Approved', 'Personal', 'Medical appointment', 8);
 
 -- Inserción en la tabla incidente
-INSERT INTO incident (incidentType, incidentDate, description, employeeId) VALUES
+INSERT INTO incident (incidentType, incidentDate, description, employee) VALUES
 ('Safety', '2023-01-15', 'Slip and fall accident in the workplace', 1),
 ('Harassment', '2023-02-20', 'Reported inappropriate comments from a colleague', 2),
 ('Equipment Failure', '2023-03-10', 'Machine malfunction during operation', 3),
@@ -295,30 +284,30 @@ INSERT INTO incident (incidentType, incidentDate, description, employeeId) VALUE
 ('Accident', '2023-08-15', 'Minor accident during transportation', 8);
 
 -- Inserción en la tabla postulacion
-INSERT INTO application (publicationDate, status, employeeId) VALUES
-('2023-01-01', 'Approved', 1),
-('2023-02-01', 'Pending', 2),
-('2023-03-01', 'Rejected', 3),
-('2023-04-01', 'Approved', 4),
-('2023-05-01', 'Approved', 5),
-('2023-06-01', 'Pending', 6),
-('2023-07-01', 'Approved', 7),
-('2023-08-01', 'Rejected', 8),
-('2023-09-01', 'Pending', 9),
-('2023-10-01', 'Approved', 10),
-('2023-11-01', 'Approved', 11),
-('2023-12-01', 'Rejected', 12),
-('2024-01-01', 'Pending', 13),
-('2024-02-01', 'Approved', 14),
-('2024-03-01', 'Rejected', 15),
-('2024-04-01', 'Approved', 16),
-('2024-05-01', 'Pending', 17),
-('2024-06-01', 'Approved', 18),
-('2024-07-01', 'Rejected', 19),
-('2024-08-01', 'Approved', 20);
+INSERT INTO application (publicationDate, status, employee, promotion) VALUES
+('2023-01-01', 'Approved', 1, 'P001'),
+('2023-02-01', 'Pending', 2, 'P002'),
+('2023-03-01', 'Rejected', 3, 'P003'),
+('2023-04-01', 'Approved', 4, 'P004'),
+('2023-05-01', 'Approved', 5, 'P005'),
+('2023-06-01', 'Pending', 6, 'P006'),
+('2023-07-01', 'Approved', 7, 'P007'),
+('2023-08-01', 'Rejected', 8, 'P008'),
+('2023-09-01', 'Pending', 9, 'P009'),
+('2023-10-01', 'Approved', 10, 'P010'),
+('2023-11-01', 'Approved', 11, 'P001'),
+('2023-12-01', 'Rejected', 12, 'P002'),
+('2024-01-01', 'Pending', 13, 'P003'),
+('2024-02-01', 'Approved', 14, 'P004'),
+('2024-03-01', 'Rejected', 15, 'P005'),
+('2024-04-01', 'Approved', 16, 'P006'),
+('2024-05-01', 'Pending', 17, 'P007'),
+('2024-06-01', 'Approved', 18, 'P008'),
+('2024-07-01', 'Rejected', 19, 'P009'),
+('2024-08-01', 'Approved', 20, 'P010');
 
 -- Inserción en la tabla pagos
-INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employeeId) VALUES
+INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employee) VALUES
 (20.00, 1600.00, 200.00, 1),
 (25.00, 2000.00, 300.00, 2),
 (30.00, 2400.00, 250.00, 3),
@@ -339,6 +328,7 @@ INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employeeId) VALUES
 (29.50, 2360.00, 300.00, 18),
 (30.50, 2440.00, 350.00, 19),
 (28.50, 2280.00, 250.00, 20);
+
 
 
 
