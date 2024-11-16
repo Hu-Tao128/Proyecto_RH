@@ -418,7 +418,7 @@ BEGIN
     SELECT LEFT(name, 1) INTO dept_letter 
     FROM department 
     WHERE code = (SELECT departmentCode FROM position WHERE code = NEW.positionCode);
-
+''
     SELECT LEFT(name, 1) INTO pos_letter 
     FROM position 
     WHERE code = NEW.positionCode;
