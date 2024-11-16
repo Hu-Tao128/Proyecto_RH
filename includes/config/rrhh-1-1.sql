@@ -406,6 +406,33 @@ WHERE e.id IN (
 
 --TRIGGERS
 
+--Agregar codigo al usuario
+DELIMITER $$
+CREATE TRIGGER generate_employee_code BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    DECLARE dept_letter CHAR(1);
+    DECLARE pos_letter CHAR(1);
+    DECLARE consecutive INT;
+
+    SELECT LEFT(name, 1) INTO dept_letter 
+    FROM department 
+    WHERE code = (SELECT departmentCode FROM position WHERE code = NEW.positionCode);
+
+    SELECT LEFT(name, 1) INTO pos_letter 
+    FROM position 
+    WHERE code = NEW.positionCode;
+
+    SELECT COUNT(*) + 1 INTO consecutive 
+    FROM employee 
+    WHERE positionCode = NEW.positionCode;
+
+    -- Generar el código del empleado
+    SET NEW.code = CONCAT(UPPER(dept_letter), UPPER(pos_letter), LPAD(consecutive, 2, '0'));
+END;
+$$
+DELIMITER ;
+
 /*Actualizar el salario de un empleado al cambiar su posicion*/
 delimiter $$
 CREATE TRIGGER update_salary_on_position_change
