@@ -84,7 +84,6 @@ $employ = getInfoEmploy($IDUsuario);
         }
     });
 </script>
-
 <div class="ContainerXD">
     <br>
     <h2 class="h2formX">Add an Employee</h2>
@@ -92,15 +91,26 @@ $employ = getInfoEmploy($IDUsuario);
         <fieldset>
             <div class="divformX">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Write the name of the employee" required>
+                <input type="text" id="name" name="name" 
+                    placeholder="Write the name of the employee" 
+                    required 
+                    pattern="[A-Za-z\s]+" 
+                    title="Only letters and spaces are allowed">
             </div>
             <div class="divformX">
                 <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" placeholder="First Lastname" required>
+                <input type="text" id="lastName" name="lastName" 
+                    placeholder="First Lastname" 
+                    required 
+                    pattern="[A-Za-z\s]+" 
+                    title="Only letters and spaces are allowed">
             </div>
             <div class="divformX">
                 <label for="secondLastName">Second Last Name</label>
-                <input type="text" id="secondLastName" name="secondLastName" placeholder="Second Lastname">
+                <input type="text" id="secondLastName" name="secondLastName" 
+                    placeholder="Second Lastname" 
+                    pattern="[A-Za-z\s]+" 
+                    title="Only letters and spaces are allowed">
             </div>
             <div class="divformX">
                 <label for="email">Email</label>
@@ -146,5 +156,22 @@ $employ = getInfoEmploy($IDUsuario);
         </fieldset>
     </form>
 </div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const inputs = document.querySelectorAll('#name, #lastName, #secondLastName');
+        const regex = /^[A-Za-z\s]+$/;
+
+        for (const input of inputs) {
+            if (!regex.test(input.value)) {
+                alert(`The field "${input.previousElementSibling.innerText}" can only contain letters and spaces.`);
+                input.focus();
+                event.preventDefault(); 
+                // Evita el envío del formulario
+                return;
+            }
+        }
+    });
+</script>
 
 <?php include "../includes/footer.php"; ?>
