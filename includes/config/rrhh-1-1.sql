@@ -28,7 +28,7 @@ create table position(
 );
 
 create table employee(
-    code varchar(5) primary key auto_increment,
+    code varchar(5) primary key,
     firstName varchar(30) not null,
     lastName varchar(30) not null,
     middleName varchar(30) not null,
@@ -47,6 +47,16 @@ create table employee(
 
 alter table employee add foreign key(supervisorId) references employee(id);
 
+create table attendance(
+    number int primary key auto_increment,
+    startDate datetime not null,
+    endDate datetime,
+    employee varchar(5) not null,
+    index idx_date(startDate),
+
+    Foreign Key (employ) REFERENCES employee(code)
+);
+
 create table benefits(
     code varchar(5) primary key,
     name varchar(30) not null,
@@ -60,10 +70,10 @@ create table performance(
     score float not null,
     evaluationDate date not null,
     comments varchar(60),
-    employeeId int not null,
+    employee varchar(5) not null,
     index idx_performance(score),
 
-    foreign key(employeeId) REFERENCES employee(id)
+    foreign key(employee) REFERENCES employee(code)
 );
 
 create table vacations(
@@ -71,10 +81,10 @@ create table vacations(
     startDate date not null,
     endDate date not null,
     status varchar(10) not null,
-    employeeId int not null,
+    employee varchar(5) not null,
     index idx_vacations(startDate),
 
-    foreign key(employeeId) references employee(id)
+    foreign key(employee) references employee(code)
 );
 
 create table complaints(
@@ -82,10 +92,10 @@ create table complaints(
     date date not null,
     description varchar(60) not null,
     status varchar(10) not null,
-    employeeId int not null,
+    employee varchar(5) not null,
     index idx_complaints(date),
 
-    foreign key(employeeId) references employee(id)
+    foreign key(employee) references employee(code)
 );
 
 create table absence(
@@ -95,10 +105,10 @@ create table absence(
     status varchar(10) not null,
     type varchar(10) not null,
     description varchar(60) not null,
-    employeeId int not null,
+    employee varchar(5) not null,
     index idx_absence(startDate),
 
-    foreign key(employeeId) references employee(id)
+    foreign key(employee) references employee(code)
 );
 
 create table incident(
@@ -106,18 +116,22 @@ create table incident(
     incidentType varchar(40) not null,
     incidentDate date not null,
     description varchar(40) not null,
-    employeeId int not null,
+    employee varchar(5) not null,
     index idx_incident(incidentDate),
 
-    foreign key(employeeId) references employee(id)
+    foreign key(employee) references employee(code)
 );
 
 create table application(
     id int primary key auto_increment,
     publicationDate date not null,
     status varchar(10) not null,
-    employeeId int not null,
-    index idx_application(publicationDate)
+    employee int not null,
+    promotion varchar(5) not null,
+    index idx_application(publicationDate),
+
+    foreign Key(employee) references employee(code),
+    foreign key(promotion) references promotion(code)
 );
 
 create table payments(
@@ -125,10 +139,10 @@ create table payments(
     hourlyPayment float(5,2) not null,
     totalPayment float(10,2) not null,
     bonuses float(10,2),
-    employeeId int not null,
+    employee int not null,
     index idx_payments(id),
 
-    foreign key(employeeId) references employee(id)
+    foreign key(employee) references employee(code)
 );
 
 /*Insertar los datos a nuestra base de datos*/

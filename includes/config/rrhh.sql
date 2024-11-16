@@ -43,7 +43,6 @@ create table empleado(
     index inx_empleado(apelPaterno),
     
     foreign key(puesto) references puesto(numero)
-
 );
 
 alter table empleado add foreign key(supervisor) references empleado(numero);
@@ -76,7 +75,6 @@ create table desempenio(
 
     foreign key(empleado) REFERENCES empleado(numero)
 );
-
 
 create table vacaciones(
     numero int primary key auto_increment,
