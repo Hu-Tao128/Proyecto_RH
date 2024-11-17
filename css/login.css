@@ -94,3 +94,18 @@ fieldset {
 .mainButton:hover {
     background-color: #b91d1d;
 }
+
+/*Estilos "Olvide mi contrasena"*/
+.forgot-password-link {
+    display: block;
+    text-align: left; 
+    margin: 10px 0; 
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}

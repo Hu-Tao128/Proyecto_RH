@@ -20,6 +20,10 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fas fa-eye-slash" onclick="showPassword()"></i>
                 </div>
+                <!-- Enlace para poner olvide mi contrasena-->
+                <div>
+                    <a href="" class="forgot-password-link">Forgot your password?</a>
+                </div>
                 <div>
                     <button type="submit" id="btnLogin" name="btnLogin">Login</button>
                 </div>
@@ -41,7 +45,7 @@
                 eyeIcon.classList.add("fa-eye");
             } else {
                 passW.type = "password";
-                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.remove("fa-eye-slash");
                 eyeIcon.classList.add("fa-eye-slash");
             }
         }
