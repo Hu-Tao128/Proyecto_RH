@@ -27,7 +27,8 @@ $absences = Absences($IDUsuario);
             </div><br>
             <div>
                 <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description" required> 
+                <textarea name="description" id="description"></textarea>
+                 
             </div><br>
             <div>
                 <button type="submit" name="btnAbsence">Request Justify Absence</button>
