@@ -2,26 +2,16 @@
 include "../includes/headerProcess.php";
 require_once '../includes/config/MySQL_ConexionDB.php';
 require_once '../functions.php';
+require_once '../includes/config/MySQL_ConexionDB.php';
+
 session_start();
-
-$db_host = "localhost";
-$db_name = "rrhh";
-$root = "root";
-$db_pass = "";
-
-try {		
-    $db_con = new PDO("mysql:host={$db_host};dbname={$db_name}", $root, $db_pass);
-    $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Error en la conexión: " . $e->getMessage();
-    exit(); 
-}
 
 if (isset($_POST['btnLogin'])) {
     $Usuario = trim($_POST['code']);
     $Contrasena = trim($_POST['password']);
     
     try {			
+        global $db_con;
         $stmt = $db_con->prepare("SELECT * FROM empleado WHERE numero = :usuario");
         $stmt->bindParam(':usuario', $Usuario, PDO::PARAM_INT); 
         $stmt->execute();

@@ -4,8 +4,8 @@
 <body>
     <div class="banner">
         <div class="navbar">
-            <img src="../Principal/img/logo.png" alt="" class="logo">
-            <!--<ul>
+            <!--<img src="../Principal/img/logo.png" alt="" class="logo">
+            <ul>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
