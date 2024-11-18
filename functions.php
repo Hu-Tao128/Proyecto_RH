@@ -195,6 +195,8 @@ function Absences($Usuario){
 
 	return $Absences;
 }
+
+
 /*
 function verPagos($usuario) {
 	

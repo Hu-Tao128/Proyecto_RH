@@ -222,4 +222,22 @@ function showAttandance(){
 
     return $attandance;
 }
+
+function showRatings(){
+    global $db_con;
+    $rating = [];
+
+    try {
+        $query = "SELECT * FROM desempenio";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+    
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $rating[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+    return $rating;
+}
 ?>

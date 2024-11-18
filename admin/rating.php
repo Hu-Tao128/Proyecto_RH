@@ -1,4 +1,11 @@
-<?php include "../includes/headerAdmin.php" ?>
+<?php include "../includes/headerAdmin.php";
+require_once "../includes/config/MySQL_ConexionDB.php";
+require_once "functionsAdmin.php"; 
+require_once "../functions.php"; 
+
+$rating = showRatings();
+?>
+
 <section>
     <h2>Table for the rating</h2>
     <div>
@@ -11,15 +18,17 @@
                 <th>Employee</th>
                 <th colspan="2">Options</th>
             </tr>
+            <?php foreach($rating as $renglon) {?>
             <tr>
-                <td>0</td>
-                <td>0000</td>
-                <td>0000</td>
-                <td>----</td>
-                <td>----</td>
+                <td><?= $renglon['codigo'] ?></td>
+                <td><?= $renglon['puntaje']?></td>
+                <td><?= $renglon['fechaEvaluacion']?></td>
+                <td><?= $renglon['comentarios']?></td>
+                <td><?= $renglon['empleado']?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="deleteRating.php?id=<?php echo $renglon['codigo']; ?>&action=delete" class="action-delete">Delete</a></td>
             </tr>
+            <?php }?>
         </table>
     </div>
     <div>
