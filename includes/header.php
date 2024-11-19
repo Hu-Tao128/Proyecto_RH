@@ -17,7 +17,7 @@
 </head>
 <body>
     <section class="header">
-    <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
+    <a href="home.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
     </a>
         <div class="options">

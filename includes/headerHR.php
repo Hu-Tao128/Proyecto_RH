@@ -59,8 +59,8 @@
     </div>
     <div class="options">
         <nav>
-            <a href="#">Aplications</a>
-            <a href="#">Promotions</a>
+            <a href="../admin/aplications.php">Aplications</a>
+            <a href="../admin/promotions.php">Promotions</a>
             <a href="../Session/logout.php">Log out</a>
         </nav>
     </div>
