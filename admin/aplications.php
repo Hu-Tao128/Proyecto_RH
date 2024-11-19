@@ -29,7 +29,7 @@ $Promotions = showPromotions();
                 <?php $Promotion = getInfoPromotion($renglon['promocion']);?>
                 <td><?= $Promotion ?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['promocion']; ?>">Details</a></td>
-                <td><a href="#" class="action-delete">Delete</a></td>
+                <td><a href="deleteAplications.php?id=<?= $renglon['numero'] ?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             }   ?>
         </table>

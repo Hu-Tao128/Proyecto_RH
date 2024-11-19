@@ -9,7 +9,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action == 'delete'){
-        $query = "DELETE FROM desempenio where codigo = :id";
+        $query = "DELETE FROM beneficios where codigo = :id";
     } else {
         echo "invalid option";
         exit;
@@ -23,13 +23,13 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     
             if ($stmt->execute()) {
                 echo "<script>
-                        alert('Rating was Eliminated.');
-                        window.location.href = 'rating.php';
+                        alert('Benefie was Eliminated.');
+                        window.location.href = 'benefies.php';
                       </script>";
             } else {
                 echo "<script>
-                        alert('The rating wasn't elimanted');
-                        window.location.href = 'rating.php'
+                        alert('The benefie wasn't elimanted');
+                        window.location.href = 'benefies.php'
                       </script>";
             }
         } catch (PDOException $e) {
@@ -39,7 +39,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     } else {
         echo "<script>
                 alert('Upss an error, Sorry');
-                window.location.href = 'rating.php'
+                window.location.href = 'benefies.php'
                 </script>";
     }
 

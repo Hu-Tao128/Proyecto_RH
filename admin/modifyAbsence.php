@@ -24,7 +24,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         if ($stmt->execute()) {
             echo "<script>
                     alert('Absences was Modified.');
-                    window.location.href = 'absence.ph p';
+                    window.location.href = 'absence.php';
                   </script>";
         } else {
             echo "<script>
@@ -39,7 +39,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 } else {
     echo "<script>
             alert('Upss an error, Sorry');
-            window.location.href = 'vacations.php'
+            window.location.href = 'absense.php'
             </script>";
 }
 ?>

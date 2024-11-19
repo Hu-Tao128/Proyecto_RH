@@ -23,7 +23,7 @@ $benefits = showBenefits();
                 <td><?=$renglon['tipo']?></td>
                 <td><?=$renglon['descripcion']?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="deleteBenefies.php?id=<?= $renglon['codigo']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>

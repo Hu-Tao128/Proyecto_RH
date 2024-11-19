@@ -34,7 +34,7 @@ $tickets = showTickets();
                     <td><?php echo $firstname." ".$lastname; ?></td><?php
                 ?>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="deleteTickets.php?id=<?php echo $renglon['numero']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
         }?>
         </table>

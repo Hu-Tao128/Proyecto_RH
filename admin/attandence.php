@@ -10,6 +10,7 @@ $attandance = getAttendance($IDUsuario);
     <div>
         <table border="1" class="tableAdmin">
             <tr>
+                <th>number</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Employee</th>
@@ -17,6 +18,7 @@ $attandance = getAttendance($IDUsuario);
             </tr>
             <?php foreach ($attandance as $renglon) { ?>
             <tr>
+                <td><?= $renglon['number']?></td>
                 <td><?= $renglon['startDate']?></td>
                 <?php
                     if ($renglon['endDate'] == '' || $renglon['endDate'] == null) {?>
@@ -30,7 +32,7 @@ $attandance = getAttendance($IDUsuario);
                 $lastname = lastname($employ);?>
                 <td><?php echo $name." ".$lastname;?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="deleteAttandance.php?id=<?= $renglon['number']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
