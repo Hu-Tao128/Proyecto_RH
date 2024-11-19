@@ -3,64 +3,57 @@ include "includes/header.php";
 
 require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
+
+$info = getUserInfo($IDUsuario)[0] ?? [];
 ?>
-<section class="position">
-    <div class="info">
-        <h2>Your information</h2>
+<section class="position"><br>
+    <div class="container">
+        <h1>Profile Settings about Employe <?php echo $IDUsuario?></h1>
         
-        <?php
-            $info = getUserInfo($IDUsuario);
-            //llamamos la funcion getUserInfo del archivo funciones.php y que coincida con el id de nuestro user
-            //desplega toda la informacion de un mismo usuario
-            foreach ($info as $infos) {
-                $number = $infos['numero'];
-                //$nombreVariable = $info['nombreColumna']; la sintaxis
-                $name = $infos['nombre'];
-                $lastname = $infos['apelPaterno']." ".$infos['apelMaterno'];
-                $email = $infos['email'];
-                $gender = $infos['sexo'];
-                $age = $infos['edad'];
-                $phone = $infos['celular'];
-                $password = $infos['contrasena'];
-                $contract = $infos['fechaContrato'];
-                $supervisor = $infos['supervisor'];
-                //usamos for each para cada row o columna del array y asignamos los valores a las variables par usarlas con echo
-            }
-
-            $workspace = workspace($IDUsuario);
-            //funcion para obtener el nombre del puesto del usuario
-            $nameS = firstname($supervisor);
-            $SupLastNames = lastname($supervisor);
-            //obtenemos los apellidos y nombre del supervisor desde su id_supervisor de nuestro usuario
-        ?>
-
-<p>
-            Number: <?php echo $number; ?> <br><br>
-            <!--usamos el echo para imprimir la variable-->
-            Firstname: <?php echo $name; ?> <br><br>
-            Lastname: <?php echo $lastname; ?> <br><br>
-            Email: <?php echo $email; ?> <br><br>
-            Gender: <?php echo ($gender == 'F') ? 'Female' : 'Male'; ?> <br><br>
-            <!--usamos ? para reducir el if a una sola linea, donde si es verdad ? Sera lo que reemplazaremos si es verdad y : sino, todo esto en parentesis-->
-            Age: <?php echo $age; ?> <br><br>
-            Phone number: <?php echo $phone; ?> <br><br>
-            Password: <?php echo $password; ?> <br><br>
-            Contract date: <?php echo $contract; ?> <br><br>
-            Workstation: <?php echo $workspace; ?> <br><br>
-            <?php 
-            //Aqui si id_supervisor es nulo o simplemente esta vacio significa que el user es supervisor, 
-            //si tiene un valor el usuario tiene un supervisor a cargo de el
-                if ($supervisor != "" && $supervisor != null) { ?>
-                    Supervisor: <?php echo $nameS." ".$SupLastNames; ?> <br> 
-            <?php } ?>
-        </p>
-
-        <!--
-        <a href="changeInformation.php">
-            <button>Change data</button>
-        </a>
-        -->
-        
+        <div class="profile-section">
+            <div class="profile-image">
+                <div class="avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23AFD488'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%23FFF'/%3E%3Cpath d='M50 60 C20 60 10 90 10 100 L90 100 C90 90 80 60 50 60Z' fill='%23FFF'/%3E%3C/svg%3E" alt="Profile Picture">
+                </div>
+                <div class="email-display"></div>
+                <button class="update-button">Update Profile Image</button>
+            </div>
+            
+            <form class="form-grid">
+                <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" value="<?php echo $info['nombre']?>" disabled>
+                </div>
+                
+                <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" value="<?php echo $info['apelPaterno']. " " .$info['apelMaterno'] ?>" disabled>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" id="mobile" value="<?php echo $info['celular'] ?>" disabled>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="password">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password" value="<?php echo $info['contrasena']?>" disabled>
+                        <button type="button" class="password-toggle"></button>
+                    </div>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="<?php echo $info['email']?>" disabled>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="registeredDate">Registered Date</label>
+                    <input type="text" id="registeredDate" value="<?php echo $info['fechaContrato']?>" disabled>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 
