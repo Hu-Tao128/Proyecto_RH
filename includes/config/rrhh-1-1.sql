@@ -1,6 +1,6 @@
-create database rrhh;
+create database hr;
 
-use rrhh;
+use hr;
 
 create table department(
     code varchar(5) primary key,
@@ -17,15 +17,15 @@ create table promotion(
     index idx_promotion(publicationDate)
 );
 
-create table position(
-    code varchar(5) primary key,
-    name varchar(30) not null,
-    salary float not null,
-    departmentCode varchar(5) not null,
-    index idx_position(name),
-
-    foreign key(departmentCode) references department(code)
+CREATE TABLE `position` (
+    code VARCHAR(5) PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    salary FLOAT NOT NULL,
+    departmentCode VARCHAR(5) NOT NULL,
+    INDEX idx_position (name),
+    FOREIGN KEY (departmentCode) REFERENCES department(code)
 );
+
 
 create table employee(
     code varchar(5) primary key,
@@ -39,10 +39,10 @@ create table employee(
     password varchar(20) not null,
     contractDate date not null,
     positionCode varchar(5) not null,
-    supervisorId int,
+    supervisorId varchar(5),
     index idx_employee(lastName),
     
-    foreign key(positionCode) references position(code)
+    foreign key(positionCode) references `position`(code)
 );
 
 alter table employee add foreign key(supervisorId) references employee(code);
@@ -54,7 +54,7 @@ create table attendance(
     employee varchar(5) not null,
     index idx_date(startDate),
 
-    Foreign Key (employ) REFERENCES employee(code)
+    Foreign Key (employee) REFERENCES employee(code)
 );
 
 create table benefits(
@@ -181,37 +181,116 @@ INSERT INTO position (code, name, salary, departmentCode) VALUES
 ('P007', 'Customer Service Agent', 30000, 'D007');
 
 -- Inserción en la tabla empleado
-INSERT INTO employee (firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) VALUES
-('Juan', 'Pérez', 'Alberto', 'juan.perez@example.com', 'M', 30, '5551234567', 'pass123', '2021-01-15', 'P001', NULL),
-('María', 'González', 'Fernanda', 'maria.gonzalez@example.com', 'F', 28, '5552345678', 'pass234', '2021-02-20', 'P002', null),
-('Luis', 'Martínez', 'Antonio', 'luis.martinez@example.com', 'M', 35, '5553456789', 'pass345', '2020-03-10', 'P003', null),
-('Ana', 'López', 'Carmen', 'ana.lopez@example.com', 'F', 26, '5554567890', 'pass456', '2022-04-18', 'P004', null),
-('Carlos', 'Hernández', 'Eduardo', 'carlos.hernandez@example.com', 'M', 32, '5555678901', 'pass567', '2021-05-21', 'P005', null),
-('Laura', 'García', 'Isabel', 'laura.garcia@example.com', 'F', 29, '5556789012', 'pass678', '2021-06-30', 'P006', null),
-('Jorge', 'Ramírez', 'Diego', 'jorge.ramirez@example.com', 'M', 40, '5557890123', 'pass789', '2019-07-15', 'P007', null),
-('Sofía', 'Mendoza', 'María', 'sofia.mendoza@example.com', 'F', 34, '5558901234', 'pass890', '2020-08-25', 'P008', 1),
-('Diego', 'Gómez', 'Julián', 'diego.gomez@example.com', 'M', 31, '5559012345', 'pass901', '2021-09-10', 'P009', 2),
-('Claudia', 'Martínez', 'Patricia', 'claudia.martinez@example.com', 'F', 27, '5550123456', 'pass012', '2022-10-05', 'P010', 3),
-('Fernando', 'Rodríguez', 'Ricardo', 'fernando.rodriguez@example.com', 'M', 38, '5551234568', 'pass1234', '2018-11-12', 'P011', 4),
-('Patricia', 'Lopez', 'Elena', 'patricia.lopez@example.com', 'F', 33, '5552345679', 'pass2345', '2019-12-20', 'P012', 5),
-('Andrés', 'Sánchez', 'Luis', 'andres.sanchez@example.com', 'M', 36, '5553456780', 'pass3456', '2020-01-30', 'P013', 6),
-('Elena', 'Morales', 'Ana', 'elena.morales@example.com', 'F', 30, '5554567891', 'pass4567', '2021-02-15', 'P014', 7),
-('Roberto', 'González', 'Javier', 'roberto.gonzalez@example.com', 'M', 29, '5555678902', 'pass5678', '2021-03-20', 'P015', 1),
-('Victoria', 'Fernández', 'Lucía', 'victoria.fernandez@example.com', 'F', 32, '5556789013', 'pass6789', '2021-04-25', 'P016', 2),
-('Pablo', 'Jiménez', 'Fernando', 'pablo.jimenez@example.com', 'M', 37, '5557890124', 'pass7890', '2020-05-30', 'P017', 3),
-('Gabriela', 'Pérez', 'María', 'gabriela.perez@example.com', 'F', 28, '5558901235', 'pass8901', '2021-06-15', 'P018', 4),
-('Samuel', 'Ríos', 'Andrés', 'samuel.rios@example.com', 'M', 34, '5559012346', 'pass9012', '2021-07-10', 'P019', 5),
-('Jessica', 'Hernández', 'Sofía', 'jessica.hernandez@example.com', 'F', 31, '5550123457', 'pass0123', '2021-08-05', 'P020', 6),
-('Ricardo', 'Ruiz', 'Luis', 'ricardo.ruiz@example.com', 'M', 39, '5551234569', 'pass12345', '2020-09-15', 'P021', 7),
-('Mariana', 'Díaz', 'Isabel', 'mariana.diaz@example.com', 'F', 25, '5552345670', 'pass23456', '2020-10-10', 'P022', 1),
-('Hugo', 'Martínez', 'José', 'hugo.martinez@example.com', 'M', 29, '5553456781', 'pass34567', '2021-11-20', 'P023', 2),
-('Natalia', 'González', 'Elena', 'natalia.gonzalez@example.com', 'F', 27, '5554567892', 'pass45678', '2021-12-25', 'P024', 3),
-('Cristian', 'Jiménez', 'Diego', 'cristian.jimenez@example.com', 'M', 32, '5555678903', 'pass56789', '2022-01-05', 'P025', 4),
-('Daniela', 'Castro', 'María', 'daniela.castro@example.com', 'F', 30, '5556789014', 'pass67890', '2022-02-15', 'P026', 5),
-('Gabriel', 'Torres', 'Ricardo', 'gabriel.torres@example.com', 'M', 38, '5557890125', 'pass78901', '2022-03-20', 'P027', 6),
-('Verónica', 'López', 'Patricia', 'veronica.lopez@example.com', 'F', 35, '5558901236', 'pass89012', '2022-04-25', 'P028', 7),
-('Sergio', 'González', 'Alberto', 'sergio.gonzalez@example.com', 'M', 40, '5559012347', 'pass90123', '2022-05-30', 'P029', 1),
-('Lucía', 'Serrano', 'Carmen', 'lucia.serrano@example.com', 'F', 29, '5550123458', 'pass01234', '2022-06-15', 'P030', 2);
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('1', 'Juan', 'Pérez', 'Alberto', 'juan.perez@example.com', 'M', 30, '5551234567', 'pass123', '2021-01-15', 'P001', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('2', 'María', 'González', 'Fernanda', 'maria.gonzalez@example.com', 'F', 28, '5552345678', 'pass234', '2021-02-20', 'P002', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('3', 'Luis', 'Martínez', 'Antonio', 'luis.martinez@example.com', 'M', 35, '5553456789', 'pass345', '2020-03-10', 'P003', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('4', 'Ana', 'López', 'Carmen', 'ana.lopez@example.com', 'F', 26, '5554567890', 'pass456', '2022-04-18', 'P004', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('5', 'Carlos', 'Hernández', 'Eduardo', 'carlos.hernandez@example.com', 'M', 32, '5555678901', 'pass567', '2021-05-21', 'P005', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('6', 'Laura', 'García', 'Isabel', 'laura.garcia@example.com', 'F', 29, '5556789012', 'pass678', '2021-06-30', 'P006', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('7', 'Jorge', 'Ramírez', 'Diego', 'jorge.ramirez@example.com', 'M', 40, '5557890123', 'pass789', '2019-07-15', 'P007', NULL);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('8', 'Sofía', 'Mendoza', 'María', 'sofia.mendoza@example.com', 'F', 34, '5558901234', 'pass890', '2020-08-25', 'P008', "HH01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('9', 'Diego', 'Gómez', 'Julián', 'diego.gomez@example.com', 'M', 31, '5559012345', 'pass901', '2021-09-10', 'P009', "TS01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('10', 'Claudia', 'Martínez', 'Patricia', 'claudia.martinez@example.com', 'F', 27, '5550123456', 'pass012', '2022-10-05', 'P010', "MM01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('11', 'Fernando', 'Rodríguez', 'Ricardo', 'fernando.rodriguez@example.com', 'M', 38, '5551234568', 'pass1234', '2018-11-12', 'P011', "FF01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('12', 'Patricia', 'Lopez', 'Elena', 'patricia.lopez@example.com', 'F', 33, '5552345679', 'pass2345', '2019-12-20', 'P012', "SS01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('13', 'Andrés', 'Sánchez', 'Luis', 'andres.sanchez@example.com', 'M', 36, '5553456780', 'pass3456', '2020-01-30', 'P013', "OO01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('14', 'Elena', 'Morales', 'Ana', 'elena.morales@example.com', 'F', 30, '5554567891', 'pass4567', '2021-02-15', 'P014', "CC01");
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('15', 'Roberto', 'González', 'Javier', 'roberto.gonzalez@example.com', 'M', 29, '5555678902', 'pass5678', '2021-03-20', 'P015', 1);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('16', 'Victoria', 'Fernández', 'Lucía', 'victoria.fernandez@example.com', 'F', 32, '5556789013', 'pass6789', '2021-04-25', 'P016', 2);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('17', 'Pablo', 'Jiménez', 'Fernando', 'pablo.jimenez@example.com', 'M', 37, '5557890124', 'pass7890', '2020-05-30', 'P017', 3);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('18', 'Gabriela', 'Pérez', 'María', 'gabriela.perez@example.com', 'F', 28, '5558901235', 'pass8901', '2021-06-15', 'P018', 4);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('19', 'Samuel', 'Ríos', 'Andrés', 'samuel.rios@example.com', 'M', 34, '5559012346', 'pass9012', '2021-07-10', 'P019', 5);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('20', 'Jessica', 'Hernández', 'Sofía', 'jessica.hernandez@example.com', 'F', 31, '5550123457', 'pass0123', '2021-08-05', 'P020', 6);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('21', 'Ricardo', 'Ruiz', 'Luis', 'ricardo.ruiz@example.com', 'M', 39, '5551234569', 'pass12345', '2020-09-15', 'P021', 7);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('22', 'Mariana', 'Díaz', 'Isabel', 'mariana.diaz@example.com', 'F', 25, '5552345670', 'pass23456', '2020-10-10', 'P022', 1);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('23', 'Hugo', 'Martínez', 'Ricardo', 'hugo.martinez@example.com', 'M', 33, '5553456781', 'pass34567', '2021-11-05', 'P023', 2);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('24', 'Karina', 'Gómez', 'Raquel', 'karina.gomez@example.com', 'F', 30, '5554567892', 'pass45678', '2020-12-01', 'P024', 3);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('25', 'Alfonso', 'Serrano', 'Martín', 'alfonso.serrano@example.com', 'M', 37, '5555678903', 'pass56789', '2021-01-05', 'P025', 4);
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId)
+VALUES ('26', 'Olga', 'Vázquez', 'Susana', 'olga.vazquez@example.com', 'F', 29, '5556789014', 'pass67890', '2021-02-10', 'P026', 5);
+
+
+INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) VALUES
+('1', 'Juan', 'Pérez', 'Alberto', 'juan.perez@example.com', 'M', 30, '5551234567', 'pass123', '2021-01-15', 'P001', NULL),
+('1', 'María', 'González', 'Fernanda', 'maria.gonzalez@example.com', 'F', 28, '5552345678', 'pass234', '2021-02-20', 'P002', null),
+('1', 'Luis', 'Martínez', 'Antonio', 'luis.martinez@example.com', 'M', 35, '5553456789', 'pass345', '2020-03-10', 'P003', null),
+('1', 'Ana', 'López', 'Carmen', 'ana.lopez@example.com', 'F', 26, '5554567890', 'pass456', '2022-04-18', 'P004', null),
+('1', 'Carlos', 'Hernández', 'Eduardo', 'carlos.hernandez@example.com', 'M', 32, '5555678901', 'pass567', '2021-05-21', 'P005', null),
+('1', 'Laura', 'García', 'Isabel', 'laura.garcia@example.com', 'F', 29, '5556789012', 'pass678', '2021-06-30', 'P006', null),
+('1', 'Jorge', 'Ramírez', 'Diego', 'jorge.ramirez@example.com', 'M', 40, '5557890123', 'pass789', '2019-07-15', 'P007', null),
+('1', 'Sofía', 'Mendoza', 'María', 'sofia.mendoza@example.com', 'F', 34, '5558901234', 'pass890', '2020-08-25', 'P008', 1),
+('1', 'Diego', 'Gómez', 'Julián', 'diego.gomez@example.com', 'M', 31, '5559012345', 'pass901', '2021-09-10', 'P009', 2),
+('1', 'Claudia', 'Martínez', 'Patricia', 'claudia.martinez@example.com', 'F', 27, '5550123456', 'pass012', '2022-10-05', 'P010', 3),
+('1', 'Fernando', 'Rodríguez', 'Ricardo', 'fernando.rodriguez@example.com', 'M', 38, '5551234568', 'pass1234', '2018-11-12', 'P011', 4),
+('1', 'Patricia', 'Lopez', 'Elena', 'patricia.lopez@example.com', 'F', 33, '5552345679', 'pass2345', '2019-12-20', 'P012', 5),
+('1', 'Andrés', 'Sánchez', 'Luis', 'andres.sanchez@example.com', 'M', 36, '5553456780', 'pass3456', '2020-01-30', 'P013', 6),
+('1', 'Elena', 'Morales', 'Ana', 'elena.morales@example.com', 'F', 30, '5554567891', 'pass4567', '2021-02-15', 'P014', 7),
+('1', 'Roberto', 'González', 'Javier', 'roberto.gonzalez@example.com', 'M', 29, '5555678902', 'pass5678', '2021-03-20', 'P015', 1),
+('1', 'Victoria', 'Fernández', 'Lucía', 'victoria.fernandez@example.com', 'F', 32, '5556789013', 'pass6789', '2021-04-25', 'P016', 2),
+('1', 'Pablo', 'Jiménez', 'Fernando', 'pablo.jimenez@example.com', 'M', 37, '5557890124', 'pass7890', '2020-05-30', 'P017', 3),
+('1', 'Gabriela', 'Pérez', 'María', 'gabriela.perez@example.com', 'F', 28, '5558901235', 'pass8901', '2021-06-15', 'P018', 4),
+('1', 'Samuel', 'Ríos', 'Andrés', 'samuel.rios@example.com', 'M', 34, '5559012346', 'pass9012', '2021-07-10', 'P019', 5),
+('1', 'Jessica', 'Hernández', 'Sofía', 'jessica.hernandez@example.com', 'F', 31, '5550123457', 'pass0123', '2021-08-05', 'P020', 6),
+('1', 'Ricardo', 'Ruiz', 'Luis', 'ricardo.ruiz@example.com', 'M', 39, '5551234569', 'pass12345', '2020-09-15', 'P021', 7),
+('1', 'Mariana', 'Díaz', 'Isabel', 'mariana.diaz@example.com', 'F', 25, '5552345670', 'pass23456', '2020-10-10', 'P022', 1),
+('1', 'Hugo', 'Martínez', 'José', 'hugo.martinez@example.com', 'M', 29, '5553456781', 'pass34567', '2021-11-20', 'P023', 2),
+('1', 'Natalia', 'González', 'Elena', 'natalia.gonzalez@example.com', 'F', 27, '5554567892', 'pass45678', '2021-12-25', 'P024', 3),
+('1', 'Cristian', 'Jiménez', 'Diego', 'cristian.jimenez@example.com', 'M', 32, '5555678903', 'pass56789', '2022-01-05', 'P025', 4),
+('1', 'Daniela', 'Castro', 'María', 'daniela.castro@example.com', 'F', 30, '5556789014', 'pass67890', '2022-02-15', 'P026', 5),
+('1', 'Gabriel', 'Torres', 'Ricardo', 'gabriel.torres@example.com', 'M', 38, '5557890125', 'pass78901', '2022-03-20', 'P027', 6),
+('1', 'Verónica', 'López', 'Patricia', 'veronica.lopez@example.com', 'F', 35, '5558901236', 'pass89012', '2022-04-25', 'P028', 7),
+('1', 'Sergio', 'González', 'Alberto', 'sergio.gonzalez@example.com', 'M', 40, '5559012347', 'pass90123', '2022-05-30', 'P029', 1),
+('1', 'Lucía', 'Serrano', 'Carmen', 'lucia.serrano@example.com', 'F', 29, '5550123458', 'pass01234', '2022-06-15', 'P030', 2);
 
 -- Inserción en la tabla beneficios
 INSERT INTO benefits (code, name, type, description) VALUES
@@ -408,7 +487,9 @@ WHERE e.id IN (
 
 --Agregar codigo al usuario
 DELIMITER $$
-CREATE TRIGGER generate_employee_code BEFORE INSERT ON employee
+
+CREATE TRIGGER generate_employee_code 
+BEFORE INSERT ON employee 
 FOR EACH ROW
 BEGIN
     DECLARE dept_letter CHAR(1);
@@ -417,21 +498,21 @@ BEGIN
 
     SELECT LEFT(name, 1) INTO dept_letter 
     FROM department 
-    WHERE code = (SELECT departmentCode FROM position WHERE code = NEW.positionCode);
-''
+    WHERE code = (SELECT departmentCode FROM `position` WHERE code = NEW.positionCode);
+
     SELECT LEFT(name, 1) INTO pos_letter 
-    FROM position 
+    FROM `position` 
     WHERE code = NEW.positionCode;
 
     SELECT COUNT(*) + 1 INTO consecutive 
     FROM employee 
     WHERE positionCode = NEW.positionCode;
 
-    -- Generar el código del empleado
     SET NEW.code = CONCAT(UPPER(dept_letter), UPPER(pos_letter), LPAD(consecutive, 2, '0'));
-END;
-$$
+END$$
+
 DELIMITER ;
+
 
 /*Actualizar el salario de un empleado al cambiar su posicion*/
 delimiter $$
