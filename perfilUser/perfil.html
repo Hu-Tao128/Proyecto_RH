@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de usuario</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Settings</h1>
+        
+        <div class="profile-section">
+            <div class="profile-image">
+                <div class="avatar">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23AFD488'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%23FFF'/%3E%3Cpath d='M50 60 C20 60 10 90 10 100 L90 100 C90 90 80 60 50 60Z' fill='%23FFF'/%3E%3C/svg%3E" alt="Profile Picture">
+                </div>
+                <div class="email-display"></div>
+                <button class="update-button">Update Profile Image</button>
+            </div>
+            
+            <form class="form-grid">
+                <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" value="">
+                </div>
+                
+                <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" value="">
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" id="mobile" value="">
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="password">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password" value="">
+                        <button type="button" class="password-toggle"></button>
+                    </div>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="" disabled>
+                </div>
+                
+                <div class="form-field full-width">
+                    <label for="registeredDate">Registered Date</label>
+                    <input type="text" id="registeredDate" value="" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
