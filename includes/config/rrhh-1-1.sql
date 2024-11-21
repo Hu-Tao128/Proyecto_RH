@@ -10,8 +10,8 @@ create table department(
 
 create table promotion(
     code varchar(5) primary key,
-    name varchar(40) not null,
-    description varchar(50) not null,
+    name varchar(60) not null,
+    description varchar(60) not null,
     status varchar(10) not null,
     publicationDate date not null,
     index idx_promotion(publicationDate)
@@ -19,7 +19,7 @@ create table promotion(
 
 CREATE TABLE `position` (
     code VARCHAR(5) PRIMARY KEY,
-    name VARCHAR(40) NOT NULL,
+    name VARCHAR(60) NOT NULL,
     salary FLOAT NOT NULL,
     departmentCode VARCHAR(5) NOT NULL,
     INDEX idx_position (name),
@@ -39,7 +39,7 @@ create table employee(
     mobile varchar(15) not null,
     password varchar(20) not null,
     contractDate date not null,
-    status varchar(30) not null,
+    status varchar(30) not null default 'Active',
     positionCode varchar(5) not null,
     supervisorId varchar(5),
     index idx_employee(lastName),
@@ -63,7 +63,7 @@ create table benefits(
     code varchar(5) primary key,
     name varchar(60) not null,
     type varchar(20) not null,
-    description varchar(40) not null,
+    description varchar(60) not null,
     index idx_benefits(name)
 );
 
