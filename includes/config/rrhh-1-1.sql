@@ -39,7 +39,7 @@ create table employee(
     mobile varchar(15) not null,
     password varchar(20) not null,
     contractDate date not null,
-    --status varchar(30) not null, aun no lo termino de implementar para los triggers
+    status varchar(30) not null,
     positionCode varchar(5) not null,
     supervisorId varchar(5),
     index idx_employee(lastName),
