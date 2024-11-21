@@ -18,7 +18,7 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
                 <div class="email-display"></div>
                 <button class="update-button">Update Profile Image</button>
             </div>
-            
+            <div>
             <form class="form-grid">
                 <div class="form-field">
                     <label for="firstName" class="labelPerfil">First Name</label>
@@ -53,6 +53,17 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
                     <input type="text" class="inputs" id="registeredDate" value="<?php echo $info['fechaContrato']?>" disabled>
                 </div>
             </form>
+            <br><br>
+            <div class="form-field full-width">
+                <a href="changeInformation.php">
+                    <button class="update-button">Change information</button>
+                </a>
+            </div>
+
+            </div>
+            
+            
+            
         </div>
     </div>
 </section>
