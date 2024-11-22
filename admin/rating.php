@@ -34,13 +34,8 @@ $rating = showRatings();
     <div>
     <h2>Make a score</h2>
     <form action="" class="formPage">
-            <fieldset>
+            <fieldset><br>
             <div class="firstInput">
-                    <label for="code">Code</label>
-                    <input type="text" id="code" name="code" placeholder="Write the code of the rating">
-                </div>
-                <br>
-                <div>
                     <label for="score">Score</label>
                     <input type="number" id="score" name="score" placeholder="Score of the employee">
                 </div>
@@ -57,7 +52,7 @@ $rating = showRatings();
                 <br>
                 <div>
                     <label for="employee">Employee</label>
-                    <input type="number" id="employee" name="employee" placeholder="Number of the employee">
+                    <input type="text" id="employee" name="employee" placeholder="Number of the employee">
                 </div>
                 <br>
                 <div>

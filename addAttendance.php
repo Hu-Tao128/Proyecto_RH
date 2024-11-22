@@ -10,7 +10,7 @@ if (isset($_POST['btnAddAttendance'])) {
     try {
         global $db_con;
 
-        $stmt = $db_con->prepare("SELECT number FROM attendance WHERE employ = :user AND endDate IS NULL");
+        $stmt = $db_con->prepare("SELECT number FROM attendance WHERE employee = :user AND endDate IS NULL");
         $stmt->bindParam(':user', $employ);
         $stmt->execute();
 
@@ -23,7 +23,7 @@ if (isset($_POST['btnAddAttendance'])) {
                     }
                   </script>";
         } else {
-            $stmt = $db_con->prepare("INSERT INTO attendance (startDate, employ) 
+            $stmt = $db_con->prepare("INSERT INTO attendance (startDate, employee) 
                                       VALUES (:startDate, :user)");
             $stmt->bindParam(':startDate', $startDate);
             $stmt->bindParam(':user', $employ);
@@ -44,13 +44,13 @@ if (isset($_POST['btnAddAttendance'])) {
 ?>
 
 <?php
-if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employ'])) {
-    $employ = $_GET['employ'];
+if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employee'])) {
+    $employ = $_GET['employee'];
     $endDate = date("Y-m-d H:i:s");
 
     try {
         global $db_con;
-        $stmt = $db_con->prepare("UPDATE attendance SET endDate = :endDate WHERE employ = :user AND endDate IS NULL");
+        $stmt = $db_con->prepare("UPDATE attendance SET endDate = :endDate WHERE employee = :user AND endDate IS NULL");
         $stmt->bindParam(':endDate', $endDate);
         $stmt->bindParam(':user', $employ);
 

@@ -33,13 +33,8 @@ $promotion = showPromotions();
     <div>
     <h2>Make a promotion</h2>
         <form action="addPromotion.php" class="formPage" method="POST">
-            <fieldset>
+            <fieldset><br>
             <div class="firstInput">
-                    <label for="code">Code</label>
-                    <input type="text" id="code" name="code" placeholder="Write the code of the promotion" maxlength="4">
-                </div>
-                <br>
-                <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Name of the promotion">
                 </div>

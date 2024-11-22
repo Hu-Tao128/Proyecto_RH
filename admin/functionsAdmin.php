@@ -66,7 +66,7 @@ function getInfoAbsences($supervisor) {
     $users = [];
 
     try {
-        $query = "SELECT a.id AS Absence, a.startDate, a.endDate, a.status, a.type, a.description, e.code, a.employee
+        $query = "SELECT a.id, a.startDate, a.endDate, a.status, a.type, a.description, e.code as employee
                   FROM absence AS a
                   INNER JOIN employee AS e ON a.employee = e.code
                   WHERE e.supervisorId = :supervisor";

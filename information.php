@@ -25,7 +25,7 @@ $image = $info['image'];
             </div>
             <div>
             <form class="form-grid" action="changeInformation.php" method="POST">
-                <input type="hidden" name="code" id="code" value="<?php $info['code']?>">
+                <input type="hidden" name="code" id="code" value="<?php echo $info['code']?>">
                 <div class="form-field">
                     <label for="firstName" class="labelPerfil">First Name</label>
                     <input type="text" class="inputs" id="firstName" value="<?php echo $info['firstName']?>" disabled>
@@ -58,13 +58,12 @@ $image = $info['image'];
                     <label for="registeredDate" class="labelPerfil">Registered Date</label>
                     <input type="text" class="inputs" id="registeredDate" value="<?php echo $info['contractDate']?>" disabled>
                 </div>
+                <div class="form-field full-width">
+                    <button class="update-button" type="submit" name="btnChangeInfo">Change Information</button>
+            </div>
             </form>
             <br><br>
-            <div class="form-field full-width">
-                <a href="changeInformation.php">
-                    <button class="update-button" type="submit" name="btnChangeInfo">Change information</button>
-                </a>
-            </div>
+            
 
             </div>
             

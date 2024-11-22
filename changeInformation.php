@@ -10,7 +10,7 @@ if (isset($_POST['btnChangeInfo'])) {
     try {
         global $db_con;
 
-        $query = ("UPDATE employee SET mobile = :mobile, password = :password WHERE code = :user");
+        $query = "UPDATE employee SET mobile = :mobile, password = :password WHERE code = :user";
         $stmt = $db_con->prepare($query);        
         $stmt->bindParam(':mobile', $newMobile, PDO::PARAM_STR);
         $stmt->bindParam(':password', $newPassword, PDO::PARAM_STR);
@@ -19,14 +19,15 @@ if (isset($_POST['btnChangeInfo'])) {
 
         if ($stmt->rowCount() > 0) {
             echo "<script>
-                    if (confirm('The Information was modify sucesfulled')) {
-                        window.location.href = 'information.php';
-                    } else {
-                        alert('Upss an error.');
-                        window.location.href = 'information.php';
-                    }
+                    alert('The information was successfully modified.');
+                    window.location.href = 'information.php';
                   </script>";
-        } 
+        } else {
+            echo "<script>
+                    alert('No changes were made.');
+                    window.location.href = 'information.php';
+                  </script>";
+        }
 
     } catch (PDOException $e) {
         echo "Error de conexión: " . $e->getMessage();

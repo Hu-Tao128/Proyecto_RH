@@ -515,6 +515,122 @@ WHERE e.id IN (
 
 --TRIGGERS
 
+/*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
+DELIMITER $$
+CREATE TRIGGER generate_benefit_code
+BEFORE INSERT ON benefits
+FOR EACH ROW
+BEGIN
+    DECLARE max_code INT;
+    DECLARE new_code VARCHAR(4);
+
+    -- Obtener el número máximo existente
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM benefits;
+
+    -- Generar el nuevo código
+    SET new_code = CONCAT('B', LPAD(max_code + 1, 3, '0'));
+
+    -- Validar unicidad del código
+    WHILE EXISTS (SELECT 1 FROM benefits WHERE code = new_code) DO
+        SET max_code = max_code + 1;
+        SET new_code = CONCAT('B', LPAD(max_code, 3, '0'));
+    END WHILE;
+
+    -- Asignar el código generado
+    SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+/*Trigger para el codigo de departament(RH)*/
+DELIMITER $$
+CREATE TRIGGER generate_department_code
+BEFORE INSERT ON department
+FOR EACH ROW
+BEGIN
+    DECLARE max_code INT;
+    DECLARE new_code VARCHAR(4);
+
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM department;
+
+    SET new_code = CONCAT('D', LPAD(max_code + 1, 3, '0'));
+
+    WHILE EXISTS (SELECT 1 FROM department WHERE code = new_code) DO
+        SET max_code = max_code + 1;
+        SET new_code = CONCAT('D', LPAD(max_code, 3, '0'));
+    END WHILE;
+
+    SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+-- Trigger para el codigo de promotion 
+DELIMITER $$
+CREATE TRIGGER generate_promotion_code
+BEFORE INSERT ON promotion
+FOR EACH ROW
+BEGIN
+    DECLARE max_code INT;
+    DECLARE new_code VARCHAR(4);
+
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM promotion;
+
+    SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
+
+    WHILE EXISTS (SELECT 1 FROM promotion WHERE code = new_code) DO
+        SET max_code = max_code + 1;
+        SET new_code = CONCAT('P', LPAD(max_code, 3, '0'));
+    END WHILE;
+
+    SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+-- Trigger para el codigo de los puestos
+DELIMITER $$
+CREATE TRIGGER generate_position_code
+BEFORE INSERT ON `position`
+FOR EACH ROW
+BEGIN
+    DECLARE max_code INT;
+    DECLARE new_code VARCHAR(4);
+
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM `position`;
+
+    SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
+
+    WHILE EXISTS (SELECT 1 FROM `position` WHERE code = new_code) DO
+        SET max_code = max_code + 1;
+        SET new_code = CONCAT('P', LPAD(max_code, 3, '0'));
+    END WHILE;
+
+    SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+--Trigger para el codigo de los raiting, este aun no tiene archivo php para agregar los rating desde la pagina web(trabajano en eso)
+DELIMITER $$
+CREATE TRIGGER generate_performance_code
+BEFORE INSERT ON performance
+FOR EACH ROW
+BEGIN
+    DECLARE max_code INT;
+    DECLARE new_code VARCHAR(5);
+
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 3) AS UNSIGNED)), 0) INTO max_code FROM performance;
+
+    SET new_code = CONCAT('PE', LPAD(max_code + 1, 3, '0'));
+
+    WHILE EXISTS (SELECT 1 FROM performance WHERE code = new_code) DO
+        SET max_code = max_code + 1;
+        SET new_code = CONCAT('PE', LPAD(max_code, 3, '0'));
+    END WHILE;
+
+    SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+/*Hasta aqui acaban los trigger que subi y probe*/
+
 /*Actualizar el salario de un empleado al cambiar su posicion*/
 delimiter $$
 CREATE TRIGGER update_salary_on_position_change

@@ -31,13 +31,8 @@ $benefits = showBenefits();
     <div>
         <h2>Make a benefie</h2>
         <form action="addBenefits.php" class="formPage" method="POST">
-        <fieldset>
-            <div class="firstInput">
-                    <label for="code">Code</label>
-                    <input type="text" id="code" name="code" placeholder="Write the code of the benefie" maxlength="4">
-                </div>
-                <br>
-                <div>
+        <fieldset><br>
+                <div class="firstInput">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Name of the benefie">
                 </div>
