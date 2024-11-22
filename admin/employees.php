@@ -26,7 +26,7 @@ $employ = getInfoEmploy($IDUsuario);
                 <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
                 <td><?= htmlspecialchars($renglon['email']) ?></td>
                 <td><?= htmlspecialchars($renglon['mobile']) ?></td>
-                <?php $workspace = workspace($renglon['positionCode']); ?>
+                <?php $workspace = workspace($renglon['code']); ?>
                 <td><?= htmlspecialchars($workspace) ?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
                 <td><a href="#" class="action-delete">Modify</a></td>
@@ -146,7 +146,7 @@ $employ = getInfoEmploy($IDUsuario);
                     <?php 
                         $workspace = listWorkstation();
                         foreach ($workspace as $renglon) { ?>
-                        <option value="<?= htmlspecialchars($renglon['numero']) ?>"><?= htmlspecialchars($renglon['nombre']) ?></option>
+                        <option value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['name']) ?></option>
                     <?php } ?>
                 </select>
             </div>

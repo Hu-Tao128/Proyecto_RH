@@ -216,7 +216,24 @@ function Absences($Usuario){
 	return $Absences;
 }
 
+function showWorkSpace() {
+    global $db_con;
+    $position = [];
 
+    try {
+        $query = "SELECT * FROM position";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $position[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $position;
+}
 /*
 function verPagos($usuario) {
 	
