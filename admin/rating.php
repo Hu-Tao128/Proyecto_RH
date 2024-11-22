@@ -33,7 +33,7 @@ $rating = showRatings();
     </div>
     <div>
     <h2>Make a score</h2>
-    <form action="" class="formPage">
+    <form action="addPerformance.php" class="formPage" method="POST">
             <fieldset><br>
             <div class="firstInput">
                     <label for="score">Score</label>
@@ -51,12 +51,19 @@ $rating = showRatings();
                 </div>
                 <br>
                 <div>
-                    <label for="employee">Employee</label>
-                    <input type="text" id="employee" name="employee" placeholder="Number of the employee">
+                    <label for="employee">Select a Employee:</label>
+                    <select name="employee" id="employee" required>
+                        <option value="">-- Employee --</option>
+                        <?php 
+                            $employees = getInfoEmploy($IDUsuario);
+                            foreach ($employees as $renglon) { ?>
+                            <option  value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['firstName']." ".$renglon['lastName']." ".$renglon['middleName']) ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <br>
                 <div>
-                    <button type="submit">Make a score</button>
+                    <button type="submit" name="btnAddPerformance">Make a score</button>
                 </div>
             </fieldset>
         </form>
