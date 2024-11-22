@@ -50,7 +50,7 @@ $employ = getInfoEmploy($IDUsuario);
                     <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
                     <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
                     <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
-                    <?php $workspace = workspace($renglon['positionCode']); ?>
+                    <?php $workspace = workspace($renglon['code']); ?>
                     <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
                 </section>
             </div>
