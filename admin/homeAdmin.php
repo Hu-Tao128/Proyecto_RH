@@ -4,9 +4,9 @@ require_once '../functions.php';
 
 $info = getUserInfo($IDUsuario);
             foreach ($info as $infos) {
-                $firstname = $infos['nombre'];
-                $lastname = $infos['apelPaterno']." ".$infos['apelMaterno'];
-                $contract = $infos['fechaContrato'];
+                $firstname = $infos['firstName'];
+                $lastname = $infos['lastName']." ".$infos['middleName'];
+                $contract = $infos['contractDate'];
 }
 
 $workspace = workspace($IDUsuario);
@@ -54,7 +54,7 @@ $salary = salary($IDUsuario);
             <?php 
                 $beneficios = showBenefits();
                 foreach ($beneficios as $beneficio) {
-                    echo $beneficio['nombre'] . "\n"; ?> <br><?php
+                    echo $beneficio['name'] . "\n"; ?> <br><?php
                 }
             ?>
         </p>

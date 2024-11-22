@@ -19,13 +19,13 @@ $promotion = showPromotions();
             </tr>
             <?php foreach($promotion as $renglon){ ?>
             <tr>
-                <td><?=$renglon['codigo']?></td>
-                <td><?=$renglon['nombre']?></td>
-                <td><?=$renglon['descripcion']?></td>
-                <td><?=$renglon['estado']?></td>
-                <td><?=$renglon['fechaPub']?></td>
+                <td><?=$renglon['code']?></td>
+                <td><?=$renglon['name']?></td>
+                <td><?=$renglon['description']?></td>
+                <td><?=$renglon['status']?></td>
+                <td><?=$renglon['publicationDate']?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="deletePromotion.php?id=<?= $renglon['codigo']?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deletePromotion.php?id=<?= $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
             </tr> <?php
             } ?>
         </table>

@@ -7,9 +7,9 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
     $action = $_GET['action'];
 
     if ($action == 'accept') {
-        $query = "UPDATE ausencia SET estado = 'Accepted' WHERE numero = :id";
+        $query = "UPDATE absence SET status = 'Accepted' WHERE id = :id";
     } elseif ($action == 'decline') {
-        $query = "UPDATE ausencia SET estado = 'Declined' WHERE numero = :id";
+        $query = "UPDATE absence SET status = 'Declined' WHERE id = :id";
     } else {
         echo "Invalid Option.";
         exit;

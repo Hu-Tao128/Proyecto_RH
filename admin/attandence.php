@@ -27,7 +27,7 @@ $attandance = getAttendance($IDUsuario);
                         <td><?= $renglon['endDate']?></td><?php
                     }?>
                 <?php 
-                $employ = $renglon['employ'];
+                $employ = $renglon['employee'];
                 $name = firstname($employ);
                 $lastname = lastname($employ);?>
                 <td><?php echo $name." ".$lastname;?></td>

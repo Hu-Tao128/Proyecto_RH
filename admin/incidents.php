@@ -19,15 +19,15 @@ $incident = showIncidents();
             </tr>
             <?php foreach($incident as $renglon) { ?></php>
           <tr>
-                <td><?=$renglon['numero']?></td>
-                <td><?=$renglon['tipo_Incident']?></td>
-                <td><?=$renglon['fechaIncident']?></td>
-                <td><?=$renglon['descripcion']?></td>
-                <?php $name = firstname($renglon['empleado']);?>
-                <?php $lastname = lastname($renglon['empleado']);?>
+                <td><?=$renglon['id']?></td>
+                <td><?=$renglon['incidentType']?></td>
+                <td><?=$renglon['incidentDate']?></td>
+                <td><?=$renglon['description']?></td>
+                <?php $name = firstname($renglon['employee']);?>
+                <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="deleteIncident.php?id=<?php echo $renglon['numero']; ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>

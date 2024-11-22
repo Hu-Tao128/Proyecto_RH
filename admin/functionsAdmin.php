@@ -113,7 +113,7 @@ function getAttendance($supervisor) {
     $attendance = [];
 
     try {
-        $query = "SELECT * FROM attendance as a INNER JOIN employee as e on a.employ = e.code WHERE e.supervisorId = :supervisor";
+        $query = "SELECT * FROM attendance as a INNER JOIN employee as e on a.employee = e.code WHERE e.supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
         $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         

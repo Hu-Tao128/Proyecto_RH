@@ -13,7 +13,7 @@ if (isset($_POST['btnBenfits'])) {
     try {
         global $db_con;
         
-        $stmt = $db_con->prepare("INSERT INTO beneficios (codigo, nombre, tipo, descripcion) 
+        $stmt = $db_con->prepare("INSERT INTO benefits (code, name, type, description) 
                                   VALUES (:code, :name, :type, :description)");
 
         $stmt->bindParam(':code', $code);
@@ -27,11 +27,11 @@ if (isset($_POST['btnBenfits'])) {
                     window.location.href = 'benefies.php';
                   </script>";
         } else {
-            echo "Error al agregar al empleado.";
+            echo "Error to upload the benefie.";
         }
 
     } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
+        echo "Connection error: " . $e->getMessage();
     }
 }
 ?>

@@ -15,7 +15,7 @@ if (isset($_POST['btnAddPromotion'])) {
         $date = (new DateTime())->format('Y-m-d');
         $status = "Active";
 
-        $stmt = $db_con->prepare("INSERT INTO promocion (codigo, nombre, descripcion, estado, fechaPub) 
+        $stmt = $db_con->prepare("INSERT INTO promotion (code, name, description, status, publicationDate) 
                                   VALUES (:code, :name, :description, :status, :date)");
 
         $stmt->bindParam(':code', $code);
@@ -30,11 +30,11 @@ if (isset($_POST['btnAddPromotion'])) {
                     window.location.href = 'promotions.php';
                   </script>";
         } else {
-            echo "Error al agregar la promocion.";
+            echo "Error adding the promotion.";
         }
 
     } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
+        echo "Connection error: " . $e->getMessage();
     }
 }
 ?>

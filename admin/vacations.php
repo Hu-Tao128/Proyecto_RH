@@ -21,17 +21,17 @@ $vacations = getInfovacations($IDUsuario);
             </tr>
             <?php foreach ($vacations as $renglon) { ?>
                 <tr>
-                    <td><?= $renglon['numero'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['fechaInicio'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['fechaFin'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['estado'] ?? 'N/A' ?></td>
+                    <td><?= $renglon['id'] ?? 'N/A' ?></td>
+                    <td><?= $renglon['startDate'] ?? 'N/A' ?></td>
+                    <td><?= $renglon['endDate'] ?? 'N/A' ?></td>
+                    <td><?= $renglon['status'] ?? 'N/A' ?></td>
                     <?php
-                        $name = firstname($renglon['empleado']); 
-                        $lastname = lastname($renglon['empleado']);
+                        $name = firstname($renglon['employee']); 
+                        $lastname = lastname($renglon['employee']);
                     ?>
                     <td><?= $name." ".$lastname ?? 'N/A' ?></td>
-                    <td><a href="modifyVacation.php?id=<?= $renglon['numero'] ?>&action=accept" class="action-modify">Accept</a></td>
-                    <td><a href="modifyVacation.php?id=<?= $renglon['numero'] ?>&action=decline" class="action-delete">Decline</a></td>
+                    <td><a href="modifyVacation.php?id=<?= $renglon['id'] ?>&action=accept" class="action-modify">Accept</a></td>
+                    <td><a href="modifyVacation.php?id=<?= $renglon['id'] ?>&action=decline" class="action-delete">Decline</a></td>
                 </tr>
             <?php } ?>
         </table>

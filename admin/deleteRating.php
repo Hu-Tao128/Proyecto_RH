@@ -9,7 +9,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action == 'delete'){
-        $query = "DELETE FROM desempenio where codigo = :id";
+        $query = "DELETE FROM performance where code = :id";
     } else {
         echo "invalid option";
         exit;
@@ -23,12 +23,12 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     
             if ($stmt->execute()) {
                 echo "<script>
-                        alert('Rating was Eliminated.');
+                        alert('Performance was Eliminated.');
                         window.location.href = 'rating.php';
                       </script>";
             } else {
                 echo "<script>
-                        alert('The rating wasn't elimanted');
+                        alert('The performance wasn't elimanted');
                         window.location.href = 'rating.php'
                       </script>";
             }

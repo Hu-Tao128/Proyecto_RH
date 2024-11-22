@@ -7,9 +7,9 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
     $action = $_GET['action'];
 
     if ($action == 'accept') {
-        $query = "UPDATE vacaciones SET estado = 'Accepted' WHERE empleado = :id";
+        $query = "UPDATE vacations SET status = 'Accepted' WHERE employee = :id";
     } elseif ($action == 'decline') {
-        $query = "UPDATE vacaciones SET estado = 'Declined' WHERE empleado = :id";
+        $query = "UPDATE vacations SET status = 'Declined' WHERE employee = :id";
     } else {
         echo "Invalid Option.";
         exit;
@@ -19,7 +19,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         global $db_con;
 
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id);
 
         if ($stmt->execute()) {
             echo "<script>

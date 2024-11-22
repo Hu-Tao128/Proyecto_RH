@@ -22,23 +22,23 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
             <form class="form-grid">
                 <div class="form-field">
                     <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" value="<?php echo $info['nombre']?>" disabled>
+                    <input type="text" id="firstName" value="<?php echo $info['firstName']?>" disabled>
                 </div>
                 
                 <div class="form-field">
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" value="<?php echo $info['apelPaterno']. " " .$info['apelMaterno'] ?>" disabled>
+                    <input type="text" id="lastName" value="<?php echo $info['lastName']. " " .$info['middleName'] ?>" disabled>
                 </div>
                 
                 <div class="form-field full-width">
                     <label for="mobile">Mobile</label>
-                    <input type="text" id="mobile" value="<?php echo $info['celular'] ?>" disabled>
+                    <input type="text" id="mobile" value="<?php echo $info['mobile'] ?>" disabled>
                 </div>
                 
                 <div class="form-field full-width">
                     <label for="password">Password</label>
                     <div class="password-field">
-                        <input type="password" id="password" value="<?php echo $info['contrasena']?>" disabled>
+                        <input type="password" id="password" value="<?php echo $info['password']?>" disabled>
                         <button type="button" class="password-toggle"></button>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
                 
                 <div class="form-field full-width">
                     <label for="registeredDate">Registered Date</label>
-                    <input type="text" id="registeredDate" value="<?php echo $info['fechaContrato']?>" disabled>
+                    <input type="text" id="registeredDate" value="<?php echo $info['contractDate']?>" disabled>
                 </div>
             </form>
         </div>

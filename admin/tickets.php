@@ -22,11 +22,11 @@ $tickets = showTickets();
             <?php
                 foreach ($tickets as $ticket=>$renglon) {?>
             <tr>
-                    <td><?=$renglon['numero']?></td>
-                    <td><?=$renglon['fecha']?></td>
-                    <td><?=$renglon['descripcion']?></td>
-                    <td><?=$renglon['estado']?></td><?php
-                    $employ = $renglon["empleado"];
+                    <td><?=$renglon['id']?></td>
+                    <td><?=$renglon['date']?></td>
+                    <td><?=$renglon['description']?></td>
+                    <td><?=$renglon['status']?></td><?php
+                    $employ = $renglon["employee"];
 
                     $firstname = firstname($employ);
                     $lastname = lastname($employ);
@@ -34,7 +34,7 @@ $tickets = showTickets();
                     <td><?php echo $firstname." ".$lastname; ?></td><?php
                 ?>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="deleteTickets.php?id=<?php echo $renglon['numero']?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteTickets.php?id=<?php echo $renglon['id']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
         }?>
         </table>

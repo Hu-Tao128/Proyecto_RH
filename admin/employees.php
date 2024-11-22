@@ -21,14 +21,14 @@ $employ = getInfoEmploy($IDUsuario);
             </tr>
             <?php foreach ($employ as $renglon) { ?>
             <tr>
-                <td><?= htmlspecialchars($renglon['numero']) ?></td>
-                <td><?= htmlspecialchars($renglon['nombre']) ?></td>
-                <td><?= htmlspecialchars($renglon['apelPaterno'] . " " . $renglon['apelMaterno']) ?></td>
+                <td><?= htmlspecialchars($renglon['code']) ?></td>
+                <td><?= htmlspecialchars($renglon['firstName']) ?></td>
+                <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
                 <td><?= htmlspecialchars($renglon['email']) ?></td>
-                <td><?= htmlspecialchars($renglon['celular']) ?></td>
-                <?php $workspace = workspace($renglon['numero']); ?>
+                <td><?= htmlspecialchars($renglon['mobile']) ?></td>
+                <?php $workspace = workspace($renglon['positionCode']); ?>
                 <td><?= htmlspecialchars($workspace) ?></td>
-                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['numero']; ?>">Show</a></td>
+                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
                 <td><a href="#" class="action-delete">Modify</a></td>
             </tr>
             <?php } ?>
@@ -36,21 +36,21 @@ $employ = getInfoEmploy($IDUsuario);
     </div>
 
     <?php foreach ($employ as $renglon) { ?>
-        <div class="modal" id="modal<?= $renglon['numero']; ?>">
+        <div class="modal" id="modal<?= $renglon['code']; ?>">
             <div class="modal-dialog">
                 <header class="modal-header">
                     <p>Employee Information</p>
-                    <button class="close-modal" data-close="modal<?= $renglon['numero']; ?>">X</button>
+                    <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
                 </header>
                 <section class="modal-content">
-                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['nombre']) ?></p>
-                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['apelPaterno']." ".$renglon['apelMaterno']) ?></p>
+                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
-                    <p><strong>Age:</strong> <?= htmlspecialchars($renglon['edad']) ?></p>
-                    <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['celular']) ?></p>
-                    <p><strong>Password:</strong> <?= htmlspecialchars($renglon['contrasena']) ?></p>
-                    <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['fechaContrato']) ?></p>
-                    <?php $workspace = workspace($renglon['numero']); ?>
+                    <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
+                    <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
+                    <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
+                    <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
+                    <?php $workspace = workspace($renglon['positionCode']); ?>
                     <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
                 </section>
             </div>

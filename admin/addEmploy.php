@@ -19,14 +19,14 @@ if (isset($_POST['btnAddEmploy'])) {
         $currentDate = new DateTime();
         $age = $currentDate->diff($birthDateObj)->y;
     } else {
-        echo "La fecha de nacimiento es obligatoria.";
+        echo "The birthday is mandatory.";
         exit;
     }
 
     $supervisor = $IDUsuario;
 
     if (empty($name) || empty($firstLastname) || empty($email) || empty($sex) || empty($phone) || empty($password) || empty($birthDate) || empty($workspace)) {
-        echo "Por favor, complete todos los campos del formulario.";
+        echo "Please complete all fields of the form.";
         exit;
     }
 
@@ -36,7 +36,7 @@ if (isset($_POST['btnAddEmploy'])) {
         $fechaContrato = (new DateTime())->format('Y-m-d'); // Fecha actual en formato Y-m-d
         
         // Preparamos la sentencia de inserción
-        $stmt = $db_con->prepare("INSERT INTO empleado (nombre, apelPaterno, apelMaterno, email, sexo, edad, celular, contrasena, fechaContrato, puesto, supervisor) 
+        $stmt = $db_con->prepare("INSERT INTO employee (firtsName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) 
                                   VALUES (:nombre, :apePaterno, :apeMaterno, :email, :sexo, :edad, :telefono, :contrasena, :fechaContrato, :puesto, :supervisor)");
 
         // Vinculamos los parámetros
@@ -54,16 +54,16 @@ if (isset($_POST['btnAddEmploy'])) {
 
         if ($stmt->execute()) {
             echo "<script>
-                    alert('Los datos del empleado fueron agregados con éxito.');
+                    alert('The employee's data was added successfully.');
                     window.location.href = 'employees.php';
                   </script>";
                   // Redirige a la página de lista de empleados
         } else {
-            echo "Error al agregar al empleado.";
+            echo "Error adding employee.";
         }
 
     } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
+        echo "Connection error: " . $e->getMessage();
     }
 }
 ?>

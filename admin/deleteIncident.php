@@ -9,7 +9,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action == 'delete'){
-        $query = "DELETE FROM incidente where numero = :id";
+        $query = "DELETE FROM incident where id = :id";
     } else {
         echo "invalid option";
         exit;

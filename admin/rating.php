@@ -20,13 +20,13 @@ $rating = showRatings();
             </tr>
             <?php foreach($rating as $renglon) {?>
             <tr>
-                <td><?= $renglon['codigo'] ?></td>
-                <td><?= $renglon['puntaje']?></td>
-                <td><?= $renglon['fechaEvaluacion']?></td>
-                <td><?= $renglon['comentarios']?></td>
-                <td><?= $renglon['empleado']?></td>
+                <td><?= $renglon['code'] ?></td>
+                <td><?= $renglon['score']?></td>
+                <td><?= $renglon['evaluationDate']?></td>
+                <td><?= $renglon['comments']?></td>
+                <td><?= $renglon['employee']?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="deleteRating.php?id=<?php echo $renglon['codigo']; ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteRating.php?id=<?php echo $renglon['code']; ?>&action=delete" class="action-delete">Delete</a></td>
             </tr>
             <?php }?>
         </table>

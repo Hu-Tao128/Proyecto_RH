@@ -18,12 +18,12 @@ $benefits = showBenefits();
             </tr>
             <?php foreach($benefits as $renglon) { ?>
             <tr>
-                <td><?=$renglon['codigo']?></td>
-                <td><?=$renglon['nombre']?></td>
-                <td><?=$renglon['tipo']?></td>
-                <td><?=$renglon['descripcion']?></td>
+                <td><?=$renglon['code']?></td>
+                <td><?=$renglon['name']?></td>
+                <td><?=$renglon['type']?></td>
+                <td><?=$renglon['description']?></td>
                 <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="deleteBenefies.php?id=<?= $renglon['codigo']?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteBenefies.php?id=<?= $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>

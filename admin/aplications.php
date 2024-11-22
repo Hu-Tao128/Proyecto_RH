@@ -20,16 +20,16 @@ $Promotions = showPromotions();
             </tr>
             <?php foreach ($Application as $renglon){ ?>
             <tr>
-                <td><?=$renglon['numero']?></td>
-                <td><?=$renglon['fechaPub']?></td>
-                <td><?=$renglon['estado']?></td>
-                <?php $name = firstname($renglon['empleado']);?>
-                <?php $lastname = lastname($renglon['empleado']);?>
+                <td><?=$renglon['id']?></td>
+                <td><?=$renglon['publicationDate']?></td>
+                <td><?=$renglon['status']?></td>
+                <?php $name = firstname($renglon['employee']);?>
+                <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
-                <?php $Promotion = getInfoPromotion($renglon['promocion']);?>
+                <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
                 <td><?= $Promotion ?></td>
-                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['promocion']; ?>">Details</a></td>
-                <td><a href="deleteAplications.php?id=<?= $renglon['numero'] ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['promotion']; ?>">Details</a></td>
+                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             }   ?>
         </table>
