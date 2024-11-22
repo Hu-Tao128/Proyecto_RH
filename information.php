@@ -5,6 +5,7 @@ require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
 
 $info = getUserInfo($IDUsuario)[0] ?? [];
+$image = $info['image'];
 ?>
 <section class="position"><br>
     <div class="container">
@@ -13,13 +14,18 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
         <div class="profile-section">
             <div class="profile-image">
                 <div class="avatar">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23AFD488'/%3E%3Ccircle cx='50' cy='35' r='20' fill='%23FFF'/%3E%3Cpath d='M50 60 C20 60 10 90 10 100 L90 100 C90 90 80 60 50 60Z' fill='%23FFF'/%3E%3C/svg%3E" alt="Profile Picture">
+                    <?php if(empty($image)){?>
+                        <img src="images/Perfil.svg" alt="Profile Picture"><?php
+                    }else{  ?>
+                        <img src="imageUser/<?=$image?>" alt=""><?php
+                    } ?>
                 </div>
                 <div class="email-display"></div>
                 <button class="update-button">Update Profile Image</button>
             </div>
             <div>
-            <form class="form-grid">
+            <form class="form-grid" action="changeInformation.php" method="POST">
+                <input type="hidden" name="code" id="code" value="<?php $info['code']?>">
                 <div class="form-field">
                     <label for="firstName" class="labelPerfil">First Name</label>
                     <input type="text" class="inputs" id="firstName" value="<?php echo $info['firstName']?>" disabled>
@@ -32,13 +38,13 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
                 
                 <div class="form-field full-width">
                     <label for="mobile" class="labelPerfil">Mobile</label>
-                    <input type="text"class="inputs" id="mobile" value="<?php echo $info['mobile'] ?>" disabled>
+                    <input type="text"class="inputs" name="mobile" id="mobile" value="<?php echo $info['mobile'] ?>">
                 </div>
                 
                 <div class="form-field full-width">
                     <label for="password" class="labelPerfil">Password</label>
                     <div class="password-field">
-                        <input type="password" class="inputs" id="password" value="<?php echo $info['password']?>" disabled>
+                        <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']?>">
                         <button type="button" class="password-toggle"></button>
                     </div>
                 </div>
@@ -56,7 +62,7 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
             <br><br>
             <div class="form-field full-width">
                 <a href="changeInformation.php">
-                    <button class="update-button">Change information</button>
+                    <button class="update-button" type="submit" name="btnChangeInfo">Change information</button>
                 </a>
             </div>
 
