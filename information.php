@@ -22,23 +22,23 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
             <form class="form-grid">
                 <div class="form-field">
                     <label for="firstName" class="labelPerfil">First Name</label>
-                    <input type="text" class="inputs" id="firstName" value="<?php echo $info['nombre']?>" disabled>
+                    <input type="text" class="inputs" id="firstName" value="<?php echo $info['firstName']?>" disabled>
                 </div>
                 
                 <div class="form-field">
                     <label for="lastName" class="labelPerfil">Last Name</label>
-                    <input type="text" class="inputs" id="lastName" value="<?php echo $info['apelPaterno']. " " .$info['apelMaterno'] ?>" disabled>
+                    <input type="text" class="inputs" id="lastName" value="<?php echo $info['lastName']. " " .$info['middleName'] ?>" disabled>
                 </div>
                 
                 <div class="form-field full-width">
                     <label for="mobile" class="labelPerfil">Mobile</label>
-                    <input type="text"class="inputs" id="mobile" value="<?php echo $info['celular'] ?>" disabled>
+                    <input type="text"class="inputs" id="mobile" value="<?php echo $info['mobile'] ?>" disabled>
                 </div>
                 
                 <div class="form-field full-width">
                     <label for="password" class="labelPerfil">Password</label>
                     <div class="password-field">
-                        <input type="password" class="inputs" id="password" value="<?php echo $info['contrasena']?>" disabled>
+                        <input type="password" class="inputs" id="password" value="<?php echo $info['password']?>" disabled>
                         <button type="button" class="password-toggle"></button>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ $info = getUserInfo($IDUsuario)[0] ?? [];
                 
                 <div class="form-field full-width">
                     <label for="registeredDate" class="labelPerfil">Registered Date</label>
-                    <input type="text" class="inputs" id="registeredDate" value="<?php echo $info['fechaContrato']?>" disabled>
+                    <input type="text" class="inputs" id="registeredDate" value="<?php echo $info['contractDate']?>" disabled>
                 </div>
             </form>
             <br><br>

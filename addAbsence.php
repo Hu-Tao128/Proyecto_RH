@@ -17,7 +17,7 @@ if (isset($_POST['btnAbsence'])) {
     try {
         global $db_con;
 
-        $stmt = $db_con->prepare("INSERT INTO ausencia (fechaInicio, fechaFin, estado, tipo, descripcion, empleado) 
+        $stmt = $db_con->prepare("INSERT INTO absence (startDate, andDate, status, type, description, employee) 
                                   VALUES (:startDate, :endDate, :status, :type, :description, :user)");
 
         $stmt->bindParam(':startDate', $startDate);

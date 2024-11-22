@@ -1,10 +1,9 @@
 <?php
 $db_host = "localhost";
-$db_name = "rrhh";
+$db_name = "hr";
 $root = "root";
 $db_pass = "";
 
-// Ruta al socket (ajusta esta ruta según sea necesario)
 $socket = "/var/run/mysqld/mysqld.sock";
 
 try {

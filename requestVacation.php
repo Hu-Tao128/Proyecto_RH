@@ -41,9 +41,9 @@ $vacations = vacactions($IDUsuario);
             <?php 
                 foreach($vacations as $renglon){ ?>
             <tr>
-                <td><?=$renglon['fechaInicio']?></td>
-                <td><?=$renglon['fechaFin']?></td>
-                <td><?=$renglon['estado']?></td>
+                <td><?=$renglon['startDate']?></td>
+                <td><?=$renglon['endDate']?></td>
+                <td><?=$renglon['status']?></td>
             </tr><?php
                 }   ?>
         </table>

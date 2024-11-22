@@ -14,7 +14,7 @@ if (isset($_POST['btnaddTicket'])) {
 
         $dateNow = (new DateTime())->format('Y-m-d');//formafto de .a fecha
         
-        $stmt = $db_con->prepare("INSERT INTO quejas (fecha, descripcion, estado, empleado) 
+        $stmt = $db_con->prepare("INSERT INTO complaints (date , description, status, employee) 
                                   VALUES (:dateNow, :descriptions, :estado, :user)");
 
         $stmt->bindParam(':dateNow', $dateNow);

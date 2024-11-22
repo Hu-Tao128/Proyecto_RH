@@ -14,7 +14,7 @@ if (isset($_POST['btnReport'])) {
     try {
         global $db_con;
 
-        $stmt = $db_con->prepare("INSERT INTO incidente (tipo_Incident, fechaIncident, descripcion, empleado) 
+        $stmt = $db_con->prepare("INSERT INTO incident (incidentType, incidentDate, description, employee) 
                                   VALUES (:type, :dateIncident, :description, :user)");
 
         $stmt->bindParam(':type', $type);

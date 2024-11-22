@@ -5,7 +5,7 @@ function showTickets() {
     $tickets = [];
 
     try {
-        $query = "SELECT * FROM quejas";
+        $query = "SELECT * FROM complaints";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -23,7 +23,7 @@ function getInfoPromotion($id) {
     global $db_con;
 
     try {
-        $query = "SELECT nombre FROM promocion WHERE codigo = :id";
+        $query = "SELECT name FROM promotion WHERE code = :id";
         $stmt = $db_con->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
         
@@ -35,7 +35,7 @@ function getInfoPromotion($id) {
         exit("Error en la consulta: " . $e->getMessage());
     }
 
-    return $row['nombre'];
+    return $row['name'];
 }
 
 function getInfovacations($supervisor) {
@@ -43,9 +43,9 @@ function getInfovacations($supervisor) {
     $users = [];
 
     try {
-        $query = "SELECT * FROM vacaciones as v INNER JOIN empleado as e on v.empleado = e.numero WHERE e.supervisor = :supervisor";
+        $query = "SELECT * FROM vacations as v INNER JOIN employee as e on v.employee = e.code WHERE e.supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         
         // Ejecutar la consulta
         $stmt->execute();
@@ -66,12 +66,12 @@ function getInfoAbsences($supervisor) {
     $users = [];
 
     try {
-        $query = "SELECT a.numero AS Absence, a.fechaInicio, a.fechaFin, a.estado, a.tipo, a.descripcion, e.numero, a.empleado
-                  FROM ausencia AS a
-                  INNER JOIN empleado AS e ON a.empleado = e.numero
-                  WHERE e.supervisor = :supervisor";
+        $query = "SELECT a.id AS Absence, a.startDate, a.endDate, a.status, a.type, a.description, e.code, a.employee
+                  FROM absence AS a
+                  INNER JOIN employee AS e ON a.employee = e.code
+                  WHERE e.supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         
         $stmt->execute();
 
@@ -92,9 +92,9 @@ function getInfoEmploy($supervisor) {
     $users = [];
 
     try {
-        $query = "SELECT * FROM empleado WHERE supervisor = :supervisor";
+        $query = "SELECT * FROM employee WHERE supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         
         $stmt->execute();
 
@@ -113,9 +113,9 @@ function getAttendance($supervisor) {
     $attendance = [];
 
     try {
-        $query = "SELECT * FROM attendance as a INNER JOIN empleado as e on a.employ = e.numero WHERE e.supervisor = :supervisor";
+        $query = "SELECT * FROM attendance as a INNER JOIN employee as e on a.employ = e.code WHERE e.supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_INT); 
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         
         $stmt->execute();
 
@@ -134,7 +134,7 @@ function showIncidents(){
     $incidents = [];
 
     try {
-        $query = "SELECT * FROM incidente";
+        $query = "SELECT * FROM incident";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -153,7 +153,7 @@ function showPromotions(){
     $promotions = [];
 
     try {
-        $query = "SELECT * FROM promocion";
+        $query = "SELECT * FROM promotion";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -172,7 +172,7 @@ function showApplication(){
     $applications = [];
 
     try {
-        $query = "SELECT * FROM postulacion";
+        $query = "SELECT * FROM application";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -191,7 +191,7 @@ function listWorkstation(){
     $workspace = [];
 
     try {
-        $query = "SELECT * FROM puesto";
+        $query = "SELECT * FROM position";
         $stm = $db_con->prepare($query);
         $stm->execute();
     
@@ -228,7 +228,7 @@ function showRatings(){
     $rating = [];
 
     try {
-        $query = "SELECT * FROM desempenio";
+        $query = "SELECT * FROM performance";
         $stm = $db_con->prepare($query);
         $stm->execute();
     

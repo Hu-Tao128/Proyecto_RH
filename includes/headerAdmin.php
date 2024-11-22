@@ -11,11 +11,11 @@
     include_once("../functions.php");
 
         session_start();
-        if (!isset($_SESSION['usuario'])) {
+        if (!isset($_SESSION['user'])) {
             header("Location: ../principal.php");
             exit();
         }
-        $IDUsuario = $_SESSION['usuario'];
+        $IDUsuario = $_SESSION['user'];
 
         if(!empty(getIDSupervisor($IDUsuario))){
             header("Location: ../home.php");

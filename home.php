@@ -5,15 +5,13 @@ require_once 'functions.php';
 
 $info = getUserInfo($IDUsuario);
             foreach ($info as $infos) {
-                $firstname = $infos['nombre'];
-                $lastname = $infos['apelPaterno']." ".$infos['apelMaterno'];
-                $contract = $infos['fechaContrato'];
-                $supervisor = $infos['supervisor'];
+                $firstname = $infos['firstName'];
+                $lastname = $infos['lastName']." ".$infos['middleName'];
+                $contract = $infos['contractDate'];
+                $supervisor = $infos['supervisorId'];
 }
 
 $workspace = workspace($IDUsuario);
-$nameS = firstname($supervisor);
-$SupLastNames = lastname($supervisor);
 $salary = salary($IDUsuario);
 
 //mi priner commit
@@ -39,7 +37,9 @@ $salary = salary($IDUsuario);
             Workstation: <?php echo $workspace; ?> <br>
             Contract date: <?php echo $contract; ?> <br>
             <?php 
-                if ($supervisor != "" && $supervisor != null) { ?>
+                if ($supervisor != "" && $supervisor != null) {
+                    $nameS = firstname($supervisor);
+                    $SupLastNames = lastname($supervisor); ?>
                     Supervisor: <?php echo $nameS." ".$SupLastNames; ?> <br> 
             <?php } ?>
         </p>
@@ -54,7 +54,7 @@ $salary = salary($IDUsuario);
             <?php 
                 $beneficios = showBenefits();
                 foreach ($beneficios as $beneficio) {
-                    echo $beneficio['nombre'] . "\n"; ?> <br><?php
+                    echo $beneficio['name'] . "\n"; ?> <br><?php
                 }
             ?>
         </p>

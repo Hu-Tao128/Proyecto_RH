@@ -15,7 +15,7 @@ if (isset($_POST['btnaddVacation'])) {
     try {
         global $db_con;
 
-        $stmt = $db_con->prepare("INSERT INTO vacaciones (fechaInicio, fechaFin, estado, empleado) 
+        $stmt = $db_con->prepare("INSERT INTO vacations (startDate, enddate, status, employee) 
                                   VALUES (:startDate, :endDate, :status, :user)");
 
         $stmt->bindParam(':startDate', $startDate);

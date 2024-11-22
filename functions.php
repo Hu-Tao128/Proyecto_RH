@@ -5,13 +5,13 @@ function firstname($usuario) {
     $Nombre = "";
 
     try {
-        $query = "SELECT nombre FROM empleado WHERE numero = :usuario";
+        $query = "SELECT firstName FROM employee WHERE code = :usuario";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_INT); // Si numero es entero, param_int
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR); // Si numero es entero, param_int
         $stmt->execute();
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $Nombre = $row['nombre'];
+            $Nombre = $row['firstName'];
         }
     } catch (PDOException $e) {
         exit("Error en la consulta: " . $e->getMessage());
@@ -25,13 +25,13 @@ function lastname($usuario) {
     $lastname = "";
 
     try {
-        $query = "SELECT apelPaterno, apelMaterno FROM empleado WHERE numero = :usuario";
+        $query = "SELECT lastName, middleName FROM employee WHERE code = :usuario";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_INT); // Si numero es entero, param_int
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR); // Si numero es entero, param_int
         $stmt->execute();
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $lastname = $row['apelPaterno'] . " " . $row['apelMaterno'];
+            $lastname = $row['lastName'] . " " . $row['middleName'];
         }
     } catch (PDOException $e) {
         exit("Error en la consulta: " . $e->getMessage());
@@ -45,13 +45,13 @@ function getIDSupervisor($usuario) {
     $IDSupervisor = 0;
 
     try {
-        $query = "SELECT supervisor FROM empleado WHERE numero = :usuario";
+        $query = "SELECT supervisorId FROM employee WHERE code = :user";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_INT); // Si numero es entero, param_int
+        $stmt->bindParam(':user', $usuario, PDO::PARAM_INT); // Si numero es entero, param_int
         $stmt->execute();
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $IDSupervisor = $row['supervisor'];
+            $IDSupervisor = $row['supervisorId'];
         }
     } catch (PDOException $e) {
         exit("Error en la consulta: " . $e->getMessage());
@@ -60,18 +60,18 @@ function getIDSupervisor($usuario) {
     return $IDSupervisor;
 }
 
-function workspace($usuario){
+function workspace($User){
 	global $db_con;
 	$workspace = "";
 
 	try{
-		$query = "SELECT p.nombre FROM puesto as p INNER JOIN empleado as e on e.puesto = p.numero WHERE e.numero = :usuario";
+		$query = "SELECT p.name FROM position as p INNER JOIN employee as e on e.positionCode = p.code WHERE e.code = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->bindParam("user", $User, PDO::PARAM_INT);
 		$stm->execute();
 
 		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$workspace = $row["nombre"];
+			$workspace = $row["name"];
 		}
 	} catch (PDOException $e) {
 		exit("Error en la consulta: " . $e->getMessage());
@@ -80,18 +80,38 @@ function workspace($usuario){
 	return $workspace;
 }
 
+function department($User){
+	global $db_con;
+	$department = "";
+
+	try{
+		$query = "SELECT d.code FROM department as d INNER JOIN position as p on p.departmentCode = d.code INNER JOIN employee as e ON e.positionCode = p.code WHERE e.code = :user";
+		$stm = $db_con->prepare($query);
+		$stm->bindParam("user", $User, PDO::PARAM_INT);
+		$stm->execute();
+
+		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$department = $row["code"];
+		}
+	} catch (PDOException $e) {
+		exit("Error en la consulta: " . $e->getMessage());
+	}
+
+	return $department;
+}
+
 function salary($usuario){
 	global $db_con;
 	$salary = "";
 
 	try{
-		$query = "SELECT p.salario FROM puesto as p INNER JOIN empleado as e on e.puesto = p.numero WHERE e.numero = :usuario";
+		$query = "SELECT p.salary FROM position as p INNER JOIN employee as e on e.positionCode = p.code WHERE e.code = :usuario";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->bindParam("usuario", $usuario, PDO::PARAM_STR);
 		$stm->execute();
 
 		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$salary = $row["salario"];
+			$salary = $row["salary"];
 		}
 	} catch (PDOException $e) {
 		exit("Error en la consulta: " . $e->getMessage());
@@ -105,13 +125,13 @@ function contract($usuario){
 	$contract = "";
 
 	try{
-		$query = "SELECT fechaContrato FROM empleado WHERE numero = :usuario";
+		$query = "SELECT contractDate FROM employee WHERE code = :usuario";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->bindParam("usuario", $usuario, PDO::PARAM_STR);
 		$stm->execute();
 
 		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
-			$contract = $row["fechaContrato"];
+			$contract = $row["contractDate"];
 		}
 	} catch (PDOException $e) {
 		exit("Error en la consulta: " . $e->getMessage());
@@ -125,7 +145,7 @@ function showBenefits() {
     $benefits = [];
 
     try {
-        $query = "SELECT codigo, nombre, tipo, descripcion FROM beneficios";
+        $query = "SELECT code, name, type, description FROM benefits";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -139,14 +159,14 @@ function showBenefits() {
     return $benefits;
 }
 
-function getUserInfo($usuario) {
+function getUserInfo($User) {
     global $db_con;
     $infoUser = [];
 
     try {
-        $query = "SELECT * FROM empleado WHERE numero = :usuario";
+        $query = "SELECT * FROM employee WHERE code = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->bindParam("user", $User, PDO::PARAM_INT);
 		$stm->execute();
 
         while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -164,9 +184,9 @@ function vacactions($usuario){
 	$vacactions = [];
 
 	try{
-		$query = "SELECT * FROM vacaciones WHERE empleado = :usuario";
+		$query = "SELECT * FROM vacations WHERE employee = :usuario";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("usuario", $usuario, PDO::PARAM_INT);
+		$stm->bindParam("usuario", $usuario, PDO::PARAM_STR);
 		$stm->execute();
 
 		$vacactions = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -183,9 +203,9 @@ function Absences($Usuario){
 	$Absences = [];
 
 	try{
-		$query = "SELECT * FROM ausencia WHERE empleado = :user";
+		$query = "SELECT * FROM absence WHERE employee = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("user", $Usuario, PDO::PARAM_INT);
+		$stm->bindParam("user", $Usuario, PDO::PARAM_STR);
 		$stm->execute();
 
 		$Absences = $stm->fetchAll(PDO::FETCH_ASSOC);

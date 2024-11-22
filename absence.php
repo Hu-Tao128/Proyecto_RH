@@ -52,11 +52,11 @@ $absences = Absences($IDUsuario);
             <?php 
                 foreach($absences as $renglon){ ?>
             <tr>
-                <td><?=$renglon['fechaInicio']?></td>
-                <td><?=$renglon['fechaFin']?></td>
-                <td><?=$renglon['estado']?></td>
-                <td><?=$renglon['tipo']?></td>
-                <td><?=$renglon['descripcion']?></td>
+                <td><?=$renglon['startDate']?></td>
+                <td><?=$renglon['endDate']?></td>
+                <td><?=$renglon['status']?></td>
+                <td><?=$renglon['type']?></td>
+                <td><?=$renglon['description']?></td>
             </tr><?php
                 }   ?>
         </table>

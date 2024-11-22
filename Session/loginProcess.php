@@ -6,30 +6,30 @@ require_once '../functions.php';
 session_start();
 
 if (isset($_POST['btnLogin'])) {
-    $Usuario = trim($_POST['code']);
+    $User = trim($_POST['code']);
     $Contrasena = trim($_POST['password']);
     
     try {			
         global $db_con;
-        $stmt = $db_con->prepare("SELECT * FROM empleado WHERE numero = :usuario");
-        $stmt->bindParam(':usuario', $Usuario, PDO::PARAM_INT); 
+        $stmt = $db_con->prepare("SELECT * FROM employee WHERE code = :user");
+        $stmt->bindParam(':user', $User, PDO::PARAM_STR); 
         $stmt->execute();
         
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $count = $stmt->rowCount();
         
-        $DBContrasena = ($count == 0) ? "" : $row['contrasena'];
+        $DBContrasena = ($count == 0) ? "" : $row['password'];
         
         if ($DBContrasena === $Contrasena) {
-            $_SESSION['usuario'] = $row['numero'];
+            $_SESSION['user'] = $row['code'];
            
-            $info = getUserInfo($Usuario);
+            $info = getUserInfo($User);
             foreach ($info as $infos) {
-                $supervisor = $infos['supervisor'];
+                $supervisor = $infos['supervisorId'];
             }
 
             if (empty($supervisor)) {
-                if(workspace($Usuario) == 'Analista') {
+                if(department($User) == 'D001') {
                     header("location: ../Human_Resources/homeRH.php");
                 }else{
                     header("Location: ../admin/homeAdmin.php");
