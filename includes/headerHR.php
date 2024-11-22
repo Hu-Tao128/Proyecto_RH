@@ -17,7 +17,7 @@
         }
         $IDUsuario = $_SESSION['user'];
 
-        if(!empty(getIDSupervisor($IDUsuario)) && department($IDUsuario) != "Human Resources"){
+        if(!empty(getIDSupervisor($IDUsuario)) && department($IDUsuario) != "D001"){
             header("Location: ../home.php");
             exit();
         }

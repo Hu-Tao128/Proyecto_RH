@@ -17,10 +17,13 @@
         }
         $IDUsuario = $_SESSION['user'];
 
-        if(!empty(getIDSupervisor($IDUsuario))){
+        $supervisorId = getIDSupervisor($IDUsuario);
+
+        if (!empty($supervisorId)) {
             header("Location: ../home.php");
             exit();
         }
+
         
     ?>
     <title>RH</title>

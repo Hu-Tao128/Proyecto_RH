@@ -27,7 +27,7 @@ function lastname($usuario) {
     try {
         $query = "SELECT lastName, middleName FROM employee WHERE code = :usuario";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR); // Si numero es entero, param_int
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -47,7 +47,7 @@ function getIDSupervisor($usuario) {
     try {
         $query = "SELECT supervisorId FROM employee WHERE code = :user";
         $stmt = $db_con->prepare($query);
-        $stmt->bindParam(':user', $usuario, PDO::PARAM_INT); // Si numero es entero, param_int
+        $stmt->bindParam(':user', $usuario, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -67,7 +67,7 @@ function workspace($User){
 	try{
 		$query = "SELECT p.name FROM position as p INNER JOIN employee as e on e.positionCode = p.code WHERE e.code = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("user", $User, PDO::PARAM_INT);
+		$stm->bindParam("user", $User, PDO::PARAM_STR);
 		$stm->execute();
 
 		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
@@ -87,7 +87,7 @@ function department($User){
 	try{
 		$query = "SELECT d.code FROM department as d INNER JOIN position as p on p.departmentCode = d.code INNER JOIN employee as e ON e.positionCode = p.code WHERE e.code = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("user", $User, PDO::PARAM_INT);
+		$stm->bindParam("user", $User, PDO::PARAM_STR);
 		$stm->execute();
 
 		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
@@ -166,7 +166,7 @@ function getUserInfo($User) {
     try {
         $query = "SELECT * FROM employee WHERE code = :user";
 		$stm = $db_con->prepare($query);
-		$stm->bindParam("user", $User, PDO::PARAM_INT);
+		$stm->bindParam("user", $User, PDO::PARAM_STR);
 		$stm->execute();
 
         while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
