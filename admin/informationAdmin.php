@@ -6,6 +6,10 @@ require_once '../functions.php';
 $info = getUserInfo($IDUsuario)[0] ?? [];
 $image = $info['image'];
 ?>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
 <section class="position"><br>
     <div class="container">
         <h1 class="tittlePerfil">Profile Settings about Employe <?php echo $IDUsuario?></h1><br><br>
@@ -66,14 +70,13 @@ $image = $info['image'];
                 </div>
                 
                 <div class="form-field full-width">
-                    <label for="password" class="labelPerfil">Password</label>
-                    <div class="password-field" style="display: flex; align-items: center;">
+                        <label for="password" class="labelPerfil">Password</label>
+                    <div class="password-container" style="display: flex; align-items: center;">
                         <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']; ?>" style="flex: 1;">
-                        <button type="button" class="password-toggle" id="togglePassword" style="background: none; border: none; cursor: pointer; padding: 0 10px;">
-                            <img src="images/eye-icon.svg" alt="Show Password" id="eyeIcon" style="width: 20px; height: 20px;">
-                        </button>
+                            <i class="fas fa-eye-slash" style="cursor: pointer; margin-left: 10px;" onclick="togglePasswordVisibility()"></i>
                     </div>
                 </div>
+
                 
                 <div class="form-field full-width">
                     <label for="email" class="labelPerfil">Email</label>
@@ -123,18 +126,19 @@ $image = $info['image'];
     });
 
 
-
-    document.getElementById('togglePassword').addEventListener('click', function () {
+    function togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
-    const eyeIcon = document.getElementById('eyeIcon');
+    const eyeIcon = document.querySelector('.password-container i');
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        eyeIcon.src = 'images/eye-slash-icon.svg';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
     } else {
         passwordInput.type = 'password';
-        eyeIcon.src = 'images/eye-icon.svg';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
     }
-});
+}
 
 </script>
 
