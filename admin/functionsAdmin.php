@@ -43,7 +43,7 @@ function getInfovacations($supervisor) {
     $users = [];
 
     try {
-        $query = "SELECT * FROM vacations as v INNER JOIN employee as e on v.employee = e.code WHERE e.supervisorId = :supervisor";
+        $query = "SELECT v.id, v.startDate, v.endDate, v.status as VStatus, v.employee FROM vacations as v INNER JOIN employee as e on v.employee = e.code WHERE e.supervisorId = :supervisor";
         $stmt = $db_con->prepare($query);
         $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
         

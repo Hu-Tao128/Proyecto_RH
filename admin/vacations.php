@@ -24,7 +24,7 @@ $vacations = getInfovacations($IDUsuario);
                     <td><?= $renglon['id'] ?? 'N/A' ?></td>
                     <td><?= $renglon['startDate'] ?? 'N/A' ?></td>
                     <td><?= $renglon['endDate'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['status'] ?? 'N/A' ?></td>
+                    <td><?= $renglon['VStatus'] ?? 'N/A' ?></td>
                     <?php
                         $name = firstname($renglon['employee']); 
                         $lastname = lastname($renglon['employee']);
