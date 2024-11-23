@@ -25,19 +25,14 @@ if (isset($_POST['btnAddEmploy'])) {
 
     $supervisor = $IDUsuario;
 
-    if (empty($name) || empty($firstLastname) || empty($email) || empty($sex) || empty($phone) || empty($password) || empty($birthDate) || empty($workspace)) {
-        echo "Please complete all fields of the form.";
-        exit;
-    }
-
     try {
         global $db_con; // Usamos la variable global como es las funciones
 
         $fechaContrato = (new DateTime())->format('Y-m-d'); // Fecha actual en formato Y-m-d
         
         // Preparamos la sentencia de inserción
-        $stmt = $db_con->prepare("INSERT INTO employee (firtsName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) 
-                                  VALUES (:nombre, :apePaterno, :apeMaterno, :email, :sexo, :edad, :telefono, :contrasena, :fechaContrato, :puesto, :supervisor)");
+        $stmt = $db_con->prepare("INSERT INTO employee (code, firstName, lastName, middleName, email, gender, age, mobile, password, contractDate, positionCode, supervisorId) 
+                                  VALUES ('code', :nombre, :apePaterno, :apeMaterno, :email, :sexo, :edad, :telefono, :contrasena, :fechaContrato, :puesto, :supervisor)");
 
         // Vinculamos los parámetros
         $stmt->bindParam(':nombre', $name);
@@ -54,10 +49,9 @@ if (isset($_POST['btnAddEmploy'])) {
 
         if ($stmt->execute()) {
             echo "<script>
-                    alert('The employee's data was added successfully.');
+                    alert('The employee\'s data was added successfully.');
                     window.location.href = 'employees.php';
-                  </script>";
-                  // Redirige a la página de lista de empleados
+                </script>";
         } else {
             echo "Error adding employee.";
         }
