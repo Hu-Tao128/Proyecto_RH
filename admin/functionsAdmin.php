@@ -1,12 +1,14 @@
 <?php
 require("../includes/config/MySQL_ConexionDB.php");
-function showTickets() {
+function showTickets($supervisor) {
     global $db_con;
     $tickets = [];
 
     try {
-        $query = "SELECT * FROM complaints";
+        $query = "SELECT c.id, c.date, c.description, c.status as statusTicket, c.employee FROM complaints as c INNER JOIN employee as e ON c.employee = e.code WHERE e.supervisorId = :supervisor";
         $stm = $db_con->prepare($query);
+        $stm->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
+        
         $stm->execute();
 
         while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -15,6 +17,7 @@ function showTickets() {
     } catch (PDOException $e) {
         exit("Error en la consulta: " . $e->getMessage());
     }
+
 
     return $tickets;
 }
@@ -167,13 +170,14 @@ function showPromotions(){
     return $promotions;
 }
 
-function showApplication(){
+function showApplication($supervisor){
     global $db_con;
     $applications = [];
 
     try {
-        $query = "SELECT * FROM application";
+        $query = "SELECT * FROM application as a INNER JOIN employee as e ON a.employee = e.code WHERE e.supervisorId = :supervisor";
         $stm = $db_con->prepare($query);
+        $stm->bindParam(':supervisor', $supervisor, PDO::PARAM_STR);
         $stm->execute();
 
         while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -223,21 +227,24 @@ function showAttandance(){
     return $attandance;
 }
 
-function showRatings(){
+function showRatings($supervisor){
     global $db_con;
     $rating = [];
 
     try {
-        $query = "SELECT * FROM performance";
-        $stm = $db_con->prepare($query);
-        $stm->execute();
-    
-        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+        $query = "SELECT p.code as id, p.score, p.evaluationDate, p.comments, p.employee FROM performance as p INNER JOIN employee as e ON e.code = p.employee WHERE e.supervisorId = :supervisor";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':supervisor', $supervisor, PDO::PARAM_STR); 
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $rating[] = $row;
         }
     } catch (PDOException $e) {
         exit("Error en la consulta: " . $e->getMessage());
     }
+
     return $rating;
 }
 ?>

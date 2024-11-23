@@ -3,7 +3,7 @@ require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../functions.php"; 
 require_once "functionsAdmin.php"; 
 
-$Application = showApplication();
+$Application = showApplication($IDUsuario);
 $Promotions = showPromotions();
 ?>
 <section>

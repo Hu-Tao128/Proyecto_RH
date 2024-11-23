@@ -4,7 +4,7 @@ require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
 require_once "../functions.php";
 
-$tickets = showTickets();
+$tickets = showTickets($IDUsuario);
 
 ?>
 <section>
@@ -25,7 +25,7 @@ $tickets = showTickets();
                     <td><?=$renglon['id']?></td>
                     <td><?=$renglon['date']?></td>
                     <td><?=$renglon['description']?></td>
-                    <td><?=$renglon['status']?></td><?php
+                    <td><?=$renglon['statusTicket']?></td><?php
                     $employ = $renglon["employee"];
 
                     $firstname = firstname($employ);
