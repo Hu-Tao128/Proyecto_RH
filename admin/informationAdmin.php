@@ -71,7 +71,7 @@ $image = $info['image'];
                 
                 <div class="form-field full-width">
                         <label for="password" class="labelPerfil">Password</label>
-                    <div class="password-container" style="display: flex; align-items: center;">
+                    <div class="password-container">
                         <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']; ?>" style="flex: 1;">
                             <i class="fas fa-eye-slash" style="cursor: pointer; margin-left: 10px;" onclick="togglePasswordVisibility()"></i>
                     </div>
