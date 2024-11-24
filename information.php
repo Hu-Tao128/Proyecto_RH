@@ -49,7 +49,7 @@ $image = $info['image'];
                         </section>
                         <div class="modal-footer">
                             <button type="button" class="btn-cancel" data-close>Cancelar</button>
-                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" />
+                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" disabled />
                         </div>
                     </form>
                 </div>
@@ -98,6 +98,21 @@ $image = $info['image'];
 </section>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fileInput = document.getElementById("changeFotoPerfil");
+        const submitButton = document.getElementById("btnChangeImg");
+
+        submitButton.disabled = true;
+
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        });
+    });
+
     const openEls = document.querySelectorAll("[data-open]");
     const closeEls = document.querySelectorAll("[data-close]");
     const isVisible = "is-visible";

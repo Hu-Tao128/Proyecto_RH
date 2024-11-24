@@ -151,6 +151,27 @@ function showIncidents(){
     return $incidents;
 }
 
+function showIncidentsEmploy($user){
+    global $db_con;
+    $incidents = [];
+
+    try {
+        $query = "SELECT * FROM incident WHERE employee = :code";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':code', $user, PDO::PARAM_STR); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $incidents[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $incidents;
+}
+
 function showPromotions(){
     global $db_con;
     $promotions = [];

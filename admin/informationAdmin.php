@@ -49,7 +49,7 @@ $image = $info['image'];
                         </section>
                         <div class="modal-footer">
                             <button type="button" class="btn-cancel" data-close>Cancelar</button>
-                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" />
+                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" disabled />
                         </div>
                     </form>
                 </div>
@@ -99,6 +99,25 @@ $image = $info['image'];
 </section>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fileInput = document.getElementById("changeFotoPerfil");
+        const submitButton = document.getElementById("btnChangeImg");
+
+        // Inicialmente, deshabilitar el botón
+        submitButton.disabled = true;
+
+        // Escuchar cambios en el campo de archivo
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                // Habilitar el botón si hay un archivo seleccionado
+                submitButton.disabled = false;
+            } else {
+                // Deshabilitar el botón si no hay archivos seleccionados
+                submitButton.disabled = true;
+            }
+        });
+    });
+
     const openEls = document.querySelectorAll("[data-open]");
     const closeEls = document.querySelectorAll("[data-close]");
     const isVisible = "is-visible";
