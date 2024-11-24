@@ -12,7 +12,7 @@ $image = $info['image'];
 </head>
 <section class="position"><br>
     <div class="container">
-        <h1 class="tittlePerfil">Profile Settings about Employe <?php echo $IDUsuario?></h1><br><br>
+        <h1 class="tittlePerfil">Profile Settings about Employe <?php echo $IDUsuario?></h1>
         
         <div class="profile-section">
             <div class="profile-image">

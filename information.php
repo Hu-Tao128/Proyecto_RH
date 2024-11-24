@@ -12,7 +12,7 @@ $image = $info['image'];
 
 <section class="position"><br>
     <div class="container">
-        <h1 class="tittlePerfil">Profile Settings about Employe <?php echo $IDUsuario?></h1><br><br>
+        <h1 class="tittlePerfil">Profile Settings about Employe <?php echo $IDUsuario?></h1>
         
         <div class="profile-section">
             <div class="profile-image">
@@ -32,23 +32,26 @@ $image = $info['image'];
                 <div class="modal-dialog">
                     <header class="modal-header">
                         <p class="f-p-moreActions-txtmodal">
-                            <img class="icons perfil-ico" src="images/editar-2.svg"/> Cambiar foto de perfil
+                             Cambiar foto de perfil
                         </p>
-                        <button class="close-modal" aria-label="close modal" data-close>
-                            <img class="icons perfil-ico" src="images/close-icon.svg"/>
-                        </button>
+                    <button class="close-modal" aria-label="cerrar modal" data-close>
+                        <i class="fas fa-times"></i>
+                    </button>
+
                     </header>
-                    <section class="modal-content">
-                        <form name="frmAgregarFoto" id="frmAgregarFoto" action="addImageUser.php" method="POST" enctype="multipart/form-data">
+                    <form name="frmAgregarFoto" id="frmAgregarFoto" action="addImageUser.php" method="POST" enctype="multipart/form-data">
+                        <section class="modal-content">
                             <input type="hidden" id="IDCambioFoto" name="IDCambioFoto" value="<?php echo $IDUsuario; ?>" />
                             <div class="drop-zone">
                                 <span class="soltar-img-perfil__modal">Suelte el archivo aquí o haga clic para subirlo</span>
                                 <input type="file" id="changeFotoPerfil" name="changeFotoPerfil" class="drop-zone__input" accept="image/*">
                             </div>
+                        </section>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-cancel" data-close>Cancelar</button>
                             <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" />
-                            <button type="button" class="close-modal" data-close>Cancelar</button>
-                        </form>
-                    </section>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -71,7 +74,7 @@ $image = $info['image'];
                 
                 <div class="form-field full-width">
                         <label for="password" class="labelPerfil">Password</label>
-                    <div class="password-container" style="display: flex; align-items: center;">
+                    <div class="password-container">
                         <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']; ?>" style="flex: 1;">
                             <i class="fas fa-eye-slash" style="cursor: pointer; margin-left: 10px;" onclick="togglePasswordVisibility()"></i>
                     </div>
