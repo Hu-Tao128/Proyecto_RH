@@ -151,14 +151,14 @@ function showIncidents(){
     return $incidents;
 }
 
-function showIncidentsEmploy($user){
+function showIncidentsEmploy($id){
     global $db_con;
     $incidents = [];
 
     try {
-        $query = "SELECT * FROM incident WHERE employee = :code";
+        $query = "SELECT * FROM incident WHERE id = :id";
         $stm = $db_con->prepare($query);
-        $stm->bindParam(':code', $user, PDO::PARAM_STR); 
+        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
         
         $stm->execute();
 
