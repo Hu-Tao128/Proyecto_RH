@@ -32,23 +32,26 @@ $image = $info['image'];
                 <div class="modal-dialog">
                     <header class="modal-header">
                         <p class="f-p-moreActions-txtmodal">
-                            <img class="icons perfil-ico" src="images/editar-2.svg"/> Cambiar foto de perfil
+                             Cambiar foto de perfil
                         </p>
-                        <button class="close-modal" aria-label="close modal" data-close>
-                            <img class="icons perfil-ico" src="images/close-icon.svg"/>
-                        </button>
+                    <button class="close-modal" aria-label="cerrar modal" data-close>
+                        <i class="fas fa-times"></i>
+                    </button>
+
                     </header>
-                    <section class="modal-content">
-                        <form name="frmAgregarFoto" id="frmAgregarFoto" action="addImageUser.php" method="POST" enctype="multipart/form-data">
+                    <form name="frmAgregarFoto" id="frmAgregarFoto" action="addImageUser.php" method="POST" enctype="multipart/form-data">
+                        <section class="modal-content">
                             <input type="hidden" id="IDCambioFoto" name="IDCambioFoto" value="<?php echo $IDUsuario; ?>" />
                             <div class="drop-zone">
                                 <span class="soltar-img-perfil__modal">Suelte el archivo aquí o haga clic para subirlo</span>
                                 <input type="file" id="changeFotoPerfil" name="changeFotoPerfil" class="drop-zone__input" accept="image/*">
                             </div>
+                        </section>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-cancel" data-close>Cancelar</button>
                             <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" />
-                            <button type="button" class="close-modal" data-close>Cancelar</button>
-                        </form>
-                    </section>
+                        </div>
+                    </form>
                 </div>
             </div>
 
