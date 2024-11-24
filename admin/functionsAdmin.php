@@ -158,7 +158,7 @@ function showIncidentsEmploy($id){
     try {
         $query = "SELECT * FROM incident WHERE id = :id";
         $stm = $db_con->prepare($query);
-        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
+        $stm->bindParam(':id', $id, PDO::PARAM_INT); 
         
         $stm->execute();
 
