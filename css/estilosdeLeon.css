@@ -592,7 +592,7 @@ label {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    
+    flex-direction: column;
     transition: all 0.3s ease;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     
