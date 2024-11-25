@@ -352,4 +352,26 @@ function showPromotionID($id){
 
     return $promotion;
 }
+
+
+function showAplicationID($id){
+    global $db_con;
+    $aplication = [];
+
+    try {
+        $query = "SELECT * FROM application WHERE id = :id";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $aplication[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $aplication;
+}
 ?>
