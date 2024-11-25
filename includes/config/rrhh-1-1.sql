@@ -494,7 +494,7 @@ SELECT a.type,
         WHERE a2.type = a.type) AS Absence_Count
 FROM absence a
 GROUP BY a.type;
-
+/*Pon los tipos de ausencias que vamos a manejar, para ponerlos en un select fijo*/
 
 /*Obtener el total de pagos realizados a empleados que han tomado vacaciones aprobadas*/
 
@@ -631,30 +631,6 @@ DELIMITER ;
 
 /*Hasta aqui acaban los trigger que subi y probe*/
 
-/*Actualizar el salario de un empleado al cambiar su posicion*/
-delimiter $$
-CREATE TRIGGER update_salary_on_position_change
-AFTER UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    IF OLD.positionCode != NEW.positionCode THEN
-        UPDATE employee
-        SET salary = (SELECT salary FROM position WHERE code = NEW.positionCode)
-        WHERE code = NEW.code;
-    END IF;
-END $$
-delimiter ;
-
-/*Actualizar el total de pagos al insertar un nuevo pago*/
-CREATE TRIGGER update_total_payments
-AFTER INSERT ON payments
-FOR EACH ROW
-BEGIN
-    UPDATE employee
-    SET totalPayment = totalPayment + NEW.totalPayment
-    WHERE id = NEW.employeeId;
-END;
-
 
 /*Calcular la duración de la ausencia al insertar*/
 CREATE TRIGGER calculate_absence_duration
@@ -663,7 +639,7 @@ FOR EACH ROW
 BEGIN
     SET NEW.duration = DATEDIFF(NEW.endDate, NEW.startDate);
 END;
-
+/*no existe campo duracion en la tabla absence, es ponerla de nuevo*/
 
 /*Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados*/
 CREATE TRIGGER prevent_department_delete
@@ -700,7 +676,7 @@ FOR EACH ROW
 BEGIN
     SET NEW.creationDate = CURDATE();
 END;
-
+/*Este esta dentro de la pagina, no se si ponerlo aun*/
 
 /*Aumentar el puntaje de desempeño si el empleado ha sido promovido*/
 CREATE TRIGGER increase_performance_score_on_promotion
@@ -714,8 +690,6 @@ BEGIN
     END IF;
 END;
 
-
-
 /*Eliminar automáticamente los registros de ausencias de empleados que han sido despedidos*/
 CREATE TRIGGER delete_absences_on_employee_termination
 AFTER DELETE ON employee
@@ -724,7 +698,7 @@ BEGIN
     DELETE FROM absence
     WHERE employeeId = OLD.id;
 END;
-
+/*Servira con todo lo relacionado al empleado*/
 
 /*Actualizar la fecha de modificación al cambiar un registro de empleado*/
 CREATE TRIGGER update_modification_date_on_employee_change
@@ -733,3 +707,4 @@ FOR EACH ROW
 BEGIN
     SET NEW.modificationDate = CURDATE();
 END;
+/*explica este*/
