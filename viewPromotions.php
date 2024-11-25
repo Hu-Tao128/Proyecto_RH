@@ -38,7 +38,7 @@ $apply = showPromotionsEmploy($IDUsuario);
             <table border="1" class="tableAdmin">
                 <tr>
                     <th>Id</th>
-                    <th>Publication Date</th>
+                    <th>Apply Date</th>
                     <th>Status</th>
                     <th>Promotion</th>
                 </tr>
