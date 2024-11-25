@@ -32,7 +32,7 @@ $image = $info['image'];
                 <div class="modal-dialog">
                     <header class="modal-header">
                         <p class="f-p-moreActions-txtmodal">
-                             Cambiar foto de perfil
+                        Change profile photo
                         </p>
                     <button class="close-modal" aria-label="cerrar modal" data-close>
                         <i class="fas fa-times"></i>
@@ -43,13 +43,13 @@ $image = $info['image'];
                         <section class="modal-content">
                             <input type="hidden" id="IDCambioFoto" name="IDCambioFoto" value="<?php echo $IDUsuario; ?>" />
                             <div class="drop-zone">
-                                <span class="soltar-img-perfil__modal">Suelte el archivo aquí o haga clic para subirlo</span>
+                                <span class="soltar-img-perfil__modal">Drop file here or click to upload</span>
                                 <input type="file" id="changeFotoPerfil" name="changeFotoPerfil" class="drop-zone__input" accept="image/*">
                             </div>
                         </section>
                         <div class="modal-footer">
-                            <button type="button" class="btn-cancel" data-close>Cancelar</button>
-                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Guardar" disabled />
+                            <button type="button" class="btn-cancel" data-close>Cancel</button>
+                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Save" disabled />
                         </div>
                     </form>
                 </div>

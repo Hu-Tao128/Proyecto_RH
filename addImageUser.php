@@ -19,7 +19,7 @@ if (isset($_POST['btnChangeImg'])) {
         if ($row) {
             $oldImage = $row['image'];
             if (!empty($oldImage) && file_exists($folderRuta . $oldImage)) {
-                unlink($folderRuta . $oldImage) or die("No se pudo eliminar el archivo anterior");
+                unlink($folderRuta . $oldImage) or die("Could not delete previous file");
             }
         }
 
