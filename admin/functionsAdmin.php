@@ -172,7 +172,7 @@ function showIncidentsID($id){
     return $incidents;
 }
 
-function showPromotions(){
+function showPromotion(){
     global $db_con;
     $promotions = [];
 
