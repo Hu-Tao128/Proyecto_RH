@@ -267,6 +267,33 @@ body {
     background-color: #7731e7;
 }
 
+.buttonCancel {
+    text-align: center;
+    background-color:  #f77070    ;
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    margin: 0 auto;
+    border-radius: 4px;
+    width: 25rem;
+    height: 2.75rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: none;
+    font-weight: 500;
+}
+
+.buttonCancel:hover {
+    background-color:  #f92c2c    ;
+    transform: none;
+    box-shadow: none;
+}
+
+.buttonCancel:active {
+    background-color:  #f92222    ;
+}
+
 /*Estilos de fieldset ya que no se usan, pero NO BORRA */
 .formPage fieldset {
     border: none;

@@ -25,7 +25,7 @@ $rating = showRatings($IDUsuario);
                 <td><?= $renglon['evaluationDate']?></td>
                 <td><?= $renglon['comments']?></td>
                 <td><?= $renglon['employee']?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="modifiyRating.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
                 <td><a href="deleteRating.php?id=<?php echo $renglon['id']; ?>&action=delete" class="action-delete">Delete</a></td>
             </tr>
             <?php }?>

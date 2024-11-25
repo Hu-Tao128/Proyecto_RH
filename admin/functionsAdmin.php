@@ -151,7 +151,7 @@ function showIncidents(){
     return $incidents;
 }
 
-function showIncidentsEmploy($id){
+function showIncidentsID($id){
     global $db_con;
     $incidents = [];
 
@@ -260,6 +260,27 @@ function showRatings($supervisor){
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $rating[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $rating;
+}
+
+function showRatingID($id){
+    global $db_con;
+    $rating = [];
+
+    try {
+        $query = "SELECT * FROM performance WHERE code = :id";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
             $rating[] = $row;
         }
     } catch (PDOException $e) {

@@ -26,7 +26,7 @@ $incident = showIncidents();
                 <?php $name = firstname($renglon['employee']);?>
                 <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="modifyIncident.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
                 <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
