@@ -2,7 +2,7 @@
     <footer>
         <div>
             <p>
-                All rights reserved by: Integramigos
+                All rights reserved by: Human Resources
             </p>
         </div>
     </footer>
