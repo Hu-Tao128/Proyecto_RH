@@ -196,7 +196,7 @@ function showApplication($supervisor){
     $applications = [];
 
     try {
-        $query = "SELECT * FROM application as a INNER JOIN employee as e ON a.employee = e.code WHERE e.supervisorId = :supervisor";
+        $query = "SELECT a.id, a.publicationDate, a.status as statusA, a.employee, a.promotion FROM application as a INNER JOIN employee as e ON a.employee = e.code WHERE e.supervisorId = :supervisor";
         $stm = $db_con->prepare($query);
         $stm->bindParam(':supervisor', $supervisor, PDO::PARAM_STR);
         $stm->execute();
