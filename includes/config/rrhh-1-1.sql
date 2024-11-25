@@ -733,3 +733,9 @@ FOR EACH ROW
 BEGIN
     SET NEW.modificationDate = CURDATE();
 END;
+
+
+/*Hacer un trigger que cuando las promociones se desactiven o pongan como inactivas, las aplicaciones de los empleados a esa promocion aparezcan como denegadass*/
+
+
+/*Hacer un trigger para cuando un usuario cambia su numero de telefono o contrasena se guarden en una tabla(ejemplo: modifies_employee)*/

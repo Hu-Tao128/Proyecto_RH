@@ -586,6 +586,14 @@ label {
     font-size: 16px;
 }
 
+select{
+    width: 90%;
+    padding: 12px; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
 /* Contenedor de género */
 .containerformX {
     display: flex;
