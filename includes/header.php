@@ -29,6 +29,7 @@
                 <a href="reportIncident.php">Report an incident</a>
                 <a href="information.php">Personal information</a>
                 <a href="absence.php">Absences</a>
+                <a href="viewPromotions.php">View Promotions</a>
                 <a href="../Session/logout.php">Log out</a>
             </nav>
         </div>
