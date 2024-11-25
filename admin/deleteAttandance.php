@@ -24,12 +24,12 @@ if(isset($_GET['id']) && isset($_GET['action'])){
             if ($stmt->execute()) {
                 echo "<script>
                         alert('Attendance was Eliminated.');
-                        window.location.href = 'attandance.php';
+                        window.location.href = 'attandence.php';
                       </script>";
             } else {
                 echo "<script>
                         alert('The Attendance wasn't elimanted');
-                        window.location.href = 'attandance.php'
+                        window.location.href = 'attandence.php'
                       </script>";
             }
         } catch (PDOException $e) {
@@ -39,7 +39,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     } else {
         echo "<script>
                 alert('Upss an error, Sorry');
-                window.location.href = 'attandance.php'
+                window.location.href = 'attandence.php'
                 </script>";
     }
 

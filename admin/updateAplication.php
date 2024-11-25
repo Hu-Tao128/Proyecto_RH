@@ -6,7 +6,7 @@ require_once "functionsAdmin.php";
 
 
 if(isset($_POST['btnReport'])){
-    $id = trim($_POST['id']);
+    $id = trim($_POST['id ']);
     $status = trim($_POST['status']);
 
 
