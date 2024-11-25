@@ -24,7 +24,7 @@ $promotion = showPromotions();
                 <td><?=$renglon['description']?></td>
                 <td><?=$renglon['status']?></td>
                 <td><?=$renglon['publicationDate']?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="modifyPromotion.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
                 <td><a href="deletePromotion.php?id=<?= $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
             </tr> <?php
             } ?>

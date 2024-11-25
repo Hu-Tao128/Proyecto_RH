@@ -7,22 +7,22 @@ require_once "../includes/config/connectdb.php";
 
 $id = $_GET["id"];
 
-$incidents = showIncidentsID($id);
+$ticket = showTicketsID($id);
 
 
-foreach($incidents as $row){
+foreach($ticket as $row){
     $row['id'];
-    $row['incidentType'];
-    $row['incidentDate'];
+    $row['date'];
     $row['description'];
+    $row['status'];
     $row['employee'];
 }
 
 ?>
 
 <section>
-    <h2>Modifiy a incident</h2>
-    <form action="updateIncident.php" class="formPage" method="post">
+    <h2>Modifiy a ticket</h2>
+    <form action="updateTicket.php" class="formPage" method="post">
         <fieldset>
         <div class="firstInput">
                 
@@ -34,18 +34,18 @@ foreach($incidents as $row){
             </div>
             <br>
             <div>
-                <label for="type">Type of the incident</label>
-                <input type="text" id="type" name="type" placeholder="Write the type of the incident" value="<?php echo $row['incidentType']?>" required>
-            </div>
-            <br>
-            <div>
-                <label for="dateIncident">Date of the incident</label>
-                <input type="date" id="dateIncident" name="dateIncident" value=<?php echo $row['incidentDate']?> readonly>
+                <label for="date">Date of the ticket</label>
+                <input type="date" id="date" name="date" value=<?php echo $row['date']?> readonly>
             </div>
             <br>
             <div>
                 <label for="description">Description</label>
                 <textarea name="description" id="description" required placeholder="Write the description"><?php echo $row['description']?></textarea>
+            </div>
+            <br>
+            <div>
+                <label for="status">Status</label>
+                <input type="text" id="status" name="status" required palceholder="The status of the ticket" value="<?php echo $row['status']?>">
             </div>
             <div>
                 <label for="employee" >Code's employee </label>
@@ -57,7 +57,7 @@ foreach($incidents as $row){
         </fieldset>
     </form>
     <center>
-    <a href="incidents.php"><button class="buttonCancel">Cancel</button></a>
+    <a href="tickets.php"><button class="buttonCancel">Cancel</button></a>
     </center>
     
     

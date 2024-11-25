@@ -289,4 +289,67 @@ function showRatingID($id){
 
     return $rating;
 }
+
+function showTicketsID($id){
+    global $db_con;
+    $ticket = [];
+
+    try {
+        $query = "SELECT * FROM complaints WHERE id = :id";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':id', $id, PDO::PARAM_INT); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $ticket[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $ticket;
+}
+
+function showBenefieID($id){
+    global $db_con;
+    $benefie = [];
+
+    try {
+        $query = "SELECT * FROM benefits WHERE code = :id";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $benefie[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $benefie;
+}
+
+function showPromotionID($id){
+    global $db_con;
+    $promotion = [];
+
+    try {
+        $query = "SELECT * FROM promotion WHERE code = :id";
+        $stm = $db_con->prepare($query);
+        $stm->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $promotion[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $promotion;
+}
 ?>

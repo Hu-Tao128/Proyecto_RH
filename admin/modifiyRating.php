@@ -40,12 +40,12 @@ foreach($rating as $row){
             <br>
             <div>
                 <label for="evaluationDate">Evaluation Date</label>
-                <input type="date" id="evaluationDate" name="evaluationDate" value=<?php echo $row['evaluationDate']?> required>
+                <input type="date" id="evaluationDate" name="evaluationDate" value=<?php echo $row['evaluationDate']?> readonly>
             </div>
             <br>
             <div>
                 <label for="comments">Comentarys</label>
-                <textarea name="comments" id="comments" required><?php echo $row['comments']?></textarea>
+                <textarea name="comments" id="comments" required placeholder="Write the comments about the score"><?php echo $row['comments']?></textarea>
             </div>
             <br>
             <div>

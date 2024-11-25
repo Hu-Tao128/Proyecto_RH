@@ -14,7 +14,7 @@ $attandance = getAttendance($IDUsuario);
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Employee</th>
-                <th colspan="2">Options</th>
+                <th>Options</th>
             </tr>
             <?php foreach ($attandance as $renglon) { ?>
             <tr>
@@ -31,7 +31,6 @@ $attandance = getAttendance($IDUsuario);
                 $name = firstname($employ);
                 $lastname = lastname($employ);?>
                 <td><?php echo $name." ".$lastname;?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
                 <td><a href="deleteAttandance.php?id=<?= $renglon['number']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
