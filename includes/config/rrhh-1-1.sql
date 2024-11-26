@@ -631,31 +631,6 @@ DELIMITER ;
 
 /*Hasta aqui acaban los trigger que subi y probe*/
 
-/*Actualizar el salario de un empleado al cambiar su posicion*/
-delimiter $$
-CREATE TRIGGER update_salary_on_position_change
-AFTER UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    IF OLD.positionCode != NEW.positionCode THEN
-        UPDATE employee
-        SET salary = (SELECT salary FROM position WHERE code = NEW.positionCode)
-        WHERE code = NEW.code;
-    END IF;
-END $$
-delimiter ;
-
-/*Actualizar el total de pagos al insertar un nuevo pago*/
-CREATE TRIGGER update_total_payments
-AFTER INSERT ON payments
-FOR EACH ROW
-BEGIN
-    UPDATE employee
-    SET totalPayment = totalPayment + NEW.totalPayment
-    WHERE id = NEW.employeeId;
-END;
-
-
 /*Calcular la duración de la ausencia al insertar*/
 CREATE TRIGGER calculate_absence_duration
 BEFORE INSERT ON absence
@@ -722,7 +697,7 @@ AFTER DELETE ON employee
 FOR EACH ROW
 BEGIN
     DELETE FROM absence
-    WHERE employeeId = OLD.id;
+    WHERE employee = OLD.id;
 END;
 
 
