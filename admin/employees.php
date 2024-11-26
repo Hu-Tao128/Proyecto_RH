@@ -84,6 +84,7 @@ $employ = getInfoEmploy($IDUsuario);
         }
     });
 </script>
+
 <div class="ContainerXD">
     <br>
     <h2 class="h2formX">Add an Employee</h2>

@@ -2,7 +2,7 @@
 include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
-//fdhhrdh
+
 
 if (isset($_POST['btnBenfits'])) {
     $code = trim($_POST['code']);
