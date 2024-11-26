@@ -19,7 +19,6 @@ if(isset($_POST['btnReport'])){
 
         $stmt = $db_con->prepare("update performance SET score = :score, evaluationDate = :evaluationDate, comments = :comments where code = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-
         $stmt->bindParam(':score', $score, PDO::PARAM_INT);
         $stmt->bindParam(':evaluationDate', $evaluationDate, PDO::PARAM_STR);
         $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
