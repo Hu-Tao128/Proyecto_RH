@@ -33,20 +33,11 @@
     <div class="options">
         <nav>
             <div class="dropdown">
-                <a href="#" class="dropbtn">Departamens</a>
-                <div class="dropdown-content">
-                    <a href="#">Department 1</a>
-                    <a href="#">Department 2</a>
-                    <a href="#">Department 3</a>
-                </div>
+                <a href="../Human_Resources/departaments.php" class="dropbtn">Departamens</a>
+
             </div>
             <div class="dropdown">
-                <a href="../Human_Resources/employee.php" class="dropbtn">Supervisors</a>
-                <div class="dropdown-content">
-                    <a href="#">Supervisor 1</a>
-                    <a href="#">Supervisor 2</a>
-                    <a href="#">Supervisor 3</a>
-                </div>
+                <a href="../Human_Resources/employee.php" class="dropbtn">Employees</a>
             </div>
             <div class="dropdown">
                 <a href="#" class="dropbtn">Complains</a>

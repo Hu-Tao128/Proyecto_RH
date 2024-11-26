@@ -374,4 +374,66 @@ function showAplicationID($id){
 
     return $aplication;
 }
+
+//Funciones de recursos humanos
+
+function showDepartment(){
+    global $db_con;
+    $department = [];
+
+    try {
+        $query = "SELECT * FROM department";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $department[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $department;
+}
+
+function getInfoEmployees() {
+    global $db_con;
+    $users = [];
+
+    try {
+        $query = "SELECT * FROM employee";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $users[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $users;
+}
+
+function supervisor() {
+    global $db_con; 
+    $supervisores = [];
+
+    try {
+        $query = "SELECT CONCAT(firstname, ' ', lastname, ' ', middlename) AS nombre, code 
+                  FROM employee 
+                  WHERE supervisorId IS NULL";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+
+        
+        $supervisores = $stm->fetchAll(PDO::FETCH_ASSOC);
+        
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $supervisores;
+}
+
 ?>
