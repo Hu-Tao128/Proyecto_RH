@@ -204,7 +204,7 @@ INSERT INTO position (code, name, salary, departmentCode) VALUES
 ('P028', 'Client Success Manager', 50000, 'D007');
 
 --Hasta Aqui una pausa de copiar
-    
+
 --Agregar codigo al usuario
 DELIMITER $$
 CREATE TRIGGER generate_employee_code 
@@ -509,10 +509,6 @@ WHERE e.id IN (
     FROM vacations v 
     WHERE v.status = 'Approved'
 );
-
-
-
-
 
 --TRIGGERS
 
