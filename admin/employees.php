@@ -43,7 +43,8 @@ $employ = getInfoEmploy($IDUsuario);
                     <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
                 </header>
                 <section class="modal-content">
-                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <p><strong>Code:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
                     <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
