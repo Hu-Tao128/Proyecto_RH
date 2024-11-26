@@ -5,7 +5,6 @@ require_once "../admin/functionsAdmin.php";
 
 
 if (isset($_POST['btnAddPromotion'])) {
-    $code = trim($_POST['code']);
     $name = trim($_POST['name']);
     $description = trim($_POST['description']);
 
@@ -16,9 +15,8 @@ if (isset($_POST['btnAddPromotion'])) {
         $status = "Active";
 
         $stmt = $db_con->prepare("INSERT INTO promotion (code, name, description, status, publicationDate) 
-                                  VALUES (:code, :name, :description, :status, :date)");
+                                  VALUES ('code', :name, :description, :status, :date)");
 
-        $stmt->bindParam(':code', $code);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':status', $status);

@@ -5,7 +5,6 @@ require_once "../admin/functionsAdmin.php";
 
 
 if (isset($_POST['btnBenfits'])) {
-    $code = trim($_POST['code']);
     $name = trim($_POST['name']);
     $type = trim($_POST['type']);
     $description = trim($_POST['description']);
@@ -14,9 +13,8 @@ if (isset($_POST['btnBenfits'])) {
         global $db_con;
         
         $stmt = $db_con->prepare("INSERT INTO benefits (code, name, type, description) 
-                                  VALUES (:code, :name, :type, :description)");
+                                  VALUES ('code', :name, :type, :description)");
 
-        $stmt->bindParam(':code', $code);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':type', $type);
         $stmt->bindParam(':description', $description);
