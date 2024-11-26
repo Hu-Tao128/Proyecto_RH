@@ -29,7 +29,6 @@ $employ = getInfoEmploy($IDUsuario);
                 <?php $workspace = workspace($renglon['code']); ?>
                 <td><?= htmlspecialchars($workspace) ?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
-                <td><a href="#" class="action-delete">Modify</a></td>
             </tr>
             <?php } ?>
         </table>
