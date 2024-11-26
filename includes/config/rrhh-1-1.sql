@@ -813,6 +813,605 @@ DELIMITER ;
 
 
 
+/*eliminar acentos tabla department*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_department
+BEFORE INSERT ON department
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+/*eliminar acentos tabla promotion*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_promotion
+BEFORE INSERT ON promotion
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+
+/*eliminar acentos tabla position*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_position
+BEFORE INSERT ON position
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+/*eliminar acentos tabla attendance*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_attendance
+BEFORE INSERT ON attendance
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+/*eliminar acentos tabla benefits*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_benefits
+BEFORE INSERT ON benefits
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+/*eliminar acentos tabla performance*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_performance
+BEFORE INSERT ON performance
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+/*eliminar acentos tabla vacations*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_vacations
+BEFORE INSERT ON vacations
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+/*eliminar acentos tabla complaints*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_complaints
+BEFORE INSERT ON complaints
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+/*eliminar acentos tabla absence*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_absence
+BEFORE INSERT ON absence
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+
+/*eliminar acentos tabla incident*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_incident
+BEFORE INSERT ON incident
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+/*eliminar acentos tabla application*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_application
+BEFORE INSERT ON application
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
+
+/*eliminar acentos tabla payments*/
+
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_payments
+BEFORE INSERT ON payments
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+
+
 
 
 /*mas de 3 ausencias en el mes, incidente automatico por exceso de ausencias (sepa si sirve  ) */
