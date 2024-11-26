@@ -17,7 +17,7 @@ $vacations = getVacations();
                 <th>End Date</th>
                 <th>Status</th>
                 <th>Employee</th>
-                <th colspan="2">Options</th>
+                <th colspan="3">Options</th>
             </tr>
             <?php foreach ($vacations as $renglon) { ?>
                 <tr>
@@ -32,6 +32,7 @@ $vacations = getVacations();
                     <td><?= $name." ".$lastname ?? 'N/A' ?></td>
                     <td><a href="modifyVacation.php?id=<?= $renglon['id'] ?>&action=accept" class="action-modify">Accept</a></td>
                     <td><a href="modifyVacation.php?id=<?= $renglon['id'] ?>&action=decline" class="action-delete">Decline</a></td>
+                    <td><a href="deleteVacation.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
                 </tr>
             <?php } ?>
         </table>
