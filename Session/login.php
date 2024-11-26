@@ -38,14 +38,14 @@
         <div class="modal" id="modal-name">
             <div class="modal-dialog">
                 <header class="modal-header">
-                    <p>Recuperar tu contrasena</p>
+                    <p>Recover your password</p>
                     <button class="close-modal" data-close="modal-name">X</button>
                 </header>
                 <section class="modal-content">
                     <form action="" method="post">
-                        <p><strong>Ingrese su correo de usuario</strong></p>
+                        <p><strong>Enter your user email</strong></p>
                         <input type="text" name="email" id="email" required>
-                        <button type="submit">Verificar</button>
+                        <button type="submit">Verify</button>
                     </form>
                 </section>
             </div>

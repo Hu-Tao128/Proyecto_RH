@@ -86,6 +86,7 @@ $employ = getInfoEmploy($IDUsuario);
     });
 </script>
 
+<!-- 
 <div class="ContainerXD">
     <br>
     <h2 class="h2formX">Add an Employee</h2>
@@ -146,10 +147,10 @@ $employ = getInfoEmploy($IDUsuario);
                 <select name="seltWorkspace" id="seltWorkspace" required>
                     <option value="">-- Workspaces --</option>
                     <?php 
-                        $workspace = listWorkstation();
-                        foreach ($workspace as $renglon) { ?>
+                    //    $workspace = listWorkstation();
+                      //  foreach ($workspace as $renglon) { ?>
                         <option value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['name']) ?></option>
-                    <?php } ?>
+                    <?php //} ?>
                 </select>
             </div>
             <div class="bottonformX">
@@ -175,5 +176,5 @@ $employ = getInfoEmploy($IDUsuario);
         }
     });
 </script>
-
+                        -->
 <?php include "../includes/footer.php"; ?>

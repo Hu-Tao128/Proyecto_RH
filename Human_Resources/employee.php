@@ -19,7 +19,7 @@ $employ = getInfoEmployees();
                 <th>CellPhone number</th>
                 <th>Workstation</th>
                 <th>Supervisor</th>
-                <th colspan="2">Options</th>
+                <th colspan="3">Options</th>
             </tr>
             <?php foreach ($employ as $renglon) { ?>
             <tr>
@@ -32,7 +32,8 @@ $employ = getInfoEmployees();
                 <td><?= htmlspecialchars($workspace) ?></td>
                 <td><?= htmlspecialchars($renglon['supervisorId'] ?? 'Supervisor')?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
-                <td><a href="#" class="action-delete">Modify</a></td>
+                <td><a href="modifyEmploy.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
+                <td><a href="deleteEmploy.php?id=<?php echo $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
             </tr>
             <?php } ?>
         </table>

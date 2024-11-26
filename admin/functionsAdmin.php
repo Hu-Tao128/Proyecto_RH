@@ -396,6 +396,68 @@ function showDepartment(){
     return $department;
 }
 
+function getAbsences() {
+    global $db_con;
+    $absences = [];
+
+    try {
+        $query = "SELECT a.id, a.startDate, a.endDate, a.status, a.type, a.description, e.code as employee
+                  FROM absence AS a
+                  INNER JOIN employee AS e ON a.employee = e.code";
+        $stmt = $db_con->prepare($query);
+       
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $absences[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $absences;
+}
+
+function getAttendanceAll() {
+    global $db_con;
+    $attendance = [];
+
+    try {
+        $query = "SELECT * FROM attendance as a INNER JOIN employee as e on a.employee = e.code";
+        $stmt = $db_con->prepare($query);
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $attendance[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $attendance;
+}
+
+function showPosition(){
+    global $db_con;
+    $position = [];
+
+    try {
+        $query = "SELECT * FROM position";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $position[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $position;
+}
+
 function getInfoEmployees() {
     global $db_con;
     $users = [];
@@ -414,6 +476,26 @@ function getInfoEmployees() {
 
     return $users;
 }
+
+function getInfoRating() {
+    global $db_con;
+    $rating = [];
+
+    try {
+        $query = "SELECT * FROM performance";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $rating[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $rating;
+}
+
 
 function supervisor() {
     global $db_con; 
@@ -434,6 +516,64 @@ function supervisor() {
     }
 
     return $supervisores;
+}
+
+function showEmployeeID($id) {
+    global $db_con;
+    $users = [];
+
+    try {
+        $query = "SELECT * FROM employee where code = :id";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $users[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $users;
+}
+
+function getInfoAplication() {
+    global $db_con;
+    $aplication = [];
+
+    try {
+        $query = "SELECT a.id, a.publicationDate, a.status as statusA, a.employee, a.promotion FROM application as a INNER JOIN employee as e ON a.employee = e.code ";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $aplication[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $aplication;
+}
+
+function getVacations() {
+    global $db_con;
+    $vacations = [];
+
+    try {
+        $query = "SELECT * FROM vacations";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $vacations[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $vacations;
 }
 
 ?>

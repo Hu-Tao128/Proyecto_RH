@@ -1,6 +1,6 @@
 <?php
 require_once "../includes/config/MySQL_ConexionDB.php";
-include "functionsAdmin.php";
+include "../admin/functionsAdmin.php";
 
 if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = $_GET['id'];

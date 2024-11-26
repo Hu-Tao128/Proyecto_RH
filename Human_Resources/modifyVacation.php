@@ -1,15 +1,15 @@
 <?php
 require_once "../includes/config/MySQL_ConexionDB.php";
-include "functionsAdmin.php";
+include "../admin/functionsAdmin.php";
 
 if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = $_GET['id'];
     $action = $_GET['action'];
 
-    if ($action == 'active') {
-        $query = "UPDATE promotion SET status = 'Active' WHERE code = :id";
-    } elseif ($action == 'inactive') {
-        $query = "UPDATE promotion SET status = 'Inactive' WHERE code = :id";
+    if ($action == 'accept') {
+        $query = "UPDATE vacations SET status = 'Accepted' WHERE id = :id";
+    } elseif ($action == 'decline') {
+        $query = "UPDATE vacations SET status = 'Declined' WHERE id = :id";
     } else {
         echo "Invalid Option.";
         exit;
@@ -23,13 +23,13 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
         if ($stmt->execute()) {
             echo "<script>
-                    alert('Promotion was Modified.');
-                    window.location.href = 'promotions.php';
+                    alert('Vacations was Modified.');
+                    window.location.href = 'vacations.php';
                   </script>";
         } else {
             echo "<script>
-                    alert('The promotion wasn't modify');
-                    window.location.href = 'promotions.php'
+                    alert('The vacations wasn't modify');
+                    window.location.href = 'vacations.php'
                   </script>";
         }
     } catch (PDOException $e) {
@@ -39,7 +39,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 } else {
     echo "<script>
             alert('Upss an error, Sorry');
-            window.location.href = 'promotions.php'
+            window.location.href = 'vacations.php'
             </script>";
 }
 ?>
