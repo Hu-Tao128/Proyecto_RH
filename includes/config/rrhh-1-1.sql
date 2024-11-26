@@ -17,7 +17,7 @@ create table promotion(
     index idx_promotion(publicationDate)
 );
 
-CREATE TABLE `position` (
+CREATE TABLE position (
     code VARCHAR(5) PRIMARY KEY,
     name VARCHAR(60) NOT NULL,
     salary FLOAT NOT NULL,
@@ -44,7 +44,7 @@ create table employee(
     supervisorId varchar(5),
     index idx_employee(lastName),
     
-    foreign key(positionCode) references `position`(code)
+    foreign key(positionCode) references position(code)
 );
 
 alter table employee add foreign key(supervisorId) references employee(code);
@@ -147,7 +147,7 @@ create table payments(
     foreign key(employee) references employee(code)
 );
 
-/*Insertar los datos a nuestra base de datos*/
+/Insertar los datos a nuestra base de datos/
 
 -- Inserción en la tabla departamento
 INSERT INTO department (code, name) VALUES
@@ -217,11 +217,11 @@ BEGIN
 
     SELECT LEFT(name, 1) INTO dept_letter
     FROM department
-    WHERE code = (SELECT departmentCode FROM `position` WHERE code = NEW.positionCode)
+    WHERE code = (SELECT departmentCode FROM position WHERE code = NEW.positionCode)
     LIMIT 1;
 
     SELECT LEFT(name, 1) INTO pos_letter
-    FROM `position`
+    FROM position
     WHERE code = NEW.positionCode
     LIMIT 1;
 
@@ -444,7 +444,7 @@ INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employee) VALUES
 
 -- SUBCONSULTAS
 
-/*Obtener el salario promedio por departamento*/
+/Obtener el salario promedio por departamento/
 SELECT d.name AS Department, 
        (SELECT AVG(p.salary) 
         FROM position p 
@@ -452,7 +452,7 @@ SELECT d.name AS Department,
 FROM department d;
 
 
-/*Número de quejas por empleado que tiene más de una queja*/
+/Número de quejas por empleado que tiene más de una queja/
 SELECT e.firstName, e.lastName, 
        (SELECT COUNT(*) 
         FROM complaints c 
@@ -464,7 +464,7 @@ WHERE (SELECT COUNT(*)
 
 
 
-/*Total de días de vacaciones aprobadas para empleados con más de 3 años de antigüedad*/
+/Total de días de vacaciones aprobadas para empleados con más de 3 años de antigüedad/
 SELECT e.firstName, e.lastName, 
        (SELECT SUM(DATEDIFF(v.endDate, v.startDate) + 1) 
         FROM vacations v 
@@ -474,7 +474,7 @@ WHERE DATEDIFF(CURDATE(), e.contractDate) > 1095; -- 3 años
 
 
 
-/*Lista de empleados que han recibido al menos un bono de desempeño*/
+/Lista de empleados que han recibido al menos un bono de desempeño/
 SELECT e.firstName, e.lastName
 FROM employee e
 WHERE e.id IN (
@@ -487,7 +487,7 @@ WHERE e.id IN (
 );
 
 
-/*Contar el número de ausencias por tipo de ausencia*/
+/Contar el número de ausencias por tipo de ausencia/
 SELECT a.type, 
        (SELECT COUNT(*) 
         FROM absence a2 
@@ -496,7 +496,7 @@ FROM absence a
 GROUP BY a.type;
 
 
-/*Obtener el total de pagos realizados a empleados que han tomado vacaciones aprobadas*/
+/Obtener el total de pagos realizados a empleados que han tomado vacaciones aprobadas/
 
 SELECT e.firstName, e.lastName, 
        (SELECT SUM(p.totalPayment) 
@@ -515,7 +515,7 @@ WHERE e.id IN (
 
 --TRIGGERS
 
-/*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
+/Trigger para el codigo de los beneficios con explicacion porque es la base de los otros/
 DELIMITER $$
 CREATE TRIGGER generate_benefit_code
 BEFORE INSERT ON benefits
@@ -541,7 +541,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-/*Trigger para el codigo de departament(RH)*/
+/Trigger para el codigo de departament(RH)/
 DELIMITER $$
 CREATE TRIGGER generate_department_code
 BEFORE INSERT ON department
@@ -588,17 +588,17 @@ DELIMITER ;
 -- Trigger para el codigo de los puestos
 DELIMITER $$
 CREATE TRIGGER generate_position_code
-BEFORE INSERT ON `position`
+BEFORE INSERT ON position
 FOR EACH ROW
 BEGIN
     DECLARE max_code INT;
     DECLARE new_code VARCHAR(4);
 
-    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM `position`;
+    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM position;
 
     SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
 
-    WHILE EXISTS (SELECT 1 FROM `position` WHERE code = new_code) DO
+    WHILE EXISTS (SELECT 1 FROM position WHERE code = new_code) DO
         SET max_code = max_code + 1;
         SET new_code = CONCAT('P', LPAD(max_code, 3, '0'));
     END WHILE;
@@ -629,34 +629,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-/*Hasta aqui acaban los trigger que subi y probe*/
+/Hasta aqui acaban los trigger que subi y probe/
 
-/*Actualizar el salario de un empleado al cambiar su posicion*/
-delimiter $$
-CREATE TRIGGER update_salary_on_position_change
-AFTER UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    IF OLD.positionCode != NEW.positionCode THEN
-        UPDATE employee
-        SET salary = (SELECT salary FROM position WHERE code = NEW.positionCode)
-        WHERE code = NEW.code;
-    END IF;
-END $$
-delimiter ;
-
-/*Actualizar el total de pagos al insertar un nuevo pago*/
-CREATE TRIGGER update_total_payments
-AFTER INSERT ON payments
-FOR EACH ROW
-BEGIN
-    UPDATE employee
-    SET totalPayment = totalPayment + NEW.totalPayment
-    WHERE id = NEW.employeeId;
-END;
-
-
-/*Calcular la duración de la ausencia al insertar*/
+/Calcular la duración de la ausencia al insertar/
 CREATE TRIGGER calculate_absence_duration
 BEFORE INSERT ON absence
 FOR EACH ROW
@@ -665,7 +640,7 @@ BEGIN
 END;
 
 
-/*Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados*/
+--/Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados/
 CREATE TRIGGER prevent_department_delete
 BEFORE DELETE ON department
 FOR EACH ROW
@@ -681,7 +656,7 @@ BEGIN
 END;
 
 
-/*Actualizar el estado de un empleado a 'Inactivo' si se elimina su posición*/
+/Actualizar el estado de un empleado a 'Inactivo' si se elimina su posición/
 CREATE TRIGGER deactivate_employee_on_position_delete
 AFTER DELETE ON position
 FOR EACH ROW
@@ -693,7 +668,7 @@ END;
 
 
 
-/*Registrar la fecha de creación de un nuevo empleado*/
+/Registrar la fecha de creación de un nuevo empleado/
 CREATE TRIGGER set_employee_creation_date
 BEFORE INSERT ON employee
 FOR EACH ROW
@@ -702,7 +677,7 @@ BEGIN
 END;
 
 
-/*Aumentar el puntaje de desempeño si el empleado ha sido promovido*/
+/Aumentar el puntaje de desempeño si el empleado ha sido promovido/
 CREATE TRIGGER increase_performance_score_on_promotion
 AFTER UPDATE ON employee
 FOR EACH ROW
@@ -716,20 +691,103 @@ END;
 
 
 
-/*Eliminar automáticamente los registros de ausencias de empleados que han sido despedidos*/
+/Eliminar automáticamente los registros de ausencias de empleados que han sido despedidos/
 CREATE TRIGGER delete_absences_on_employee_termination
 AFTER DELETE ON employee
 FOR EACH ROW
 BEGIN
     DELETE FROM absence
-    WHERE employeeId = OLD.id;
+    WHERE employee = OLD.id;
 END;
 
 
-/*Actualizar la fecha de modificación al cambiar un registro de empleado*/
+/Actualizar la fecha de modificación al cambiar un registro de empleado/
 CREATE TRIGGER update_modification_date_on_employee_change
 BEFORE UPDATE ON employee
 FOR EACH ROW
 BEGIN
     SET NEW.modificationDate = CURDATE();
+END;
+
+/Eliminar los acento de la tabla empleados/
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_employee
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+/*mas de 3 ausencias en el mes, incidente automatico por exceso de ausencias (sepa si sirve  ) */
+CREATE TRIGGER log_incident_for_absences
+AFTER INSERT ON absence
+FOR EACH ROW
+BEGIN
+    DECLARE absence_count INT;
+    SELECT COUNT(*) INTO absence_count
+    FROM absence
+    WHERE employee = NEW.employee AND MONTH(startDate) = MONTH(NEW.startDate) AND YEAR(startDate) = YEAR(NEW.startDate);
+    
+    IF absence_count > 3 THEN
+        INSERT INTO incident (incidentType, incidentDate, description, employee)
+        VALUES ('Excessive Absences', CURDATE(), 'More than 3 absences in a month', NEW.employee);
+    END IF;
+END;
+
+/No duplicar email al crear otro empleado/
+CREATE TRIGGER prevent_duplicate_email
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM employee WHERE email = NEW.email) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Email already exists.';
+    END IF;  
+END;
+
+/Estado de finalizadas las vacaciones/
+CREATE TRIGGER update_vacation_status
+BEFORE UPDATE ON vacations
+FOR EACH ROW
+BEGIN
+    IF NEW.endDate < CURDATE() THEN
+        SET NEW.status = 'Completed';
+    END IF;
 END;
