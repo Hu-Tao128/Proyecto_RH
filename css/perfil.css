@@ -43,13 +43,13 @@
     margin-bottom: 10px;
     overflow: hidden;
     margin: auto;
-}
-
-.avatar img {
+    border: 5px solid #007bff; 
+    }
+    .avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+    }
 
 .email-display {
     color: #666;
