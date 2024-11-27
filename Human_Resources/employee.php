@@ -47,7 +47,17 @@ $employ = getInfoEmployees();
                     <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
                 </header>
                 <section class="modal-content">
-                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <div class="profile-image">
+                        <div class="avatar">
+                            <?php if(empty($renglon['image'])) { ?>
+                                <img src="../images/Perfil.svg" alt="Profile Picture">
+                                <?php } else { ?>
+                                    <img src="../imageUser/<?=$renglon['image']?>" alt="Profile Picture">
+                                    <?php } ?>
+                                </div>
+                            </div>
+                    <center><p><strong><?= htmlspecialchars($renglon['code']) ?></strong></p></center> 
+                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
                     <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
