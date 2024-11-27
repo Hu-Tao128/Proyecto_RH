@@ -69,7 +69,7 @@ $image = $info['image'];
                 
                 <div class="form-field full-width">
                     <label for="mobile" class="labelPerfil">Mobile</label>
-                    <input type="text" class="inputs" name="mobile" id="mobile" value="<?php echo $info['mobile']; ?>">
+                    <input type="number" class="inputs" name="mobile" id="mobile" value="<?php echo $info['mobile']; ?>">
                 </div>
                 
                 <div class="form-field full-width">
