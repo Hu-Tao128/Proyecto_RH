@@ -6,8 +6,8 @@ require_once 'functions.php';
 if (isset($_POST['btnAbsence'])) {
     $date1 = trim($_POST['startDate']);
     $date2 = trim($_POST['endDate']);
-    $type = trim($_POST['type']);
-    $description = trim($_POST['description']);
+    $type = traducirTexto(trim($_POST['type']));
+    $description = traducirTexto(trim($_POST['description']));
 
     $status = "Pendent";
     

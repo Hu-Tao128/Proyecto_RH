@@ -2,13 +2,14 @@
 include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
+require_once "../functions.php";
 
 
 if (isset($_POST['btnBenfits'])) {
     $code = trim($_POST['code']);
     $name = trim($_POST['name']);
-    $type = trim($_POST['type']);
-    $description = trim($_POST['description']);
+    $type = traducirTexto(trim($_POST['type']));
+    $description = traducirTexto(trim($_POST['description']));
 
     try {
         global $db_con;
