@@ -45,7 +45,7 @@ $image = $info['image'];
                     <label for="password" class="labelPerfil">Password</label>
                     <div class="password-field">
                         <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']?>">
-                        <button type="button" class="password-toggle"></button>
+                        <i class="fas fa-eye-slash" onclick="showPassword()"></i>
                     </div>
                 </div>
                 
@@ -72,5 +72,19 @@ $image = $info['image'];
         </div>
     </div>
 </section>
-
+    <script>
+        function showPassword() {
+            var passW = document.getElementById("password");
+            var eyeIcon = document.querySelector(".password-container i");
+            if (passW.type === "password") {
+                passW.type = "text";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            } else {
+                passW.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
 <?php include "includes/footer.php" ?>
