@@ -33,35 +33,45 @@
     <div class="options">
         <nav>
             <div class="dropdown">
-                <a href="#" class="dropbtn">Departamens</a>
-                <div class="dropdown-content">
-                    <a href="#">Department 1</a>
-                    <a href="#">Department 2</a>
-                    <a href="#">Department 3</a>
-                </div>
+                <a href="../Human_Resources/departaments.php" class="dropbtn">Departamens</a>
+
             </div>
             <div class="dropdown">
-                <a href="../Human_Resources/employee.php" class="dropbtn">Supervisors</a>
-                <div class="dropdown-content">
-                    <a href="#">Supervisor 1</a>
-                    <a href="#">Supervisor 2</a>
-                    <a href="#">Supervisor 3</a>
-                </div>
+                <a href="../Human_Resources/employee.php" class="dropbtn">Employees</a>
             </div>
             <div class="dropdown">
-                <a href="#" class="dropbtn">Complains</a>
-                <div class="dropdown-content">
-                    <a href="#">Complain 1</a>
-                    <a href="#">Complain 2</a>
-                    <a href="#">Complain 3</a>
-                </div>
+                <a href="../Human_Resources/aplications.php" class="dropbtn">Aplications</a>
             </div>
-        </nav>
-    </div>
-    <div class="options">
-        <nav>
-            <a href="../admin/aplications.php">Aplications</a>
-            <a href="../admin/promotions.php">Promotions</a>
+            <div class="dropdown">
+                <a href="../Human_Resources/tickets.php" class="dropbtn">Tickets</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/promotions.php" class="dropbtn">Promotions</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/vacations.php" class="dropbtn">Vacations</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/position.php" class="dropbtn">Position</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/rating.php" class="dropbtn">Rating</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/benefie.php" class="dropbtn">Benefie</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/absences.php" class="dropbtn">Absences</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/attedance.php" class="dropbtn">Attedance</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/incident.php" class="dropbtn">Incident</a>
+            </div>
+            <div class="dropdown">
+                <a href="../Human_Resources/informationAdmin.php" class="dropbtn">Personal Information</a>
+            </div>
             <a href="../Session/logout.php">Log out</a>
         </nav>
     </div>

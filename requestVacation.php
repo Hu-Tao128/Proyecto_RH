@@ -32,6 +32,7 @@ $vacations = vacactions($IDUsuario);
 <div>
         <br><br><br>
         <h2>Requested Vacations</h2>
+        <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Start Date</th>
@@ -47,6 +48,8 @@ $vacations = vacactions($IDUsuario);
             </tr><?php
                 }   ?>
         </table>
+        </div>
+        
     </div>
         <?php
     }

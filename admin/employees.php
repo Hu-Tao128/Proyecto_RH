@@ -29,7 +29,6 @@ $employ = getInfoEmploy($IDUsuario);
                 <?php $workspace = workspace($renglon['code']); ?>
                 <td><?= htmlspecialchars($workspace) ?></td>
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
-                <td><a href="#" class="action-delete">Modify</a></td>
             </tr>
             <?php } ?>
         </table>
@@ -43,7 +42,17 @@ $employ = getInfoEmploy($IDUsuario);
                     <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
                 </header>
                 <section class="modal-content">
-                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <div class="profile-image">
+                        <div class="avatar">
+                            <?php if(empty($renglon['image'])) { ?>
+                                <img src="../images/Perfil.svg" alt="Profile Picture">
+                            <?php } else { ?>
+                                <img src="../imageUser/<?=$renglon['image']?>" alt="Profile Picture">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <p><strong>Code:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
                     <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
@@ -84,6 +93,8 @@ $employ = getInfoEmploy($IDUsuario);
         }
     });
 </script>
+
+<!-- 
 <div class="ContainerXD">
     <br>
     <h2 class="h2formX">Add an Employee</h2>
@@ -144,10 +155,10 @@ $employ = getInfoEmploy($IDUsuario);
                 <select name="seltWorkspace" id="seltWorkspace" required>
                     <option value="">-- Workspaces --</option>
                     <?php 
-                        $workspace = listWorkstation();
-                        foreach ($workspace as $renglon) { ?>
+                    //    $workspace = listWorkstation();
+                      //  foreach ($workspace as $renglon) { ?>
                         <option value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['name']) ?></option>
-                    <?php } ?>
+                    <?php //} ?>
                 </select>
             </div>
             <div class="bottonformX">
@@ -173,5 +184,5 @@ $employ = getInfoEmploy($IDUsuario);
         }
     });
 </script>
-
+                        -->
 <?php include "../includes/footer.php"; ?>

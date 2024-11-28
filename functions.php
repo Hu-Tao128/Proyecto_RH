@@ -1,5 +1,9 @@
 <?php
 require("includes/config/MySQL_ConexionDB.php");
+require 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
+
 function firstname($usuario) {
 	global $db_con;
     $Nombre = "";
@@ -234,43 +238,92 @@ function showWorkSpace() {
 
     return $position;
 }
-/*
-function verPagos($usuario) {
-	
-	
-	$query = "SELECT IDUsuario,Nombre,APaterno,AMaterno,FotoPerfil,Telefono,Correo,NombreUsuarioCliente,ContrasenaCliente FROM usuario_cliente";
-	
-	if(!$resultado = mysqli_query($miConexion, $query)){
-		exit(mysqli_error($miConexion));
+
+function showPromotions(){
+    global $db_con;
+    $promotions = [];
+
+    try {
+        $query = "SELECT * FROM promotion WHERE status = 'Active'";
+        $stm = $db_con->prepare($query);
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $promotions[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $promotions;
+}
+
+function promotionName($code) {
+	global $db_con;
+    $name = "";
+
+    try {
+        $query = "SELECT name FROM promotion WHERE code = :code";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $name = $row['name'];
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $name;
+}
+
+function showPromotionsEmploy($User){
+    global $db_con;
+    $promotions = [];
+
+    try {
+        $query = "SELECT * FROM application WHERE employee = :user";
+        $stm = $db_con->prepare($query);
+		$stm->bindParam("user", $User, PDO::PARAM_STR);
+		$stm->execute();
+
+		$promotions = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+	}catch (PDOException $e){
+		exit("Error: ".$e->getMessage());
 	}
 
-	$lista = array();
+    return $promotions;
+}
 
-	if(mysqli_num_rows($resultado) > 0)
-	{
-		while($renglon =mysqli_fetch_assoc($resultado) )
-		{
-		/*	if($renglon['FotoPerfil']=="")
-        		$foto = IMAGES_ORIGEN.'UsuariosClientes/fotos/dft-perfil-v2.svg';
-        	else
-        		$foto = IMAGES_ORIGEN.'UsuariosClientes/fotos/'.$renglon['FotoPerfil'];
-		
-			$lista[] = array(
-						'IDUsuario' => $renglon['IDUsuario'],
-						'Nombre' => $renglon['Nombre'],
-						'APaterno' => $renglon['APaterno'],
-						'AMaterno' => $renglon['AMaterno'],
-						'mostrarPerfil' => $foto,
-						'FotoPerfil' => $renglon['FotoPerfil'],
-						'Telefono' => $renglon['Telefono'],
-						'Correo' => $renglon['Correo'],
-						'NombreUsuarioCliente' => $renglon['NombreUsuarioCliente'],
-						'ContrasenaCliente' => $renglon['ContrasenaCliente'] 
-						
-						);			
-		}
-	
-	}
-	return $lista;
-}*/
+function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
+    $apiKey = '0cdc3f56-bc66-4f64-8db4-bfe29bcde90a:fx';
+    $url = 'https://api-free.deepl.com/v2/translate';
+
+    $client = new Client();
+
+    try {
+        $response = $client->post($url, [
+            'headers' => [
+                'Authorization' => 'DeepL-Auth-Key ' . $apiKey,
+            ],
+            'form_params' => [
+                'text' => $texto,
+                'source_lang' => $idiomaOrigen,
+                'target_lang' => $idiomaDestino,
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if (isset($data['translations'][0]['text'])) {
+            return $data['translations'][0]['text'];
+        } else {
+            return 'Error: No se obtuvo traducción.';
+        }
+    } catch (Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+}
 ?>

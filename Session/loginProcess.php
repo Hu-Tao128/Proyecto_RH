@@ -39,13 +39,15 @@ if (isset($_POST['btnLogin'])) {
                 exit();
             }
         } else {
-            echo '<br/><center><p>Upss... user or password is incorrect</p>';
-            echo '<input type="button" class="loginButton" value="Try again" onclick="self.location=\'login.php\'" /></center>';
+            echo '<div class="form1">';
+            echo '<br/><p>Upss... user or password is incorrect</p>';
+            echo '<br>';
+            echo '<input type="button" class="mainButton" value="Try again" onclick="self.location=\'login.php\'" />';
+            echo '</div>';
         }
     } catch (PDOException $e) {
         echo "Error en la consulta: " . $e->getMessage();
     }
 }
 
-include_once("../includes/footer.php");
 ?>

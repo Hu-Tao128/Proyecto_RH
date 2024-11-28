@@ -4,12 +4,12 @@ require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
 require_once "../functions.php";
 
-$tickets = showTickets();
+$tickets = showTickets($IDUsuario);
 
 ?>
 <section>
     <h2>Table for the tickets</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>
@@ -25,7 +25,7 @@ $tickets = showTickets();
                     <td><?=$renglon['id']?></td>
                     <td><?=$renglon['date']?></td>
                     <td><?=$renglon['description']?></td>
-                    <td><?=$renglon['status']?></td><?php
+                    <td><?=$renglon['statusTicket']?></td><?php
                     $employ = $renglon["employee"];
 
                     $firstname = firstname($employ);
@@ -33,7 +33,7 @@ $tickets = showTickets();
                     ?>
                     <td><?php echo $firstname." ".$lastname; ?></td><?php
                 ?>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="modifyTicket.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
                 <td><a href="deleteTickets.php?id=<?php echo $renglon['id']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
         }?>

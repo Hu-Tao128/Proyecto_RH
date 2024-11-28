@@ -204,6 +204,7 @@ INSERT INTO position (code, name, salary, departmentCode) VALUES
 ('P028', 'Client Success Manager', 50000, 'D007');
 
 --Hasta Aqui una pausa de copiar
+
 --Agregar codigo al usuario
 DELIMITER $$
 CREATE TRIGGER generate_employee_code 
@@ -509,10 +510,6 @@ WHERE e.id IN (
     WHERE v.status = 'Approved'
 );
 
-
-
-
-
 --TRIGGERS
 
 /*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
@@ -631,31 +628,6 @@ DELIMITER ;
 
 /*Hasta aqui acaban los trigger que subi y probe*/
 
-/*Actualizar el salario de un empleado al cambiar su posicion*/
-delimiter $$
-CREATE TRIGGER update_salary_on_position_change
-AFTER UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    IF OLD.positionCode != NEW.positionCode THEN
-        UPDATE employee
-        SET salary = (SELECT salary FROM position WHERE code = NEW.positionCode)
-        WHERE code = NEW.code;
-    END IF;
-END $$
-delimiter ;
-
-/*Actualizar el total de pagos al insertar un nuevo pago*/
-CREATE TRIGGER update_total_payments
-AFTER INSERT ON payments
-FOR EACH ROW
-BEGIN
-    UPDATE employee
-    SET totalPayment = totalPayment + NEW.totalPayment
-    WHERE id = NEW.employeeId;
-END;
-
-
 /*Calcular la duración de la ausencia al insertar*/
 CREATE TRIGGER calculate_absence_duration
 BEFORE INSERT ON absence
@@ -665,7 +637,7 @@ BEGIN
 END;
 
 
-/*Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados*/
+--/*Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados*/
 CREATE TRIGGER prevent_department_delete
 BEFORE DELETE ON department
 FOR EACH ROW
@@ -722,7 +694,7 @@ AFTER DELETE ON employee
 FOR EACH ROW
 BEGIN
     DELETE FROM absence
-    WHERE employeeId = OLD.id;
+    WHERE employee = OLD.id;
 END;
 
 
@@ -732,4 +704,87 @@ BEFORE UPDATE ON employee
 FOR EACH ROW
 BEGIN
     SET NEW.modificationDate = CURDATE();
+END;
+
+/*Eliminar los acento de la tabla empleados*/
+DELIMITER $$
+CREATE TRIGGER remove_accents_from_employee
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.firstName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.lastName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+
+    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        NEW.middleName, 
+        'á', 'a'), 
+        'é', 'e'), 
+        'í', 'i'), 
+        'ó', 'o'), 
+        'ú', 'u'), 
+        'Á', 'A'), 
+        'É', 'E'), 
+        'Í', 'I'), 
+        'Ó', 'O'), 
+        'Ú', 'U');
+END$$
+DELIMITER ;
+
+/*mas de 3 ausencias en el mes, incidente automatico por exceso de ausencias (sepa si sirve  ) */
+CREATE TRIGGER log_incident_for_absences
+AFTER INSERT ON absence
+FOR EACH ROW
+BEGIN
+    DECLARE absence_count INT;
+    SELECT COUNT(*) INTO absence_count
+    FROM absence
+    WHERE employee = NEW.employee AND MONTH(startDate) = MONTH(NEW.startDate) AND YEAR(startDate) = YEAR(NEW.startDate);
+    
+    IF absence_count > 3 THEN
+        INSERT INTO incident (incidentType, incidentDate, description, employee)
+        VALUES ('Excessive Absences', CURDATE(), 'More than 3 absences in a month', NEW.employee);
+    END IF;
+END;
+
+/*No duplicar email al crear otro empleado*/
+CREATE TRIGGER prevent_duplicate_email
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM employee WHERE email = NEW.email) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Email already exists.';
+    END IF;  
+END;
+
+/*Estado de finalizadas las vacaciones*/
+CREATE TRIGGER update_vacation_status
+BEFORE UPDATE ON vacations
+FOR EACH ROW
+BEGIN
+    IF NEW.endDate < CURDATE() THEN
+        SET NEW.status = 'Completed';
+    END IF;
 END;

@@ -3,12 +3,12 @@ require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../functions.php"; 
 require_once "functionsAdmin.php"; 
 
-$Application = showApplication();
+$Application = showApplication($IDUsuario);
 $Promotions = showPromotions();
 ?>
 <section>
     <h2>Table for the aplications</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>
@@ -22,13 +22,13 @@ $Promotions = showPromotions();
             <tr>
                 <td><?=$renglon['id']?></td>
                 <td><?=$renglon['publicationDate']?></td>
-                <td><?=$renglon['status']?></td>
+                <td><?=$renglon['statusA']?></td>
                 <?php $name = firstname($renglon['employee']);?>
                 <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
                 <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
                 <td><?= $Promotion ?></td>
-                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['promotion']; ?>">Details</a></td>
+                <td><a href="modifyAplication.php?id=<?php echo $renglon['id']?>" class="action-modify" >Modify</a></td>
                 <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             }   ?>

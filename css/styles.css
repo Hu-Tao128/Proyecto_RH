@@ -181,6 +181,7 @@ footer p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
     transition: background-color 0.3s ease;
 }
 
@@ -196,7 +197,7 @@ footer p {
     color: var(--black);
     text-decoration: none;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 10px;
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;

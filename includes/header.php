@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/estilosdeLeon.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
@@ -24,11 +24,13 @@
     </a>
         <div class="options">
             <nav>
+<!-- <a href="activityUser.php">My Activity</a>-->
                 <a href="makeTicket.php">Make a ticket</a>
                 <a href="requestVacation.php">Request vacation</a>
                 <a href="reportIncident.php">Report an incident</a>
                 <a href="information.php">Personal information</a>
                 <a href="absence.php">Absences</a>
+                <a href="viewPromotions.php">View Promotions</a>
                 <a href="../Session/logout.php">Log out</a>
             </nav>
         </div>

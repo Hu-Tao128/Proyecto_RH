@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/estilosdeLeon.css">
     <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/perfil.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
@@ -28,7 +28,6 @@
     ?>
     <title>RH</title>
 </head>
-<body>
     <section class="header">
     <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
@@ -41,12 +40,6 @@
                 <a href="informationAdmin.php">Personal information</a>
                 <a href="vacations.php">Vacations</a>
                 <a href="attandence.php">Attandence</a>
-
-                
-            </nav>
-        </div>
-        <div class="options">
-            <nav>
                 <a href="absence.php">Absences</a>
                 <a href="benefies.php">Benefies</a>
                 <a href="aplications.php">Aplications</a>

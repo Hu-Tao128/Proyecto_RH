@@ -7,7 +7,7 @@ $absences = getInfoAbsences($IDUsuario);
 ?>
 <section>
     <h2>Table for the Request Justify Absences</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>
@@ -17,7 +17,7 @@ $absences = getInfoAbsences($IDUsuario);
                 <th>Type</th>
                 <th>Description</th>
                 <th>Employee</th>
-                <th colspan="2">Options</th>
+                <th colspan="3">Options</th>
             </tr>
             <?php foreach ($absences as $renglon) { ?>
                 <tr>
@@ -34,6 +34,7 @@ $absences = getInfoAbsences($IDUsuario);
                     <td><?= $name . " " . $lastname ?></td>
                     <td><a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=accept" class="action-modify">Accept</a></td>
                     <td><a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=decline" class="action-delete">Decline</a></td>
+                    <td><a href="deleteAbsence.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
                 </tr>
             <?php } ?>
         </table>

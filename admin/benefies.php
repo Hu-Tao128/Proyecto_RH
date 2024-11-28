@@ -7,7 +7,7 @@ $benefits = showBenefits();
 ?>
 <section>
     <h2>Table for the benefies</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Code</th>
@@ -22,7 +22,7 @@ $benefits = showBenefits();
                 <td><?=$renglon['name']?></td>
                 <td><?=$renglon['type']?></td>
                 <td><?=$renglon['description']?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
+                <td><a href="modifyBenefie.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
                 <td><a href="deleteBenefies.php?id=<?= $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>

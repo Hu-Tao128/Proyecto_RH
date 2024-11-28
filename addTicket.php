@@ -4,7 +4,7 @@ require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
 
 if (isset($_POST['btnaddTicket'])) {
-    $description = trim($_POST['description']);
+    $description = traducirTexto(trim($_POST['description']));
 
         $currentDate = new DateTime();
         $status = "Not yet";
