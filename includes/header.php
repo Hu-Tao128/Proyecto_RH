@@ -24,6 +24,7 @@
     </a>
         <div class="options">
             <nav>
+                <a href="activityUser.php">My Activity</a>
                 <a href="makeTicket.php">Make a ticket</a>
                 <a href="requestVacation.php">Request vacation</a>
                 <a href="reportIncident.php">Report an incident</a>

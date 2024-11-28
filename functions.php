@@ -1,5 +1,9 @@
 <?php
 require("includes/config/MySQL_ConexionDB.php");
+require 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
+
 function firstname($usuario) {
 	global $db_con;
     $Nombre = "";
@@ -293,4 +297,33 @@ function showPromotionsEmploy($User){
     return $promotions;
 }
 
+function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
+    $apiKey = '0cdc3f56-bc66-4f64-8db4-bfe29bcde90a:fx';
+    $url = 'https://api-free.deepl.com/v2/translate';
+
+    $client = new Client();
+
+    try {
+        $response = $client->post($url, [
+            'headers' => [
+                'Authorization' => 'DeepL-Auth-Key ' . $apiKey,
+            ],
+            'form_params' => [
+                'text' => $texto,
+                'source_lang' => $idiomaOrigen,
+                'target_lang' => $idiomaDestino,
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if (isset($data['translations'][0]['text'])) {
+            return $data['translations'][0]['text'];
+        } else {
+            return 'Error: No se obtuvo traducción.';
+        }
+    } catch (Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+}
 ?>
