@@ -624,6 +624,17 @@ label {
     font-size: 16px;
 }
 
+/* Para que no se pueda poner números negativos y quitar la barra de arria y abajo*/
+input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+/*Para firefox*/
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
 /* Contenedor de género */
 .containerformX {
     display: flex;
