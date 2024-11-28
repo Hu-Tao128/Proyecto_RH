@@ -613,6 +613,7 @@ label {
 /* Estilos de los inputs y selects */
 .form-empleadoX input[type="text"],
 .form-empleadoX input[type="email"],
+.form-empleadoX input[type="number"],
 .form-empleadoX input[type="password"],
 .form-empleadoX input[type="date"],
 .form-empleadoX select {
