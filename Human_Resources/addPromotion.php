@@ -6,7 +6,7 @@ require_once "../functions.php";
 
 
 if (isset($_POST['btnAddPromotion'])) {
-    $name = trim($_POST['name']);
+    $name = traducirTexto(trim($_POST['name']));
     $description = traducirTexto(trim($_POST['description']));
 
     try {
