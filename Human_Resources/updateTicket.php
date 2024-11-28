@@ -1,8 +1,8 @@
 <?php
 
-include "../includes/headerAdmin.php";
+include "../includes/headerHR.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
-require_once "functionsAdmin.php";
+require_once "../admin/functionsAdmin.php";
 
 
 if(isset($_POST['btnReport'])){

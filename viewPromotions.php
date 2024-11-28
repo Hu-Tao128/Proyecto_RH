@@ -8,7 +8,7 @@ $apply = showPromotionsEmploy($IDUsuario);
 <section>
 
     <h2>Table for the promotions</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Code</th>
@@ -35,6 +35,7 @@ $apply = showPromotionsEmploy($IDUsuario);
         <div>
             <br><br><br>
             <h2>My Applies</h2>
+            <div class="scroll">
             <table border="1" class="tableAdmin">
                 <tr>
                     <th>Id</th>
@@ -52,6 +53,8 @@ $apply = showPromotionsEmploy($IDUsuario);
                 </tr><?php
                     }   ?>
             </table>
+            </div>
+            
         </div><?php
         }
     ?>

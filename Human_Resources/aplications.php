@@ -8,7 +8,7 @@ $Promotions = showPromotions();
 ?>
 <section>
     <h2>Table for the aplications</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>

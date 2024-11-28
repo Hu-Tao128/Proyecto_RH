@@ -8,7 +8,7 @@ $rating = getInfoRating();
 
 <section>
     <h2>Table for the rating</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Code</th>

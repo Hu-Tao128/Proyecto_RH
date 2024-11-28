@@ -37,8 +37,31 @@ foreach($users as $row){
             </div>
             
             <div>
-                <label for="code" >Code </label>
-                <input type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+                <label for="code" >Code: <?php echo $row['code']?></label>
+                <input class="inputID"type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+            </div>
+            <div>
+                <label for="gender" >Gender's employee: <?php echo $row['gender']?></label>
+            </div>
+            
+            <div>
+                <label for="age">Age of the employee: <?php echo $row['age']?> </label>
+            </div>
+            <div>
+                <label for="image">Image of the employee: <?php echo $row['image'] ?? 'NULL'?> </label>
+            </div>
+            <div>
+                <label for="password">Password of the employee: <?php echo $row['password']?></label>
+
+            </div>
+            <div>
+                <label for="contractDate">Contract date of the employee: <?php echo $row['contractDate']?></label>
+            </div>
+            <div>
+                <label for="positionCode">Position Code of the employee: <?php echo $row['positionCode']?></label>
+            </div>
+            <div>
+                <label for="supervisorId">Supervisor Id Code of the employee: <?php echo $row['supervisorId'] ?? "NULL"?></label>
             </div>
             <br>
             <div>
@@ -57,49 +80,20 @@ foreach($users as $row){
             </div>
             <br>
             <div>
-                <label for="gender" >Gender's employee </label>
-                <input type="text" id="gender" name="gender" value=<?php echo $row['gender']?> readonly>
-            </div>
-            <br>
-            <div>
-                <label for="age">Age of the employee</label>
-                <input type="text" id="age" name="age" value=<?php echo $row['age']?> readonly>
-            </div>
-            <br>
-            <div>
-                <label for="image">Image of the employee</label>
-                <input type="text" id="image" name="image" value=<?php echo $row['image'] ?? 'NULL'?> readonly>
-            </div>
-            <br>
-            <div>
                 <label for="mobile">Mobile of the employee</label>
                 <input type="number" id="mobile" name="mobile" value=<?php echo $row['mobile']?> required>
             </div>
             <br>
             <div>
-                <label for="password">Password of the employee</label>
-                <input type="text" id="password" name="password" value=<?php echo $row['password']?> readonly>
-            </div>
-            <br>
-            <div>
-                <label for="contractDate">Contract date of the employee</label>
-                <input type="date" id="contractDate" name="contractDate" value=<?php echo $row['contractDate']?> readonly>
-            </div>
-            <br>
-            <div>
                 <label for="status">Status of the employee</label>
-                <input type="text" id="status" name="status" value=<?php echo $row['status']?> required>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Unlinked">Unlinked</option>
+                </select>
             </div>
             <br>
-            <div>
-                <label for="positionCode">Position Code of the employee</label>
-                <input type="text" id="positionCode" name="positionCode" value=<?php echo $row['positionCode']?> readonly>
-            </div>
-            <br>
-            <div>
-                <label for="supervisorId">Supervisor Id Code of the employee</label>
-                <input type="text" id="supervisorId" name="supervisorId" value=<?php echo $row['supervisorId'] ?? "NULL"?> readonly>
-            </div>
+
             <div>
                 <button type="submit" name="btnReport">Update</button>
             </div>

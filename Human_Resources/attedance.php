@@ -7,7 +7,7 @@ $attandance = getAttendanceAll();
 ?>
 <section>
     <h2>Table for the attandence</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>number</th>

@@ -576,4 +576,25 @@ function getVacations() {
     return $vacations;
 }
 
+function showTicketsAll() {
+    global $db_con;
+    $tickets = [];
+
+    try {
+        $query = "SELECT c.id, c.date, c.description, c.status as statusTicket, c.employee FROM complaints as c INNER JOIN employee as e ON c.employee = e.code";
+        $stm = $db_con->prepare($query);
+        
+        $stm->execute();
+
+        while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+            $tickets[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+
+    return $tickets;
+}
+
 ?>

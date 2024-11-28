@@ -40,10 +40,10 @@
                 <a href="../Human_Resources/employee.php" class="dropbtn">Employees</a>
             </div>
             <div class="dropdown">
-                <a href="../Human_Resources/complaints.php" class="dropbtn">Complains</a>
+                <a href="../Human_Resources/aplications.php" class="dropbtn">Aplications</a>
             </div>
             <div class="dropdown">
-                <a href="../Human_Resources/aplications.php" class="dropbtn">Aplications</a>
+                <a href="../Human_Resources/tickets.php" class="dropbtn">Tickets</a>
             </div>
             <div class="dropdown">
                 <a href="../Human_Resources/promotions.php" class="dropbtn">Promotions</a>

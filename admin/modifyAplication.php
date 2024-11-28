@@ -29,29 +29,32 @@ foreach($aplication as $row){
             </div>
             
             <div>
-                <label for="id" >ID </label>
-                <input type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
+                <label for="id" >ID: <?php echo $row['id']?></label>
+                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
             </div>
-            <br>
             <div>
-                <label for="publicationDate">Date of the aplication</label>
-                <input type="date" id="publicationDate" name="publicationDate" value="<?php echo $row['publicationDate']?>" readonly>
+                <label for="publicationDate">Date of the aplication: <?php echo $row['publicationDate']?></label>
+            </div>
+            
+            <div>
+                <label for="employee">Employee: <?php echo $row['employee']?></label>
+            
+            </div>
+            <div>
+                <label for="promotion">Promotion: <?php echo $row['promotion']?></label>
             </div>
             <br>
             <div>
                 <label for="status">Status</label>
-                <input type="text" id="status" name="status" placeholder="Write the status of the aplication" value=<?php echo $row['status']?> required>
+                <select name="status" id="status">
+                    <option value="Approved">Approved</option>
+                    <option value="Declined">Declined</option>
+                </select>
+
             </div>
+
             <br>
-            <div>
-                <label for="employee">Employee</label>
-                <input type="text" id="employee" name="employee" value=<?php echo $row['employee']?> readonly>
-            </div>
-            <br>
-            <div>
-                <label for="promotion">Promotion</label>
-                <input type="text" id="promotion" name="promotion" value=<?php echo $row['promotion']?> readonly>
-            </div>
+            
             <div>
                 <button type="submit" name="btnReport">Update</button>
             </div>

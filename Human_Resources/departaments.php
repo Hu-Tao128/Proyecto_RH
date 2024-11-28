@@ -9,7 +9,7 @@ $departament = showDepartment();
 
 <section>
     <h2>Table for the departments</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Code</th>

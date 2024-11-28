@@ -26,16 +26,19 @@ foreach($promotion as $row){
         <fieldset>
         <div class="firstInput">
                 
-            </div>
+        </div>
             
             <div>
-                <label for="code" >Code </label>
-                <input type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+                <label for="code" >Code: <?php echo $row['code']?></label>
+                <input class="inputID" type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+            </div>
+            <div>
+                <label for="publicationDate">Publication date: <?php echo $row['publicationDate']?> </label>
             </div>
             <br>
             <div>
-                <label for="name">Name of the benefie</label>
-                <input type="text" id="name" name="name" value="<?php echo $row['name']?>" required placeholder="Write the name of the benefie">
+                <label for="name">Name of the promotion</label>
+                <input type="text" id="name" name="name" value="<?php echo $row['name']?>" required placeholder="Write the name of the promotion">
             </div>
             <br>
             <div>
@@ -45,13 +48,13 @@ foreach($promotion as $row){
             <br>
             <div>
                 <label for="status">Status</label>
-                <input type="text" id="status" name="status" required value="<?php echo $row['status']?>" placeholder="Write the status of the promotion">
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
             </div>
             <br>
-            <div>
-                <label for="publicationDate">Publication date</label>
-                <input type="date" id="publicationDate" name="publicationDate" value=<?php echo $row['publicationDate']?> readonly>
-            </div>
+            
             <div>
                 <button type="submit" name="btnReport">Update</button>
             </div>

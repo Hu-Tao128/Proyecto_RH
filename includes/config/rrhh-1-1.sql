@@ -11,7 +11,7 @@ create table department(
 create table promotion(
     code varchar(5) primary key,
     name varchar(60) not null,
-    description varchar(100) not null,
+    description varchar(60) not null,
     status varchar(10) not null,
     publicationDate date not null,
     index idx_promotion(publicationDate)
@@ -61,7 +61,7 @@ create table attendance(
 
 create table benefits(
     code varchar(5) primary key,
-    name varchar(100) not null,
+    name varchar(60) not null,
     type varchar(20) not null,
     description varchar(60) not null,
     index idx_benefits(name)
@@ -92,7 +92,7 @@ create table vacations(
 create table complaints(
     id int primary key auto_increment,
     date date not null,
-    description varchar(100) not null,
+    description varchar(60) not null,
     status varchar(10) not null,
     employee varchar(5) not null,
     index idx_complaints(date),

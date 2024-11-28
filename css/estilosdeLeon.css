@@ -188,6 +188,25 @@ body {
     border: 3px solid #00c85300; 
 }
 
+ .inputID {
+    opacity: 100;
+    position:relative;
+    width: 0px;
+    height: 0px;
+    text-align: left;
+    font-family: inherit;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: normal;
+    color: #666;
+    font-size: 0.9rem;
+    background: transparent;
+    outline: none;
+    border: 0px solid #e0e0e0;
+    border-radius: 0px;
+    display: none;
+}
+
 /* Estilos para inputs */
 .formPage input {
     margin: 0.5rem 0 1rem 0;
@@ -375,6 +394,11 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra prominente */
     border-radius: 12px; /* Bordes más redondeados */
     overflow: hidden; /* Para ocultar cualquier borde que sobresalga de los bordes redondeados */
+}
+
+.scroll {
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 /* Header */
@@ -817,3 +841,6 @@ footer p {
 .tableAdmin td {
     font-family: var(--font-main);
 }
+
+
+

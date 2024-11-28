@@ -28,10 +28,9 @@ foreach($benefie as $row){
             </div>
             
             <div>
-                <label for="code" >Code </label>
-                <input type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+                <label for="code" >Code: <?php echo $row['code']?></label>
+                <input class="inputID" type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
             </div>
-            <br>
             <div>
                 <label for="name">Name of the benefie</label>
                 <input type="text" id="name" name="name" placeholder="Write the name of the benefie" value="<?php echo $row['name']?>" required>

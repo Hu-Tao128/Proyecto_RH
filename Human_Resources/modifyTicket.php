@@ -1,7 +1,7 @@
 <?php
-include "../includes/headerAdmin.php";
+include "../includes/headerHR.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
-include "functionsAdmin.php";
+include "../admin/functionsAdmin.php";
 require_once "../functions.php"; 
 require_once "../includes/config/connectdb.php";
 

@@ -26,31 +26,28 @@ foreach($incidents as $row){
         <fieldset>
         <div class="firstInput">
                 
-            </div>
+        </div>
             
             <div>
-                <label for="id" >ID </label>
-                <input type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
+                <label for="id" >ID: <?php echo $row['id']?></label>
+                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['id']?>>
+            </div>
+            <div>
+                <label for="employee" >Code's employee: <?php echo $row['employee']?></label>
+            </div>
+            <div>
+                <label for="dateIncident">Date of the incident: <?php echo $row['incidentDate']?></label>
             </div>
             <br>
             <div>
                 <label for="type">Type of the incident</label>
                 <input type="text" id="type" name="type" placeholder="Write the type of the incident" value="<?php echo $row['incidentType']?>" required>
             </div>
-            <br>
-            <div>
-                <label for="dateIncident">Date of the incident</label>
-                <input type="date" id="dateIncident" name="dateIncident" value=<?php echo $row['incidentDate']?> readonly>
-            </div>
-            <br>
             <div>
                 <label for="description">Description</label>
                 <textarea name="description" id="description" required placeholder="Write the description"><?php echo $row['description']?></textarea>
             </div>
-            <div>
-                <label for="employee" >Code's employee </label>
-                <input type="text" id="employee" name="employee" value=<?php echo $row['employee']?> readonly>
-            </div>
+            <br>
             <div>
                 <button type="submit" name="btnReport">Update</button>
             </div>

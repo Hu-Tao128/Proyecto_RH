@@ -9,7 +9,7 @@ $vacations = getVacations();
 <section>
     <h2>Table for the vacations</h2>
     <h3>Here you found the vacations request about your Employees</h3>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>

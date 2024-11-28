@@ -29,29 +29,27 @@ foreach($rating as $row){
             </div>
             
             <div>
-                <label for="id" >Code </label>
-                <input type="text" id="id" name="id" value=<?php echo $row['code']?> readonly>
+                <label for="id" >Code: <?php echo $row['code']?> </label>
+                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['code']?>>
+            </div>
+            <div>
+                <label for="evaluationDate">Evaluation Date: <?php echo $row['evaluationDate']?></label>
+            </div>
+            <div>
+                <label for="employee" >Code's employee: <?php echo $row['employee']?></label>
             </div>
             <br>
             <div>
                 <label for="score">Score</label>
                 <input type="text" id="score" name="score" placeholder="Score of the employee" value=<?php echo $row['score']?> required>
             </div>
-            <br>
-            <div>
-                <label for="evaluationDate">Evaluation Date</label>
-                <input type="date" id="evaluationDate" name="evaluationDate" value=<?php echo $row['evaluationDate']?> readonly>
-            </div>
+            
             <br>
             <div>
                 <label for="comments">Comentarys</label>
                 <textarea name="comments" id="comments" required placeholder="Write the comments about the score"><?php echo $row['comments']?></textarea>
             </div>
-            <br>
-            <div>
-                <label for="employee" >Code's employee </label>
-                <input type="text" id="employee" name="employee" value=<?php echo $row['employee']?> readonly>
-            </div>
+
             <div>
                 <button type="submit" name="btnReport">Update</button>
             </div>

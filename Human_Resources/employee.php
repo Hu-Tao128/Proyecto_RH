@@ -9,7 +9,7 @@ $employ = getInfoEmployees();
 
 <section>
     <h2>Table for the Employees</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>
@@ -143,7 +143,7 @@ $employ = getInfoEmployees();
             </div>
             <div class="divformX">
                 <label for="phone">Phone</label>
-                <input type="text" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
+                <input type="number" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
             </div>
             <div class="divformX">
                 <label for="password">Password</label>

@@ -7,7 +7,7 @@ $absences = getInfoAbsences($IDUsuario);
 ?>
 <section>
     <h2>Table for the Request Justify Absences</h2>
-    <div>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>

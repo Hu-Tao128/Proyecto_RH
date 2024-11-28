@@ -17,11 +17,11 @@ if(isset($_POST['btnReport'])){
         
         $incidentDate = (new DateTime())->format('Y-m-d');
 
-        $stmt = $db_con->prepare("update incident SET incidentType = :incidentType, incidentDate = :incidentDate, description = :description where id = :id");
+        $stmt = $db_con->prepare("update incident SET incidentType = :incidentType,  description = :description where id = :id");
         $stmt->bindParam(':id', $id);
 
         $stmt->bindParam(':incidentType', $incidentType, PDO::PARAM_STR);
-        $stmt->bindParam(':incidentDate', $incidentDate, PDO::PARAM_STR);
+
         $stmt->bindParam(':description', $description, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
