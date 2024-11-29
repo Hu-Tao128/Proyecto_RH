@@ -442,6 +442,16 @@ INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employee) VALUES
 
 
 
+--CONSULTAS DE ESTADISTICAS, PUEDES HACERLA SUBCONSULTA?
+/*Obtener el promedio de los rating/score de cada departemento*/
+SELECT d.name AS Department, AVG(p.score) AS Score 
+FROM employee e 
+INNER JOIN performance p ON e.code = p.employee 
+INNER JOIN position pos ON e.positionCode = pos.code 
+INNER JOIN department d ON pos.departmentCode = d.code 
+GROUP BY d.code, d.name 
+ORDER BY Score DESC;
+
 
 -- SUBCONSULTAS
 
@@ -451,7 +461,6 @@ SELECT d.name AS Department,
         FROM position p 
         WHERE p.departmentCode = d.code) AS Average_Salary
 FROM department d;
-
 
 /*Número de quejas por empleado que tiene más de una queja*/
 SELECT e.firstName, e.lastName, 

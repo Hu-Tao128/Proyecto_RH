@@ -94,8 +94,67 @@ $image = $info['image'];
                 </div>
             </form>
         </div>
+    </div><br><br>
+</section>
+
+
+<section class="position">
+    <div class="container">
+        <h2>User Statistics</h2>
+        <canvas id="userChart" width="400" height="200"></canvas>
     </div>
 </section>
+
+<?php
+// Ejemplo de datos (puedes reemplazar esto con una consulta SQL)
+$data = [
+    'attendance' => 20, // Días de asistencia
+    'absences' => 5,    // Días de ausencia
+    'vacations' => 3    // Días de vacaciones
+];
+
+// Transforma los datos en formato JSON para JavaScript
+$chartData = json_encode(array_values($data));
+$chartLabels = json_encode(array_keys($data));
+?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('userChart').getContext('2d');
+    const data = {
+        labels: <?php echo $chartLabels; ?>,
+        datasets: [{
+            label: 'User Activity (Days)',
+            data: <?php echo $chartData; ?>,
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 206, 86, 0.2)'
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'polarArea',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(ctx, config);
+});
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

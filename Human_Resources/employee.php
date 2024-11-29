@@ -151,11 +151,11 @@ At the bottom there is a form to add a new employee to the database. It is impor
             </div>
             <div class="divformX">
                 <label for="phone">Phone</label>
-                <input type="number" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required>
+                <input type="number" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required min="1111111111" max="9999999999">
             </div>
             <div class="divformX">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" name="password" placeholder="Password" required maxlength="10">
             </div>
             <div class="divformX">
                 <label for="birthDate">Birth Date</label>

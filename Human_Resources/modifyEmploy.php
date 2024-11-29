@@ -81,7 +81,7 @@ foreach($users as $row){
             <br>
             <div>
                 <label for="mobile">Mobile of the employee</label>
-                <input type="number" id="mobile" name="mobile" value=<?php echo $row['mobile']?> required>
+                <input type="number" id="mobile" name="mobile" value="<?php echo $row['mobile']?>" required min="1111111111" max="9999999999">
             </div>
             <br>
             <div>

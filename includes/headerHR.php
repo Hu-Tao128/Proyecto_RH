@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/perfil.css">
     <link rel="stylesheet" href="../css/estilosdeLeon.css">
+    
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <?php
     include_once("../functions.php");

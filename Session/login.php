@@ -21,10 +21,10 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fas fa-eye-slash" onclick="showPassword()"></i>
                 </div>
-                <!-- Enlace para poner olvide mi contrasena
+                <!-- Enlace para poner olvide mi contrasena-->
                 <div>
                     <a href="#" class="forgot-password-link" data-open="modal-name">Forgot your password?</a>
-                </div>-->
+                </div>
                 <div>
                     <button type="submit" id="btnLogin" name="btnLogin">Login</button>
                 </div>
@@ -42,9 +42,9 @@
                     <button class="close-modal" data-close="modal-name">X</button>
                 </header>
                 <section class="modal-content">
-                    <form action="" method="post">
-                        <p><strong>Enter your user email</strong></p>
-                        <input type="text" name="email" id="email" required>
+                    <form action="verifyCode.php" method="post">
+                        <p><strong>Enter the verification code sent to your email</strong></p>
+                        <input type="text" name="verificationCode" id="verificationCode" required>
                         <button type="submit">Verify</button>
                     </form>
                 </section>

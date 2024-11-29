@@ -396,6 +396,30 @@ function showDepartment(){
     return $department;
 }
 
+function stadisticDepartment(){
+    global $db_con;
+    $stadisticas = [];
+    try {
+        $query = "SELECT d.name AS Department, AVG(p.score) AS Score FROM employee e JOIN performance p ON e.code = p.employee JOIN position pos ON e.positionCode = pos.code JOIN department d ON pos.departmentCode = d.code GROUP BY d.code, d.name ORDER BY Score DESC;";
+
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $stadisticas[] = [
+                'department' => $row['Department'],
+                'average_score' => floatval($row['Score'])
+            ];
+        }
+        
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return json_encode($stadisticas);
+}
+
+
 function getAbsences() {
     global $db_con;
     $absences = [];
