@@ -42,10 +42,11 @@
                     <button class="close-modal" data-close="modal-name">X</button>
                 </header>
                 <section class="modal-content">
-                    <form action="verifyCode.php" method="post">
+                    <form action="sendVerification.php" method="post">
                         <p><strong>Enter the verification code sent to your email</strong></p>
-                        <input type="text" name="verificationCode" id="verificationCode" required>
-                        <button type="submit">Verify</button>
+                        <input type="text" name="id" id="id" required>
+                        <input type="text" name="email" id="email" required>
+                        <button type="submit" name="sendCode">Verify</button>
                     </form>
                 </section>
             </div>

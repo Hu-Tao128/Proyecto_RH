@@ -1,6 +1,11 @@
 {
     "require": {
         "guzzlehttp/guzzle": "^7.9",
-        "sendgrid/sendgrid": "^8.1"
+        "mailjet/mailjet-apiv3-php": "^1.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }

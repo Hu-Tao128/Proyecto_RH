@@ -7,21 +7,22 @@ namespace Composer\Autoload;
 class ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964
 {
     public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '79f66bc0a1900f77abe4a9a299057a0a' => __DIR__ . '/..' . '/starkbank/ecdsa/src/ellipticcurve.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'SendGrid\\Stats\\' => 15,
-            'SendGrid\\Mail\\' => 14,
-            'SendGrid\\Helper\\' => 16,
-            'SendGrid\\EventWebhook\\' => 22,
-            'SendGrid\\Contacts\\' => 18,
-            'SendGrid\\' => 9,
+            'Symfony\\Polyfill\\Php83\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Contracts\\Translation\\' => 30,
+            'Symfony\\Component\\Validator\\' => 28,
         ),
         'P' => 
         array (
@@ -37,29 +38,25 @@ class ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964
     );
 
     public static $prefixDirsPsr4 = array (
-        'SendGrid\\Stats\\' => 
+        'Symfony\\Polyfill\\Php83\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/stats',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
         ),
-        'SendGrid\\Mail\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/mail',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'SendGrid\\Helper\\' => 
+        'Symfony\\Polyfill\\Ctype\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/helper',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'SendGrid\\EventWebhook\\' => 
+        'Symfony\\Contracts\\Translation\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/eventwebhook',
+            0 => __DIR__ . '/..' . '/symfony/translation-contracts',
         ),
-        'SendGrid\\Contacts\\' => 
+        'Symfony\\Component\\Validator\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/contacts',
-        ),
-        'SendGrid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sendgrid/php-http-client/lib',
+            0 => __DIR__ . '/..' . '/symfony/validator',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -84,11 +81,29 @@ class ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'M' => 
+        array (
+            'Mailjet' => 
+            array (
+                0 => __DIR__ . '/..' . '/mailjet/mailjet-apiv3-php/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
-        'BaseSendGridClientInterface' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/BaseSendGridClientInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'SendGrid' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/SendGrid.php',
-        'TwilioEmail' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/TwilioEmail.php',
+        'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
+        'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
+        'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
+        'DateInvalidTimeZoneException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidTimeZoneException.php',
+        'DateMalformedIntervalStringException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateMalformedIntervalStringException.php',
+        'DateMalformedPeriodStringException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateMalformedPeriodStringException.php',
+        'DateMalformedStringException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateMalformedStringException.php',
+        'DateObjectError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateObjectError.php',
+        'DateRangeError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
+        'Override' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/Override.php',
+        'SQLite3Exception' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -96,6 +111,7 @@ class ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit4b55c7ef33235a0353c1b6b079f86964::$classMap;
 
         }, null, ClassLoader::class);

@@ -147,6 +147,15 @@ create table payments(
     foreign key(employee) references employee(code)
 );
 
+CREATE TABLE password_reset (
+    id INT AUTO_INCREMENT PRIMARY KEY,      
+    email VARCHAR(255) NOT NULL,            
+    verification_code VARCHAR(6) NOT NULL,  
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP      
+);
+
+
 /*Insertar los datos a nuestra base de datos*/
 
 -- Inserción en la tabla departamento
