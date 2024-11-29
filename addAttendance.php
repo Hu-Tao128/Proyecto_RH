@@ -38,13 +38,16 @@ if (isset($_POST['btnAddAttendance'])) {
             }
         }
     } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
+        echo "<script>
+                alert('The code not exist.');
+                window.location.href = 'principal.php';
+            </script>";
     }
 }
 ?>
 
 <?php
-if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employee'])) {
+if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employ'])) {
     $employ = $_GET['employee'];
     $endDate = date("Y-m-d H:i:s");
 
