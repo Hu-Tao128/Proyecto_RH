@@ -61,4 +61,18 @@ $salary = salary($IDUsuario);
         </p>
     </div>
 </section>
+<section class="container_home">
+    <div class="home_first_div">
+        <h3>Inclusion message</h3>
+        <p>
+            In this company, we believe that every person counts. Use this space to assert your rights, consult resources and continue growing with us.
+        </p>
+    </div>
+    <div class="home_first_div">
+        <h3>Motivational Message</h3>
+        <p>
+            Remember! Your growth is the engine of our success. Use this platform to achieve your personal and professional goals with the support you need.
+        </p>
+    </div>
+</section>
 <?php include "../includes/footer.php"?>

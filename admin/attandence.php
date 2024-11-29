@@ -6,7 +6,13 @@ require_once "functionsAdmin.php";
 $attandance = getAttendance($IDUsuario);
 ?>
 <section>
-    <h2>Table for the attandence</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the attandence</h2>
+        <p>In this section you can see the list of clock-in and clock-out of the employees you supervise. Here you can only delete assists made.</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

@@ -6,7 +6,13 @@ require_once "functions.php";
 $absences = Absences($IDUsuario);
 ?>
 <section>
-    <h2>Justify Absence</h2>
+    <center>
+        <div class="questions">
+        <h2>Justify Absence</h2>
+        <p>In this section you can justify your absences from work, indicating the start and end date and the reason.</p>
+        </div>
+    </center>
+   
     <form action="addAbsence.php" class="formPage" method="post">
         <fieldset>
         <div class="firstInput">

@@ -8,7 +8,13 @@ $tickets = showTickets($IDUsuario);
 
 ?>
 <section>
-    <h2>Table for the tickets</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the tickets</h2>
+        <p>In this section you can see the complaint reports made by the employees you supervise, where you can modify the status of the reports or delete a report if necessary.</p>
+        </div>
+    </center>
+   <br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

@@ -1,6 +1,12 @@
 <?php include "includes/header.php" ?>
 <section>
-    <h2>Report a incident</h2>
+    <center>
+        <div class="questions">
+            <h2>Report a incident</h2>
+            <p>In this section you can make a report of an incident that has happened in the company, fill out the form with the indicated information, the administrative staff will review the report.</p>
+        </div>
+    </center>
+    
     <form action="addReport.php" class="formPage" method="post">
         <fieldset>
         <div class="firstInput">

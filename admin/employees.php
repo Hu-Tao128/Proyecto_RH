@@ -7,7 +7,13 @@ require_once "../functions.php";
 $employ = getInfoEmploy($IDUsuario);
 ?>
 <section>
-    <h2>Table for the Employees</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the Employees</h2>
+        <p>In this section you can see the information of the employees you are supervising.</p>
+        </div>
+    </center>
+<br>
     <div>
         <table border="1" class="tableAdmin">
             <tr>

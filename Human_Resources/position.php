@@ -8,7 +8,13 @@ $position = showPosition();
 ?>
 
 <section>
-    <h2>Table for the departments</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the job positions</h2>
+        <p>In this section you can see the complete list of job positions that exist in the company</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

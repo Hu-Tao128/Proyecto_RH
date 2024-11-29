@@ -5,7 +5,7 @@ require_once '../functions.php';
 if (isset($_POST['btnAddPerformance'])) {
     $score = trim($_POST['score']);
     $evaluationDate = trim($_POST['evaluationDate']);
-    $comments = traducirTexto(trim($_POST['comments']));
+    $comments = trim($_POST['comments']);
     $employ = trim($_POST['employee']);
 
     try {

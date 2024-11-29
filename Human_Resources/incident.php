@@ -6,7 +6,13 @@ require_once "../functions.php";
 $incident = showIncidents();
 ?>
 <section>
-    <h2>Table for the incidents</h2>
+<center>
+        <div class="questions">
+        <h2>Table for the incidents</h2>
+        <p>In this section I can see the incident reports made by employees. You can modify certain part of the information and delete a report if necessary</p>
+        </div>
+    </center>
+    <br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

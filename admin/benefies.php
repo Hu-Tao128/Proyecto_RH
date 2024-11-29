@@ -6,7 +6,15 @@ require_once "../functions.php";
 $benefits = showBenefits();
 ?>
 <section>
-    <h2>Table for the benefies</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the benefies</h2>
+        <p>In this section you can see the benefits that the company's employees have, here you can modify the existing benefits or eliminate them if necessary.
+<br><br>
+At the bottom there is a form to add new benefits.</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

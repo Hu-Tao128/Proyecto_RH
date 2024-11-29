@@ -8,7 +8,15 @@ $employ = getInfoEmployees();
 ?>
 
 <section>
-    <h2>Table for the Employees</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the Employees</h2>
+        <p>In this section you can see the complete list of the company's employees, as well as all their information. You can modify certain employee information or delete them if necessary.
+<br><br>
+At the bottom there is a form to add a new employee to the database. It is important to clarify that a supervisor must be assigned to the employee if he or she has one, otherwise this employee will be a supervisor.</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

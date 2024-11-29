@@ -2,12 +2,12 @@
 include "../includes/headerHR.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php";
-require_once "../functions.php";
+
 
 if (isset($_POST['btnBenfits'])) {
     $name = trim($_POST['name']);
-    $type = traducirTexto(trim($_POST['type']));
-    $description = traducirTexto(trim($_POST['description']));
+    $type = trim($_POST['type']);
+    $description = trim($_POST['description']);
 
     try {
         global $db_con;

@@ -6,7 +6,13 @@ require_once "../functions.php";
 $absences = getInfoAbsences($IDUsuario);
 ?>
 <section>
-    <h2>Table for the Request Justify Absences</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the Request Justify Absences</h2>
+        <p>In this section you can see the reports made by employees to justify their absences from work. You can accept or deny them, even delete them if necessary.</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

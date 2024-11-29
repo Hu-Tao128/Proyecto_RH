@@ -6,7 +6,13 @@ require_once "functions.php";
 $vacations = vacactions($IDUsuario);
 ?>
 <section>
-    <h2>Request Vacation</h2>
+    <center>
+        <div class="questions">
+        <h2>Request Vacation</h2>
+        <p>In this section you can request your vacation, indicating the start and end date. You can also see your history of requests made and their status.</p>
+        </div>
+    </center>
+
     <form action="addVacation.php" class="formPage" method="post">
         <fieldset>
         <div class="firstInput">

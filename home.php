@@ -20,12 +20,9 @@ $salary = salary($IDUsuario);
     <div class="moreInfo">
         <h2>Welcome to the human resources system</h2>
         <p>
-        Welcome to the company's human resources page, here you can see your personal information and perform certain actions such as requesting your vacation, making a complaint, among others.
+        Welcome to the company's human resources page, here you can see your personal information and perform certain actions such as requesting your vacation, making a complaint, among others options. If you don't know what to do or how the page works, access <a href="questions.php">the frequently asked questions section.</a>
         </p>
     </div>
-    
-    
-    
 </section>
 
 <section class="container_home">
@@ -57,6 +54,20 @@ $salary = salary($IDUsuario);
                     echo $beneficio['name'] . "\n"; ?> <br><?php
                 }
             ?>
+        </p>
+    </div>
+</section>
+<section class="container_home">
+    <div class="home_first_div">
+        <h3>Inclusion message</h3>
+        <p>
+            In this company, we believe that every person counts. Use this space to assert your rights, consult resources and continue growing with us.
+        </p>
+    </div>
+    <div class="home_first_div">
+        <h3>Motivational Message</h3>
+        <p>
+            Remember! Your growth is the engine of our success. Use this platform to achieve your personal and professional goals with the support you need.
         </p>
     </div>
 </section>

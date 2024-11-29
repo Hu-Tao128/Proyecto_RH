@@ -7,7 +7,15 @@ $rating = getInfoRating();
 ?>
 
 <section>
-    <h2>Table for the rating</h2>
+<center>
+        <div class="questions">
+        <h2>Table for the rating</h2>
+        <p>In this section you can see the scores you have made on the employees you supervise, you can modify the reports you have made and also delete them.
+        <br><br>
+At the bottom you have a form where you can make employee score reports.</p>
+        </div>
+    </center>
+        <br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

@@ -87,9 +87,12 @@ foreach($users as $row){
             <div>
                 <label for="status">Status of the employee</label>
                 <select name="status" id="status">
+                    <div class="items">
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
                     <option value="Unlinked">Unlinked</option>
+                    </div>
+                   
                 </select>
             </div>
             <br>

@@ -5,8 +5,15 @@ require_once "functionsAdmin.php";
 $promotion = showPromotion();
 ?>
 <section>
-
-<h2>Table for the promotions</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the promotions</h2>
+        <p>In this section you can see the promotions for which employees can apply. Here you can modify the information of the promotions, activate or deactivate them so that they appear or do not appear in the employee promotions section, you can also delete the promotions if necessary.
+<br><br>
+At the bottom there is a form to add new promotions.</p>
+        </div>
+    </center>
+<br>
 <div class="scroll">
     <table border="1" class="tableAdmin">
         <tr>

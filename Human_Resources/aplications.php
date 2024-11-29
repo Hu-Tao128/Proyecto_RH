@@ -7,7 +7,13 @@ $Application = getInfoAplication();
 $Promotions = showPromotions();
 ?>
 <section>
-    <h2>Table for the aplications</h2>
+<center>
+        <div class="questions">
+        <h2>Table for the aplications</h2>
+        <p>In this section you can see the applications for promotions made by the employees you supervise. Here you can modify the applications to change their status or delete them if necessary.</p>
+        </div>
+    </center>
+<br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

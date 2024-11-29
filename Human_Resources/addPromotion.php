@@ -2,12 +2,11 @@
 include "../includes/headerHR.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php";
-require_once "../functions.php";
 
 
 if (isset($_POST['btnAddPromotion'])) {
-    $name = traducirTexto(trim($_POST['name']));
-    $description = traducirTexto(trim($_POST['description']));
+    $name = trim($_POST['name']);
+    $description = trim($_POST['description']);
 
     try {
         global $db_con;

@@ -7,8 +7,13 @@ $vacations = getVacations();
 ?>
 
 <section>
-    <h2>Table for the vacations</h2>
-    <h3>Here you found the vacations request about your Employees</h3>
+<center>
+        <div class="questions">
+        <h2>Table for the vacations</h2>
+        <p>In this section you can see employee vacation requests, where you can accept or deny them, you can also delete them if necessary.</p>
+        </div>
+    </center>
+    <br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>

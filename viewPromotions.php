@@ -6,8 +6,13 @@ $promotion = showPromotions();
 $apply = showPromotionsEmploy($IDUsuario);
 ?>
 <section>
-
-    <h2>Table for the promotions</h2>
+    <center>
+        <div class="questions">
+        <h2>Table for the promotions</h2>
+                <p>In this section you can see the internal promotions, where you can apply for them only once, you can also see your application history and see if they were accepted or denied</p>
+        </div>
+    </center>
+    <br>
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
