@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const config = {
-        type: 'polarArea',
+        type: 'bar',
         data: data,
         options: {
             scales: {
