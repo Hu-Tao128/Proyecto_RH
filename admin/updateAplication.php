@@ -31,7 +31,6 @@ if(isset($_POST['btnReport'])){
         echo "Connection error: " . $e->getMessage();
     }
 
-
 }
 
 ?>

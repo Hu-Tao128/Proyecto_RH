@@ -3,13 +3,14 @@
 include "../includes/headerAdmin.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
+require_once "../functions.php";
 
 
 if(isset($_POST['btnReport'])){
     $id = trim($_POST['id']);
-    $incidentType = trim($_POST['type']);
-    $incidentDate = trim($_POST['dateIncident']);
-    $description = trim($_POST['description']);
+    $incidentType = traducirTexto(trim($_POST['type']));
+    $incidentDate = traducirTexto(trim($_POST['dateIncident']));
+    $description = traducirTexto(trim($_POST['description']));
     $employee = trim($_POST['employee']);
 
     try {
