@@ -4,10 +4,9 @@ require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
 
 if (isset($_POST['btnReport'])) {
-    $type = trim($_POST['type']);
+    $type = traducirTexto(trim($_POST['type']));
     $date = trim($_POST['dateIncident']);
-    $description = trim($_POST['description']);
-    
+    $description = traducirTexto(trim($_POST['description']));
     $dateIncident = date('Y-m-d', strtotime($date));
     //verificar el formato de la fecha :)
 

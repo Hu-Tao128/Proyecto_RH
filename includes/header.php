@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
-
-    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
     <title>RH</title>
 </head>
 <body>
@@ -34,7 +32,7 @@
                 <a href="information.php">Personal information</a>
                 <a href="absence.php">Absences</a>
                 <a href="viewPromotions.php">View Promotions</a>
-                <a href="../Session/logout.php">Log out</a>
+                <a href="Session/logout.php">Log out</a>
             </nav>
         </div>
     </section>
