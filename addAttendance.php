@@ -48,7 +48,7 @@ if (isset($_POST['btnAddAttendance'])) {
 
 <?php
 if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employ'])) {
-    $employ = $_GET['employee'];
+    $employ = $_GET['employ'];
     $endDate = date("Y-m-d H:i:s");
 
     try {
