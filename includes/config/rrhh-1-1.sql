@@ -155,6 +155,65 @@ CREATE TABLE password_reset (
     expires_at TIMESTAMP      
 );
 
+create table MD_benefies(
+    id int primary key auto_increment,
+    code varchar(5) not null,
+    name varchar(60) not null,
+    type varchar(20) not null,
+    description varchar(60) not null,
+    action varchar(20) not null,
+    eliminationDate date,
+    employee varchar(5) not null,
+    index idx_employeeDB(employee),
+
+    foreign key(employee) references employee(code)
+);
+
+create table MD_promotions(
+    id int primary key auto_increment,
+    code varchar(5) not null,
+    name varchar(60) not null,
+    description varchar(60) not null,
+    status varchar(10) not null,
+    publicationDate date not null,
+    action varchar(20) not null,
+    eliminationDate date,
+    employee varchar(5) not null,
+    index idx_employeeDP(employee),
+
+    Foreign key(employee) references employee(code)
+);
+
+create table MD_incident(
+    id int primary key auto_increment,
+    idIn int not null,
+    incidentType varchar(40) not null,
+    incidentDate date not null,
+    description varchar(60) not null,
+    employee varchar(5) not null,
+    action varchar(20) not null,
+    eliminationDate date,
+    employeeDel varchar(5) not null,
+    index idx_employeeDI(employeeDel),
+
+    Foreign key(employeeDel) references employee(code)
+);
+
+create table MD_aplications(
+    id int primary key auto_increment,
+    idAp int not null, 
+    publicationDate date not null,
+    status varchar(10) not null,
+    employee varchar(5) not null,
+    promotion varchar(5) not null,
+    action varchar(20) not null,
+    eliminationDate date,
+    employeeDel varchar(5) not null,
+    index idx_employeeDA(employeeDel),
+
+    foreign key(employeeDel) references employee(code)
+);
+
 
 /*Insertar los datos a nuestra base de datos*/
 
@@ -528,6 +587,17 @@ WHERE e.id IN (
     WHERE v.status = 'Approved'
 );
 
+
+
+
+
+
+
+
+
+
+
+
 --TRIGGERS
 
 /*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
@@ -556,6 +626,34 @@ BEGIN
 END$$
 DELIMITER ;
 
+/*Nuevo trigger para devolver poder devolver los beneficios eliminados, no arroge error*/
+DELIMITER $$
+CREATE TRIGGER generate_benefit_code
+BEFORE INSERT ON benefits
+FOR EACH ROW
+BEGIN
+    IF new.code = 'code' then
+        DECLARE max_code INT;
+        DECLARE new_code VARCHAR(4);
+
+        -- Obtener el número máximo existente
+        SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM benefits;
+
+        -- Generar el nuevo código
+        SET new_code = CONCAT('B', LPAD(max_code + 1, 3, '0'));
+
+        -- Validar unicidad del código
+        WHILE EXISTS (SELECT 1 FROM benefits WHERE code = new_code) DO
+            SET max_code = max_code + 1;
+            SET new_code = CONCAT('B', LPAD(max_code, 3, '0'));
+        END WHILE;
+
+        -- Asignar el código generado
+        SET NEW.code = new_code;
+    end if;
+END$$
+DELIMITER ;
+
 /*Trigger para el codigo de departament(RH)*/
 DELIMITER $$
 CREATE TRIGGER generate_department_code
@@ -578,6 +676,7 @@ BEGIN
 END$$
 DELIMITER ;
 
+
 -- Trigger para el codigo de promotion 
 DELIMITER $$
 CREATE TRIGGER generate_promotion_code
@@ -599,6 +698,30 @@ BEGIN
     SET NEW.code = new_code;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER generate_promotion_code
+BEFORE INSERT ON promotion
+FOR EACH ROW
+BEGIN
+    IF new.code = 'code' then
+        DECLARE max_code INT;
+        DECLARE new_code VARCHAR(4);
+
+        SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM promotion;
+
+        SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
+
+        WHILE EXISTS (SELECT 1 FROM promotion WHERE code = new_code) DO
+            SET max_code = max_code + 1;
+            SET new_code = CONCAT('P', LPAD(max_code, 3, '0'));
+        END WHILE;
+
+        SET NEW.code = new_code;
+    end if;
+END$$
+DELIMITER ;
+
 
 -- Trigger para el codigo de los puestos
 DELIMITER $$

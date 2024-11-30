@@ -19,7 +19,7 @@ if (isset($_POST['btnAddAttendance'])) {
                     if (confirm('You already have an entry marked. Do you want to clock out?')) {
                         window.location.href = 'addAttendance.php?markExit=1&employ={$employ}';
                     } else {
-                        window.location.href = 'principal.php';
+                        window.location.href = 'index.php';
                     }
                   </script>";
         } else {
@@ -31,7 +31,7 @@ if (isset($_POST['btnAddAttendance'])) {
             if ($stmt->execute()) {
                 echo "<script>
                         alert('The entry was registered correctly.');
-                        window.location.href = 'principal.php';
+                        window.location.href = 'index.php';
                       </script>";
             } else {
                 echo "<script>alert('Error checking in.')</script>";
@@ -40,7 +40,7 @@ if (isset($_POST['btnAddAttendance'])) {
     } catch (PDOException $e) {
         echo "<script>
                 alert('The code not exist.');
-                window.location.href = 'principal.php';
+                window.location.href = 'index.php';
             </script>";
     }
 }
@@ -60,7 +60,7 @@ if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employ'])
         if ($stmt->execute()) {
             echo "<script>
                     alert('La salida fue registrada correctamente.');
-                    window.location.href = 'principal.php';
+                    window.location.href = 'index.php';
                   </script>";
         } else {
             echo "<script>alert('Error al registrar la salida.')</script>";
