@@ -208,6 +208,25 @@ function vacactions($usuario){
 	return $vacactions;
 }
 
+function tickets($usuario){
+	global $db_con;
+	$tickets = [];
+
+	try{
+		$query = "SELECT * FROM complaints WHERE employee = :usuario";
+		$stm = $db_con->prepare($query);
+		$stm->bindParam("usuario", $usuario, PDO::PARAM_STR);
+		$stm->execute();
+
+		$tickets = $stm->fetchAll(PDO::FETCH_ASSOC);
+		
+	} catch (PDOException $e) {
+		exit("Error en la consulta: " . $e->getMessage());
+	}
+
+	return $tickets;
+}
+
 function Absences($Usuario){
 	global $db_con;
 	$Absences = [];
