@@ -33,21 +33,19 @@ if (isset($_POST['btnLogin'])) {
         if ($DBContrasena === $Contrasena) {
             $_SESSION['user'] = $row['code'];
            
-            $info = getUserInfo($User);
-            foreach ($info as $infos) {
-                $supervisor = $infos['supervisorId'];
+            $supervisor = getIDSupervisor($User);
+
+
+            if (department($User) == 'D001') {
+                header("location: ../Human_Resources/homeRH.php");
+
+            } else if(!$supervisor) {
+                    header("Location: ../admin/homeAdmin.php");
+                }else{
+                    header("Location: ../home.php");
+                    exit();
             }
 
-            if (empty($supervisor)) {
-                if(department($User) == 'D001') {
-                    header("location: ../Human_Resources/homeRH.php");
-                }else{
-                    header("Location: ../admin/homeAdmin.php");
-                }
-            } else {
-                header("Location: ../home.php");
-                exit();
-            }
         } else {
             echo '<div class="form1">';
             echo '<br/><p>Upss... user or password is incorrect</p>';

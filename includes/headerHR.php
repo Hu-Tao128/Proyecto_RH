@@ -25,8 +25,8 @@
             exit();
         }
 
-        if(!empty(getIDSupervisor($IDUsuario)) && department($IDUsuario) != "D001"){
-            header("Location: ../home.php");
+        if(department($IDUsuario) != "D001"){
+            header("Location: ../homeAdmin.php");
             exit();
         }
         
