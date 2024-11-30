@@ -113,7 +113,7 @@ $image = $info['image'];
 <?php
 $scores = getScoreMonth($IDUsuario);
 
-$months = ['January', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'Octiber', 'November', 'Dicember'];
+$months = ['January', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'October', 'November', 'Dicember'];
 // El array de los meses
 
 $scoreData = array_fill(0, 12, 0); 
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         labels: <?php echo $chartLabels; ?>, 
         // los meses que van abajito, solo uno porque es array y se ponen todos
         datasets: [{
-            label: 'Score per Month',
+            label: 'Score',
             data: <?php echo $chartData; ?>, 
             // Puntajes, lo mismo que los chartlabels
             backgroundColor: 'rgba(75, 192, 192, 0.6)',
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const config = {
-        type: 'bar',
+        type: 'line',
         data: data,
         options: {
             scales: {
