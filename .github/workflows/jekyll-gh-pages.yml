@@ -29,7 +29,7 @@ empleos:
       - nombre: Salida del codigo
  nosotros: acciones/pago@v4
 
-      - nombre: Configurar páginas de GitHub
+      - name: Configurar páginas de GitHub
  nosotros: acciones/configure-pages@v5
 
       - nombre: Construir el sitio con Jekyll
