@@ -12,10 +12,15 @@
 
         session_start();
         if (!isset($_SESSION['user'])) {
-            header("Location: ../principal.php");
+            header("Location: ../index.php");
             exit();
         }
         $IDUsuario = $_SESSION['user'];
+
+        if (getStatus($IDUsuario) != 'Active'){
+            header("Location: ../Session/logout.php");
+            exit();
+        }
 
         $supervisorId = getIDSupervisor($IDUsuario);
 

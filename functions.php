@@ -10,6 +10,26 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+function getStatus($usuario) {
+	global $db_con;
+    $status = "";
+
+    try {
+        $query = "SELECT status FROM employee WHERE code = :usuario";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $status = $row['status'];
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $status;
+}
+
 function firstname($usuario) {
 	global $db_con;
     $Nombre = "";

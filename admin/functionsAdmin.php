@@ -375,7 +375,20 @@ function showAplicationID($id){
     return $aplication;
 }
 
-//Funciones de recursos humanos
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                      Funciones de recursos humanos
 
 function showDepartment(){
     global $db_con;
@@ -695,6 +708,44 @@ function getBenefirDel() {
     }
 
     return $del;
+}
+
+function getYearsWork($id){
+    global $db_con;
+
+    try {
+        $query = "SELECT TIMESTAMPDIFF(YEAR, contractDate, NOW()) AS YEARS FROM employee where code = :id";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+        $stmt->execute();
+
+        
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $row['YEARS'];
+}
+
+function getDaysVacations($id){
+    global $db_con;
+
+    try {
+        $query = "SELECT SUM(TIMESTAMPDIFF(DAY, startDate, endDate)) AS days from vacations where employee = :id AND status = 'Approved'";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+        $stmt->execute();
+
+        
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $row['days'];
 }
 
 ?>

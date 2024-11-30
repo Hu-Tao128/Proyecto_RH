@@ -1,10 +1,17 @@
 <?php
+require_once "functions.php";
+
     session_start();
     if (!isset($_SESSION['user'])) {
         header("Location: ../index.php");
         exit();
     }
     $IDUsuario = $_SESSION['user'];
+
+    if (getStatus($IDUsuario) != 'Active'){
+        header("Location: Session/logout.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
