@@ -2,44 +2,65 @@
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "../admin/functionsAdmin.php";
 
-if(isset($_GET['id']) && isset($_GET['action'])){
-        
+if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = $_GET['id'];
     $action = $_GET['action'];
 
-    if($action == 'delete'){
-        $query = "DELETE FROM application where id = :id";
-    } else {
-        echo "invalid option";
-        exit;
-    }
+    try {
+        global $db_con;
+        
+        if ($action == 'delete') {
+            if (!isset($_GET['user'])) {
+                throw new Exception("Missing user parameter for delete action.");
+            }
+            $IDUsuario = $_GET['user'];
+            $query = "CALL deleteApplication(:id, :employeeCode)";
+        } elseif ($action == 'restore') {
+            $query = "CALL restoreApplication(:id)";
+        } elseif ($action == 'deletedef') {
+            $query = "DELETE FROM MD_aplications WHERE id = :id";
+        } else {
+            echo "<script>
+                    alert('Invalid option');
+                    window.location.href = 'aplications.php';
+                  </script>";
+            exit;
+        }
 
-        try{
-            global $db_con;
-    
             $stmt = $db_con->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
-            if ($stmt->execute()) {
-                echo "<script>
-                        alert('Aplication was Eliminated.');
-                        window.location.href = 'aplications.php';
-                      </script>";
-            } else {
-                echo "<script>
-                        alert('The aplication wasn't elimanted');
-                        window.location.href = 'aplications.php'
-                      </script>";
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    
-    } else {
-        echo "<script>
-                alert('Upss an error, Sorry');
-                window.location.href = 'aplications.php'
-                </script>";
-    }
 
+        if ($action == 'delete') {
+            $stmt->bindParam(':employeeCode', $IDUsuario, PDO::PARAM_STR);
+        }
+
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('Operation successful.');
+                    window.location.href = 'aplications.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Operation failed.');
+                    window.location.href = 'aplications.php';
+                  </script>";
+        }
+    } catch (Exception $e) {
+        echo "<script>
+                alert('Error: " . addslashes($e->getMessage()) . "');
+                window.location.href = 'aplications.php';
+              </script>";
+        } catch (PDOException $e) {
+            echo "<script>
+                    alert('Database Error: " . addslashes($e->getMessage()) . "');
+                    window.location.href = 'aplications.php';
+                </script>";
+        }
+
+} else {
+    echo "<script>
+            alert('Missing required parameters.');
+            window.location.href = 'aplications.php';
+          </script>";
+}
 ?>

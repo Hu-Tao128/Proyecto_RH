@@ -2,48 +2,65 @@
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "../admin/functionsAdmin.php";
 
-echo "hola";
-if(isset($_GET['id']) && isset($_GET['action'])){
-        
+if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = $_GET['id'];
     $action = $_GET['action'];
 
-    if($action == 'delete'){
-        $query = "DELETE FROM promotion where code = :id";
-    } else {
-        echo "invalid option";
-        exit;
-    }
-
-        try{
-            global $db_con;
-    
-            $stmt = $db_con->prepare($query);
-            $stmt->bindParam(':id', $id);
-    
-            if ($stmt->execute()) {
-                echo "<script>
-                        alert('Promotion was Eliminated.');
-                        window.location.href = 'promotions.php';
-                      </script>";
-            } else {
-                echo "<script>
-                        alert('The promotion wasn't elimanted');
-                        window.location.href = 'promotions.php'
-                      </script>";
+    try {
+        global $db_con;
+        
+        if ($action == 'delete') {
+            if (!isset($_GET['user'])) {
+                throw new Exception("Missing user parameter for delete action.");
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            $IDUsuario = $_GET['user'];
+            $query = "CALL deletePromotion(:id, :employeeCode)";
+        } elseif ($action == 'restore') {
+            $query = "CALL restorePromotion(:id)";
+        } elseif ($action == 'deletedef') {
+            $query = "DELETE FROM MD_promotions WHERE id = :id";
+        } else {
+            echo "<script>
+                    alert('Invalid option');
+                    window.location.href = 'promotions.php';
+                  </script>";
+            exit;
         }
-    
-    } else {
+
+            $stmt = $db_con->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+
+        if ($action == 'delete') {
+            $stmt->bindParam(':employeeCode', $IDUsuario, PDO::PARAM_STR);
+        }
+
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('Operation successful.');
+                    window.location.href = 'promotions.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Operation failed.');
+                    window.location.href = 'promotions.php';
+                  </script>";
+        }
+    } catch (Exception $e) {
         echo "<script>
-                alert('Upss an error, Sorry');
-                window.location.href = 'promotions.php'
+                alert('Error: " . addslashes($e->getMessage()) . "');
+                window.location.href = 'promotions.php';
+              </script>";
+        } catch (PDOException $e) {
+            echo "<script>
+                    alert('Database Error: " . addslashes($e->getMessage()) . "');
+                    window.location.href = 'promotions.php';
                 </script>";
-    }
+        }
 
-
-
-
+} else {
+    echo "<script>
+            alert('Missing required parameters.');
+            window.location.href = 'promotions.php';
+          </script>";
+}
 ?>

@@ -621,4 +621,80 @@ function showTicketsAll() {
     return $tickets;
 }
 
+function getAplicationDel() {
+    global $db_con;
+    $del = [];
+
+    try {
+        $query = "SELECT * FROM MD_aplications";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $del[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $del;
+}
+
+function getIncidentDel() {
+    global $db_con;
+    $del = [];
+
+    try {
+        $query = "SELECT * FROM MD_incident";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $del[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $del;
+}
+
+function getPromotionDel() {
+    global $db_con;
+    $del = [];
+
+    try {
+        $query = "SELECT * FROM MD_promotions";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $del[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $del;
+}
+
+function getBenefirDel() {
+    global $db_con;
+    $del = [];
+
+    try {
+        $query = "SELECT * FROM MD_benefies";
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $del[] = $row;
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $del;
+}
+
 ?>

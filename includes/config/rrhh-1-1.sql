@@ -612,6 +612,98 @@ BEGIN
 END$$
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS restoreIncident;
+CREATE PROCEDURE restoreIncident(IN p_id INT)
+BEGIN
+    DECLARE v_idIn INT;
+    DECLARE v_incidentType VARCHAR(40);
+    DECLARE v_incidentDate DATE;
+    DECLARE v_description VARCHAR(60);
+    DECLARE v_employee VARCHAR(5);
+
+    SELECT idIn, incidentType, incidentDate, description, employee
+    INTO v_idIn, v_incidentType, v_incidentDate, v_description, v_employee
+    FROM MD_incident
+    WHERE id = p_id;
+
+    INSERT INTO incident (id, incidentType, incidentDate, description, employee)
+    VALUES (v_idIn, v_incidentType, v_incidentDate, v_description, v_employee);
+
+    DELETE FROM MD_incident WHERE id = p_id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS restoreApplication;
+CREATE PROCEDURE restoreApplication(IN p_id INT)
+BEGIN
+    DECLARE v_idAp INT;
+    DECLARE v_publicationDate DATE;
+    DECLARE v_status VARCHAR(10);
+    DECLARE v_employee VARCHAR(5);
+    DECLARE v_promotion VARCHAR(5);
+
+    SELECT idAp, publicationDate, status, employee, promotion
+    INTO v_idAp, v_publicationDate, v_status, v_employee, v_promotion
+    FROM MD_aplications
+    WHERE id = p_id;
+
+    INSERT INTO application (id, publicationDate, status, employee, promotion)
+    VALUES (v_idAp, v_publicationDate, v_status, v_employee, v_promotion);
+
+    DELETE FROM MD_aplications WHERE id = p_id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS restorePromotion;
+CREATE PROCEDURE restorePromotion(IN p_id int)
+BEGIN
+    DECLARE v_code varchar(5);
+    DECLARE v_name varchar(60);
+    DECLARE v_description VARCHAR(60);
+    DECLARE v_status VARCHAR(10);
+    DECLARE v_publicationDate DATE;
+
+    SELECT code, name, description, status, publicationDate
+    INTO v_code, v_name, v_description, v_status, v_publicationDate
+    FROM MD_promotions
+    WHERE id = p_id;
+
+    INSERT INTO promotion (code, name, description, status, publicationDate)
+    VALUES (v_code, v_name, v_status, v_description, v_publicationDate);
+
+    DELETE FROM MD_promotions WHERE id = p_id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS restoreBenefit;
+CREATE PROCEDURE restoreBenefit(IN p_id int)
+BEGIN
+    DECLARE v_code varchar(5);
+    DECLARE v_name varchar(60);
+    DECLARE v_type VARCHAR(20);
+    DECLARE v_description VARCHAR(60);
+
+    SELECT code, name, type, description
+    INTO v_code, v_name, v_type, v_description
+    FROM MD_benefies
+    WHERE id = p_id;
+
+    INSERT INTO benefits (code, name, type, description)
+    VALUES (v_code, v_name, v_type, v_description);
+
+    DELETE FROM MD_benefies WHERE id = p_id;
+END$$
+DELIMITER ;
+
+
+
+
+
+
 
 
 
@@ -707,7 +799,9 @@ WHERE e.id IN (
 --TRIGGERS
 
 /*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
+/*Nuevo trigger para devolver poder devolver los beneficios eliminados, no arroge error*/
 DELIMITER $$
+DROP TRIGGER IF EXISTS generate_benefit_code$$
 CREATE TRIGGER generate_benefit_code
 BEFORE INSERT ON benefits
 FOR EACH ROW
@@ -715,46 +809,17 @@ BEGIN
     DECLARE max_code INT;
     DECLARE new_code VARCHAR(4);
 
-    -- Obtener el número máximo existente
-    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM benefits;
-
-    -- Generar el nuevo código
-    SET new_code = CONCAT('B', LPAD(max_code + 1, 3, '0'));
-
-    -- Validar unicidad del código
-    WHILE EXISTS (SELECT 1 FROM benefits WHERE code = new_code) DO
-        SET max_code = max_code + 1;
-        SET new_code = CONCAT('B', LPAD(max_code, 3, '0'));
-    END WHILE;
-
-    -- Asignar el código generado
-    SET NEW.code = new_code;
-END$$
-DELIMITER ;
-
-/*Nuevo trigger para devolver poder devolver los beneficios eliminados, no arroge error*/
-DELIMITER $$
-CREATE TRIGGER generate_benefit_code
-BEFORE INSERT ON benefits
-FOR EACH ROW
-BEGIN
     IF new.code = 'code' then
-        DECLARE max_code INT;
-        DECLARE new_code VARCHAR(4);
 
-        -- Obtener el número máximo existente
         SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM benefits;
 
-        -- Generar el nuevo código
         SET new_code = CONCAT('B', LPAD(max_code + 1, 3, '0'));
 
-        -- Validar unicidad del código
         WHILE EXISTS (SELECT 1 FROM benefits WHERE code = new_code) DO
             SET max_code = max_code + 1;
             SET new_code = CONCAT('B', LPAD(max_code, 3, '0'));
         END WHILE;
 
-        -- Asignar el código generado
         SET NEW.code = new_code;
     end if;
 END$$
@@ -783,38 +848,20 @@ END$$
 DELIMITER ;
 
 
--- Trigger para el codigo de promotion 
+-- Trigger para el codigo de promotion
 DELIMITER $$
+DROP TRIGGER IF EXISTS generate_promotion_code$$
 CREATE TRIGGER generate_promotion_code
 BEFORE INSERT ON promotion
 FOR EACH ROW
 BEGIN
-    DECLARE max_code INT;
+    DECLARE max_code INT DEFAULT 0;
     DECLARE new_code VARCHAR(4);
 
-    SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM promotion;
-
-    SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
-
-    WHILE EXISTS (SELECT 1 FROM promotion WHERE code = new_code) DO
-        SET max_code = max_code + 1;
-        SET new_code = CONCAT('P', LPAD(max_code, 3, '0'));
-    END WHILE;
-
-    SET NEW.code = new_code;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER generate_promotion_code
-BEFORE INSERT ON promotion
-FOR EACH ROW
-BEGIN
-    IF new.code = 'code' then
-        DECLARE max_code INT;
-        DECLARE new_code VARCHAR(4);
-
-        SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0) INTO max_code FROM promotion;
+    IF NEW.code = 'code' THEN
+        SELECT IFNULL(MAX(CAST(SUBSTRING(code, 2) AS UNSIGNED)), 0)
+        INTO max_code
+        FROM promotion;
 
         SET new_code = CONCAT('P', LPAD(max_code + 1, 3, '0'));
 
@@ -824,7 +871,7 @@ BEGIN
         END WHILE;
 
         SET NEW.code = new_code;
-    end if;
+    END IF;
 END$$
 DELIMITER ;
 

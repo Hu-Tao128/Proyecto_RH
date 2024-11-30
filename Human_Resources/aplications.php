@@ -5,6 +5,7 @@ require_once "../admin/functionsAdmin.php";
 
 $Application = getInfoAplication();
 $Promotions = showPromotions();
+$ApplicationDel = getAplicationDel();
 ?>
 <section>
 <center>
@@ -35,12 +36,54 @@ $Promotions = showPromotions();
                 <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
                 <td><?= $Promotion ?></td>
                 <td><a href="modifyAplication.php?id=<?php echo $renglon['id']?>" class="action-modify" >Modify</a></td>
-                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             }   ?>
         </table>
     </div>
 </section>
+
+<?php
+    if(!empty($ApplicationDel)){    ?>
+        <section><br><br><br>
+        <center>
+            <h2>Table for the aplications Delected</h2>
+        </center>
+        <br>
+            <div class="scroll">
+                <table border="1" class="tableAdmin">
+                    <tr>
+                        <th>Number</th>
+                        <th>Publication Date</th>
+                        <th>Status</th>
+                        <th>Employee</th>
+                        <th>Promotion</th>
+                        <th>Elimation Date</th>
+                        <th>User who deleted</th>
+                        <th colspan="2">Options</th>
+                    </tr>
+                    <?php foreach ($ApplicationDel as $renglon){ ?>
+                    <tr>
+                        <td><?=$renglon['idAp']?></td>
+                        <td><?=$renglon['publicationDate']?></td>
+                        <td><?=$renglon['status']?></td>
+                        <?php $name = firstname($renglon['employee']);?>
+                        <?php $lastname = lastname($renglon['employee']);?>
+                        <td><?=$name." ".$lastname?></td>
+                        <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
+                        <td><?= $Promotion ?></td>
+                        <td><?=$renglon['eliminationDate']?></td>
+                        <?php $employeeDel = firstname($renglon['employeeDel'])." ".lastname($renglon['employeeDel']) ?>
+                        <td><?=$employeeDel?></td>
+                        <td><a href="deleteAplications.php?id=<?php echo $renglon['id']?>&action=restore" class="action-modify" >Restore</a></td>
+                        <td><a href="deleteAplications.php?id=<?php echo $renglon['id']?>&action=deletedef" class="action-delete">Permanently Delete</a></td>
+                    </tr><?php
+                    }   ?>
+                </table>
+            </div>
+        </section><?php 
+    }
+?>
 
 <?php foreach ($Promotions as $renglon) { ?>
     <div class="modal" id="modal<?= htmlspecialchars($renglon['codigo']); ?>">
@@ -60,7 +103,6 @@ $Promotions = showPromotions();
     </div>
 <?php } ?>
 
-</section>
 
 <script>
     document.querySelectorAll("[data-open]").forEach(el => {

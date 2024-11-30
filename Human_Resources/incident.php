@@ -4,6 +4,8 @@ require_once "../admin/functionsAdmin.php";
 require_once "../functions.php"; 
 
 $incident = showIncidents();
+
+$incidentDel = getIncidentDel();
 ?>
 <section>
 <center>
@@ -32,12 +34,53 @@ $incident = showIncidents();
                 <?php $name = firstname($renglon['employee']);?>
                 <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
-                <td><a href="modifyIncident.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
-                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
+                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
     </div>
 </section>
+
+<?php
+    if(!empty($incidentDel)){    ?>
+        <section><br><br><br>
+        <center>
+            <h2>Table for the Incidents Delected</h2>
+        </center>
+        <br>
+            <div class="scroll">
+                <table border="1" class="tableAdmin">
+                    <tr>
+                        <th>Number</th>
+                        <th>Type</th>
+                        <th>Incident Date</th>
+                        <th>Description</th>
+                        <th>Employee</th>
+                        <th>Elimation Date</th>
+                        <th>User who deleted</th>
+                        <th colspan="2">Options</th>
+                    </tr>
+                        <?php foreach ($incidentDel as $renglon){ ?>
+                    <tr>
+                        <td><?=$renglon['idIn']?></td>
+                        <td><?=$renglon['incidentType']?></td>
+                        <td><?=$renglon['incidentDate']?></td>
+                        <td><?=$renglon['description']?></td>
+                        <?php $name = firstname($renglon['employee']);?>
+                        <?php $lastname = lastname($renglon['employee']);?>
+                        <td><?=$name." ".$lastname?></td>
+                        <td><?=$renglon['eliminationDate']?></td>
+                        <?php $employeeDel = firstname($renglon['employeeDel'])." ".lastname($renglon['employeeDel']) ?>
+                        <td><?=$employeeDel?></td>
+                        <td><a href="deleteIncident.php?id=<?php echo $renglon['id']?>&action=restore" class="action-modify" >Restore</a></td>
+                        <td><a href="deleteIncident.php?id=<?php echo $renglon['id']?>&action=deletedef" class="action-delete">Permanently Delete</a></td>
+                    </tr><?php
+                    }   ?>
+                </table>
+            </div>
+        </section><?php 
+    }
+?>
 
 <?php include "../includes/footer.php" ?>

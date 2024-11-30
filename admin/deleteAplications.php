@@ -2,7 +2,6 @@
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
 
-echo "hola";
 if(isset($_GET['id']) && isset($_GET['action']) && isset($_GET['user'])){
         
     $id = $_GET['id'];

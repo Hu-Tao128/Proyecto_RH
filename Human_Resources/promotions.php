@@ -3,6 +3,8 @@ require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php"; 
 
 $promotion = showPromotion();
+
+$promotionDel = getPromotionDel();
 ?>
 <section>
 <center>
@@ -39,11 +41,51 @@ At the bottom there is a form to add new promotions.</p>
                 <?php } ?>
             </td>
             <td><a href="modifyPromotion.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
-            <td><a href="deletePromotion.php?id=<?php echo $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
+            <td><a href="deletePromotion.php?id=<?php echo $renglon['code']?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
         </tr>
         <?php } ?>
     </table>
 </div>
+
+<?php
+    if(!empty($promotionDel)){    ?>
+        <section><br><br><br>
+        <center>
+            <h2>Table for the Promotions Delected</h2>
+        </center>
+        <br>
+            <div class="scroll">
+                <table border="1" class="tableAdmin">
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Publication Date</th>
+                        <th>Elimation Date</th>
+                        <th>User who deleted</th>
+                        <th colspan="2">Options</th>
+                    </tr>
+                        <?php foreach ($promotionDel as $renglon){ ?>
+                    <tr>
+                        <td><?=$renglon['code']?></td>
+                        <td><?=$renglon['name']?></td>
+                        <td><?=$renglon['description']?></td>
+                        <td><?=$renglon['status']?></td>
+                        <td><?=$renglon['publicationDate']?></td>
+                        <td><?=$renglon['eliminationDate']?></td>
+                        <?php $employeeDel = firstname($renglon['employee'])." ".lastname($renglon['employee']) ?>
+                        <td><?=$employeeDel?></td>
+                        <td><a href="deletePromotion.php?id=<?php echo $renglon['id']?>&action=restore" class="action-modify" >Restore</a></td>
+                        <td><a href="deletePromotion.php?id=<?php echo $renglon['id']?>&action=deletedef" class="action-delete">Permanently Delete</a></td>
+                    </tr><?php
+                    }   ?>
+                </table>
+            </div>
+        </section><?php 
+    }
+?>
+
 <div>
     <h2>Make a promotion</h2>
     <form action="addPromotion.php" class="formPage" method="POST">
