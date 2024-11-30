@@ -1,12 +1,22 @@
 <?php
-$db_host = "localhost";
-$db_name = "hr";
-$root = "root";
-$db_pass = "";
 
-$socket = "/var/run/mysqld/mysqld.sock";
+require_once __DIR__ . '/../../vendor/autoload.php';
+//manda a llamar lo que esta en vendor(se intalaron cosas para poder usar el .env y aqui se guarda todo)
+use Dotenv\Dotenv;
+
+// Cambiar el directorio base para que apunte correctamente al archivo .env
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
+
+$db_host = $_ENV['HOST'];
+$db_name = $_ENV['DB'];
+$root = $_ENV['ROOT'];
+$db_pass = $_ENV['PASSWORD'];
+
+$socket = $_ENV['SOCKET'];
 
 try {
+    // Primer intento: conexión usando el host
     $db_con = new PDO("mysql:host={$db_host};dbname={$db_name}", $root, $db_pass);
     $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {

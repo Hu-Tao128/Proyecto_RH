@@ -304,10 +304,14 @@ function showPromotionsEmploy($User){
 }
 
 function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
-    $apiKey = $_ENV['DEEPL_API_KEY'];
-    $url = 'https://api-free.deepl.com/v2/translate';
+    $apiKey = $_ENV['DEEPL_API_KEY'] ?? null; 
+    
+    if (!$apiKey) {
+        return $texto;
+    }
 
-    $client = new GuzzleCliente();
+    $url = 'https://api-free.deepl.com/v2/translate';
+    $client = new GuzzleHttp\Client();
 
     try {
         $response = $client->post($url, [
@@ -326,12 +330,13 @@ function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
         if (isset($data['translations'][0]['text'])) {
             return $data['translations'][0]['text'];
         } else {
-            return 'Error: No se obtuvo traducción.';
+            return $texto;
         }
     } catch (Exception $e) {
-        return 'Error: ' . $e->getMessage();
+        return $texto;
     }
 }
+
 
 // Función para guardar el código en la base de datos
 function saveVerificationCode($email, $code) {
