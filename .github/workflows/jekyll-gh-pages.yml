@@ -1,42 +1,47 @@
-# Flujo de trabajo de muerte para crear e implementar un sitio Jekyll en GitHub Pages
-nombre: Implemente Jekyll con las dependencias de GitHub Pages preinstaladas
+# Flujo de trabajo para crear e implementar un sitio Jekyll en GitHub Pages
+nombre: Implementar Jekyll en GitHub Pages
 
 en:
-  # Se ejecuta en pulsaciones dirigidas a la rama predeterminada
+  # Ejecutar cuando se haga un push a la rama principal
  empújar:
- sucursales: ["principal"]
+ sucursales:
+      - director
 
-  # Le permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones
+  # Permitir ejecución manual desde la pestaña Acciones
  flujo de trabajo_despacho:
 
-# Establece permisos de GITHUB_TOKEN para permitir la implementación en páginas de GitHub
+# Permisos necesarios para GitHub Pages
 permisos:
  contenidos: leer
  páginas: escribir
  token de identificación: escribir
 
-# Permita solo una implementación simultánea, omitiendo ejecuciones en cola entre la ejecución en curso y la última en cola.
-# Sin embargo, NO cancelar las ejecuciones en curso ya que queremos permitir que se completen estas implementaciones de producción.
+# Configuración de concurrencia para evitar conflictos
 concurrencia:
  grupo: "páginas"
  cancelar en curso: falso
 
 empleos:
-  # Construir trabajo
+  # Trabajo de construcción
  construir:
  corrector: ubuntu-ultimo
  pasos:
-      - nombre: Pago
+      - nombre: Salida del codigo
  nosotros: acciones/pago@v4
-      - nombre: Páginas de configuración
+
+      - nombre: Configurar páginas de GitHub
  nosotros: acciones/configure-pages@v5
-      - nombre: Construye con Jekyll
+
+      - nombre: Construir el sitio con Jekyll
  nosotros: acciones/jekyll-build-pages@v1
  estafa:
- fuente: . . . . . . . . . ./
- destino: . . . . . . . . . . /_sitio
+ fuente: . . ./
+ destino: . . ./_sitio
+
       - nombre: Artefacto subir
  nosotros: acciones/upload-pages-artifact@v3
+ estafa:
+ nombre: github-pages-artefacto # Nombre único para evitar conflictos
 
   # Trabajo de implementación
  implementar:
