@@ -147,13 +147,13 @@ create table payments(
     foreign key(employee) references employee(code)
 );
 
-CREATE TABLE password_reset (
+/*CREATE TABLE password_reset (
     id INT AUTO_INCREMENT PRIMARY KEY,      
     email VARCHAR(255) NOT NULL,            
     verification_code VARCHAR(6) NOT NULL,  
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     expires_at TIMESTAMP      
-);
+);*/
 
 create table MD_benefies(
     id int primary key auto_increment,
@@ -708,6 +708,8 @@ DELIMITER ;
 
 
 
+
+
 --CONSULTAS DE ESTADISTICAS, PUEDES HACERLA SUBCONSULTA?
 /*Obtener el promedio de los rating/score de cada departemento*/
 SELECT d.name AS Department, AVG(p.score) AS Score 
@@ -962,6 +964,13 @@ END$$
 DELIMITER ;
 
 /*Hasta aqui acaban los trigger que subi y probe*/
+
+
+
+
+
+
+
 
 /*Calcular la duración de la ausencia al insertar*/
 CREATE TRIGGER calculate_absence_duration
