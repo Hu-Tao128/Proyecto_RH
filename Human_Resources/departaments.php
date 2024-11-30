@@ -5,10 +5,8 @@ require_once "../functions.php";
 
 $departament = showDepartment();
 
-// Llamada a la función que obtiene los datos
 $departmentsData = stadisticDepartment(); 
 
-// Decodificar los datos JSON para pasarlos a JavaScript
 $departmentsData = json_decode($departmentsData, true);
 ?>
 
@@ -50,19 +48,19 @@ $departmentsData = json_decode($departmentsData, true);
 </section>
 
 <script>
-    // Preparar los datos para Chart.js
     const departmentNames = <?php echo json_encode(array_column($departmentsData, 'department')); ?>;
     const averageScores = <?php echo json_encode(array_column($departmentsData, 'average_score')); ?>;
 
-    // Crear la gráfica PolarArea
     const ctx = document.getElementById('userChart').getContext('2d');
     const userChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
-            labels: departmentNames,  // Los nombres de los departamentos
+            labels: departmentNames,  
+            // Los nombres de los departamentos
             datasets: [{
                 label: 'Average Score per Department',
-                data: averageScores,  // Los puntajes promedio por departamento
+                data: averageScores,  
+                // Los puntajes promedio por departamento
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -91,7 +89,8 @@ $departmentsData = json_decode($departmentsData, true);
                 tooltip: {
                     callbacks: {
                         label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2); // Formato con 2 decimales
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2); 
+                            // Formato con 2 decimales
                         }
                     }
                 }

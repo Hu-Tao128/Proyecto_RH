@@ -105,42 +105,46 @@ $image = $info['image'];
 
 <section class="position">
     <div class="container">
-        <h2>User Statistics</h2>
-        <canvas id="userChart" width="400" height="200"></canvas>
+        <h2>User Score Statistics</h2>
+        <canvas id="scoreChart" width="400" height="200"></canvas>
     </div>
 </section>
 
 <?php
-// Ejemplo de datos (puedes reemplazar esto con una consulta SQL)
-$data = [
-    'attendance' => 20, // Días de asistencia
-    'absences' => 5,    // Días de ausencia
-    'vacations' => 3    // Días de vacaciones
-];
+$scores = getScoreMonth($IDUsuario);
 
-// Transforma los datos en formato JSON para JavaScript
-$chartData = json_encode(array_values($data));
-$chartLabels = json_encode(array_keys($data));
+$months = ['January', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'Octiber', 'November', 'Dicember'];
+// El array de los meses
+
+$scoreData = array_fill(0, 12, 0); 
+// iniciamos el array con ceros
+// 0 donde empieza, 12 los valores que tendra y el ultimo 0 es el valor por default(por si no tiene evaluacion como pasa aqui)
+
+foreach ($scores as $score) {
+    $scoreData[$score['month'] - 1] = $score['score'];
+    //guarda los datos de cada mes
+    //mes - 1 porque es un array y empieza en 0
+}
+
+$chartData = json_encode(array_values($scoreData));
+$chartLabels = json_encode($months);
+// Convertimos los datos de PHP a formato JSON para usar en JavaScript
 ?>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('userChart').getContext('2d');
+    const ctx = document.getElementById('scoreChart').getContext('2d');
     const data = {
-        labels: <?php echo $chartLabels; ?>,
+        labels: <?php echo $chartLabels; ?>, 
+        // los meses que van abajito, solo uno porque es array y se ponen todos
         datasets: [{
-            label: 'User Activity (Days)',
-            data: <?php echo $chartData; ?>,
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
-            ],
-            borderColor: [
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 206, 86, 1)'
-            ],
+            label: 'Score per Month',
+            data: <?php echo $chartData; ?>, 
+            // Puntajes, lo mismo que los chartlabels
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            //me robe los colores
             borderWidth: 1
         }]
     };
@@ -151,7 +155,17 @@ document.addEventListener("DOMContentLoaded", function () {
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Average Score'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
                 }
             }
         }

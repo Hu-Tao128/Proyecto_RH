@@ -303,6 +303,27 @@ function showPromotionsEmploy($User){
     return $promotions;
 }
 
+function getScoreMonth($user){
+    global $db_con;
+    $score = [];
+
+    try{
+        $query = "SELECT MONTH(evaluationDate) AS month, AVG(score) AS score FROM performance WHERE employee = :user GROUP BY MONTH(evaluationDate)";
+            $stm = $db_con->prepare($query);
+            $stm->bindParam("user", $user, PDO::PARAM_STR);
+            $stm->execute();
+            
+            while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+                $score[] = ['month' => $row['month'], 'score' => $row['score']];
+            }
+
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            exit();
+    }
+    return $score;
+}
+
 function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
     $apiKey = $_ENV['DEEPL_API_KEY'] ?? null; 
     
