@@ -5,6 +5,11 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client as GuzzleCliente;
 
 
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 function firstname($usuario) {
 	global $db_con;
     $Nombre = "";
@@ -299,7 +304,7 @@ function showPromotionsEmploy($User){
 }
 
 function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
-    $apiKey = '0cdc3f56-bc66-4f64-8db4-bfe29bcde90a:fx';
+    $apiKey = $_ENV['DEEPL_API_KEY'];
     $url = 'https://api-free.deepl.com/v2/translate';
 
     $client = new GuzzleCliente();
