@@ -22,6 +22,6 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirigir al usuario a la página principal, con un parámetro para evitar caché
-header("Location: ../principal.php?nocache=" . time());
+header("Location: ../index.php?nocache=" . time());
 exit();
 ?>
