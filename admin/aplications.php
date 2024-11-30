@@ -35,7 +35,7 @@ $Promotions = showPromotions();
                 <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
                 <td><?= $Promotion ?></td>
                 <td><a href="modifyAplication.php?id=<?php echo $renglon['id']?>" class="action-modify" >Modify</a></td>
-                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             }   ?>
         </table>

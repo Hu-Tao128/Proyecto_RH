@@ -42,8 +42,10 @@ At the bottom there is a form to add a new employee to the database. It is impor
                 <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
                 <td><a href="modifyEmploy.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
                 <?php if ($renglon['status']=='Active'){?>
-                    <td><a href="deleteEmploy.php" class="action-delete">Desactivate</a></td><?php
-                }   ?>
+                    <td><a href="deleteEmploy.php?id=<?php echo $renglon['code']?>&action=inactive" class="action-delete">Desactivate</a></td><?php
+                }else{   ?>
+                    <td><a href="deleteEmploy.php?id=<?php echo $renglon['code']?>&action=active" class="action-modify">Activate</a></td><?php
+                }?>
             </tr>
             <?php } ?>
         </table>

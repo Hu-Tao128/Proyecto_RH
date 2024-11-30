@@ -20,6 +20,16 @@ if (isset($_POST['btnLogin'])) {
         
         $DBContrasena = ($count == 0) ? "" : $row['password'];
         
+        if ($row['status'] == 'Inactive'){
+            echo '<div class="form1">';
+            echo '<br/><p>Your account has been deactivated, please contact your supervisor or human resources department</p>';
+            echo '<br>';
+            echo '<input type="button" class="mainButton" value="Exit" onclick="self.location=\'../index.php\'" />';
+            echo '</div>';
+
+            exit();
+        }
+
         if ($DBContrasena === $Contrasena) {
             $_SESSION['user'] = $row['code'];
            

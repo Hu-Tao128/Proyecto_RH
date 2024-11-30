@@ -2,15 +2,17 @@
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "../admin/functionsAdmin.php";
 
-
 if(isset($_GET['id']) && isset($_GET['action'])){
         
     $id = $_GET['id'];
     $action = $_GET['action'];
 
-    if($action == 'delete'){
-        $query = "DELETE FROM employee where code = :id";
-    } else {
+    if($action == 'active'){
+       // $query = "DELETE FROM employee where code = :id";
+       $query = "UPDATE employee SET status = 'Active' WHERE code = :id";
+    } else if ($action == 'inactive'){    
+       $query = "UPDATE employee SET status = 'Inactive' WHERE code = :id";
+    }else {
         echo "invalid option";
         exit;
     }
@@ -23,12 +25,12 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     
             if ($stmt->execute()) {
                 echo "<script>
-                        alert('Employee was Eliminated.');
+                        alert('The employee has been modified.');
                         window.location.href = 'employee.php';
                       </script>";
             } else {
                 echo "<script>
-                        alert('The employee wasn't elimanted');
+                        alert('Employee could not be modified');
                         window.location.href = 'employee.php'
                       </script>";
             }
@@ -39,7 +41,7 @@ if(isset($_GET['id']) && isset($_GET['action'])){
     } else {
         echo "<script>
                 alert('Upss an error, Sorry');
-                window.location.href = 'benefies.php'
+                window.location.href = 'employee.php'
                 </script>";
     }
 

@@ -33,7 +33,7 @@ $incident = showIncidents();
                 <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
                 <td><a href="modifyIncident.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
-                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>

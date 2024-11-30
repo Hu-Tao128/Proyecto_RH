@@ -31,7 +31,7 @@ if (isset($_POST['btnAddAttendance'])) {
             if ($stmt->execute()) {
                 echo "<script>
                         alert('The entry was registered correctly.');
-                        window.location.href = 'index.php';
+                        window.location.href = 'marcados.php';
                       </script>";
             } else {
                 echo "<script>alert('Error checking in.')</script>";

@@ -31,7 +31,7 @@ At the bottom there is a form to add new benefits.</p>
                 <td><?=$renglon['type']?></td>
                 <td><?=$renglon['description']?></td>
                 <td><a href="modifyBenefie.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
-                <td><a href="deleteBenefies.php?id=<?= $renglon['code']?>&action=delete" class="action-delete">Delete</a></td>
+                <td><a href="deleteBenefies.php?id=<?= $renglon['code']?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>

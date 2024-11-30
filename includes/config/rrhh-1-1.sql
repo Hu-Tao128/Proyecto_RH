@@ -508,6 +508,112 @@ INSERT INTO payments (hourlyPayment, totalPayment, bonuses, employee) VALUES
 (28.50, 2280.00, 250.00, 'OL01');
 
 
+--PROCEDIMIENTOS
+
+/*Procedimiento para eliminar un incidente y guardar su informacion para poder restablecerla de nuevo*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteIncident;
+CREATE PROCEDURE deleteIncident(IN p_id INT, IN p_employeeCode VARCHAR(5))
+BEGIN
+    DECLARE v_incidentType VARCHAR(40);
+    DECLARE v_incidentDate DATE;
+    DECLARE v_description VARCHAR(60);
+    DECLARE v_employee VARCHAR(5);
+    DECLARE v_eliminationDate DATE;
+
+    SELECT incidentType, incidentDate, description, employee
+    INTO v_incidentType, v_incidentDate, v_description, v_employee
+    FROM incident
+    WHERE id = p_id;
+
+    SET v_eliminationDate = CURDATE();
+
+    INSERT INTO MD_incident (idIn, incidentType, incidentDate, description, employee, action, eliminationDate, employeeDel)
+    VALUES (p_id, v_incidentType, v_incidentDate, v_description, v_employee, 'Deleted', v_eliminationDate, p_employeeCode);
+
+    DELETE FROM incident WHERE id = p_id;
+END$$
+DELIMITER ;
+
+
+--Procedimiento para promociones
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deletePromotion;
+CREATE PROCEDURE deletePromotion(IN p_code VARCHAR(5), IN p_employeeCode VARCHAR(5))
+BEGIN
+    DECLARE v_name VARCHAR(60);
+    DECLARE v_description VARCHAR(60);
+    DECLARE v_status VARCHAR(10);
+    DECLARE v_publicationDate DATE;
+    DECLARE v_eliminationDate DATE;
+
+    SELECT name, description, status, publicationDate
+    INTO v_name, v_description, v_status, v_publicationDate
+    FROM promotion
+    WHERE code = p_code;
+
+    SET v_eliminationDate = CURDATE();
+
+    INSERT INTO MD_promotions (code, name, description, status, publicationDate, action, eliminationDate, employee)
+    VALUES (p_code, v_name, v_description, v_status, v_publicationDate, 'Deleted', v_eliminationDate, p_employeeCode);
+
+    DELETE FROM promotion WHERE code = p_code;
+END$$
+DELIMITER ;
+
+
+--Procedimiento para beneficios
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteBenefit;
+CREATE PROCEDURE deleteBenefit(IN p_code VARCHAR(5), IN p_employeeCode VARCHAR(5))
+BEGIN
+    DECLARE v_name VARCHAR(60);
+    DECLARE v_type VARCHAR(20);
+    DECLARE v_description VARCHAR(60);
+    DECLARE v_eliminationDate DATE;
+
+    SELECT name, type, description
+    INTO v_name, v_type, v_description
+    FROM benefits
+    WHERE code = p_code;
+
+    SET v_eliminationDate = CURDATE();
+
+    INSERT INTO MD_benefies (code, name, type, description, action, eliminationDate, employee)
+    VALUES (p_code, v_name, v_type, v_description, 'Deleted', v_eliminationDate, p_employeeCode);
+
+    DELETE FROM benefits WHERE code = p_code;
+END$$
+DELIMITER ;
+
+
+--Procedimiento para aplicaciones
+DELIMITER $$
+DROP PROCEDURE IF EXISTS deleteApplication;
+CREATE PROCEDURE deleteApplication(IN p_id INT, IN p_employeeCode VARCHAR(5))
+BEGIN
+    DECLARE v_publicationDate DATE;
+    DECLARE v_status VARCHAR(10);
+    DECLARE v_promotion VARCHAR(5);
+    DECLARE v_employee VARCHAR(5);
+    DECLARE v_eliminationDate DATE;
+
+    SELECT publicationDate, status, promotion, employee
+    INTO v_publicationDate, v_status, v_promotion, v_employee
+    FROM application
+    WHERE id = p_id;
+
+    SET v_eliminationDate = CURDATE();
+
+    INSERT INTO MD_aplications (idAp, publicationDate, status, employee, promotion, action, eliminationDate, employeeDel)
+    VALUES (p_id, v_publicationDate, v_status, v_employee, v_promotion, 'Deleted', v_eliminationDate, p_employeeCode);
+
+    DELETE FROM application WHERE id = p_id;
+END$$
+DELIMITER ;
+
+
+
 
 
 --CONSULTAS DE ESTADISTICAS, PUEDES HACERLA SUBCONSULTA?
@@ -764,6 +870,47 @@ BEGIN
     END WHILE;
 
     SET NEW.code = new_code;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER before_delete_promotion
+BEFORE DELETE ON promotion
+FOR EACH ROW
+BEGIN
+    INSERT INTO MD_promotions (code, name, description, status, publicationDate, action, eliminationDate, employee)
+    VALUES (OLD.code, OLD.name, OLD.description, OLD.status, OLD.publicationDate, 'Deleted', CURDATE(), OLD.employee);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER before_delete_benefit
+BEFORE DELETE ON benefits
+FOR EACH ROW
+BEGIN
+    INSERT INTO MD_benefies (code, name, type, description, action, eliminationDate, employee)
+    VALUES (OLD.code, OLD.name, OLD.type, OLD.description, 'Deleted', CURDATE(), OLD.employee);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER before_delete_incident
+BEFORE DELETE ON incident
+FOR EACH ROW
+BEGIN
+    INSERT INTO MD_incident (idIn, incidentType, incidentDate, description, employee, action, eliminationDate, employeeDel)
+    VALUES (OLD.id, OLD.incidentType, OLD.incidentDate, OLD.description, OLD.employee, 'Deleted', CURDATE(), OLD.employeeDel);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER before_delete_application
+BEFORE DELETE ON application
+FOR EACH ROW
+BEGIN
+    INSERT INTO MD_aplications (idAp, publicationDate, status, employee, promotion, action, eliminationDate, employeeDel)
+    VALUES (OLD.id, OLD.publicationDate, OLD.status, OLD.employee, OLD.promotion, 'Deleted', CURDATE(), OLD.employeeDel);
 END$$
 DELIMITER ;
 
