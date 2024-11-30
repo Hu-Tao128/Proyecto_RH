@@ -13,33 +13,135 @@ require_once "functions.php";
         exit();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilosdeLeon.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <title>RH</title>
+    <title>HR</title>
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/empleado.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel ="stylesheet" href="../css/modal.css">
+    
+
+
+
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+
 </head>
-<body>
-    <section class="header">
-    <a href="home.php" style="text-decoration: none; color: inherit;">
-        <h1>Human Resources</h1>
-    </a>
-        <div class="options">
-            <nav>
-<!-- <a href="activityUser.php">My Activity</a>-->
-                <a href="questions.php">Questions</a>
-                <a href="makeTicket.php">Make a ticket</a>
-                <a href="requestVacation.php">Request vacation</a>
-                <a href="reportIncident.php">Report an incident</a>
-                <a href="information.php">Personal information</a>
-                <a href="absence.php">Absences</a>
-                <a href="viewPromotions.php">View Promotions</a>
-                <a href="Session/logout.php">Log out</a>
-            </nav>
+<body id="body">
+    
+<header>
+    <div class="icon__menu">
+        <i class="fas fa-bars" id="btn_open"></i>
+    </div>
+
+    <div class="header-right">
+        <div class="icon_notifications">
+            <i class="fas fa-bell"></i>
         </div>
-    </section>
+
+        <!-- Menú desplegable del usuario -->
+        <div class="user-menu">
+            <div class="user-name" id="userMenuToggle">
+                <span>User</span>
+                <i class="fas fa-chevron-down"></i>
+                <a href="Session/logout.php"></a>
+            </div>
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a href="profile.php"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="Session/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+        <i class="fas fa-users"></i>
+        <h4>Human resources</h4>
+        </div>
+
+        <div class="options__menu">	
+
+            <a href="home.php" class="selected">
+                <div class="option">
+                    <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Home</h4>
+                </div>
+            </a>
+
+            <a href="makeTicket.php"><!--LISTO-->
+            <div class="option">
+                <i class="fas fa-file-alt"></i>
+                <h4>Make a tikcket</h4>
+                </div>
+            </a>
+            
+            <a href="requestVacation.php">
+            <div class="option">
+                <i class="fas fa-calendar-alt"></i>
+                    <h4>Request a vacation</h4>
+                </div>
+            </a>
+
+            <a href="reportIncident.php">
+            <div class="option">
+                    <i class="far fa-sticky-note" title="Report an incident"></i>
+                    <h4>Report an incident</h4>
+                </div>
+            </a>
+
+            <a href="absence.php">
+            <div class="option">
+                <i class="fas fa-user-check"></i>
+                <h4>Absences</h4>
+                </div>
+            </a>
+
+            <a href="viewPromotions.php">
+            <div class="option">
+
+                <i class="fas fa-chart-line"></i>
+
+                <h4>View Promotions</h4>
+                </div>
+            </a>
+
+            <a href="information.php">
+                <div class="option">
+                        <i class="far fa-address-card" title="Personal Information"></i>
+                        <h4>Personal Information</h4>
+                </div>
+            </a>
+
+            <a href="../Session/logout.php">
+                <div class="option">
+                <i class="fas fa-sign-out-alt"></i>
+                <h4>Sign out</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <main>
+      
+        <div>
+            
+        </div>
+        
+    </main>
+
+    <script src="../js/menu.js"></script>
+</body>
