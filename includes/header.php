@@ -13,13 +13,15 @@ require_once "functions.php";
         exit();
     }
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR</title>
     <!-- Bootstrap CSS -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="../css/empleado.css">
@@ -27,14 +29,8 @@ require_once "functions.php";
     <link rel="stylesheet" href="../css/perfil.css">
     <link rel ="stylesheet" href="../css/modal.css">
     
-
-
-
-
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    
-
 </head>
 <body id="body">
     
