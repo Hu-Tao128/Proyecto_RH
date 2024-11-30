@@ -11,12 +11,12 @@ if (isset($_POST['sendCode'])) {
 
     // Generar un código de verificación único
     $verificationCode = rand(100000, 999999);
-
+/*
     // Guardar el código de verificación en la base de datos (puedes usar tu tabla password_reset)
     saveVerificationCode($email, $verificationCode);
 
     // Enviar el correo con el código de verificación
-    sendVerificationEmail($email, $verificationCode);
+    sendVerificationEmail($email, $verificationCode);*/
 }
 
 ?>

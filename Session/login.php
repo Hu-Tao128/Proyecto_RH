@@ -21,10 +21,10 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fas fa-eye-slash" onclick="showPassword()"></i>
                 </div>
-                <!-- Enlace para poner olvide mi contrasena-->
+                <!-- Enlace para poner olvide mi contrasena
                 <div>
                     <a href="#" class="forgot-password-link" data-open="modal-name">Forgot your password?</a>
-                </div>
+                </div>-->
                 <div>
                     <button type="submit" id="btnLogin" name="btnLogin">Login</button>
                 </div>

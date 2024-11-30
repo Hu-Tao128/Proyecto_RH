@@ -3,8 +3,6 @@ require("includes/config/MySQL_ConexionDB.php");
 require 'vendor/autoload.php';
 
 use GuzzleHttp\Client as GuzzleCliente;
-use Mailjet\Client as MailjetCliente;
-use Mailjet\Resources;
 
 
 function firstname($usuario) {
@@ -350,7 +348,7 @@ function saveVerificationCode($email, $code) {
         echo 'Error al guardar el código: ' . $e->getMessage();
     }
 }
-
+/*
 // Función para enviar el correo con Mailjet
 function sendVerificationEmail($email, $verificationCode) {
     // Importar la clase Mailjet
@@ -399,6 +397,6 @@ function sendVerificationEmail($email, $verificationCode) {
         // Captura cualquier error y muestra el mensaje
         echo "Error al enviar el correo: " . $e->getMessage();
     }
-}
+}*/
 
 ?>
