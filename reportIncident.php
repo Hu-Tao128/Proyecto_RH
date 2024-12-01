@@ -32,3 +32,4 @@
         </div>
     </section>
 </div>
+<?php include "includes/footer.php"; ?>

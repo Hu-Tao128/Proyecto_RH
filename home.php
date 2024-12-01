@@ -95,3 +95,4 @@ $salary = salary($IDUsuario);
 </section>
 
 
+<?php include "includes/footer.php"; ?>

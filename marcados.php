@@ -24,3 +24,4 @@
         
     </section>
 </body>
+<?php include "includes/footer.php"; ?>
