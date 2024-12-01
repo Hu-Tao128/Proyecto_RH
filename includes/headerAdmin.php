@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/estilosdeLeon.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/perfil.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <?php
     include_once("../functions.php");
 
         session_start();
-        if (!isset($_SESSION['usuario'])) {
-            header("Location: ../principal.php");
+        if (!isset($_SESSION['user'])) {
+            header("Location: ../index.php");
             exit();
         }
-        $IDUsuario = $_SESSION['usuario'];
+        $IDUsuario = $_SESSION['user'];
 
-        if(!empty(getIDSupervisor($IDUsuario))){
+        if (getStatus($IDUsuario) != 'Active'){
+            header("Location: ../Session/logout.php");
+            exit();
+        }
+
+        $supervisorId = getIDSupervisor($IDUsuario);
+
+        if (!empty($supervisorId)) {
             header("Location: ../home.php");
             exit();
         }
+
         
     ?>
     <title>RH</title>
 </head>
-<body>
     <section class="header">
     <a href="../admin/homeAdmin.php" style="text-decoration: none; color: inherit;">
         <h1>Human Resources</h1>
@@ -36,12 +45,7 @@
                 <a href="informationAdmin.php">Personal information</a>
                 <a href="vacations.php">Vacations</a>
                 <a href="attandence.php">Attandence</a>
-
-                
-            </nav>
-        </div>
-        <div class="options">
-            <nav>
+                <a href="absence.php">Absences</a>
                 <a href="benefies.php">Benefies</a>
                 <a href="aplications.php">Aplications</a>
                 <a href="promotions.php">Promotions</a>

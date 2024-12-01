@@ -69,8 +69,8 @@
                     <h4>Home</h4>
                 </div>
             </a>
+            <a href="incidents.php">Incidents</a>
 
-            <a href="makeTicket.php"><!--LISTO-->
             <div class="option">
                 <i class="fas fa-file-alt"></i>
                 <h4>Make a tikcket</h4>
