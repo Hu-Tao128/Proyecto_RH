@@ -16,6 +16,12 @@ $salary = salary($IDUsuario);
 
 //mi priner commit
 ?>
+<div class="moreInfo" style="text-align: center;">
+        <h2>Welcome to the human resources system</h2>
+        <p>
+        Welcome to the company's human resources page, here you can see your personal information and perform certain actions such as requesting your vacation, making a complaint, among others options. If you don't know what to do or how the page works, access <a href="questions.php">the frequently asked questions section.</a>
+        </p>
+    </div>
 <section class="container_home row g-4 mt-4">
     <!-- Columna izquierda -->
     <div class="col-md-8">
