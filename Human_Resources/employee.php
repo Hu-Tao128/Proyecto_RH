@@ -74,7 +74,12 @@ At the bottom there is a form to add a new employee to the database. It is impor
                     <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
                     <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
                     <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
-                    <p><strong>Years:</strong> <?= htmlspecialchars(getYearsWork($renglon['code'])) ?></p>
+                    <?php $years = getYearsWork($renglon['code']);
+                            if ($years<1){?>
+                                <p><strong>New Employee</strong></p><?php
+                            }else{ ?>
+                    <p><strong>Years:</strong> <?= htmlspecialchars(getYearsWork($renglon['code'])) ?></p><?php
+                            }   ?>
                     <?php $workspace = workspace($renglon['code']); ?>
                     <?php 
                         $supervisor = $renglon['supervisorId'];
