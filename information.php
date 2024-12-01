@@ -1,14 +1,14 @@
 <?php 
+$skipBootstrap = true; // Si quieres usar Bootstrap antes de cierto contenido.
+include 'includes/header.php'; // Incluir header solo una vez.
 require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
-include 'includes/header.php';
 
 $info = getUserInfo($IDUsuario)[0] ?? [];
 $image = $info['image'];
 ?>
 
 <?php
-$skipBootstrap = true; // Indica que no queremos cargar Bootstrap en el header.
 ?>
 
 <section class="position"><br>
