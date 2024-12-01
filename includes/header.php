@@ -12,6 +12,10 @@ require_once "functions.php";
         header("Location: Session/logout.php");
         exit();
     }
+
+
+$currentFile = basename($_SERVER['PHP_SELF']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +24,12 @@ require_once "functions.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR</title>
+    
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <?php if ($currentFile !== 'information.php'): ?>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <?php endif; ?>
 
     <link rel="stylesheet" href="../css/empleado.css">
     <link rel="stylesheet" href="../css/index.css">
