@@ -30,7 +30,7 @@ $image = $info['image'];
             <!-- Modal para cambiar la foto de perfil -->
             <div class="modal" id="modal1">
                 <div class="modal-dialog">
-                    <header class="modal-header">
+                    <div class="modal-header">
                         <p class="f-p-moreActions-txtmodal">
                         Change profile photo
                         </p>
@@ -38,7 +38,7 @@ $image = $info['image'];
                         <i class="fas fa-times"></i>
                     </button>
 
-                    </header>
+                    </div>
                     <form name="frmAgregarFoto" id="frmAgregarFoto" action="addImageUser.php" method="POST" enctype="multipart/form-data">
                         <section class="modal-content">
                             <input type="hidden" id="IDCambioFoto" name="IDCambioFoto" value="<?php echo $IDUsuario; ?>" />
