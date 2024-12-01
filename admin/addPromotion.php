@@ -1,5 +1,5 @@
 <?php 
- include "../includes/headerHR.php";
+ include "../includes/headerAdmin.php";
  require_once "../includes/config/MySQL_ConexionDB.php";
  require_once "../admin/functionsAdmin.php";
  require_once "../functions.php";
@@ -15,9 +15,8 @@
         $status = "Active";
 
         $stmt = $db_con->prepare("INSERT INTO promotion (code, name, description, status, publicationDate) 
-                                  VALUES (:code, :name, :description, :status, :date)");
+                                  VALUES ('code', :name, :description, :status, :date)");
 
-        $stmt->bindParam(':code', $code);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':status', $status);
