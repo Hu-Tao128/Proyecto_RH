@@ -1,38 +1,34 @@
 <?php include "includes/header.php" ?>
-<section>
-    <center>
-        <div class="questions">
-            <h2>Report a incident</h2>
-            <p>In this section you can make a report of an incident that has happened in the company, fill out the form with the indicated information, the administrative staff will review the report.</p>
+<div class="container mt-5">
+    <section>
+        <div class="text-center mb-4">
+            <h2>Report an Incident</h2>
+            <p>In this section, you can report an incident that has occurred in the company. Please fill out the form with the required information, and the administrative staff will review your report.</p>
         </div>
-    </center>
-    
-    <form action="addReport.php" class="formPage" method="post">
-        <fieldset>
-        <div class="firstInput">
-                
+        
+        <div class="card">
+            <div class="card-header text-center"> <!-- Clase text-center añadida aquí -->
+                <h5 class="mb-0">Incident Report Form</h5>
             </div>
-            <br>
-            <div>
-                <label for="type">Type of the incident</label><br>
-                <input type="text" id="type" name="type" placeholder="Write the type of the incident" required>
+            <div class="card-body">
+                <form action="addReport.php" method="post">
+                    <div class="form-group">
+                        <label for="type">Type of the incident</label>
+                        <input type="text" id="type" name="type" placeholder="Write the type of the incident" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateIncident">Date of the incident</label>
+                        <input type="date" id="dateIncident" name="dateIncident" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" required class="form-control" rows="4" placeholder="Describe the incident..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" name="btnReport" class="btn btn-primary">Report an Incident</button>
+                    </div>
+                </form>
             </div>
-            <br>
-            <div>
-                <label for="dateIncident">Date of the incident</label>
-                <input type="date" id="dateIncident" name="dateIncident" required>
-            </div>
-            <br>
-            <div>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" required></textarea>
-            </div>
-            <div>
-                <button type="submit" name="btnReport">Report a incident</button>
-            </div>
-        </fieldset>
-    </form>
-</section>
-
-
-<?php include "includes/footer.php" ?>
+        </div>
+    </section>
+</div>
