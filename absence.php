@@ -70,3 +70,4 @@ $absences = Absences($IDUsuario);
         <?php } ?>
     </section>
 </div>
+<?php include "includes/footer.php"; ?>
