@@ -963,6 +963,66 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DELIMITER $$
+
+CREATE TRIGGER before_vacation
+BEFORE INSERT ON vacations
+FOR EACH ROW
+BEGIN
+    DECLARE days INT DEFAULT 0;
+    DECLARE years INT;
+    DECLARE daysTotal INT;
+    DECLARE newDays INT;
+
+
+
+    SELECT TIMESTAMPDIFF(YEAR, contractDate, NOW()) into years
+    FROM employee as e
+    INNER JOIN vacations as v
+    ON e.code = v.employee
+    WHERE employee = NEW.employee
+    LIMIT 1;
+
+    SELECT IFNULL(SUM(TIMESTAMPDIFF(DAY, startDate, endDate)), 0) INTO days
+    FROM vacations
+    WHERE status = 'Approved' AND employee = NEW.employee;
+
+    IF years >= 1 AND years <= 5 THEN
+        SET daysTotal = 12 + (years * 2);
+    ELSEIF years >= 6 AND years <= 10 THEN
+        SET daysTotal = 22;
+    ELSEIF years >= 11 AND years <= 15 THEN
+        SET daysTotal = 24;
+    ELSEIF years >= 16 AND years <= 20 THEN
+        SET daysTotal = 26;
+    ELSEIF years >= 21 AND years <= 25 THEN
+        SET daysTotal = 28;
+    ELSEIF years >= 26 AND years <= 30 THEN
+        SET daysTotal = 30;
+    ELSEIF years >= 31 AND years <= 35 THEN
+        SET daysTotal = 32;
+    END IF;
+
+    SELECT IFNULL(SUM(TIMESTAMPDIFF(DAY, NEW.startDate, NEW.endDate)), 0) INTO newDays
+    FROM vacations
+    WHERE employee = NEW.employee;
+
+    SET daysTotal = daysTotal - days - newDays;
+
+    IF daysTotal <= 0 THEN
+        SET NEW.status = "Rejected";
+    END IF;
+
+END$$
+
+DELIMITER ;
+
+
+
+
+drop trigger before_vacation;
+
 /*Hasta aqui acaban los trigger que subi y probe*/
 
 
