@@ -36,6 +36,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     <link rel="stylesheet" href="../css/perfil.css">
     <link rel ="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/questions.css">
     
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
