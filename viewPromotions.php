@@ -5,63 +5,62 @@ require_once "functions.php";
 $promotion = showPromotions();
 $apply = showPromotionsEmploy($IDUsuario);
 ?>
-<section>
-    <center>
-        <div class="questions">
-        <h2>Table for the promotions</h2>
-                <p>In this section you can see the internal promotions, where you can apply for them only once, you can also see your application history and see if they were accepted or denied</p>
-        </div>
-    </center>
-    <br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Publication Date</th>
-                <th>Options</th>
-            </tr>
-            <?php foreach($promotion as $renglon){ ?>
-            <tr>
-                <td><?=$renglon['code']?></td>
-                <td><?=$renglon['name']?></td>
-                <td><?=$renglon['description']?></td>
-                <td><?=$renglon['publicationDate']?></td>
-                <td><a href="applyPromotion.php?id=<?php echo $renglon['code']?>" class="action-modify">Apply</a></td>
-            </tr> <?php
-            } ?>
+<section class="container mt-5">
+    <div class="text-center mb-4">
+        <h2>Table for the Promotions</h2>
+        <p>In this section you can see the internal promotions, where you can apply for them only once. You can also see your application history and see if they were accepted or denied.</p>
+    </div>
+
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-striped table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Publication Date</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($promotion as $renglon){ ?>
+                <tr>
+                    <td><?=$renglon['code']?></td>
+                    <td><?=$renglon['name']?></td>
+                    <td><?=$renglon['description']?></td>
+                    <td><?=$renglon['publicationDate']?></td>
+                    <td><a href="applyPromotion.php?id=<?php echo $renglon['code']?>" class="btn btn-primary btn-sm">Apply</a></td>
+                </tr>
+                <?php } ?>
+            </tbody>
         </table>
     </div>
 
-    <?php
-        if (!empty($apply)){?>
-
-        <div>
-            <br><br><br>
-            <h2>My Applies</h2>
-            <div class="scroll">
-            <table border="1" class="tableAdmin">
-                <tr>
-                    <th>Id</th>
-                    <th>Apply Date</th>
-                    <th>Status</th>
-                    <th>Promotion</th>
-                </tr>
-                <?php 
-                    foreach($apply as $renglon){ ?>
-                <tr>
-                    <td><?=$renglon['id']?></td>
-                    <td><?=$renglon['publicationDate']?></td>
-                    <td><?=$renglon['status']?></td>
-                    <td><?php echo promotionName($renglon['promotion']);?></td>
-                </tr><?php
-                    }   ?>
+    <?php if (!empty($apply)){ ?>
+    <div>
+        <h2 class="text-center">My Applies</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Apply Date</th>
+                        <th>Status</th>
+                        <th>Promotion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($apply as $renglon){ ?>
+                    <tr>
+                        <td><?=$renglon['id']?></td>
+                        <td><?=$renglon['publicationDate']?></td>
+                        <td><?=$renglon['status']?></td>
+                        <td><?php echo promotionName($renglon['promotion']);?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
             </table>
-            </div>
-            
-        </div><?php
-        }
-    ?>
+        </div>
+    </div>
+    <?php } ?>
 </section>
-<?php include "includes/footer.php" ?>
