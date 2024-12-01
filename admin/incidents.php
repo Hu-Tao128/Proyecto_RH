@@ -6,8 +6,14 @@ require_once "../functions.php";
 $incident = showIncidents();
 ?>
 <section>
-    <h2>Table for the incidents</h2>
-    <div>
+    <center>
+        <div class="questions">
+        <h2>Table for the incidents</h2>
+        <p>In this section I can see the incident reports made by employees. You can modify certain part of the information and delete a report if necessary</p>
+        </div>
+    </center>
+    <br>
+    <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
                 <th>Number</th>
@@ -19,19 +25,19 @@ $incident = showIncidents();
             </tr>
             <?php foreach($incident as $renglon) { ?></php>
           <tr>
-                <td><?=$renglon['numero']?></td>
-                <td><?=$renglon['tipo_Incident']?></td>
-                <td><?=$renglon['fechaIncident']?></td>
-                <td><?=$renglon['descripcion']?></td>
-                <?php $name = firstname($renglon['empleado']);?>
-                <?php $lastname = lastname($renglon['empleado']);?>
+                <td><?=$renglon['id']?></td>
+                <td><?=$renglon['incidentType']?></td>
+                <td><?=$renglon['incidentDate']?></td>
+                <td><?=$renglon['description']?></td>
+                <?php $name = firstname($renglon['employee']);?>
+                <?php $lastname = lastname($renglon['employee']);?>
                 <td><?=$name." ".$lastname?></td>
-                <td><a href="" class="action-modify">Modify</a></td>
-                <td><a href="" class="action-delete">Delete</a></td>
+                <td><a href="modifyIncident.php?id=<?php echo $renglon['id']?>" class="action-modify">Modify</a></td>
+                <td><a href="deleteIncident.php?id=<?php echo $renglon['id']; ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
             </tr><?php
             } ?>
         </table>
     </div>
 </section>
 
-<?php include "../includes/footer.php" ?>
+
