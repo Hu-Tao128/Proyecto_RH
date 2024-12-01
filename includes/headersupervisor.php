@@ -69,53 +69,79 @@
                     <h4>Home</h4>
                 </div>
             </a>
-            <a href="incidents.php">Incidents</a>
 
+            <a href="incidents.php">
             <div class="option">
                 <i class="fas fa-file-alt"></i>
-                <h4>Make a tikcket</h4>
+                <h4>Incidents</h4>
                 </div>
             </a>
             
-            <a href="requestVacation.php">
+            <a href="tickets.php">
             <div class="option">
                 <i class="fas fa-calendar-alt"></i>
-                    <h4>Request a vacation</h4>
+                    <h4>Tickets</h4>
                 </div>
             </a>
 
-            <a href="reportIncident.php">
+            <a href="informationAdmin.php">
             <div class="option">
                     <i class="far fa-sticky-note" title="Report an incident"></i>
-                    <h4>Report an incident</h4>
+                    <h4>Personal information</h4>
+                </div>
+            </a>
+
+            <a href="vacations.php">
+            <div class="option">
+                <i class="fas fa-user-check"></i>
+                <h4>Vacations</h4>
+                </div>
+            </a>
+
+            <a href="attandence.php">
+            <div class="option">
+                <i class="fas fa-chart-line"></i>
+                <h4>Attandence</h4>
                 </div>
             </a>
 
             <a href="absence.php">
-            <div class="option">
-                <i class="fas fa-user-check"></i>
-                <h4>Absences</h4>
-                </div>
-            </a>
-
-            <a href="viewPromotions.php">
-            <div class="option">
-
-                <i class="fas fa-chart-line"></i>
-
-                <h4>View Promotions</h4>
-                </div>
-            </a>
-
-            <a href="information.php">
                 <div class="option">
-                        <i class="far fa-address-card" title="Personal Information"></i>
-                        <h4>Personal Information</h4>
+                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <h4>Absences</h4>
+                </div>
+            </a>
+
+            <a href="benefies.php">
+                <div class="option">
+                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <h4>Benefies</h4>
+                </div>
+            </a>
+
+            <a href="aplications.php">
+            <div class="option">
+                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <h4>Aplications</h4>
+                </div>
+            </a>
+
+            <a href="promotions.php">
+            <div class="option">
+                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <h4>Promotions</h4>
+                </div>
+            </a>
+
+            <a href="employees.php"> 
+            <div class="option">
+                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <h4>Employee</h4>
                 </div>
             </a>
 
             <a href="../Session/logout.php">
-                <div class="option">
+            <div class="option">
                 <i class="fas fa-sign-out-alt"></i>
                 <h4>Sign out</h4>
                 </div>
