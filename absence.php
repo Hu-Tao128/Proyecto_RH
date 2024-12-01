@@ -39,10 +39,11 @@ $absences = Absences($IDUsuario);
         </div>
 
         <?php if (!empty($absences)) { ?>
-            <div class="mt-4">
-                <h2>Requested Absences</h2>
+        <div class="mt-4">
+            <h2>Requested Absences</h2>
+            <div class="table-responsive">
                 <table class="table table-bordered table-sm">
-                <thead style="background-color: #007bff; color: white;"> <!-- Color azul -->
+                    <thead style="background-color: #007bff; color: white;"> <!-- Color azul -->
                         <tr>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -64,6 +65,8 @@ $absences = Absences($IDUsuario);
                     </tbody>
                 </table>
             </div>
+        </div>
+
         <?php } ?>
     </section>
 </div>

@@ -332,3 +332,9 @@ body {
     overflow-x: hidden;
 }
 
+/*scroll*/
+.table-responsive {
+    max-height: 400px;
+    overflow-y: auto; 
+}
+

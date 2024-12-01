@@ -30,32 +30,33 @@
     </section>
 
     <?php if (!empty($tickets)){ ?>
-        <div class="mt-5">
-            <h2>My Tickets</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                    <thead>
+    <div class="mt-5">
+        <h2>My Tickets</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    foreach($tickets as $renglon){ ?>
                         <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <td><?=$renglon['id']?></td>
+                            <td><?=$renglon['date']?></td>
+                            <td><?=$renglon['description']?></td>
+                            <td><?=$renglon['status']?></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        foreach($tickets as $renglon){ ?>
-                            <tr>
-                                <td><?=$renglon['id']?></td>
-                                <td><?=$renglon['date']?></td>
-                                <td><?=$renglon['description']?></td>
-                                <td><?=$renglon['status']?></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
+    </div>
+
     <?php } ?>
 </div>
 
