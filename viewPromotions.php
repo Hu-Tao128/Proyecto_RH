@@ -13,8 +13,8 @@ $apply = showPromotionsEmploy($IDUsuario);
 
     <div class="table-responsive mb-4">
         <table class="table table-bordered table-striped table-sm">
-            <thead class="thead-dark">
-                <tr>
+        <thead style="background-color: #007bff; color: white;"> <!-- Color azul -->
+        <tr>
                     <th>Code</th>
                     <th>Name</th>
                     <th>Description</th>
@@ -41,8 +41,9 @@ $apply = showPromotionsEmploy($IDUsuario);
         <h2 class="text-center">My Applies</h2>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-sm">
-                <thead class="thead-dark">
-                    <tr>
+            <thead class="custom-thead"> 
+            <thead style="background-color: #007bff; color: white;"> <!-- Color azul -->
+            <tr>
                         <th>Id</th>
                         <th>Apply Date</th>
                         <th>Status</th>

@@ -42,7 +42,7 @@ $absences = Absences($IDUsuario);
             <div class="mt-4">
                 <h2>Requested Absences</h2>
                 <table class="table table-bordered table-sm">
-                    <thead>
+                <thead style="background-color: #007bff; color: white;"> <!-- Color azul -->
                         <tr>
                             <th>Start Date</th>
                             <th>End Date</th>

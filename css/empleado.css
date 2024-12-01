@@ -155,3 +155,99 @@ a.selected{
         left: -80px;
     }
 }
+/**-------------------------------------------------------*/
+/*Formulario de vacaciones*/
+
+/* Estilo para el contenedor del formulario */
+.container {
+    margin-top: 50px;
+}
+
+.questions {
+    margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+.formPage {
+    margin: 20px 0;
+}
+
+/* Estilo para el título del formulario */
+legend {
+    margin-bottom: 10px;
+}
+
+/* Estilo para la tabla de vacaciones solicitadas */
+.scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Estilo para el formulario compacto */
+.compact-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Estilo para los botones */
+.btn {
+    margin-top: 10px;
+}
+
+/*--------------------------------------------------------*/
+
+.container {
+    margin-top: 50px;
+}
+
+.questions {
+    margin-bottom: 20px;
+}
+
+.formPage {
+    margin: 20px 0;
+}
+
+legend {
+    margin-bottom: 10px;
+}
+
+.scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.compact-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.btn {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tbody tr {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+.table td, .table th {
+    padding: 12px;
+    text-align: center;
+}
