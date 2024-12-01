@@ -130,6 +130,26 @@ function department($User){
 	return $department;
 }
 
+function departmentName($User){
+	global $db_con;
+	$department = "";
+
+	try{
+		$query = "SELECT d.name FROM department as d INNER JOIN position as p on p.departmentCode = d.code INNER JOIN employee as e ON e.positionCode = p.code WHERE e.code = :user";
+		$stm = $db_con->prepare($query);
+		$stm->bindParam("user", $User, PDO::PARAM_STR);
+		$stm->execute();
+
+		if ($row = $stm->fetch(PDO::FETCH_ASSOC)){
+			$department = $row["name"];
+		}
+	} catch (PDOException $e) {
+		exit("Error en la consulta: " . $e->getMessage());
+	}
+
+	return $department;
+}
+
 function salary($usuario){
 	global $db_con;
 	$salary = "";

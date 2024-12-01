@@ -20,9 +20,8 @@ At the bottom there is a form to add a new employee to the database. It is impor
     <div class="scroll">
         <table border="1" class="tableAdmin">
             <tr>
-                <th>Number</th>
+                <th>Code</th>
                 <th>Name</th>
-                <th>Last Names</th>
                 <th>Email</th>
                 <th>CellPhone number</th>
                 <th>Workstation</th>
@@ -32,8 +31,7 @@ At the bottom there is a form to add a new employee to the database. It is impor
             <?php foreach ($employ as $renglon) { ?>
             <tr>
                 <td><?= htmlspecialchars($renglon['code']) ?></td>
-                <td><?= htmlspecialchars($renglon['firstName']) ?></td>
-                <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
+                <td><?= htmlspecialchars($renglon['firstName']." ".$renglon['lastName'] . " " . $renglon['middleName']) ?></td>
                 <td><?= htmlspecialchars($renglon['email']) ?></td>
                 <td><?= htmlspecialchars($renglon['mobile']) ?></td>
                 <?php $workspace = workspace($renglon['code']); ?>
@@ -78,6 +76,14 @@ At the bottom there is a form to add a new employee to the database. It is impor
                     <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
                     <p><strong>Years:</strong> <?= htmlspecialchars(getYearsWork($renglon['code'])) ?></p>
                     <?php $workspace = workspace($renglon['code']); ?>
+                    <?php 
+                        $supervisor = $renglon['supervisorId'];
+                            if ($supervisor != "" && $supervisor != null) {
+                                $nameS = firstname($supervisor);
+                                $SupLastNames = lastname($supervisor); ?>
+                                <strong>Supervisor:</strong> <?php echo $nameS." ".$SupLastNames; ?><br> 
+                            <?php } ?>
+                    <p><strong>Department:</strong> <?= htmlspecialchars(departmentName($renglon['code'])) ?></p>
                     <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
                 </section>
             </div>
