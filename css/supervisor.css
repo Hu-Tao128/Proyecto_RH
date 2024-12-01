@@ -155,3 +155,7 @@ a.selected{
         left: -80px;
     }
 }
+
+.options__menu .option {
+    padding: 16px 0;
+}

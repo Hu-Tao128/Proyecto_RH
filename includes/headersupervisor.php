@@ -72,71 +72,76 @@
 
             <a href="incidents.php">
             <div class="option">
-                <i class="fas fa-file-alt"></i>
+                <i class="far fa-sticky-note" title="Report an incident"></i>
                 <h4>Incidents</h4>
                 </div>
             </a>
             
             <a href="tickets.php">
             <div class="option">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-file-alt"></i>
+
                     <h4>Tickets</h4>
                 </div>
             </a>
 
             <a href="informationAdmin.php">
             <div class="option">
-                    <i class="far fa-sticky-note" title="Report an incident"></i>
+                <i class="far fa-address-card" title="Personal Information"></i>
                     <h4>Personal information</h4>
                 </div>
             </a>
 
             <a href="vacations.php">
             <div class="option">
-                <i class="fas fa-user-check"></i>
+
+                <i class="fas fa-calendar-alt"></i>
+
                 <h4>Vacations</h4>
                 </div>
             </a>
 
             <a href="attandence.php">
             <div class="option">
-                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-user-check"></i>
                 <h4>Attandence</h4>
                 </div>
             </a>
 
             <a href="absence.php">
                 <div class="option">
-                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <i class="fas fa-user-times"></i>
                     <h4>Absences</h4>
                 </div>
             </a>
 
             <a href="benefies.php">
                 <div class="option">
-                    <i class="far fa-address-card" title="Personal Information"></i>
+                    <i class="fas fa-coins"></i>
                     <h4>Benefies</h4>
                 </div>
             </a>
 
             <a href="aplications.php">
             <div class="option">
-                    <i class="far fa-address-card" title="Personal Information"></i>
-                    <h4>Aplications</h4>
+
+                <i class="fas fa-file-signature"></i>
+                <h4>Aplications</h4>
                 </div>
             </a>
 
             <a href="promotions.php">
             <div class="option">
-                    <i class="far fa-address-card" title="Personal Information"></i>
-                    <h4>Promotions</h4>
+                <i class="fas fa-gift"></i>
+                <h4>Promotions</h4>
                 </div>
             </a>
 
             <a href="employees.php"> 
             <div class="option">
-                    <i class="far fa-address-card" title="Personal Information"></i>
-                    <h4>Employee</h4>
+
+                <i class="fas fa-users"></i>
+                <h4>Employee</h4>
                 </div>
             </a>
 
