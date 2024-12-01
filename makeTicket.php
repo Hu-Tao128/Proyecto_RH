@@ -16,7 +16,7 @@
         <div>
             <form action="addTicket.php" class="formPage" method="post">
                 <fieldset class="border p-3">
-                    <legend class="w-auto">Ticket Form</legend>
+                    <h3 class="w-auto">Ticket Form</h3>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" id="description" class="form-control" rows="3" required></textarea>

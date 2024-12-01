@@ -14,7 +14,7 @@ $vacations = vacactions($IDUsuario);
 
             <form action="addVacation.php" class="formPage compact-form" method="post">
                 <fieldset class="border p-4">
-                    <legend class="w-auto">Vacation Request</legend>
+                    <h3 class="w-auto">Vacation Request</h3>
                     <div class="form-group">
                         <label for="startDate">Start date</label>
                         <input type="date" id="startDate" name="startDate" class="form-control" required>
