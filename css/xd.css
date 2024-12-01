@@ -1,0 +1,133 @@
+/* Espaciado general para que no esté pegado a los bordes */
+.container_home {
+    padding: 0 1.5rem; /* Espaciado lateral no mover */
+    margin: 0 auto; 
+    max-width: 100%; 
+    box-sizing: border-box;
+  }
+  
+  /* Estilo general de los div */
+  .card {
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos del encabezado de los div */
+  .card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem;
+    color: #fff; 
+  }
+  
+  /* Colores para los cuadros / div */
+  .card-header.user-info {
+    background-color: #0b40d3; 
+  }
+  
+  .card-header.other-info {
+    background-color: #0b40d3; 
+  }
+  
+  .card-header.inclusion {
+    background-color: #0b40d3; 
+  }
+  
+  .card-header.motivational {
+    background-color: #0b40d3;
+    color: #212529; 
+  }
+  
+  /* Estilo del cuerpo de los div */
+  .card-body {
+    padding: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #fff; 
+  }
+  
+  /* Disposición de 2x2 para las tarjetas */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  /* Media queries para adaptar el diseño a diferentes tamaños de pantalla */
+  @media (max-width: 768px) {
+    .container_home {
+      padding: 0 1rem;
+    }
+    .container_home .card {
+      margin-bottom: 1.5rem;
+    }
+    .card-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container_home {
+      padding: 0 0.5rem;
+    }
+    .container_home .card {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .questions {
+    text-align: center;
+  }
+  
+  .tableAdmin {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .tableAdmin th,
+  .tableAdmin td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .tableAdmin th {
+    background-color: #f8f9fa;
+  }
+  
+  .tableAdmin tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .tableAdmin tr:hover {
+    background-color: #ddd;
+  }
+  
+  .action-modify,
+  .action-delete {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .action-modify:hover,
+  .action-delete:hover {
+    text-decoration: underline;
+  }
+  
+  .action-delete {
+    color: #dc3545;
+  }
+  
+  @media (max-width: 768px) {
+    .tableAdmin {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+  
+

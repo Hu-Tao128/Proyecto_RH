@@ -5,6 +5,7 @@ require_once "../functions.php";
 
 $incident = showIncidents();
 ?>
+<div>
 <section>
     <center>
         <div class="questions">
@@ -39,5 +40,6 @@ $incident = showIncidents();
         </table>
     </div>
 </section>
+</div>
 
 <?php include "../includes/footer.php" ?>
