@@ -39,7 +39,7 @@ $employ = getInfoEmploy($IDUsuario);
                             <td><?= htmlspecialchars($workspace) ?></td>
                             <td>
                                 <!-- Show Button with Custom Styling -->
-                                <a href="#" class="action-modify show-button" data-open="modal<?= $renglon['code']; ?>">Show</a>
+                                <a href="#" class="btn btn-primary btn-sm" data-open="modal<?= $renglon['code']; ?>">Show</a>
                             </td>
                         </tr>
                     <?php } ?>
