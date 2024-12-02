@@ -31,7 +31,7 @@ $benefits = showBenefits();
                     <td><?=$renglon['name']?></td>
                     <td><?=$renglon['type']?></td>
                     <td><?=$renglon['description']?></td>
-                    <td><a href="modifyBenefie.php?id=<?php echo $renglon['code']?>" class="btn btn-success btn-sm">Modify</a></td>
+                    <td><a href="modifyBenefie.php?id=<?php echo $renglon['code']?>" class="btn btn-primary btn-sm">Modify</a></td>
                     <td><a href="deleteBenefies.php?id=<?= $renglon['code']?>&action=delete&user=<?php echo $IDUsuario?>" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>
                 <?php } ?>
