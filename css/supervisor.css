@@ -215,3 +215,23 @@ legend {
     padding: 12px;
     text-align: center;
 }
+/*Estiilo de boton del apartado employee*/
+.show-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.show-button:hover {
+    background-color: #0056b3;
+}
+
+.show-button:active {
+    background-color: #004085;
+}

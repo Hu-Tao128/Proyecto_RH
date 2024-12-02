@@ -7,71 +7,81 @@ require_once "../functions.php";
 $employ = getInfoEmploy($IDUsuario);
 ?>
 <section>
-    <center>
-        <div class="questions">
-        <h2>Table for the Employees</h2>
-        <p>In this section you can see the information of the employees you are supervising.</p>
+    <div class="container my-4">
+        <div class="questions text-center mb-4">
+            <h2>Table for the Employees</h2>
+            <p>In this section, you can see the information of the employees you are supervising.</p>
         </div>
-    </center>
-<br>
-    <div>
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Number</th>
-                <th>Name</th>
-                <th>Last Names</th>
-                <th>Email</th>
-                <th>CellPhone number</th>
-                <th>Workstation</th>
-                <th colspan="2">Options</th>
-            </tr>
-            <?php foreach ($employ as $renglon) { ?>
-            <tr>
-                <td><?= htmlspecialchars($renglon['code']) ?></td>
-                <td><?= htmlspecialchars($renglon['firstName']) ?></td>
-                <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
-                <td><?= htmlspecialchars($renglon['email']) ?></td>
-                <td><?= htmlspecialchars($renglon['mobile']) ?></td>
-                <?php $workspace = workspace($renglon['code']); ?>
-                <td><?= htmlspecialchars($workspace) ?></td>
-                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
-            </tr>
-            <?php } ?>
-        </table>
-    </div>
 
-    <?php foreach ($employ as $renglon) { ?>
-        <div class="modal" id="modal<?= $renglon['code']; ?>">
-            <div class="modal-dialog">
-                <header class="modal-header">
-                    <p>Employee Information</p>
-                    <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
-                </header>
-                <section class="modal-content">
-                    <div class="profile-image">
-                        <div class="avatar">
-                            <?php if(empty($renglon['image'])) { ?>
-                                <img src="../images/Perfil.svg" alt="Profile Picture">
-                            <?php } else { ?>
-                                <img src="../imageUser/<?=$renglon['image']?>" alt="Profile Picture">
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <p><strong>Code:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
-                    <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
-                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
-                    <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
-                    <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
-                    <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
-                    <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
-                    <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
-                    <?php $workspace = workspace($renglon['code']); ?>
-                    <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
-                </section>
-            </div>
+        <!-- Table with vertical scroll -->
+        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-bordered table-hover">
+                <thead class="thead">
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Last Names</th>
+                        <th>Email</th>
+                        <th>CellPhone number</th>
+                        <th>Workstation</th>
+                        <th colspan="2">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($employ as $renglon) { ?>
+                        <tr>
+                            <td><?= htmlspecialchars($renglon['code']) ?></td>
+                            <td><?= htmlspecialchars($renglon['firstName']) ?></td>
+                            <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
+                            <td><?= htmlspecialchars($renglon['email']) ?></td>
+                            <td><?= htmlspecialchars($renglon['mobile']) ?></td>
+                            <?php $workspace = workspace($renglon['code']); ?>
+                            <td><?= htmlspecialchars($workspace) ?></td>
+                            <td>
+                                <!-- Show Button with Custom Styling -->
+                                <a href="#" class="action-modify show-button" data-open="modal<?= $renglon['code']; ?>">Show</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
-    <?php } ?>
+
+        <!-- Modals for Employee Details -->
+        <?php foreach ($employ as $renglon) { ?>
+            <div class="modal" id="modal<?= $renglon['code']; ?>">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <p>Employee Information</p>
+                        <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
+                    </div>
+                    <section class="modal-content">
+                        <div class="profile-image">
+                            <div class="avatar">
+                                <?php if(empty($renglon['image'])) { ?>
+                                    <img src="../images/Perfil.svg" alt="Profile Picture">
+                                <?php } else { ?>
+                                    <img src="../imageUser/<?=$renglon['image']?>" alt="Profile Picture">
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <p><strong>Code:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
+                        <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
+                        <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
+                        <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
+                        <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
+                        <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
+                        <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
+                        <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
+                        <?php $workspace = workspace($renglon['code']); ?>
+                        <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
+                    </section>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 </section>
+
 
 <script>
     document.querySelectorAll("[data-open]").forEach(el => {
