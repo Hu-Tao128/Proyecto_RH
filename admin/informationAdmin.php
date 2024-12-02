@@ -46,11 +46,11 @@ $image = $info['image'];
                                 <span class="soltar-img-perfil__modal">Drop file here or click to upload</span>
                                 <input type="file" id="changeFotoPerfil" name="changeFotoPerfil" class="drop-zone__input" accept="image/*">
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-cancel" data-close>Cancel</button>
+                                <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Save" disabled />
+                            </div>
                         </section>
-                        <div class="modal-footer">
-                            <button type="button" class="btn-cancel" data-close>Cancel</button>
-                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Save" disabled />
-                        </div>
                     </form>
                 </div>
             </div>
