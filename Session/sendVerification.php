@@ -32,7 +32,3 @@ if (isset($_POST['sendCode'])) {
         </form>
     </div>
 </section>
-
-<?php
-    include "../includes/footer.php";
-?>
