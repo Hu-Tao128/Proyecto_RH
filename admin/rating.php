@@ -33,7 +33,7 @@ $rating = showRatings($IDUsuario);
                     <td><?= $renglon['evaluationDate']?></td>
                     <td><?= $renglon['comments']?></td>
                     <td><?= $renglon['employee']?></td>
-                    <td><a href="modifiyRating.php?id=<?= $renglon['id']?>" class="btn btn-success btn-sm">Modify</a></td>
+                    <td><a href="modifiyRating.php?id=<?= $renglon['id']?>" class="btn btn-primary btn-sm">Modify</a></td>
                     <td><a href="deleteRating.php?id=<?= $renglon['id']?>&action=delete" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>
                 <?php } ?>
@@ -60,10 +60,16 @@ $rating = showRatings($IDUsuario);
                 </div>
 
                 <div class="mb-3">
-                    <label for="comments" class="form-label">Comments</label>
-                    <textarea name="comments" id="comments" class="form-control" required></textarea>
+                    <label for="comments" class="form-label">Comentarys</label>
+                    <textarea 
+                        name="comments" 
+                        id="comments" 
+                        class="form-control" 
+                        style="height: 200px; max-height: 300px; overflow-y: auto; resize: none;" 
+                        placeholder="Write your comments here..." 
+                        required></textarea>
                 </div>
-
+                
                 <div class="mb-3">
                     <label for="employee" class="form-label">Select a Employee</label>
                     <select name="employee" id="employee" class="form-select" required>
