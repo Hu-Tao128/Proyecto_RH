@@ -50,12 +50,12 @@ At the bottom there is a form to add new promotions.</p>
         <fieldset><br>
             <div class="firstInput">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Name of the promotion">
+                <input type="text" id="name" name="name" placeholder="Name of the promotion" required>
             </div>
             <br>
             <div>
                 <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description of the promotion">
+                <input type="text" id="description" name="description" placeholder="Description of the promotion" required>
             </div>
             <br>
             <div>
