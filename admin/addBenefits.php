@@ -1,5 +1,5 @@
 <?php 
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
 
