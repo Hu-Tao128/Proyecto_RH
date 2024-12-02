@@ -1,10 +1,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/perfil.css">
-    <link rel="stylesheet" href="../css/supervisor.css">
-    
+    <link rel="stylesheet" href="../css/adminRH.css">
+    <link rel="stylesheet" href="../css/index.css">
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Cargar Chart.js -->
+
     <script src="node_modules/chart.js/dist/chart.umd.js"></script>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <?php
