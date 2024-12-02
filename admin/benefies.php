@@ -42,17 +42,17 @@ At the bottom there is a form to add new benefits.</p>
         <fieldset><br>
                 <div class="firstInput">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Name of the benefie">
+                    <input type="text" id="name" name="name" placeholder="Name of the benefie" required>
                 </div>
                 <br>
                 <div>
                     <label for="type">Type of the benefie</label>
-                    <input type="text" id="type" name="type" placeholder="Write the type of the benefie">
+                    <input type="text" id="type" name="type" placeholder="Write the type of the benefie" required>
                 </div>
                 <br>
                 <div>
                     <label for="description">Description</label>
-                    <input type="text" id="description" name="description" placeholder="Description of the benefie">
+                    <input type="text" id="description" name="description" placeholder="Description of the benefie" required>
                 </div>
                 <br>
                 <div>
