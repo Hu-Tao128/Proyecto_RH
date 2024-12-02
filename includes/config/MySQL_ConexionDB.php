@@ -21,7 +21,7 @@ try {
     $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     try {
-        // Segundo intento: conexión usando el socket
+        // Segundo intento con conexión usando el socket
         $db_con = new PDO("mysql:unix_socket={$socket};dbname={$db_name}", $root, $db_pass);
         $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {

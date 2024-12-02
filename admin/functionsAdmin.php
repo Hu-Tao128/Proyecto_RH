@@ -748,4 +748,28 @@ function getDaysVacations($id){
     return $row['days'];
 }
 
+
+function DepEmploys() {
+    global $db_con;
+    $dep = [];
+    try {
+        $query = "SELECT d.name AS Department, count(e.code) AS Employees, sum(e.gender='F') AS Women, sum(e.gender='M') AS Men FROM employee AS e INNER JOIN position AS p ON e.positionCode = p.code INNER JOIN department AS d ON d.code = p.departmentCode GROUP BY d.code;";
+
+        $stmt = $db_con->prepare($query);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $dep[] = [
+                'department' => $row['Department'],
+                'employees' => intval($row['Employees']),
+                'women' => intval($row['Women']),
+                'men' => intval($row['Men']),
+            ];
+        }
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return json_encode($dep);
+}
 ?>

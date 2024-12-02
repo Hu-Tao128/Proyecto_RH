@@ -8,6 +8,8 @@ $departament = showDepartment();
 $departmentsData = stadisticDepartment(); 
 
 $departmentsData = json_decode($departmentsData, true);
+
+$dataJson = DepEmploys();
 ?>
 
 <head>
@@ -44,6 +46,13 @@ $departmentsData = json_decode($departmentsData, true);
     <div class="container">
         <h2>Average Department Statistics</h2>
         <canvas id="userChart" width="400" height="400"></canvas>
+    </div>
+</section><br><br>
+
+<section class="position">
+    <div class="container">
+        <h2>Number Employ per Department</h2>
+        <canvas id="departmentChart"></canvas>
     </div>
 </section>
 
@@ -101,6 +110,75 @@ $departmentsData = json_decode($departmentsData, true);
                 }
             }
         }
+    });
+</script>
+
+<script>
+
+    const chartData = <?php echo $dataJson; ?>;
+    
+    const labels = chartData.map(item => item.department);
+    const womenData = chartData.map(item => item.women);
+    const menData = chartData.map(item => item.men); 
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById('departmentChart').getContext('2d');
+        
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Womens',
+                    data: womenData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Mens',
+                    data: menData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Employees by department'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Department'
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of employees'
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
     });
 </script>
 
