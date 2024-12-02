@@ -1,4 +1,4 @@
-<?php include "../includes/headerHR.php";
+<?php include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php"; 
 require_once "../functions.php"; 
@@ -17,41 +17,46 @@ $dataJson = DepEmploys();
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Cargar Chart.js -->
 </head>
 
-<section>
-    <center>
-        <div class="questions">
-        <h2>Table for the departments</h2>
-        <p>In this section you can see the departments that exist in the company.</p>
-        </div>
-    </center>
-<br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Code</th>
-                <th>name</th>
-            </tr>
-            <?php foreach($departament as $renglon) {?>
-            <tr>
-                <td><?= $renglon['code'] ?></td>
-                <td><?= $renglon['name']?></td>
-            </tr>
-            <?php }?>
+<section class="container py-5">
+    <div class="text-center mb-4">
+        <h2>Table for the Departments</h2>
+        <p class="text-muted">In this section you can see the departments that exist in the company.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($departament as $renglon) { ?>
+                <tr>
+                    <td><?= htmlspecialchars($renglon['code']) ?></td>
+                    <td><?= htmlspecialchars($renglon['name']) ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
         </table>
     </div>
+</section>
 
-</section><br><br>
-
-<section class="position">
-    <div class="container">
+<section class="container py-5">
+    <div class="text-center mb-4">
         <h2>Average Department Statistics</h2>
+    </div>
+    <div class="d-flex justify-content-center">
         <canvas id="userChart" width="400" height="400"></canvas>
     </div>
-</section><br><br>
+</section>
 
-<section class="position">
-    <div class="container">
+<section class="container py-5">
+    <div class="text-center mb-4">
         <h2>Number Employ per Department</h2>
+    </div>
+    <div class="d-flex justify-content-center">
         <canvas id="departmentChart"></canvas>
     </div>
 </section>
