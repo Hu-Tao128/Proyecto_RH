@@ -19,7 +19,7 @@
         </form>
         <br>
         <center>
-        <a href="principal.php"><button class="mainButton">Main menu</button></a>
+        <a href="index.php"><button class="mainButton">Main menu</button></a>
         </center>        
         
     </section>
