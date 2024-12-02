@@ -1,14 +1,11 @@
-<?php 
-$skipBootstrap = true; // Si quieres usar Bootstrap antes de cierto contenido.
-include 'includes/header.php'; // Incluir header solo una vez.
+<?php
+//$skipBootstrap = true; // Indica que no queremos cargar Bootstrap en el header.
+include 'includes/header.php';
 require_once 'includes/config/MySQL_ConexionDB.php';
 require_once 'functions.php';
 
 $info = getUserInfo($IDUsuario)[0] ?? [];
 $image = $info['image'];
-?>
-
-<?php
 ?>
 
 <section class="position"><br>
@@ -47,11 +44,11 @@ $image = $info['image'];
                                 <span class="soltar-img-perfil__modal">Drop file here or click to upload</span>
                                 <input type="file" id="changeFotoPerfil" name="changeFotoPerfil" class="drop-zone__input" accept="image/*">
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-cancel" data-close>Cancel</button>
+                                <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Save" disabled />
+                            </div>
                         </section>
-                        <div class="modal-footer">
-                            <button type="button" class="btn-cancel" data-close>Cancel</button>
-                            <input type="submit" name="btnChangeImg" id="btnChangeImg" value="Save" disabled />
-                        </div>
                     </form>
                 </div>
             </div>

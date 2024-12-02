@@ -26,10 +26,8 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     <title>HR</title>
     
     <!-- Bootstrap CSS -->
-
-    <?php if (!isset($skipBootstrap) || !$skipBootstrap): ?>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <?php endif; ?>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
 
     <link rel="stylesheet" href="../css/empleado.css">
     <link rel="stylesheet" href="../css/index.css">
@@ -41,7 +39,6 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Cargar Chart.js -->
 </head>
