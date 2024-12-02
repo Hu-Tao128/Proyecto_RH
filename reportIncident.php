@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" required class="form-control" rows="4" placeholder="Describe the incident..."></textarea>
+                        <textarea name="description" id="description" required class="form-control" rows="4" placeholder="Describe the incident..." maxlength=""></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" name="btnReport" class="btn btn-primary">Report an Incident</button>
