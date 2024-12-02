@@ -965,7 +965,7 @@ DELIMITER ;
 
 
 DELIMITER $$
-
+DROP TRIGGER IF EXISTS before_vacation$$
 CREATE TRIGGER before_vacation
 BEFORE INSERT ON vacations
 FOR EACH ROW
@@ -1021,7 +1021,6 @@ DELIMITER ;
 
 
 
-drop trigger before_vacation;
 
 /*Hasta aqui acaban los trigger que subi y probe*/
 

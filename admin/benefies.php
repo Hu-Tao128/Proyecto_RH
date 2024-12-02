@@ -39,7 +39,7 @@ At the bottom there is a form to add new benefits.</p>
     <div>
         <h2>Make a benefie</h2>
         <form action="addBenefits.php" class="formPage" method="POST">
-        <fieldset><br>
+            <fieldset><br>
                 <div class="firstInput">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Name of the benefie" required>
