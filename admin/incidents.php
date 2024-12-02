@@ -1,21 +1,22 @@
-<?php include "../includes/headerAdmin.php";
+<?php include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php"; 
 require_once "../functions.php"; 
 
 $incident = showIncidents();
 ?>
-<section>
-    <center>
-        <div class="questions">
+<section class="container mt-5">
+        <div class="text-center mb-4">
         <h2>Table for the incidents</h2>
         <p>In this section I can see the incident reports made by employees. You can modify certain part of the information and delete a report if necessary</p>
         </div>
-    </center>
+
     <br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
+    <div class="table-responsive mb-4">
+    <table class="table table-bordered table-striped table-sm">
+    <thead style=" color: black;"> <!-- Color azul -->
+
+        <tr>
                 <th>Number</th>
                 <th>Type</th>
                 <th>Incident Date</th>
