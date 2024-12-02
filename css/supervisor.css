@@ -155,3 +155,60 @@ a.selected{
         left: -80px;
     }
 }
+
+/*formulario no me acuerdo xd*/
+.container {
+    margin-top: 50px;
+}
+
+.questions {
+    margin-bottom: 20px;
+}
+
+.formPage {
+    margin: 20px 0;
+}
+
+legend {
+    margin-bottom: 10px;
+}
+
+.scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.compact-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.btn {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    background-color: #9d1bda;
+    color: white;
+}
+
+.table tbody tr {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+.table td, .table th {
+    padding: 12px;
+    text-align: center;
+}
