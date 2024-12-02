@@ -1,5 +1,5 @@
 <?php
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
 require_once "../functions.php"; 
@@ -20,45 +20,47 @@ foreach($incidents as $row){
 
 ?>
 
-<section>
-    <h2>Modifiy a incident</h2>
-    <form action="updateIncident.php" class="formPage" method="post">
+<section class="container py-5">
+    <h2 class="text-center mb-4">Modify an Incident</h2>
+    <form action="updateIncident.php" method="post" class="bg-light p-4 rounded shadow">
         <fieldset>
-        <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
-        <div class="firstInput">
-                
-            </div>
+            <input type="hidden" id="id" name="id" value="<?php echo $row['id']?>" readonly>
             
-            <div>
-                <label for="id" >ID: <?php echo $row['id']?></label>
-                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['id']?>>
+            <div class="mb-3">
+                <label for="id" class="form-label">ID: <?php echo $row['id']?></label>
+                <input type="text" id="id-display" class="form-control" value="<?php echo $row['id']?>" readonly>
             </div>
-            <div>
-                <label for="employee" >Code's employee: <?php echo $row['employee']?></label>
+
+            <div class="mb-3">
+                <label for="employee" class="form-label">Code's Employee</label>
+                <input type="text" class="form-control" id="employee" value="<?php echo $row['employee']?>" readonly>
             </div>
-            <div>
-                <label for="dateIncident">Date of the incident: <?php echo $row['incidentDate']?></label>
+
+            <div class="mb-3">
+                <label for="dateIncident" class="form-label">Date of the Incident</label>
+                <input type="text" class="form-control" id="dateIncident" value="<?php echo $row['incidentDate']?>" readonly>
             </div>
-            <br>
-            <div>
-                <label for="type">Type of the incident</label>
-                <input type="text" id="type" name="type" placeholder="Write the type of the incident" value="<?php echo $row['incidentType']?>" required>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type of the Incident</label>
+                <input type="text" id="type" name="type" class="form-control" placeholder="Write the type of the incident" value="<?php echo $row['incidentType']?>" required>
             </div>
-            <div>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" required placeholder="Write the description"><?php echo $row['description']?></textarea>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Write the description" rows="4" style="resize: none;" required><?php echo $row['description']?></textarea>
             </div>
-            <br>
-            <div>
-                <button type="submit" name="btnReport">Update</button>
+
+            <div class="text-center">
+                <button type="submit" name="btnReport" class="btn btn-primary px-4">Update</button>
             </div>
         </fieldset>
     </form>
-    <center>
-    <a href="incidents.php"><button class="buttonCancel">Cancel</button></a>
-    </center>
-    
-    
+
+    <div class="text-center mt-3">
+        <a href="incidents.php" class="btn btn-secondary px-4">Cancel</a>
+    </div>
 </section>
+
 
 <?php include "../includes/footer.php" ?>

@@ -1,5 +1,5 @@
 <?php
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
 require_once "../functions.php"; 
@@ -20,51 +20,49 @@ foreach($promotion as $row){
 
 ?>
 
-<section>
-    <h2>Modifiy a promotion</h2>
-    <form action="updatePromotion.php" class="formPage" method="post">
+<section class="container py-5">
+    <h2 class="text-center mb-4">Modify a Promotion</h2>
+    <form action="updatePromotion.php" method="post" class="bg-light p-4 rounded shadow">
         <fieldset>
-        <div class="firstInput">
-                
-            </div>
             
-            <div>
-                <label for="code" >Code: <?php echo $row['code']?></label>
-                <input class="inputID" type="text" id="code" name="code" value=<?php echo $row['code']?> readonly>
+            <div class="mb-3">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" id="code" name="code" class="form-control" value="<?php echo $row['code']; ?>" readonly>
             </div>
-            <div>
-                <label for="publicationDate">Publication date: <?php echo $row['publicationDate']?> </label>
+
+            <div class="mb-3">
+                <label class="form-label">Publication Date</label>
+                <input type="text" class="form-control" value="<?php echo $row['publicationDate']; ?>" readonly>
             </div>
-            <br>
-            <div>
-                <label for="name">Name of the promotion</label>
-                <input type="text" id="name" name="name" value="<?php echo $row['name']?>" required placeholder="Write the name of the promotion">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name of the Promotion</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Write the name of the promotion" value="<?php echo $row['name']; ?>" required>
             </div>
-            <br>
-            <div>
-                <label for="description">Description</label>
-                <textarea name="description" id="description"><?php echo $row['description']?></textarea>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" class="form-control" placeholder="Write the description" required><?php echo $row['description']; ?></textarea>
             </div>
-            <br>
-            <div>
-                <label for="status">Status</label>
-                <select name="status" id="status">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status" class="form-select">
+                    <option value="Active" <?php echo $row['status'] === 'Active' ? 'selected' : ''; ?>>Active</option>
+                    <option value="Inactive" <?php echo $row['status'] === 'Inactive' ? 'selected' : ''; ?>>Inactive</option>
                 </select>
             </div>
-            <br>
-            
-            <div>
-                <button type="submit" name="btnReport">Update</button>
+
+            <div class="text-center">
+                <button type="submit" name="btnReport" class="btn btn-primary px-4">Update</button>
             </div>
         </fieldset>
     </form>
-    <center>
-    <a href="promotions.php"><button class="buttonCancel">Cancel</button></a>
-    </center>
-    
-    
+
+    <div class="text-center mt-3">
+        <a href="promotions.php" class="btn btn-secondary px-4">Cancel</a>
+    </div>
 </section>
+
 
 <?php include "../includes/footer.php" ?>

@@ -1,5 +1,5 @@
 <?php
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
 require_once "../functions.php"; 
@@ -20,52 +20,49 @@ foreach($aplication as $row){
 
 ?>
 
-<section>
-    <h2>Modifiy a aplication</h2>
-    <form action="updateAplication.php" class="formPage" method="post">
+<section class="container py-5">
+    <h2 class="text-center mb-4">Modify an Application</h2>
+    <form action="updateAplication.php" method="post" class="bg-light p-4 rounded shadow">
         <fieldset>
-        <div class="firstInput">
-                
+
+            <div class="mb-3">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['id'] ?>" readonly>
             </div>
-            
-            <div>
-                <label for="id" >ID: <?php echo $row['id']?></label>
-                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
+
+            <div class="mb-3">
+                <label class="form-label">Date of the Application</label>
+                <input type="text" class="form-control" value="<?php echo $row['publicationDate'] ?>" readonly>
             </div>
-            <div>
-                <label for="publicationDate">Date of the aplication: <?php echo $row['publicationDate']?></label>
+
+            <div class="mb-3">
+                <label class="form-label">Employee</label>
+                <input type="text" class="form-control" value="<?php echo $row['employee'] ?>" readonly>
             </div>
-            
-            <div>
-                <label for="employee">Employee: <?php echo $row['employee']?></label>
-            
+
+            <div class="mb-3">
+                <label class="form-label">Promotion</label>
+                <input type="text" class="form-control" value="<?php echo $row['promotion'] ?>" readonly>
             </div>
-            <div>
-                <label for="promotion">Promotion: <?php echo $row['promotion']?></label>
-            </div>
-            <br>
-            <div>
-                <label for="status">Status</label>
-                <select name="status" id="status">
-                    <option value="Approved">Approved</option>
-                    <option value="Declined">Declined</option>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status" class="form-select">
+                    <option value="Approved" <?php echo $row['status'] === 'Approved' ? 'selected' : ''; ?>>Approved</option>
+                    <option value="Declined" <?php echo $row['status'] === 'Declined' ? 'selected' : ''; ?>>Declined</option>
                 </select>
-
             </div>
 
-            <br>
-            
-            <div>
-                <button type="submit" name="btnReport">Update</button>
+            <div class="text-center">
+                <button type="submit" name="btnReport" class="btn btn-primary px-4">Update</button>
             </div>
-
         </fieldset>
     </form>
-    <center>
-    <a href="aplications.php"><button class="buttonCancel">Cancel</button></a>
-    </center>
-    
-    
+
+    <div class="text-center mt-3">
+        <a href="aplications.php" class="btn btn-secondary px-4">Cancel</a>
+    </div>
 </section>
+
 
 <?php include "../includes/footer.php" ?>

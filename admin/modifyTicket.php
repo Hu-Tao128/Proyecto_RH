@@ -1,5 +1,5 @@
 <?php
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
 require_once "../functions.php"; 
@@ -20,46 +20,49 @@ foreach($ticket as $row){
 
 ?>
 
-<section>
-    <h2>Modifiy a ticket</h2>
-    <form action="updateTicket.php" class="formPage" method="post">
+<section class="container py-5">
+    <h2 class="text-center mb-4">Modify a Ticket</h2>
+    <form action="updateTicket.php" method="post" class="bg-light p-4 rounded shadow">
         <fieldset>
-        <div class="firstInput">
-                
-            </div>
             
-            <div>
-                <label for="id" >ID: <?php echo $row['id']?></label>
-                <input class="inputID"type="text" id="id" name="id" value=<?php echo $row['id']?> readonly>
+            <div class="mb-3">
+                <label for="id" class="form-label">ID: <?php echo $row['id']?></label>
+                <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['id']?>" readonly>
             </div>
-            <div>
-                <label for="date">Date of the ticket: <?php echo $row['date']?></label>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date of the Ticket</label>
+                <input type="text" id="date" class="form-control" value="<?php echo $row['date']?>" readonly>
             </div>
-            <div>
-                <label for="employee" >Code's employee: <?php echo $row['employee']?></label>
+
+            <div class="mb-3">
+                <label for="employee" class="form-label">Code's Employee</label>
+                <input type="text" id="employee" class="form-control" value="<?php echo $row['employee']?>" readonly>
             </div>
-            <div>
-                <label for="description">Description: <?php echo $row['description']?></label>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" class="form-control" rows="4" style="resize: none;" readonly><?php echo $row['description']?></textarea>
             </div>
-            <br>
-            <div>
-                <label for="status">Status</label>
-                <select name="status" id="status">
-                    <option value="resolved">resolved</option>
-                    <option value="unsolved">unsolved</option>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status" class="form-select">
+                    <option value="resolved">Resolved</option>
+                    <option value="unsolved">Unsolved</option>
                 </select>
             </div>
-            <br>
-            <div>
-                <button type="submit" name="btnReport">Update</button>
+
+            <div class="text-center">
+                <button type="submit" name="btnReport" class="btn btn-primary px-4">Update</button>
             </div>
         </fieldset>
     </form>
-    <center>
-    <a href="tickets.php"><button class="buttonCancel">Cancel</button></a>
-    </center>
-    
-    
+
+    <div class="text-center mt-3">
+        <a href="tickets.php" class="btn btn-secondary px-4">Cancel</a>
+    </div>
 </section>
+
 
 <?php include "../includes/footer.php" ?>
