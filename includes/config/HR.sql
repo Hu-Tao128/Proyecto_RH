@@ -11,7 +11,7 @@ create table department(
 create table promotion(
     code varchar(5) primary key,
     name varchar(60) not null,
-    description varchar(60) not null,
+    description varchar(100) not null,
     status varchar(10) not null,
     publicationDate date not null,
     index idx_promotion(publicationDate)
@@ -62,8 +62,8 @@ create table attendance(
 create table benefits(
     code varchar(5) primary key,
     name varchar(60) not null,
-    type varchar(20) not null,
-    description varchar(60) not null,
+    type varchar(40) not null,
+    description varchar(100) not null,
     index idx_benefits(name)
 );
 
@@ -71,7 +71,7 @@ create table performance(
     code varchar(5) primary key,
     score float not null,
     evaluationDate date not null,
-    comments varchar(60),
+    comments varchar(100),
     employee varchar(5) not null,
     index idx_performance(score),
 
@@ -106,7 +106,7 @@ create table absence(
     endDate date not null,
     status varchar(10) not null,
     type varchar(10) not null,
-    description varchar(60) not null,
+    description varchar(100) not null,
     employee varchar(5) not null,
     index idx_absence(startDate),
 
@@ -117,7 +117,7 @@ create table incident(
     id int primary key auto_increment,
     incidentType varchar(40) not null,
     incidentDate date not null,
-    description varchar(60) not null,
+    description varchar(100) not null,
     employee varchar(5) not null,
     index idx_incident(incidentDate),
 
@@ -147,20 +147,12 @@ create table payments(
     foreign key(employee) references employee(code)
 );
 
-/*CREATE TABLE password_reset (
-    id INT AUTO_INCREMENT PRIMARY KEY,      
-    email VARCHAR(255) NOT NULL,            
-    verification_code VARCHAR(6) NOT NULL,  
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    expires_at TIMESTAMP      
-);*/
-
 create table MD_benefies(
     id int primary key auto_increment,
     code varchar(5) not null,
     name varchar(60) not null,
     type varchar(20) not null,
-    description varchar(60) not null,
+    description varchar(100) not null,
     action varchar(20) not null,
     eliminationDate date,
     employee varchar(5) not null,
@@ -700,108 +692,6 @@ END$$
 DELIMITER ;
 
 
-
-
-
-
-
-
-
-
-
-
---CONSULTAS DE ESTADISTICAS, PUEDES HACERLA SUBCONSULTA?
-/*Obtener el promedio de los rating/score de cada departemento*/
-SELECT d.name AS Department, AVG(p.score) AS Score 
-FROM employee e 
-INNER JOIN performance p ON e.code = p.employee 
-INNER JOIN position pos ON e.positionCode = pos.code 
-INNER JOIN department d ON pos.departmentCode = d.code 
-GROUP BY d.code, d.name 
-ORDER BY Score DESC;
-
-
--- SUBCONSULTAS
-
-/*Obtener el salario promedio por departamento*/
-SELECT d.name AS Department, 
-       (SELECT AVG(p.salary) 
-        FROM position p 
-        WHERE p.departmentCode = d.code) AS Average_Salary
-FROM department d;
-
-/*Número de quejas por empleado que tiene más de una queja*/
-SELECT e.firstName, e.lastName, 
-       (SELECT COUNT(*) 
-        FROM complaints c 
-        WHERE c.employeeId = e.id) AS Complaints_Count
-FROM employee e
-WHERE (SELECT COUNT(*) 
-       FROM complaints c 
-       WHERE c.employeeId = e.id) > 1;
-
-
-
-/*Total de días de vacaciones aprobadas para empleados con más de 3 años de antigüedad*/
-SELECT e.firstName, e.lastName, 
-       (SELECT SUM(DATEDIFF(v.endDate, v.startDate) + 1) 
-        FROM vacations v 
-        WHERE v.employeeId = e.id AND v.status = 'Approved') AS Total_Vacation_Days
-FROM employee e
-WHERE DATEDIFF(CURDATE(), e.contractDate) > 1095; -- 3 años
-
-
-
-/*Lista de empleados que han recibido al menos un bono de desempeño*/
-SELECT e.firstName, e.lastName
-FROM employee e
-WHERE e.id IN (
-    SELECT DISTINCT perf.employeeId 
-    FROM performance perf 
-    WHERE perf.score > (
-        SELECT AVG(score) 
-        FROM performance
-    )
-);
-
-
-/*Contar el número de ausencias por tipo de ausencia*/
-SELECT a.type, 
-       (SELECT COUNT(*) 
-        FROM absence a2 
-        WHERE a2.type = a.type) AS Absence_Count
-FROM absence a
-GROUP BY a.type;
-
-
-/*Obtener el total de pagos realizados a empleados que han tomado vacaciones aprobadas*/
-
-SELECT e.firstName, e.lastName, 
-       (SELECT SUM(p.totalPayment) 
-        FROM payments p 
-        WHERE p.employeeId = e.id) AS Total_Payments
-FROM employee e
-WHERE e.id IN (
-    SELECT v.employeeId 
-    FROM vacations v 
-    WHERE v.status = 'Approved'
-);
-
-
-
-
-
-
-
-
-
-
-
-
---TRIGGERS
-
-/*Trigger para el codigo de los beneficios con explicacion porque es la base de los otros*/
-/*Nuevo trigger para devolver poder devolver los beneficios eliminados, no arroge error*/
 DELIMITER $$
 DROP TRIGGER IF EXISTS generate_benefit_code$$
 CREATE TRIGGER generate_benefit_code
@@ -922,48 +812,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-
-/*DELIMITER $$
-CREATE TRIGGER before_delete_promotion
-BEFORE DELETE ON promotion
-FOR EACH ROW
-BEGIN
-    INSERT INTO MD_promotions (code, name, description, status, publicationDate, action, eliminationDate, employee)
-    VALUES (OLD.code, OLD.name, OLD.description, OLD.status, OLD.publicationDate, 'Deleted', CURDATE(), OLD.employee);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER before_delete_benefit
-BEFORE DELETE ON benefits
-FOR EACH ROW
-BEGIN
-    INSERT INTO MD_benefies (code, name, type, description, action, eliminationDate, employee)
-    VALUES (OLD.code, OLD.name, OLD.type, OLD.description, 'Deleted', CURDATE(), OLD.employee);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER before_delete_incident
-BEFORE DELETE ON incident
-FOR EACH ROW
-BEGIN
-    INSERT INTO MD_incident (idIn, incidentType, incidentDate, description, employee, action, eliminationDate, employeeDel)
-    VALUES (OLD.id, OLD.incidentType, OLD.incidentDate, OLD.description, OLD.employee, 'Deleted', CURDATE(), OLD.employeeDel);
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER before_delete_application
-BEFORE DELETE ON application
-FOR EACH ROW
-BEGIN
-    INSERT INTO MD_aplications (idAp, publicationDate, status, employee, promotion, action, eliminationDate, employeeDel)
-    VALUES (OLD.id, OLD.publicationDate, OLD.status, OLD.employee, OLD.promotion, 'Deleted', CURDATE(), OLD.employeeDel);
-END$$
-DELIMITER ;*/
-
-
 DELIMITER $$
 DROP TRIGGER IF EXISTS before_vacation$$
 CREATE TRIGGER before_vacation
@@ -1017,173 +865,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
-/*Hasta aqui acaban los trigger que subi y probe*/
-
-
-
-
-
-
-
-
-/*Calcular la duración de la ausencia al insertar*/
-CREATE TRIGGER calculate_absence_duration
-BEFORE INSERT ON absence
-FOR EACH ROW
-BEGIN
-    SET NEW.duration = DATEDIFF(NEW.endDate, NEW.startDate);
-END;
-
-
---/*Asegurarse de que no se pueda eliminar un departamento si hay empleados asignados*/
-CREATE TRIGGER prevent_department_delete
-BEFORE DELETE ON department
-FOR EACH ROW
-BEGIN
-    DECLARE emp_count INT;
-    SELECT COUNT(*) INTO emp_count
-    FROM employee
-    WHERE positionCode IN (SELECT code FROM position WHERE departmentCode = OLD.code);
-    
-    IF emp_count > 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot delete department with assigned employees.';
-    END IF;
-END;
-
-
-/*Actualizar el estado de un empleado a 'Inactivo' si se elimina su posición*/
-CREATE TRIGGER deactivate_employee_on_position_delete
-AFTER DELETE ON position
-FOR EACH ROW
-BEGIN
-    UPDATE employee
-    SET status = 'Inactive'
-    WHERE positionCode = OLD.code;
-END;
-
-
-
-/*Registrar la fecha de creación de un nuevo empleado*/
-CREATE TRIGGER set_employee_creation_date
-BEFORE INSERT ON employee
-FOR EACH ROW
-BEGIN
-    SET NEW.creationDate = CURDATE();
-END;
-
-
-/*Aumentar el puntaje de desempeño si el empleado ha sido promovido*/
-CREATE TRIGGER increase_performance_score_on_promotion
-AFTER UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    IF OLD.positionCode != NEW.positionCode THEN
-        UPDATE performance
-        SET score = score + 5
-        WHERE employee = NEW.code;
-    END IF;
-END;
-
-
-
-/*Eliminar automáticamente los registros de ausencias de empleados que han sido despedidos*/
-CREATE TRIGGER delete_absences_on_employee_termination
-AFTER DELETE ON employee
-FOR EACH ROW
-BEGIN
-    DELETE FROM absence
-    WHERE employee = OLD.id;
-END;
-
-
-/*Actualizar la fecha de modificación al cambiar un registro de empleado*/
-CREATE TRIGGER update_modification_date_on_employee_change
-BEFORE UPDATE ON employee
-FOR EACH ROW
-BEGIN
-    SET NEW.modificationDate = CURDATE();
-END;
-
-/*Eliminar los acento de la tabla empleados*/
-DELIMITER $$
-CREATE TRIGGER remove_accents_from_employee
-BEFORE INSERT ON employee
-FOR EACH ROW
-BEGIN
-    SET NEW.firstName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-        NEW.firstName, 
-        'á', 'a'), 
-        'é', 'e'), 
-        'í', 'i'), 
-        'ó', 'o'), 
-        'ú', 'u'), 
-        'Á', 'A'), 
-        'É', 'E'), 
-        'Í', 'I'), 
-        'Ó', 'O'), 
-        'Ú', 'U');
-
-    SET NEW.lastName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-        NEW.lastName, 
-        'á', 'a'), 
-        'é', 'e'), 
-        'í', 'i'), 
-        'ó', 'o'), 
-        'ú', 'u'), 
-        'Á', 'A'), 
-        'É', 'E'), 
-        'Í', 'I'), 
-        'Ó', 'O'), 
-        'Ú', 'U');
-
-    SET NEW.middleName = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-        NEW.middleName, 
-        'á', 'a'), 
-        'é', 'e'), 
-        'í', 'i'), 
-        'ó', 'o'), 
-        'ú', 'u'), 
-        'Á', 'A'), 
-        'É', 'E'), 
-        'Í', 'I'), 
-        'Ó', 'O'), 
-        'Ú', 'U');
-END$$
-DELIMITER ;
-
-/*mas de 3 ausencias en el mes, incidente automatico por exceso de ausencias (sepa si sirve  ) */
-CREATE TRIGGER log_incident_for_absences
-AFTER INSERT ON absence
-FOR EACH ROW
-BEGIN
-    DECLARE absence_count INT;
-    SELECT COUNT(*) INTO absence_count
-    FROM absence
-    WHERE employee = NEW.employee AND MONTH(startDate) = MONTH(NEW.startDate) AND YEAR(startDate) = YEAR(NEW.startDate);
-    
-    IF absence_count > 3 THEN
-        INSERT INTO incident (incidentType, incidentDate, description, employee)
-        VALUES ('Excessive Absences', CURDATE(), 'More than 3 absences in a month', NEW.employee);
-    END IF;
-END;
-
-/*No duplicar email al crear otro empleado*/
-CREATE TRIGGER prevent_duplicate_email
-BEFORE INSERT ON employee
-FOR EACH ROW
-BEGIN
-    IF EXISTS (SELECT 1 FROM employee WHERE email = NEW.email) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Email already exists.';
-    END IF;  
-END;
-
-/*Estado de finalizadas las vacaciones*/
-CREATE TRIGGER update_vacation_status
-BEFORE UPDATE ON vacations
-FOR EACH ROW
-BEGIN
-    IF NEW.endDate < CURDATE() THEN
-        SET NEW.status = 'Completed';
-    END IF;
-END;
