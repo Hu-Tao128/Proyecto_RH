@@ -59,11 +59,11 @@ if (isset($_GET['markExit']) && $_GET['markExit'] == 1 && isset($_GET['employ'])
 
         if ($stmt->execute()) {
             echo "<script>
-                    alert('La salida fue registrada correctamente.');
+                    alert('The output was registered correctly.');
                     window.location.href = 'index.php';
                   </script>";
         } else {
-            echo "<script>alert('Error al registrar la salida.')</script>";
+            echo "<script>alert('Error checking out.')</script>";
         }
     } catch (PDOException $e) {
         echo "Error de conexión: " . $e->getMessage();
