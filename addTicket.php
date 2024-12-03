@@ -6,8 +6,16 @@ require_once 'functions.php';
 if (isset($_POST['btnaddTicket'])) {
     $description = traducirTexto(trim($_POST['description']));
 
+    if (strlen($description) > 100) {
+        echo "<script>
+                alert('The description exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+    
         $currentDate = new DateTime();
-        $status = "Not yet";
+        $status = "Pendent";
 
     try {
         global $db_con;
