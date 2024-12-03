@@ -481,7 +481,7 @@ function showPosition(){
     $position = [];
 
     try {
-        $query = "SELECT * FROM position";
+        $query = "SELECT * FROM position ORDER BY departmentCode";
         $stm = $db_con->prepare($query);
         $stm->execute();
 
@@ -493,6 +493,25 @@ function showPosition(){
     }
 
     return $position;
+}
+
+function getDepartmentName($id) {
+    global $db_con;
+
+    try {
+        $query = "SELECT name FROM department WHERE code = :id";
+        $stmt = $db_con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+        
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        exit("Error en la consulta: " . $e->getMessage());
+    }
+
+    return $row['name'];
 }
 
 function getInfoEmployees() {

@@ -30,8 +30,8 @@ $position = showPosition();
                     <tr>
                         <td><?= htmlspecialchars($renglon['code']) ?></td>
                         <td><?= htmlspecialchars($renglon['name']) ?></td>
-                        <td><?= htmlspecialchars($renglon['salary']) ?></td>
-                        <td><?= htmlspecialchars($renglon['departmentCode']) ?></td>
+                        <td><?= htmlspecialchars("$".$renglon['salary']) ?></td>
+                        <td><?= htmlspecialchars(getDepartmentName($renglon['departmentCode'])) ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
