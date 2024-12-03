@@ -21,11 +21,11 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fas fa-eye-slash" onclick="showPassword()"></i>
                 </div>
-                <!-- Enlace para poner olvide mi contrasena
+                <!-- Enlace para poner olvide mi contrasena-->
                 <div>
                     <a href="#" class="forgot-password-link" data-open="modal-name">Forgot your password?</a>
                 </div>
-                -->
+                
                 <div>
                     <button type="submit" id="btnLogin" name="btnLogin">Login</button>
                 </div>
@@ -46,7 +46,6 @@
                     <form action="sendVerification.php" method="post">
                         <p><strong>Enter the verification code sent to your email</strong></p>
                         <input type="text" name="id" id="id" required>
-                        <input type="text" name="email" id="email" required>
                         <button type="submit" name="sendCode">Verify</button>
                     </form>
                 </section>
