@@ -30,7 +30,7 @@ foreach($rating as $row){
             
             <div>
                 <label for="id" >Code: <?php echo $row['code']?> </label>
-                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['code']?>>
+                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['code']?> required>
             </div>
             <div>
                 <label for="evaluationDate">Evaluation Date: <?php echo $row['evaluationDate']?></label>
@@ -47,7 +47,7 @@ foreach($rating as $row){
             <br>
             <div>
                 <label for="comments">Comentarys</label>
-                <textarea name="comments" id="comments" required placeholder="Write the comments about the score"><?php echo $row['comments']?></textarea>
+                <textarea name="comments" id="comments" placeholder="Write the comments about the score" required><?php echo $row['comments']?></textarea>
             </div>
 
             <div>
