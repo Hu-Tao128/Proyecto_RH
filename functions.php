@@ -466,7 +466,7 @@ function sendVerificationEmail($email, $verificationCode) {
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset Verification Code';
         $mail->Body = "<h3>Your verification code is: $verificationCode</h3><p>Use this code to reset your password.</p>";
-        $mail->AltBody = "Your verification code is: $verificationCode\n\nUse this code to reset your password."; // Mensaje de texto plano (opcional)
+        $mail->AltBody = "Your verification code is: $verificationCode\n\nUse this code to reset your password.";
 
         // Enviar correo
         $mail->send();
