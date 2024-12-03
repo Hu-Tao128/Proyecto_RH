@@ -454,7 +454,7 @@ function sendVerificationEmail($email, $verificationCode) {
         $mail->Host = 'smtp.gmail.com'; // Cambia al servidor SMTP que uses
         $mail->SMTPAuth = true;
         $mail->Username = 'alcantarahuerta128@gmail.com'; // Tu correo electrónico
-        $mail->Password = 'xiqs mnoc sxcd zcah'; // Contraseña o app password (ver abajo)
+        $mail->Password = $_ENV['GMAIL_KEY'] ?? null;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -470,7 +470,6 @@ function sendVerificationEmail($email, $verificationCode) {
 
         // Enviar correo
         $mail->send();
-        echo "Verification code sent to your email.";
     } catch (Exception $e) {
         // Manejo de errores
         echo "Error: Could not send email. Mailer Error: {$mail->ErrorInfo}";
