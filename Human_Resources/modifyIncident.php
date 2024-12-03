@@ -54,7 +54,7 @@ foreach($incidents as $row){
         </fieldset>
     </form>
     <center>
-    <a href="complaints.php"><button class="buttonCancel">Cancel</button></a>
+    <a href="incident.php"><button class="buttonCancel">Cancel</button></a>
     </center>
     
     
