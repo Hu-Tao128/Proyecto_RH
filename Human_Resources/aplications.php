@@ -1,4 +1,4 @@
-<?php include "../includes/headerHR.php";
+<?php include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../functions.php"; 
 require_once "../admin/functionsAdmin.php"; 
@@ -8,100 +8,119 @@ $Promotions = showPromotions();
 $ApplicationDel = getAplicationDel();
 ?>
 <section>
-<center>
-        <div class="questions">
-        <h2>Table for the aplications</h2>
-        <p>In this section you can see the applications for promotions made by the employees you supervise. Here you can modify the applications to change their status or delete them if necessary.</p>
-        </div>
-    </center>
-<br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Number</th>
-                <th>Publication Date</th>
-                <th>Status</th>
-                <th>Employee</th>
-                <th>Promotion</th>
-                <th colspan="2">Options</th>
-            </tr>
-            <?php foreach ($Application as $renglon){ ?>
-            <tr>
-                <td><?=$renglon['id']?></td>
-                <td><?=$renglon['publicationDate']?></td>
-                <td><?=$renglon['statusA']?></td>
-                <?php $name = firstname($renglon['employee']);?>
-                <?php $lastname = lastname($renglon['employee']);?>
-                <td><?=$name." ".$lastname?></td>
-                <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
-                <td><?= $Promotion ?></td>
-                <td><a href="modifyAplication.php?id=<?php echo $renglon['id']?>" class="action-modify" >Modify</a></td>
-                <td><a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
-            </tr><?php
-            }   ?>
-        </table>
-    </div>
-</section>
 
-<?php
-    if(!empty($ApplicationDel)){    ?>
-        <section><br><br><br>
-        <center>
-            <h2>Table for the aplications Delected</h2>
-        </center>
-        <br>
-            <div class="scroll">
-                <table border="1" class="tableAdmin">
+    <div class="container my-4">
+        <div class="text-center mb-4">
+            <h2>Table for the Applications</h2>
+            <p>In this section, you can see the applications for promotions made by the employees you supervise. Here you can modify the applications to change their status or delete them if necessary.</p>
+        </div>
+
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
                     <tr>
                         <th>Number</th>
                         <th>Publication Date</th>
                         <th>Status</th>
                         <th>Employee</th>
                         <th>Promotion</th>
-                        <th>Elimation Date</th>
-                        <th>User who deleted</th>
-                        <th colspan="2">Options</th>
+                        <th colspan="2" class="text-center">Options</th>
                     </tr>
-                    <?php foreach ($ApplicationDel as $renglon){ ?>
-                    <tr>
-                        <td><?=$renglon['idAp']?></td>
-                        <td><?=$renglon['publicationDate']?></td>
-                        <td><?=$renglon['status']?></td>
-                        <?php $name = firstname($renglon['employee']);?>
-                        <?php $lastname = lastname($renglon['employee']);?>
-                        <td><?=$name." ".$lastname?></td>
-                        <?php $Promotion = getInfoPromotion($renglon['promotion']);?>
-                        <td><?= $Promotion ?></td>
-                        <td><?=$renglon['eliminationDate']?></td>
-                        <?php $employeeDel = firstname($renglon['employeeDel'])." ".lastname($renglon['employeeDel']) ?>
-                        <td><?=$employeeDel?></td>
-                        <td><a href="deleteAplications.php?id=<?php echo $renglon['id']?>&action=restore" class="action-modify" >Restore</a></td>
-                        <td><a href="deleteAplications.php?id=<?php echo $renglon['id']?>&action=deletedef" class="action-delete">Permanently Delete</a></td>
-                    </tr><?php
-                    }   ?>
-                </table>
-            </div>
-        </section><?php 
-    }
-?>
-
-<?php foreach ($Promotions as $renglon) { ?>
-    <div class="modal" id="modal<?= htmlspecialchars($renglon['codigo']); ?>">
-        <div class="modal-dialog">
-            <header class="modal-header">
-                <p>Promotion Information</p>
-                <button class="close-modal" data-close="modal<?= htmlspecialchars($renglon['codigo']); ?>">X</button>
-            </header>
-            <section class="modal-content">
-                <p><strong>Code:</strong> <?= htmlspecialchars($renglon['codigo']) ?></p>
-                <p><strong>Name:</strong> <?= htmlspecialchars($renglon['nombre']) ?></p>
-                <p><strong>Description:</strong> <?= htmlspecialchars($renglon['descripcion']) ?></p>
-                <p><strong>Status:</strong> <?= htmlspecialchars($renglon['estado']) ?></p>
-                <p><strong>Publication Date:</strong> <?= htmlspecialchars($renglon['fechaPub']) ?></p>
-            </section>
+                </thead>
+                <tbody>
+                    <?php foreach ($Application as $renglon) { ?>
+                        <tr>
+                            <td><?= htmlspecialchars($renglon['id']) ?></td>
+                            <td><?= htmlspecialchars($renglon['publicationDate']) ?></td>
+                            <td><?= htmlspecialchars($renglon['statusA']) ?></td>
+                            <?php $name = firstname($renglon['employee']); ?>
+                            <?php $lastname = lastname($renglon['employee']); ?>
+                            <td><?= htmlspecialchars($name . " " . $lastname) ?></td>
+                            <?php $Promotion = getInfoPromotion($renglon['promotion']); ?>
+                            <td><?= htmlspecialchars($Promotion) ?></td>
+                            <td>
+                                <a href="modifyAplication.php?id=<?= $renglon['id'] ?>" class="btn btn-sm btn-primary">Modify</a>
+                            </td>
+                            <td>
+                                <a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=delete&user=<?= $IDUsuario ?>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
-<?php } ?>
+
+    <?php if (!empty($ApplicationDel)) { ?>
+        <section class="my-4">
+            <div class="text-center mb-4">
+                <h2>Table for Deleted Applications</h2>
+            </div>
+
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto; max-width: 80%; margin: auto;">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Number</th>
+                            <th>Publication Date</th>
+                            <th>Status</th>
+                            <th>Employee</th>
+                            <th>Promotion</th>
+                            <th>Elimination Date</th>
+                            <th>User who deleted</th>
+                            <th colspan="2" class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($ApplicationDel as $renglon) { ?>
+                            <tr>
+                                <td><?= htmlspecialchars($renglon['idAp']) ?></td>
+                                <td><?= htmlspecialchars($renglon['publicationDate']) ?></td>
+                                <td><?= htmlspecialchars($renglon['status']) ?></td>
+                                <?php $name = firstname($renglon['employee']); ?>
+                                <?php $lastname = lastname($renglon['employee']); ?>
+                                <td><?= htmlspecialchars($name . " " . $lastname) ?></td>
+                                <?php $Promotion = getInfoPromotion($renglon['promotion']); ?>
+                                <td><?= htmlspecialchars($Promotion) ?></td>
+                                <td><?= htmlspecialchars($renglon['eliminationDate']) ?></td>
+                                <?php $employeeDel = firstname($renglon['employeeDel']) . " " . lastname($renglon['employeeDel']); ?>
+                                <td><?= htmlspecialchars($employeeDel) ?></td>
+                                <td>
+                                    <a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=restore" class="btn btn-sm btn-success">Restore</a>
+                                </td>
+                                <td>
+                                    <a href="deleteAplications.php?id=<?= $renglon['id'] ?>&action=deletedef" class="btn btn-sm btn-danger">Permanently Delete</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    <?php } ?>
+
+    
+    <?php foreach ($Promotions as $renglon) { ?>
+        <div class="modal fade" id="modal<?= htmlspecialchars($renglon['codigo']); ?>" tabindex="-1" aria-labelledby="modalLabel<?= htmlspecialchars($renglon['codigo']); ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel<?= htmlspecialchars($renglon['codigo']); ?>">Promotion Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Code:</strong> <?= htmlspecialchars($renglon['codigo']) ?></p>
+                        <p><strong>Name:</strong> <?= htmlspecialchars($renglon['nombre']) ?></p>
+                        <p><strong>Description:</strong> <?= htmlspecialchars($renglon['descripcion']) ?></p>
+                        <p><strong>Status:</strong> <?= htmlspecialchars($renglon['estado']) ?></p>
+                        <p><strong>Publication Date:</strong> <?= htmlspecialchars($renglon['fechaPub']) ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+</section>
+
 
 
 <script>
