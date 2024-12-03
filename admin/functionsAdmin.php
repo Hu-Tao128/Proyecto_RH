@@ -753,7 +753,7 @@ function DepEmploys() {
     global $db_con;
     $dep = [];
     try {
-        $query = "SELECT d.name AS Department, count(e.code) AS Employees, sum(e.gender='F') AS Women, sum(e.gender='M') AS Men FROM employee AS e INNER JOIN position AS p ON e.positionCode = p.code INNER JOIN department AS d ON d.code = p.departmentCode GROUP BY d.code;";
+        $query = "SELECT d.name AS Department, count(e.code) AS Employees, sum(e.gender='F') AS Women, sum(e.gender='M') AS Men FROM employee AS e INNER JOIN position AS p ON e.positionCode = p.code INNER JOIN department AS d ON d.code = p.departmentCode WHERE e.status = 'Active' GROUP BY d.code;";
 
         $stmt = $db_con->prepare($query);
         $stmt->execute();

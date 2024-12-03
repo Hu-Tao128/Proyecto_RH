@@ -1018,10 +1018,6 @@ END$$
 
 DELIMITER ;
 
-
-
-
-
 /*Hasta aqui acaban los trigger que subi y probe*/
 
 

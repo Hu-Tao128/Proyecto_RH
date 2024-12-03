@@ -135,14 +135,14 @@ $dataJson = DepEmploys();
                 {
                     label: 'Womens',
                     data: womenData,
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'Mens',
                     data: menData,
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }
