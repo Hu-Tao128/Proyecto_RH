@@ -113,13 +113,15 @@
             </div>
             </a>
 
-            <a href="../Human_Resources/promotions.php" class="dropbtn">            <div class="option">
+            <a href="../Human_Resources/promotions.php" class="dropbtn">
+                <div class="option">
                 <i class="fas fa-user-check"></i>
                 <h4>Promotions</h4>
                 </div>
             </a>
 
-            <a href="../Human_Resources/vacations.php" class="dropbtn">                <div class="option">
+            <a href="../Human_Resources/vacations.php" class="dropbtn">
+                <div class="option">
                     <i class="fas fa-user-times"></i>
                     <h4>Vacations</h4>
                 </div>
