@@ -75,9 +75,9 @@ $employ = getInfoEmployees();
                         <div class="profile-image">
                             <div class="avatar">
                                 <?php if (empty($renglon['image'])) { ?>
-                                    <img src="../images/Perfil.svg" alt="Profile Picture" class="img-thumbnail" style="width: 120px;">
+                                    <img src="../images/Perfil.svg" alt="Profile Picture" class="img" style="width: 110px;">
                                 <?php } else { ?>
-                                    <img src="../imageUser/<?= $renglon['image'] ?>" alt="Profile Picture" class="img-thumbnail" style="width: 120px;">
+                                    <img src="../imageUser/<?= $renglon['image'] ?>" alt="Profile Picture" class="img" style="width: 120px;">
                                 <?php } ?>
                             </div>
                         </div>
