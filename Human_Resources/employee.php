@@ -1,5 +1,5 @@
 <?php 
-include "../includes/headerHR.php";
+include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php"; 
 require_once "../functions.php"; 
@@ -7,94 +7,107 @@ require_once "../functions.php";
 $employ = getInfoEmployees();
 ?>
 
-<section>
-    <center>
-        <div class="questions">
+<section class="container my-4">
+
+    <div class="text-center mb-4">
         <h2>Table for the Employees</h2>
-        <p>In this section you can see the complete list of the company's employees, as well as all their information. You can modify certain employee information or delete them if necessary.
-<br><br>
-At the bottom there is a form to add a new employee to the database. It is important to clarify that a supervisor must be assigned to the employee if he or she has one, otherwise this employee will be a supervisor.</p>
-        </div>
-    </center>
-<br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>CellPhone number</th>
-                <th>Workstation</th>
-                <th>Supervisor</th>
-                <th colspan="3">Options</th>
-            </tr>
-            <?php foreach ($employ as $renglon) { ?>
-            <tr>
-                <td><?= htmlspecialchars($renglon['code']) ?></td>
-                <td><?= htmlspecialchars($renglon['firstName']." ".$renglon['lastName'] . " " . $renglon['middleName']) ?></td>
-                <td><?= htmlspecialchars($renglon['email']) ?></td>
-                <td><?= htmlspecialchars($renglon['mobile']) ?></td>
-                <?php $workspace = workspace($renglon['code']); ?>
-                <td><?= htmlspecialchars($workspace) ?></td>
-                <td><?= htmlspecialchars($renglon['supervisorId'] ?? 'Supervisor')?></td>
-                <td><a href="#" class="action-modify" data-open="modal<?= $renglon['code']; ?>">Show</a></td>
-                <td><a href="modifyEmploy.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
-                <?php if ($renglon['status']=='Active'){?>
-                    <td><a href="deleteEmploy.php?id=<?php echo $renglon['code']?>&action=inactive" class="action-delete">Desactivate</a></td><?php
-                }else{   ?>
-                    <td><a href="deleteEmploy.php?id=<?php echo $renglon['code']?>&action=active" class="action-modify">Activate</a></td><?php
-                }?>
-            </tr>
-            <?php } ?>
+        <p class="text-muted">
+            In this section, you can see the complete list of the company's employees, as well as all their information. 
+            You can modify certain employee information or delete them if necessary. 
+            <br><br>
+            At the bottom, there is a form to add a new employee to the database. It is important to clarify that a supervisor must be assigned to the employee if he or she has one; otherwise, this employee will be a supervisor.
+        </p>
+    </div>
+
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>CellPhone</th>
+                    <th>Workstation</th>
+                    <th>Supervisor</th>
+                    <th colspan="3">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($employ as $renglon) { ?>
+                <tr>
+                    <td><?= htmlspecialchars($renglon['code']) ?></td>
+                    <td><?= htmlspecialchars($renglon['firstName'] . " " . $renglon['lastName'] . " " . $renglon['middleName']) ?></td>
+                    <td><?= htmlspecialchars($renglon['email']) ?></td>
+                    <td><?= htmlspecialchars($renglon['mobile']) ?></td>
+                    <td><?= htmlspecialchars(workspace($renglon['code'])) ?></td>
+                    <td><?= htmlspecialchars($renglon['supervisorId'] ?? 'Supervisor') ?></td>
+                    <td>
+                    <a href="#" class="btn btn-primary btn-sm" data-open="modal<?= $renglon['code']; ?>">Show</a>
+                        
+                    </td>
+                    <td>
+                        <a href="modifyEmploy.php?id=<?= $renglon['code'] ?>" class="btn btn-sm btn-warning">Modify</a>
+                    </td>
+                    <td>
+                        <?php if ($renglon['status'] == 'Active') { ?>
+                            <a href="deleteEmploy.php?id=<?= $renglon['code'] ?>&action=inactive" class="btn btn-sm btn-danger">Deactivate</a>
+                        <?php } else { ?>
+                            <a href="deleteEmploy.php?id=<?= $renglon['code'] ?>&action=active" class="btn btn-sm btn-success">Activate</a>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
         </table>
     </div>
 
+    <!-- Ventanas modales para información de los empleados -->
     <?php foreach ($employ as $renglon) { ?>
-        <div class="modal" id="modal<?= $renglon['code']; ?>">
-            <div class="modal-dialog">
-                <header class="modal-header">
-                    <p>Employee Information</p>
-                    <button class="close-modal" data-close="modal<?= $renglon['code']; ?>">X</button>
-                </header>
-                <section class="modal-content">
-                    <div class="profile-image">
-                        <div class="avatar">
-                            <?php if(empty($renglon['image'])) { ?>
-                                <img src="../images/Perfil.svg" alt="Profile Picture">
+    <div class="modal fade" id="modal<?= $renglon['code']; ?>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Employee Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <div class="profile-image">
+                            <div class="avatar">
+                                <?php if (empty($renglon['image'])) { ?>
+                                    <img src="../images/Perfil.svg" alt="Profile Picture" class="img-thumbnail" style="width: 120px;">
                                 <?php } else { ?>
-                                    <img src="../imageUser/<?=$renglon['image']?>" alt="Profile Picture">
-                                    <?php } ?>
-                                </div>
+                                    <img src="../imageUser/<?= $renglon['image'] ?>" alt="Profile Picture" class="img-thumbnail" style="width: 120px;">
+                                <?php } ?>
                             </div>
-                    <center><p><strong><?= htmlspecialchars($renglon['code']) ?></strong></p></center> 
+                        </div>
+                    </div>
+                    <p><strong>Code:</strong> <?= htmlspecialchars($renglon['code']) ?></p>
                     <p><strong>Name:</strong> <?= htmlspecialchars($renglon['firstName']) ?></p>
-                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName']." ".$renglon['middleName']) ?></p>
+                    <p><strong>Last Name:</strong> <?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></p>
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
                     <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
                     <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
-                    <p><strong>Date Contract:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
+                    <p><strong>Contract Date:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
                     <?php $years = getYearsWork($renglon['code']);
-                            if ($years<1){?>
-                                <p><strong>New Employee</strong></p><?php
-                            }else{ ?>
-                    <p><strong>Years:</strong> <?= htmlspecialchars(getYearsWork($renglon['code'])) ?></p><?php
-                            }   ?>
-                    <?php $workspace = workspace($renglon['code']); ?>
-                    <?php 
-                        $supervisor = $renglon['supervisorId'];
-                            if ($supervisor != "" && $supervisor != null) {
-                                $nameS = firstname($supervisor);
-                                $SupLastNames = lastname($supervisor); ?>
-                                <strong>Supervisor:</strong> <?php echo $nameS." ".$SupLastNames; ?><br> 
-                            <?php } ?>
+                    if ($years < 1) { ?>
+                        <p><strong>New Employee</strong></p>
+                    <?php } else { ?>
+                        <p><strong>Years:</strong> <?= htmlspecialchars($years) ?></p>
+                    <?php } ?>
+                    <p><strong>Supervisor:</strong> 
+                        <?= htmlspecialchars(firstname($renglon['supervisorId']) . " " . lastname($renglon['supervisorId'])) ?? 'None' ?>
+                    </p>
                     <p><strong>Department:</strong> <?= htmlspecialchars(departmentName($renglon['code'])) ?></p>
-                    <p><strong>Workspace:</strong> <?= htmlspecialchars($workspace) ?></p>
-                </section>
+                    <p><strong>Workspace:</strong> <?= htmlspecialchars(workspace($renglon['code'])) ?></p>
+                </div>
             </div>
         </div>
+    </div>
     <?php } ?>
 </section>
+
 <script>
     document.querySelectorAll("[data-open]").forEach(el => {
         el.addEventListener("click", function(event) {
@@ -121,93 +134,161 @@ At the bottom there is a form to add a new employee to the database. It is impor
         }
     });
 </script>
-<section>
-<div class="ContainerXD">
-    <br>
-    <h2 class="h2formX">Add an Employee</h2>
-    <form action="addEmployRH.php" class="form-empleadoX" method="POST">
-        <fieldset>
-            <div class="divformX">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" 
-                    placeholder="Write the name of the employee" 
-                    required 
-                    pattern="[A-Za-z\s]+" 
-                    title="Only letters and spaces are allowed">
-            </div>
-            <div class="divformX">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" 
-                    placeholder="First Lastname" 
-                    required 
-                    pattern="[A-Za-z\s]+" 
-                    title="Only letters and spaces are allowed">
-            </div>
-            <div class="divformX">
-                <label for="secondLastName">Second Last Name</label>
-                <input type="text" id="secondLastName" name="secondLastName" 
-                    placeholder="Second Lastname" 
-                    pattern="[A-Za-z\s]+" 
-                    title="Only letters and spaces are allowed">
-            </div>
-            <div class="divformX">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="containerformX bottonformX">
-                <label>Gender:</label>
-                <div>
-                    <input type="radio" id="male" name="gender" value="M" required>
-                    <label for="male">Male</label>
-                </div>
-                <div>
-                    <input type="radio" id="female" name="gender" value="F" required>
-                    <label for="female">Female</label>
-                </div>
-            </div>
-            <div class="divformX">
-                <label for="phone">Phone</label>
-                <input type="number" id="phone" name="phone" placeholder="Phone number 555 555 55 55" required min="1111111111" max="9999999999">
-            </div>
-            <div class="divformX">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required maxlength="10">
-            </div>
-            <div class="divformX">
-                <label for="birthDate">Birth Date</label>
-                <input type="date" id="birthDate" name="birthDate" required>
-            </div>
-            <div class="divformX">
-                <label for="seltWorkspace">Select a workspace:</label>
-                <select name="seltWorkspace" id="seltWorkspace" required>
-                    <option value="">-- Workspaces --</option>
-                    <?php 
-                        $workspace = listWorkstation();
-                        foreach ($workspace as $renglon) { ?>
-                        <option value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['name']) ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="divformX">
-                <label for="seltSupervisor">Select id of the supervisor:</label>
-                <select name="seltSupervisor" id="seltSupervisor">
-    <option value="">-- Supervisor --</option>
-    <option value="">NULL</option>
-    <?php 
-        $supervisores = supervisor();
-        foreach($supervisores as $renglon) { ?>
-            <option value="<?= $renglon['code'] ?>"><?= htmlspecialchars($renglon['nombre']) ?></option>
-    <?php } ?>
-</select>
 
-            </div>
-            <div class="bottonformX">
-                <button type="submit" name="btnAddEmploy" class="Botton-envioX">Add Employee</button>
-            </div>
-        </fieldset>
-    </form>
-</div>
+<section>
+<div class="container mt-4 p-3 border rounded shadow-sm bg-light" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Add an Employee</h2>
+        <form action="addEmployRH.php" method="POST">
+            <fieldset>
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-control" 
+                        placeholder="Write the name of the employee" 
+                        required 
+                        pattern="[A-Za-z\s]+" 
+                        title="Only letters and spaces are allowed">
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        class="form-control" 
+                        placeholder="First Lastname" 
+                        required 
+                        pattern="[A-Za-z\s]+" 
+                        title="Only letters and spaces are allowed">
+                </div>
+
+                <div class="mb-3">
+                    <label for="secondLastName" class="form-label">Second Last Name</label>
+                    <input 
+                        type="text" 
+                        id="secondLastName" 
+                        name="secondLastName" 
+                        class="form-control" 
+                        placeholder="Second Lastname" 
+                        pattern="[A-Za-z\s]+" 
+                        title="Only letters and spaces are allowed">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-control" 
+                        placeholder="Email" 
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Gender:</label>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="radio" 
+                            id="male" 
+                            name="gender" 
+                            value="M" 
+                            required>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input 
+                            class="form-check-input" 
+                            type="radio" 
+                            id="female" 
+                            name="gender" 
+                            value="F" 
+                            required>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input 
+                        type="number" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-control" 
+                        placeholder="Phone number 555 555 55 55" 
+                        required 
+                        min="1111111111" 
+                        max="9999999999">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="Password" 
+                        required 
+                        maxlength="10">
+                </div>
+
+                <div class="mb-3">
+                    <label for="birthDate" class="form-label">Birth Date</label>
+                    <input 
+                        type="date" 
+                        id="birthDate" 
+                        name="birthDate" 
+                        class="form-control" 
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="seltWorkspace" class="form-label">Select a workspace:</label>
+                    <select 
+                        name="seltWorkspace" 
+                        id="seltWorkspace" 
+                        class="form-select" 
+                        required>
+                        <option value="">-- Workspaces --</option>
+                        <?php 
+                            $workspace = listWorkstation();
+                            foreach ($workspace as $renglon) { ?>
+                            <option value="<?= htmlspecialchars($renglon['code']) ?>"><?= htmlspecialchars($renglon['name']) ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="seltSupervisor" class="form-label">Select id of the supervisor:</label>
+                    <select 
+                        name="seltSupervisor" 
+                        id="seltSupervisor" 
+                        class="form-select">
+                        <option value="">-- Supervisor --</option>
+                        <option value="">NULL</option>
+                        <?php 
+                            $supervisores = supervisor();
+                            foreach($supervisores as $renglon) { ?>
+                                <option value="<?= $renglon['code'] ?>"><?= htmlspecialchars($renglon['nombre']) ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" name="btnAddEmploy" class="btn btn-primary">Add Employee</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </section>
+
 
 <script>
     document.querySelector('form').addEventListener('submit', function(event) {
@@ -216,7 +297,7 @@ At the bottom there is a form to add a new employee to the database. It is impor
 
         for (const input of inputs) {
             if (!regex.test(input.value)) {
-                alert(`The field "${input.previousElementSibling.innerText}" can only contain letters and spaces.`);
+                alert('The field . "${input.previousElementSibling.innerText}" . can only contain letters and spaces.');
                 input.focus();
                 event.preventDefault(); 
                 // Evita el envío del formulario
