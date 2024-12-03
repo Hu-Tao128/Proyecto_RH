@@ -1,50 +1,62 @@
-<?php include "../includes/headerHR.php";
+<?php include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php"; 
 require_once "../functions.php"; 
 
 $absences = getAbsences();
 ?>
-<section>
-<center>
-        <div class="questions">
+<section class="container my-4">
+
+    <div class="text-center mb-4">
         <h2>Table for the Request Justify Absences</h2>
-        <p>In this section you can see the reports made by employees to justify their absences from work. You can accept or deny them, even delete them if necessary.</p>
-        </div>
-    </center>
-<br>
-    <div class="scroll">
-        <table border="1" class="tableAdmin">
-            <tr>
-                <th>Number</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Employee</th>
-                <th colspan="3">Options</th>
-            </tr>
-            <?php foreach ($absences as $renglon) { ?>
+        <p class="text-muted">
+            In this section, you can see the reports made by employees to justify their absences from work. You can accept or deny them, and even delete them if necessary.
+        </p>
+    </div>
+
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-dark">
                 <tr>
-                    <td><?= $renglon['id'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['startDate'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['endDate'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['status'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['type'] ?? 'N/A' ?></td>
-                    <td><?= $renglon['description'] ?? 'N/A' ?></td>
+                    <th>Number</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Employee</th>
+                    <th colspan="3">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($absences as $renglon) { ?>
+                <tr>
+                    <td><?= htmlspecialchars($renglon['id']) ?? 'N/A' ?></td>
+                    <td><?= htmlspecialchars($renglon['startDate']) ?? 'N/A' ?></td>
+                    <td><?= htmlspecialchars($renglon['endDate']) ?? 'N/A' ?></td>
+                    <td><?= htmlspecialchars($renglon['status']) ?? 'N/A' ?></td>
+                    <td><?= htmlspecialchars($renglon['type']) ?? 'N/A' ?></td>
+                    <td><?= htmlspecialchars($renglon['description']) ?? 'N/A' ?></td>
                     <?php
                         $name = firstname($renglon['employee']);
                         $lastname = lastname($renglon['employee']);
                     ?>
-                    <td><?= $name . " " . $lastname ?></td>
-                    <td><a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=accept" class="action-modify">Accept</a></td>
-                    <td><a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=decline" class="action-delete">Decline</a></td>
-                    <td><a href="deleteAbsence.php?id=<?= $renglon['id'] ?>&action=delete" class="action-delete">Delete</a></td>
+                    <td><?= htmlspecialchars($name . " " . $lastname) ?></td>
+                    <td>
+                        <a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=accept" class="btn btn-sm btn-success">Accept</a>
+                    </td>
+                    <td>
+                        <a href="modifyAbsence.php?id=<?= $renglon['id'] ?>&action=decline" class="btn btn-sm btn-warning">Decline</a>
+                    </td>
+                    <td>
+                        <a href="deleteAbsence.php?id=<?= $renglon['id'] ?>&action=delete" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
                 </tr>
-            <?php } ?>
+                <?php } ?>
+            </tbody>
         </table>
     </div>
 </section>
+
 
 <?php include "../includes/footer.php"; ?>
