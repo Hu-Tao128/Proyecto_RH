@@ -5,7 +5,7 @@ require_once 'functions.php';
 ?>
 
 <section class="faq-section">
-    <h2>Preguntas más frecuentes</h2>
+    <h2>Frequently asked questions</h2>
     <div class="faq-item">
         <div class="faq-question">
             What can I do on the page?
@@ -37,6 +37,7 @@ require_once 'functions.php';
         </div>
     </div>
 </section>
+<br><br><br><br><br><br><br>
 <script>
     document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
