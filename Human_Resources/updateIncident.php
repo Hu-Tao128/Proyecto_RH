@@ -28,7 +28,7 @@ if(isset($_POST['btnReport'])){
         if ($stmt->execute()) {
             echo "<script>
                     alert('The incident has been updated successful.');
-                    window.location.href = 'complaints.php';
+                    window.location.href = 'incident.php';
                   </script>";
         } else {
             echo "Error updating incident.";
