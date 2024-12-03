@@ -235,3 +235,65 @@ legend {
 .show-button:active {
     background-color: #004085;
 }
+
+/*--------------------------------------------------------*/
+/* Espaciado general para que no esté pegado a los bordes */
+.container_home {
+    padding: 0 1.5rem; /* Espaciado lateral no mover */
+    margin: 0 auto; 
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+/*essstilo general de los dic */
+.card {
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/*estilos del encabezado de los div */
+.card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem;
+    color: #fff; 
+}
+
+/*Colores para los cuadros / div */
+.card-header.user-info {
+    background-color: #0b40d3; 
+}
+
+.card-header.other-info {
+    background-color: #0b40d3; 
+}
+
+.card-header.inclusion {
+    background-color: #0b40d3; 
+}
+
+.card-header.motivational {
+    background-color: #0b40d3;
+    color: #212529; 
+}
+
+/*stilo del cuerpo de los div */
+.card-body {
+    padding: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #fff; 
+}
+
+@media (max-width: 768px) {
+    .container_home {
+        padding: 0 1rem;
+    }
+    .container_home .card {
+        margin-bottom: 1.5rem;
+    }
+}
