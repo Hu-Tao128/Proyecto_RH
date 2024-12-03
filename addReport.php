@@ -10,6 +10,14 @@ if (isset($_POST['btnReport'])) {
     $dateIncident = date('Y-m-d', strtotime($date));
     //verificar el formato de la fecha :)
 
+        if (strlen($description) > 100) {
+            echo "<script>
+                    alert('The description exceeds 100 characters. Please shorten it.');
+                    window.history.back(); // Regresa al formulario
+                  </script>";
+            exit(); // Detener la ejecución del script
+        }
+        
     try {
         global $db_con;
 

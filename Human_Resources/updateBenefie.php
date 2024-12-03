@@ -8,9 +8,33 @@ require_once "../functions.php";
 
 if(isset($_POST['btnReport'])){
     $id = trim($_POST['code']);
-    $name = trim($_POST['name']);
+    $name = traducirTexto(trim($_POST['name']));
     $type = traducirTexto(trim($_POST['type']));
     $description = traducirTexto(trim($_POST['description']));
+
+    if (strlen($name) > 60) {
+        echo "<script>
+                alert('The name exceeds 60 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
+    if (strlen($type) > 40) {
+        echo "<script>
+                alert('The type exceeds 40 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
+    if (strlen($description) > 100) {
+        echo "<script>
+                alert('The description exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
 
     try {
         global $db_con;

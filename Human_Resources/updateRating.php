@@ -13,6 +13,14 @@ if(isset($_POST['btnReport'])){
     $comments = traducirTexto(trim($_POST['comments']));
     $employee = trim($_POST['employee']);
 
+    if (strlen($comments) > 100) {
+        echo "<script>
+                alert('The comments exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
     try {
         global $db_con;
         

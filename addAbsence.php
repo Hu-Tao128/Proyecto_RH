@@ -9,6 +9,14 @@ if (isset($_POST['btnAbsence'])) {
     $type = traducirTexto(trim($_POST['type']));
     $description = traducirTexto(trim($_POST['description']));
 
+    if (strlen($description) > 100) {
+        echo "<script>
+                alert('The description exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+    
     $status = "Pendent";
     
     $startDate = date('Y-m-d', strtotime($date1));

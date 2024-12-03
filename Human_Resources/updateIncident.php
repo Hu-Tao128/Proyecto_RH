@@ -13,6 +13,22 @@ if(isset($_POST['btnReport'])){
     $description = traducirTexto(trim($_POST['description']));
     $employee = trim($_POST['employee']);
 
+    if (strlen($incidentType) > 40) {
+        echo "<script>
+                alert('The incident exceeds 40 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
+    if (strlen($description) > 100) {
+        echo "<script>
+                alert('The description exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
     try {
         global $db_con;
         
