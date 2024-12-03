@@ -14,7 +14,7 @@ if (isset($_POST['btnVerify'])) {
         global $db_con;
     
         // Consulta SQL para obtener el código y la fecha de expiración
-        $query = "SELECT verification_code, expires_at FROM password_reset WHERE email = :email";
+        $query = "SELECT verification_code, expires_at FROM password_reset WHERE email = :email ORDER BY created_at DESC";
         $stmt = $db_con->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -33,11 +33,11 @@ if (isset($_POST['btnVerify'])) {
                     session_start();
 
 
-                    $_SESSION['user'] = $row['code'];
+                    $_SESSION['user'] = $id;
     
                     echo "<script>
                                 alert('The entry was registered correctly.');
-                                window.location.href = '../Human_Resources/homeRH.php';
+                                window.location.href = '../home.php';
                             </script>";
     
                 } else {

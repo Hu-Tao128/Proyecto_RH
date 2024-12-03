@@ -67,20 +67,20 @@ $image = $info['image'];
                 
                 <div class="form-field full-width">
                     <label for="mobile" class="labelPerfil">Mobile</label>
-                    <input type="number" class="inputs" name="mobile" id="mobile" value="<?php echo $info['mobile']; ?>">
+                    <input type="number" class="inputs" name="mobile" id="mobile" value="<?php echo $info['mobile']; ?>" required>
                 </div>
                 
                 <div class="form-field full-width">
                         <label for="password" class="labelPerfil">Password</label>
                     <div class="password-container">
-                        <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']; ?>" style="flex: 1;">
+                        <input type="password" class="inputs" name="password" id="password" value="<?php echo $info['password']; ?>" style="flex: 1;" required>
                             <i class="fas fa-eye-slash" style="cursor: pointer; margin-left: 10px;" onclick="togglePasswordVisibility()"></i>
                     </div>
                 </div>
 
                 <div class="form-field full-width">
                     <label for="email" class="labelPerfil">Email</label>
-                    <input type="email" class="inputs" id="email" value="<?php echo $info['email']; ?>" disabled>
+                    <input type="email" class="inputs" name="email" id="email" value="<?php echo $info['email']; ?>" required>
                 </div>
                 
                 <div class="form-field full-width">

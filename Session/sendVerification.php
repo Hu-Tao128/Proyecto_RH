@@ -1,4 +1,7 @@
 <?php
+
+use GuzzleHttp\Psr7\Query;
+
 include "../includes/headerLogin.php";
 require '../vendor/autoload.php'; 
 
@@ -7,18 +10,26 @@ require_once "../functions.php";
 if (isset($_POST['sendCode'])) {
     // Obtener el correo electrónico del formulario
     $id = $_POST['id'];
-    $email = $_POST['email'];
 
-    // Generar un código de verificación único
-    $verificationCode = rand(100000, 999999);
-/*
-    // Guardar el código de verificación en la base de datos (puedes usar tu tabla password_reset)
-    saveVerificationCode($email, $verificationCode);
+    $user = getUserInfo($id);
 
-    // Enviar el correo con el código de verificación
-    sendVerificationEmail($email, $verificationCode);*/
+    if(!empty($user)){
+        foreach ($user as $infos) {
+            $email = $infos['email'];
+        }
+
+        $verificationCode = rand(100000, 999999);
+
+        saveVerificationCode($email, $verificationCode);
+
+    }else{
+        echo "<script>
+                    alert('The code is not correctly');
+                    window.history.back();
+                </script>";
+        exit(); 
+    }
 }
-
 ?>
 
 <section>
