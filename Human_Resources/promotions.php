@@ -1,4 +1,4 @@
-<?php include "../includes/headerHR.php";
+<?php include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php"; 
 
@@ -7,104 +7,107 @@ $promotion = showPromotion();
 $promotionDel = getPromotionDel();
 ?>
 <section>
-<center>
-        <div class="questions">
-        <h2>Table for the promotions</h2>
-        <p>In this section you can see the promotions for which employees can apply. Here you can modify the information of the promotions, activate or deactivate them so that they appear or do not appear in the employee promotions section, you can also delete the promotions if necessary.
-<br><br>
-At the bottom there is a form to add new promotions.</p>
+    <div class="container my-4">
+        <div class="text-center mb-4">
+            <h2 class="mb-3">Table for the Promotions</h2>
+            <p class="text-muted">
+                In this section, you can see the promotions for which employees can apply. Here you can modify the information of the promotions, activate or deactivate them, or delete the promotions if necessary.
+                <br><br>
+                At the bottom, there is a form to add new promotions.
+            </p>
         </div>
-    </center>
-<br>
-<div class="scroll">
-    <table border="1" class="tableAdmin">
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Publication Date</th>
-            <th colspan="3">Options</th>
-        </tr>
-        <?php foreach ($promotion as $renglon) {    ?>
-        <tr>
-            <td><?=$renglon['code']?></td>
-            <td><?=$renglon['name']?></td>
-            <td><?=$renglon['description']?></td>
-            <td><?=$renglon['status']?></td>
-            <td><?=$renglon['publicationDate']?></td>
-            <td>
-                <?php if ($renglon['status'] === 'Inactive') { ?>
-                    <a href="changeStatus.php?id=<?php echo $renglon['code']?>&action=active" class="action-modify">Activate</a>
-                <?php } else { ?>
-                    <a href="changeStatus.php?id=<?php echo $renglon['code']?>&action=inactive" class="action-delete">Inactivate</a>
-                <?php } ?>
-            </td>
-            <td><a href="modifyPromotion.php?id=<?php echo $renglon['code']?>" class="action-modify">Modify</a></td>
-            <td><a href="deletePromotion.php?id=<?php echo $renglon['code']?>&action=delete&user=<?php echo $IDUsuario?>" class="action-delete">Delete</a></td>
-        </tr>
-        <?php } ?>
-    </table>
-</div>
 
-<?php
-    if(!empty($promotionDel)){    ?>
-        <section><br><br><br>
-        <center>
-            <h2>Table for the Promotions Delected</h2>
-        </center>
-        <br>
-            <div class="scroll">
-                <table border="1" class="tableAdmin">
+        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
                     <tr>
                         <th>Code</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Status</th>
                         <th>Publication Date</th>
-                        <th>Elimation Date</th>
-                        <th>User who deleted</th>
-                        <th colspan="2">Options</th>
+                        <th colspan="3" class="text-center">Options</th>
                     </tr>
-                        <?php foreach ($promotionDel as $renglon){ ?>
-                    <tr>
-                        <td><?=$renglon['code']?></td>
-                        <td><?=$renglon['name']?></td>
-                        <td><?=$renglon['description']?></td>
-                        <td><?=$renglon['status']?></td>
-                        <td><?=$renglon['publicationDate']?></td>
-                        <td><?=$renglon['eliminationDate']?></td>
-                        <?php $employeeDel = firstname($renglon['employee'])." ".lastname($renglon['employee']) ?>
-                        <td><?=$employeeDel?></td>
-                        <td><a href="deletePromotion.php?id=<?php echo $renglon['id']?>&action=restore" class="action-modify" >Restore</a></td>
-                        <td><a href="deletePromotion.php?id=<?php echo $renglon['id']?>&action=deletedef" class="action-delete">Permanently Delete</a></td>
-                    </tr><?php
-                    }   ?>
-                </table>
-            </div>
-        </section><?php 
-    }
-?>
+                </thead>
+                <tbody>
+                    <?php foreach ($promotion as $renglon) { ?>
+                        <tr>
+                            <td><?= htmlspecialchars($renglon['code']) ?></td>
+                            <td><?= htmlspecialchars($renglon['name']) ?></td>
+                            <td><?= htmlspecialchars($renglon['description']) ?></td>
+                            <td><?= htmlspecialchars($renglon['status']) ?></td>
+                            <td><?= htmlspecialchars($renglon['publicationDate']) ?></td>
+                            <td>
+                                <?php if ($renglon['status'] === 'Inactive') { ?>
+                                    <a href="changeStatus.php?id=<?= $renglon['code'] ?>&action=active" class="btn btn-sm btn-success">Activate</a>
+                                <?php } else { ?>
+                                    <a href="changeStatus.php?id=<?= $renglon['code'] ?>&action=inactive" class="btn btn-sm btn-warning">Inactivate</a>
+                                <?php } ?>
+                            </td>
+                            <td><a href="modifyPromotion.php?id=<?= $renglon['code'] ?>" class="btn btn-sm btn-primary">Modify</a></td>
+                            <td><a href="deletePromotion.php?id=<?= $renglon['code'] ?>&action=delete&user=<?= $IDUsuario ?>" class="btn btn-sm btn-danger">Delete</a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 
-<div>
-    <h2>Make a promotion</h2>
-    <form action="addPromotion.php" class="formPage" method="POST">
-        <fieldset><br>
-            <div class="firstInput">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Name of the promotion">
-            </div>
-            <br>
-            <div>
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description of the promotion">
-            </div>
-            <br>
-            <div>
-                <button type="submit" name="btnAddPromotion">Make a promotion</button>
-            </div>
-        </fieldset>
-    </form>
-</div>
+        <!-- Tabla Eliminada -->
+        <?php if (!empty($promotionDel)) { ?>
+            <section class="mt-5">
+                <div class="text-center mb-3">
+                    <h2>Table for the Deleted Promotions</h2>
+                </div>
+                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Publication Date</th>
+                                <th>Elimination Date</th>
+                                <th>User who deleted</th>
+                                <th colspan="2" class="text-center">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($promotionDel as $renglon) { ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($renglon['code']) ?></td>
+                                    <td><?= htmlspecialchars($renglon['name']) ?></td>
+                                    <td><?= htmlspecialchars($renglon['description']) ?></td>
+                                    <td><?= htmlspecialchars($renglon['status']) ?></td>
+                                    <td><?= htmlspecialchars($renglon['publicationDate']) ?></td>
+                                    <td><?= htmlspecialchars($renglon['eliminationDate']) ?></td>
+                                    <td><?= htmlspecialchars(firstname($renglon['employee']) . " " . lastname($renglon['employee'])) ?></td>
+                                    <td><a href="deletePromotion.php?id=<?= $renglon['id'] ?>&action=restore" class="btn btn-sm btn-success">Restore</a></td>
+                                    <td><a href="deletePromotion.php?id=<?= $renglon['id'] ?>&action=deletedef" class="btn btn-sm btn-danger">Permanently Delete</a></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        <?php } ?>
+
+        <!-- Formulario -->
+        <div class="mt-5">
+            <h2 class="mb-4">Make a Promotion</h2>
+            <form action="addPromotion.php" method="POST" class="p-4 border rounded shadow-sm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name of the promotion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="description" style="resize: none;" class="form-control" rows="3" placeholder="Description of the promotion" required></textarea>
+                </div>
+                <button type="submit" name="btnAddPromotion" class="btn btn-primary">Make a Promotion</button>
+            </form>
+        </div>
+    </div>
 </section>
+
 <?php include "../includes/footer.php" ?>
