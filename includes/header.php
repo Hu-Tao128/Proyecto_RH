@@ -26,8 +26,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     <title>HR</title>
     
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">    
 
     <link rel="stylesheet" href="../css/empleado.css">
     <link rel="stylesheet" href="../css/index.css">
