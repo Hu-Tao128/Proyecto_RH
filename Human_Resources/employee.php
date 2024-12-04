@@ -88,7 +88,6 @@ $employ = getInfoEmployees();
                     <p><strong>Email:</strong> <?= htmlspecialchars($renglon['email']) ?></p>
                     <p><strong>Age:</strong> <?= htmlspecialchars($renglon['age']) ?></p>
                     <p><strong>Phone:</strong> <?= htmlspecialchars($renglon['mobile']) ?></p>
-                    <p><strong>Password:</strong> <?= htmlspecialchars($renglon['password']) ?></p>
                     <p><strong>Contract Date:</strong> <?= htmlspecialchars($renglon['contractDate']) ?></p>
                     <?php $years = getYearsWork($renglon['code']);
                     if ($years < 1) { ?>

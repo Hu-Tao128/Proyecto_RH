@@ -46,24 +46,6 @@
         <i class="fas fa-bars" id="btn_open"></i>
     </div>
 
-    <div class="header-right">
-        <div class="icon_notifications">
-            <i class="fas fa-bell"></i>
-        </div>
-
-        <!-- Menú desplegable del usuario -->
-        <div class="user-menu">
-            <div class="user-name" id="userMenuToggle">
-                <span>User</span>
-                <i class="fas fa-chevron-down"></i>
-                <a href="Session/logout.php"></a>
-            </div>
-            <ul class="dropdown-menu" id="dropdownMenu">
-                <li><a href="profile.php"><i class="fas fa-user"></i> My Profile</a></li>
-                <li><a href="Session/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </div>
 </header>
 
 
