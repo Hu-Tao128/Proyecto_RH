@@ -91,6 +91,14 @@
                 <h4>Incidents</h4>
                 </div>
             </a>
+
+            <a href="rating.php">
+            <div class="option">
+                <i class="fas fa-list-ol"></i>
+                    <h4>Rating</h4>
+                </div>
+            </a>
+
             
             <a href="tickets.php">
             <div class="option">
