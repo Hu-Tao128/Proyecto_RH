@@ -206,6 +206,14 @@ create table MD_aplications(
     foreign key(employeeDel) references employee(code)
 );
 
+CREATE TABLE password_reset (
+    id INT AUTO_INCREMENT PRIMARY KEY,      
+    email VARCHAR(255) NOT NULL,            
+    verification_code VARCHAR(6) NOT NULL,  
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP      
+);
+
 
 /*Insertar los datos a nuestra base de datos*/
 
@@ -671,7 +679,7 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS restoreBenefit;
+DROP PROCEDURE IF EXISTS restoreBenefit$$
 CREATE PROCEDURE restoreBenefit(IN p_id int)
 BEGIN
     DECLARE v_code varchar(5);
@@ -690,6 +698,25 @@ BEGIN
     DELETE FROM MD_benefies WHERE id = p_id;
 END$$
 DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS DeletePasswordCode$$
+CREATE PROCEDURE DeletePasswordCode(
+    IN p_verification_code VARCHAR(6),
+    IN p_email VARCHAR(255)
+)
+BEGIN
+    DELETE FROM password_reset
+    WHERE verification_code = p_verification_code
+      AND email = p_email;
+END$$
+
+DELIMITER ;
+
+
+
 
 
 DELIMITER $$
@@ -716,6 +743,8 @@ BEGIN
     end if;
 END$$
 DELIMITER ;
+
+
 
 /*Trigger para el codigo de departament(RH)*/
 DELIMITER $$
