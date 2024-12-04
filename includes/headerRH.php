@@ -31,7 +31,7 @@
         }
 
         if(department($IDUsuario) != "D001"){
-            header("Location: ../homeAdmin.php");
+            header("Location: ../admin/homeAdmin.php");
             exit();
         }
         

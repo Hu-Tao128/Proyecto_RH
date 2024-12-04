@@ -40,7 +40,7 @@
             <div class="modal-dialog">
                 <header class="modal-header">
                     <p>Recover your password</p>
-                    <button class="close-modal" data-close="modal-name">X</button>
+                    <button class="close-modal" data-close="modal-name"><strong>X</strong></button>
                 </header>
                 <section class="modal-content">
                     <form action="sendVerification.php" method="post">

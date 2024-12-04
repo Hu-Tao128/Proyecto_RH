@@ -37,20 +37,34 @@ if (isset($_POST['btnVerify'])) {
     
                     echo "<script>
                                 alert('The entry was registered correctly.');
-                                window.location.href = '../home.php';
+                                window.location.href = '../Human_Resources/homeRH.php';
                             </script>";
     
                 } else {
                     // El código ha expirado
+                echo "<script>
+                        alert('The code has expired. Request a new one.');
+                        window.history.back();
+                    </script>";
+                exit(); 
                     echo "El código ha expirado. Solicita uno nuevo.";
                 }
             } else {
                 // El código ingresado no coincide
-                echo "Código de verificación incorrecto.";
+                echo "<script>
+                        alert('Incorrect verification code.');
+                        window.history.back();
+                    </script>";
+                exit(); 
             }
         } else {
             // El correo electrónico no existe en la base de datos
-            echo "No se encontró un código de verificación para este correo.";
+            echo "<script>
+                        alert('A verification code was not found for this email.');
+                    </script>";
+        
+            header("Location: ../index.php");
+            exit(); 
         }
     } catch (PDOException $e) {
         echo 'Error al verificar el código: ' . $e->getMessage();
