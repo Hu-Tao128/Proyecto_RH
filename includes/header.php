@@ -50,6 +50,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
         <i class="fas fa-bars" id="btn_open"></i>
     </div>
 
+
     <div class="header-right">
         <div class="icon_notifications">
             <i class="fas fa-bell"></i>
@@ -68,6 +69,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
             </ul>
         </div>
     </div>
+
 </header>
 
 
