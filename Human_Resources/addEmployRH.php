@@ -1,5 +1,5 @@
 <?php
-include("../includes/headerHR.php");
+include("../includes/headerRH.php");
 require_once '../includes/config/MySQL_ConexionDB.php';
 require_once '../functions.php';
 
