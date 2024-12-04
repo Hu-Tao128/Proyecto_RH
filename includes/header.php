@@ -80,7 +80,7 @@ $currentFile = basename($_SERVER['PHP_SELF']);
 
         <div class="options__menu">	
 
-            <a href="home.php" class="selected">
+            <a href="home.php">
                 <div class="option">
                     <i class="fas fa-home" title="Inicio"></i>
                     <h4>Home</h4>
