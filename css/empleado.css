@@ -18,6 +18,51 @@ main{
     padding: 20px;
 }
 
+/* Estilo general para header-right */
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    gap: 1500px; 
+}
+
+/*elementos dentro de icon_notifications y user-menu se alineen bien */
+.icon_notifications, .user-menu {
+    display: flex;
+    align-items: center;
+}
+
+/* para pantallas pequeñas  */
+@media (max-width: 768px) {
+    .header-right {
+        justify-content: space-between; 
+        gap: 10px; 
+    }
+
+    .icon_notifications {
+        /*icono en pantallas pequeñas */
+        font-size: 1.2rem;
+    }
+
+    .user-menu {
+        font-size: 1rem; 
+    }
+}
+
+/*estilos para mviles */
+@media (max-width: 480px) {
+    .header-right {
+        flex-direction: column;
+        gap: 15px; /
+    }
+
+    .icon_notifications, .user-menu {
+        justify-content: center; 
+        width: 100%; 
+    }
+}
+
+
 header{
     width: 100%;
     height: 80px;
