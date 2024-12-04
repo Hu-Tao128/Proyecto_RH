@@ -1,12 +1,11 @@
 <?php 
-include "../includes/headerHR.php";
+include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php";
 +require_once "../functions.php";
 
 
 if (isset($_POST['btnBenfits'])) {
-    $code = trim($_POST['code']);
     $name = traducirTexto(trim($_POST['name']));
     $type = traducirTexto(trim($_POST['type']));
     $description = traducirTexto(trim($_POST['description']));

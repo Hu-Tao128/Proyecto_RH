@@ -32,7 +32,10 @@ $rating = showRatings($IDUsuario);
                     <td><?= $renglon['score']?></td>
                     <td><?= $renglon['evaluationDate']?></td>
                     <td><?= $renglon['comments']?></td>
-                    <td><?= $renglon['employee']?></td>
+                    <?php   
+                        $employe = firstname($renglon['employee'])." ".lastName($renglon['employee']);
+                    ?>
+                    <td><?= $employe?></td>
                     <td><a href="modifiyRating.php?id=<?= $renglon['id']?>" class="btn btn-primary btn-sm">Modify</a></td>
                     <td><a href="deleteRating.php?id=<?= $renglon['id']?>&action=delete" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>
@@ -44,11 +47,11 @@ $rating = showRatings($IDUsuario);
     <!-- Form to make a score -->
     <div class="mt-4">
         <h2>Make a score</h2>
-        <form action="addPerformance.php" method="POST" class="needs-validation" novalidate>
+        <form action="addPerformance.php" method="POST" class="needs-validation">
             <fieldset class="border p-4">
                 <div class="mb-3">
                     <label for="score" class="form-label">Score</label>
-                    <input type="number" id="score" name="score" class="form-control" placeholder="Score of the employee" required>
+                    <input type="number" id="score" name="score" class="form-control" placeholder="Score of the employee" min="1" max="100" required>
                     <div class="invalid-feedback">
                         Please enter a valid score.
                     </div>

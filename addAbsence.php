@@ -9,6 +9,14 @@ if (isset($_POST['btnAbsence'])) {
     $type = traducirTexto(trim($_POST['type']));
     $description = traducirTexto(trim($_POST['description']));
 
+    if (strlen($type) > 20) {
+        echo "<script>
+                alert('The description exceeds 100 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit();
+    }
+
     if (strlen($description) > 100) {
         echo "<script>
                 alert('The description exceeds 100 characters. Please shorten it.');

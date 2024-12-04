@@ -9,9 +9,7 @@ require_once "../functions.php";
 if(isset($_POST['btnReport'])){
     $id = trim($_POST['id']);
     $score = trim($_POST['score']);
-    $evaluationDate = trim($_POST['evaluationDate']);
     $comments = traducirTexto(trim($_POST['comments']));
-    $employee = trim($_POST['employee']);
 
     if (strlen($comments) > 100) {
         echo "<script>
@@ -26,10 +24,9 @@ if(isset($_POST['btnReport'])){
         
         $evaluationDate = (new DateTime())->format('Y-m-d');
 
-        $stmt = $db_con->prepare("update performance SET score = :score, evaluationDate = :evaluationDate, comments = :comments where code = :id");
+        $stmt = $db_con->prepare("update performance SET score = :score, comments = :comments where code = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->bindParam(':score', $score, PDO::PARAM_INT);
-        $stmt->bindParam(':evaluationDate', $evaluationDate, PDO::PARAM_STR);
         $stmt->bindParam(':comments', $comments, PDO::PARAM_STR);
 
         if ($stmt->execute()) {

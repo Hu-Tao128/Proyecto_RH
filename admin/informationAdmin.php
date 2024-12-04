@@ -83,7 +83,7 @@ $image = $info['image'];
                 
                 <div class="form-field full-width">
                     <label for="email" class="labelPerfil">Email</label>
-                    <input type="email" class="inputs" id="email" value="<?php echo $info['email']; ?>" disabled>
+                    <input type="email" class="inputs" name="email" id="email" value="<?php echo $info['email']; ?>" required>
                 </div>
                 
                 <div class="form-field full-width">

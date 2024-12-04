@@ -26,7 +26,7 @@ foreach($rating as $row){
         <fieldset>
 
             <div class="mb-3">
-                <label for="id" class="form-label">Code: <?php echo $row['code']?></label>
+                <label for="id" class="form-label">Code:</label>
                 <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['code']?>" readonly>
             </div>
 
@@ -42,7 +42,7 @@ foreach($rating as $row){
 
             <div class="mb-3">
                 <label for="score" class="form-label">Score</label>
-                <input type="text" id="score" name="score" class="form-control" placeholder="Score of the employee" value="<?php echo $row['score']?>" required>
+                <input type="number" id="score" name="score" class="form-control" min="11" max="100" placeholder="Score of the employee" value="<?php echo $row['score']?>" required>
             </div>
 
             <div class="mb-3">

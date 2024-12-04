@@ -1,6 +1,6 @@
 <?php
 
-include "../includes/headerHR.php";
+include "../includes/headerRH.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "../admin/functionsAdmin.php";
 require_once "../functions.php";
@@ -8,9 +8,7 @@ require_once "../functions.php";
 
 if(isset($_POST['btnReport'])){
     $id = trim($_POST['id']);
-    $description = traducirTexto(trim($_POST['description']));
     $status = trim($_POST['status']);
-    $employee = trim($_POST['employee']);
 
     try {
         global $db_con;

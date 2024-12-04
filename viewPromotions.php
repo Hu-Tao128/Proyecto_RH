@@ -48,6 +48,7 @@ $apply = showPromotionsEmploy($IDUsuario);
                         <th>Apply Date</th>
                         <th>Status</th>
                         <th>Promotion</th>
+                        <th>Option</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,7 @@ $apply = showPromotionsEmploy($IDUsuario);
                         <td><?=$renglon['publicationDate']?></td>
                         <td><?=$renglon['status']?></td>
                         <td><?php echo promotionName($renglon['promotion']);?></td>
+                        <td><a href="" class="btn btn-danger">Delete</a></td>
                     </tr>
                     <?php } ?>
                 </tbody>

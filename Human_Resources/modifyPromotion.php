@@ -43,7 +43,7 @@ foreach($promotion as $row){
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea id="description" name="description" class="form-control" rows="4" style="resize: none;" placeholder="Write the description"><?php echo $row['description']?></textarea>
+                <textarea id="description" name="description" class="form-control" rows="4" style="resize: none;" placeholder="Write the description" required><?php echo $row['description']?></textarea>
             </div>
 
             <div class="mb-3">

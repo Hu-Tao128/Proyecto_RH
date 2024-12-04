@@ -1,6 +1,6 @@
 <?php
 
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 require_once "../includes/config/MySQL_ConexionDB.php";
 require_once "functionsAdmin.php";
 require_once "../functions.php";
@@ -15,6 +15,14 @@ if(isset($_POST['btnReport'])){
     if (strlen($name) > 60) {
         echo "<script>
                 alert('The name exceeds 60 characters. Please shorten it.');
+                window.history.back(); // Regresa al formulario
+              </script>";
+        exit(); // Detener la ejecución del script
+    }
+
+    if (strlen($type) > 40) {
+        echo "<script>
+                alert('The type exceeds 40 characters. Please shorten it.');
                 window.history.back(); // Regresa al formulario
               </script>";
         exit(); // Detener la ejecución del script

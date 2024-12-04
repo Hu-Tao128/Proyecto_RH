@@ -1,7 +1,7 @@
 <?php
 require_once "../includes/config/MySQL_ConexionDB.php";
 include "functionsAdmin.php";
-include "../includes/headerAdmin.php";
+include "../includes/headerSupervisor.php";
 
 
 if(isset($_GET['id']) && isset($_GET['action']) && isset($_GET['user'])){

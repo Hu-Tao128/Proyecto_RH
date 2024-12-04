@@ -30,7 +30,7 @@ foreach($rating as $row){
             
             <div>
                 <label for="id" >Code: <?php echo $row['code']?> </label>
-                <input class="inputID" type="text" id="id" name="id" value=<?php echo $row['code']?> required>
+                <input class="inputID" type="hidden" id="id" name="id" value=<?php echo $row['code']?>>
             </div>
             <div>
                 <label for="evaluationDate">Evaluation Date: <?php echo $row['evaluationDate']?></label>

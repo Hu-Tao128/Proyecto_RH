@@ -20,7 +20,6 @@ $employ = getInfoEmploy($IDUsuario);
                     <tr>
                         <th>Number</th>
                         <th>Name</th>
-                        <th>Last Names</th>
                         <th>Email</th>
                         <th>CellPhone number</th>
                         <th>Workstation</th>
@@ -31,8 +30,7 @@ $employ = getInfoEmploy($IDUsuario);
                     <?php foreach ($employ as $renglon) { ?>
                         <tr>
                             <td><?= htmlspecialchars($renglon['code']) ?></td>
-                            <td><?= htmlspecialchars($renglon['firstName']) ?></td>
-                            <td><?= htmlspecialchars($renglon['lastName'] . " " . $renglon['middleName']) ?></td>
+                            <td><?= htmlspecialchars($renglon['firstName']." ".$renglon['lastName'] . " " . $renglon['middleName']) ?></td>
                             <td><?= htmlspecialchars($renglon['email']) ?></td>
                             <td><?= htmlspecialchars($renglon['mobile']) ?></td>
                             <?php $workspace = workspace($renglon['code']); ?>

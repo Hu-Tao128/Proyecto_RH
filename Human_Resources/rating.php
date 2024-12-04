@@ -36,7 +36,7 @@ $rating = getInfoRating();
                     <td><?= htmlspecialchars($renglon['score']) ?></td>
                     <td><?= htmlspecialchars($renglon['evaluationDate']) ?></td>
                     <td><?= htmlspecialchars($renglon['comments']) ?></td>
-                    <td><?= htmlspecialchars($renglon['employee']) ?></td>
+                    <td><?= htmlspecialchars(firstname($renglon['employee'])." ".lastname($renglon['employee'])) ?></td>
                     <td>
                         <a href="modifiyRating.php?id=<?= $renglon['code'] ?>" class="btn btn-sm btn-primary">Modify</a>
                     </td>
@@ -55,7 +55,7 @@ $rating = getInfoRating();
             <fieldset>
                 <div class="mb-3">
                     <label for="score" class="form-label">Score</label>
-                    <input type="number" id="score" name="score" class="form-control" placeholder="Score of the employee" required>
+                    <input type="number" id="score" name="score" class="form-control" min="1" max="100" placeholder="Score of the employee" required>
                 </div>
 
                 <div class="mb-3">

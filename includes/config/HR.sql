@@ -105,7 +105,7 @@ create table absence(
     startDate date not null,
     endDate date not null,
     status varchar(10) not null,
-    type varchar(10) not null,
+    type varchar(20) not null,
     description varchar(100) not null,
     employee varchar(5) not null,
     index idx_absence(startDate),
