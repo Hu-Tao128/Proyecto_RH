@@ -85,7 +85,7 @@
 
             <a href="../Human_Resources/departaments.php" class="dropbtn">
             <div class="option">
-                <i class="far fa-sticky-note" title="Report an incident"></i>
+            <i class="fas fa-building"></i>
                 <h4>Departamens</h4>
                 </div>
             </a>
@@ -93,85 +93,84 @@
 
             <a href="../Human_Resources/employee.php" class="dropbtn">  
             <div class="option">          
-                <i class="fas fa-file-alt"></i>
-
+            <i class="fas fa-users"></i>
                     <h4>Employees</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/aplications.php" class="dropbtn">
             <div class="option">
-                <i class="far fa-address-card" title="Personal Information"></i>
+            <i class="fas fa-file-signature"></i>
                     <h4>Aplications</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/tickets.php" class="dropbtn">
             <div class="option">
-                <i class="fas fa-calendar-alt"></i>
+            <i class="fas fa-file-alt"></i>
                 <h4>Tickets</h4>
             </div>
             </a>
 
             <a href="../Human_Resources/promotions.php" class="dropbtn">
                 <div class="option">
-                <i class="fas fa-user-check"></i>
+                <i class="fas fa-gift"></i>
                 <h4>Promotions</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/vacations.php" class="dropbtn">
                 <div class="option">
-                    <i class="fas fa-user-times"></i>
+                <i class="fas fa-calendar-alt"></i>
                     <h4>Vacations</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/position.php" class="dropbtn">                
                 <div class="option">
-                    <i class="fas fa-coins"></i>
-                    <h4>Positions</h4>
+                <i class="fas fa-sitemap"></i>
+                <h4>Positions</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/rating.php" class="dropbtn">
                 <div class="option">
-                    <i class="fas fa-file-signature"></i>
-                    <h4>Rating</h4>
+                <i class="fas fa-list-ol"></i>
+                <h4>Rating</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/benefie.php" class="dropbtn">            
                 <div class="option">
-                    <i class="fas fa-gift"></i>
-                    <h4>Benefie</h4>
+                <i class="fas fa-coins"></i>
+                <h4>Benefie</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/absences.php" class="dropbtn">            
                 <div class="option">
-                    <i class="fas fa-users"></i>
+                <i class="fas fa-user-times"></i>
                 <h4>Absences</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/attedance.php" class="dropbtn">
                 <div class="option">
-                    <i class="fas fa-users"></i>
+                <i class="fas fa-user-check"></i>
                 <h4>Attedance</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/incident.php" class="dropbtn">
                 <div class="option">
-                    <i class="fas fa-users"></i>
+                <i class="far fa-sticky-note" title="Report an incident"></i>
                 <h4>Incident</h4>
                 </div>
             </a>
 
             <a href="../Human_Resources/informationAdmin.php" class="dropbtn">
                 <div class="option">
-                    <i class="fas fa-users"></i>
+                <i class="far fa-address-card" title="Personal Information"></i>
                 <h4>Personal Information</h4>
                 </div>
             </a>
