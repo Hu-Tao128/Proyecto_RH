@@ -78,7 +78,7 @@
 
         <div class="options__menu">	
 
-            <a href="homeAdmin.php" class="selected">
+            <a href="homeAdmin.php">
                 <div class="option">
                     <i class="fas fa-home" title="Inicio"></i>
                     <h4>Home</h4>
@@ -186,6 +186,20 @@
         </div>
         
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const menuLinks = document.querySelectorAll(".options__menu a");
+        const currentPage = window.location.pathname.split("/").pop();
+
+            menuLinks.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("selected");
+                }
+            });
+        });
+
+    </script>
 
     <script src="../js/menu.js"></script>
 </body>
