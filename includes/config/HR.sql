@@ -211,7 +211,7 @@ CREATE TABLE password_reset (
     email VARCHAR(255) NOT NULL,            
     verification_code VARCHAR(6) NOT NULL,  
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    expires_at TIMESTAMP      
+    expires_at TIMESTAMP null     
 );
 
 

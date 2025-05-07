@@ -8,7 +8,9 @@ if (isset($_POST['btnChangeImg'])) {
     $folderRuta = "imageUser/";
     $IDUsuarioCliente = $_REQUEST['IDCambioFoto'];
     $tipoImagen = explode("/", $_FILES["changeFotoPerfil"]["type"]);
-    $NombreFotoPerfil = $IDUsuarioCliente . "." . $tipoImagen[1];
+    $timestamp = date('YmdHis');
+	$NombreFotoPerfil = $IDUsuarioCliente . "_" . $timestamp . "." . $tipoImagen[1];
+
 
     try {
         global $db_con;

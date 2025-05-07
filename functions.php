@@ -4,6 +4,8 @@ require("includes/config/MySQL_ConexionDB.php");
 require 'vendor/autoload.php';
 
 use GuzzleHttp\Client as GuzzleCliente;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -388,14 +390,17 @@ function getScoreMonth($user){
 }
 
 function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
-    $apiKey = $_ENV['DEEPL_API_KEY'] ?? null; 
-    
+    $apiKey = $_ENV['DEEPL_API_KEY'] ?? null;
+
     if (!$apiKey) {
         return $texto;
     }
 
     $url = 'https://api-free.deepl.com/v2/translate';
-    $client = new GuzzleHttp\Client();
+    $client = new Client([
+        'timeout' => 3.0, // Tiempo máximo de espera en segundos
+        'connect_timeout' => 2.0 // Tiempo máximo para conectar
+    ]);
 
     try {
         $response = $client->post($url, [
@@ -413,12 +418,16 @@ function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
 
         if (isset($data['translations'][0]['text'])) {
             return $data['translations'][0]['text'];
-        } else {
-            return $texto;
         }
+    } catch (ConnectException | RequestException $e) {
+        // Error de conexión, devuelve el texto original
+        return $texto;
     } catch (Exception $e) {
+        // Otros errores generales
         return $texto;
     }
+
+    return $texto;
 }
 
 
@@ -454,13 +463,13 @@ function sendVerificationEmail($email, $verificationCode) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Cambia al servidor SMTP que uses
         $mail->SMTPAuth = true;
-        $mail->Username = 'alcantarahuerta128@gmail.com'; // Tu correo electrónico
+        $mail->Username = 'ayayasculptures@gmail.com'; // Tu correo electrónico
         $mail->Password = $_ENV['GMAIL_KEY'] ?? null;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Configuración del remitente y destinatario
-        $mail->setFrom('alcantarahuerta128@gmail.com', 'Integra Amigos'); // Remitente
+        $mail->setFrom('ayayasculptures@gmail.com', 'Integra Amigos'); // Remitente
         $mail->addAddress($email, 'User'); // Destinatario
 
         // Contenido del correo

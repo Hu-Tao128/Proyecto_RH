@@ -44,7 +44,7 @@
                 </header>
                 <section class="modal-content">
                     <form action="sendVerification.php" method="post">
-                        <p><strong>Enter the verification code sent to your email</strong></p>
+                        <p><strong>Enter your employee code</strong></p>
                         <input type="text" name="id" id="id" required>
                         <button type="submit" name="sendCode">Verify</button>
                     </form>

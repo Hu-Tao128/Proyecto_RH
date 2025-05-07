@@ -24,7 +24,7 @@ if (isset($_POST['sendCode'])) {
 
     }else{
         echo "<script>
-                    alert('The code is not correctly');
+                    alert('The employee code is not correctly');
                     window.history.back();
                 </script>";
         exit(); 
