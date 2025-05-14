@@ -30,12 +30,12 @@ $currentFile = basename($_SERVER['PHP_SELF']);
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="../css/empleado.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/perfil.css">
-    <link rel ="stylesheet" href="../css/modal.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/questions.css">
+    <link rel="stylesheet" href="css/empleado.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel ="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/questions.css">
     
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -147,5 +147,5 @@ $currentFile = basename($_SERVER['PHP_SELF']);
 
     </script>
 
-    <script src="../js/menu.js"></script>
+    <script src="js/menu.js"></script>
 </body>
