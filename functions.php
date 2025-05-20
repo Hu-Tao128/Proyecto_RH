@@ -390,17 +390,14 @@ function getScoreMonth($user){
 }
 
 function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
-    $apiKey = $_ENV['DEEPL_API_KEY'] ?? null;
-
+    $apiKey = $_ENV['DEEPL_API_KEY'] ?? null; 
+    
     if (!$apiKey) {
         return $texto;
     }
 
     $url = 'https://api-free.deepl.com/v2/translate';
-    $client = new Client([
-        'timeout' => 3.0, // Tiempo máximo de espera en segundos
-        'connect_timeout' => 2.0 // Tiempo máximo para conectar
-    ]);
+    $client = new GuzzleHttp\Client();
 
     try {
         $response = $client->post($url, [
@@ -418,18 +415,13 @@ function traducirTexto($texto, $idiomaOrigen = 'ES', $idiomaDestino = 'EN') {
 
         if (isset($data['translations'][0]['text'])) {
             return $data['translations'][0]['text'];
+        } else {
+            return $texto;
         }
-    } catch (ConnectException | RequestException $e) {
-        // Error de conexión, devuelve el texto original
-        return $texto;
     } catch (Exception $e) {
-        // Otros errores generales
         return $texto;
     }
-
-    return $texto;
 }
-
 
 // Función para guardar el código en la base de datos
 function saveVerificationCode($email, $code) {
