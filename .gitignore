@@ -7,6 +7,7 @@ secrets.txt
 # Ignorar carpetas específicas
 #/vendor/
 #/node_modules/
+/imageUser/
 
 # Ignorar archivos generados por el sistema
 #.DS_Store

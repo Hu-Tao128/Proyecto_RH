@@ -1,5 +1,5 @@
 <?php 
-    include "includes/headerlogin.php";
+    include "includes/headerLogin.php";
 ?>
 <body>
     <div class="banner">
